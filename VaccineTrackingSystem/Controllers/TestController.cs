@@ -11,7 +11,7 @@ namespace VaccineTrackingSystem.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            return View("xx");
+            return View();
         }
     }
 }
