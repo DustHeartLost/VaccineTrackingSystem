@@ -11,7 +11,11 @@ namespace VaccineTrackingSystem.Views.Test
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
+        }
+        protected void click() { 
+            Button1.Text = "xx";
+           
         }
     }
 }
