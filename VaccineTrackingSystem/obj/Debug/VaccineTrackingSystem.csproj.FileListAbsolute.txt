@@ -52,3 +52,4 @@ C:\Users\11321\Desktop\Github\VaccineTrackingSystem\obj\Debug\VaccineTrackingSys
 C:\Users\11321\Desktop\Github\VaccineTrackingSystem\obj\Debug\VaccineTrackingSystem.csproj.CopyComplete
 C:\Users\11321\Desktop\Github\VaccineTrackingSystem\obj\Debug\VaccineTrackingSystem.dll
 C:\Users\11321\Desktop\Github\VaccineTrackingSystem\obj\Debug\VaccineTrackingSystem.pdb
+C:\Users\11321\Desktop\Github\VaccineTrackingSystem\obj\Debug\VaccineTrackingSystem.csprojAssemblyReference.cache
