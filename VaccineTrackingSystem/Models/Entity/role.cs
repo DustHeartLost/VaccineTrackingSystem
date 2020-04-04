@@ -18,5 +18,12 @@ namespace helloworld.Models
 
         /****备注***/
         public string note;
+
+        public Role(int id, string name, string note)
+        {
+            this.id = id;
+            this.name = name;
+            this.note = note;
+        }
     }
 }

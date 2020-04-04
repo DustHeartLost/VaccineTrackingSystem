@@ -31,5 +31,16 @@ namespace helloworld.Models
         /****备注***/
         public string note;
 
+        public Indetail(int id, string num, string name, string kind, string unit, string spec, string factory, string note)
+        {
+            this.id = id;
+            this.num = num;
+            this.name = name;
+            this.kind = kind;
+            this.unit = unit;
+            this.spec = spec;
+            this.factory = factory;
+            this.note = note;
+        }
     }
 }
