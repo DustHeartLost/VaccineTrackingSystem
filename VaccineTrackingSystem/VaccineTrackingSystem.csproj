@@ -67,19 +67,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="VIew\Login\assets\css\reset.css" />
-    <Content Include="VIew\Login\assets\css\style.css" />
-    <Content Include="VIew\Login\assets\css\supersized.css" />
-    <Content Include="VIew\Login\assets\img\1.jpg" />
-    <Content Include="VIew\Login\assets\img\2.jpg" />
-    <Content Include="VIew\Login\assets\img\3.jpg" />
-    <Content Include="VIew\Login\assets\img\facebook.png" />
-    <Content Include="VIew\Login\assets\img\twitter.png" />
-    <Content Include="VIew\Login\assets\js\html5.js" />
-    <Content Include="VIew\Login\assets\js\jquery-1.8.2.min.js" />
-    <Content Include="VIew\Login\assets\js\scripts.js" />
-    <Content Include="VIew\Login\assets\js\supersized-init.js" />
-    <Content Include="VIew\Login\assets\js\supersized.3.2.7.min.js" />
+    <Content Include="VIew\Login\css\main.css" />
+    <Content Include="VIew\Login\css\main1.css" />
+    <Content Include="VIew\Login\images\air-balloon-1.png" />
+    <Content Include="VIew\Login\images\air-balloon-2.png" />
+    <Content Include="VIew\Login\images\icos.png" />
+    <Content Include="VIew\Login\images\login-bg.jpg" />
+    <Content Include="VIew\Login\images\login-foot.jpg" />
+    <Content Include="VIew\Login\images\login.png" />
+    <Content Include="VIew\Login\images\logo-login.png" />
+    <Content Include="VIew\Login\jslib\DD_belatedPNG.js" />
+    <Content Include="VIew\Login\jslib\jQuery.js" />
+    <Content Include="VIew\Login\jslib\PIE.js" />
+    <Content Include="VIew\Login\js\fun.base.js" />
+    <Content Include="VIew\Login\js\login.js" />
     <Content Include="VIew\Login\Login.aspx" />
     <Content Include="VIew\test.aspx" />
     <Content Include="Global.asax" />
@@ -126,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="VIew\Login\css\main.css.bak" />
+    <Content Include="VIew\Login\css\main1.css.bak" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
