@@ -86,7 +86,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Entity\apartment.cs" />
+    <Compile Include="Models\Entity\Apartment.cs" />
     <Compile Include="Models\Entity\Category.cs" />
     <Compile Include="Models\Entity\Indetail.cs" />
     <Compile Include="Models\Entity\Inflow.cs" />
