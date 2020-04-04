@@ -86,12 +86,21 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\DAL\HandleCategory.cs" />
+    <Compile Include="Models\DAL\HandleApartment.cs" />
+    <Compile Include="Models\DAL\HandleIndetail.cs" />
+    <Compile Include="Models\DAL\HandleInflow.cs" />
+    <Compile Include="Models\DAL\HandleOutflow.cs" />
+    <Compile Include="Models\DAL\HandleRole.cs" />
+    <Compile Include="Models\DAL\HandleStock.cs" />
+    <Compile Include="Models\DAL\HandleStoreroom.cs" />
+    <Compile Include="Models\DAL\HandleUser.cs" />
     <Compile Include="Models\Entity\Apartment.cs" />
     <Compile Include="Models\Entity\Category.cs" />
     <Compile Include="Models\Entity\Indetail.cs" />
     <Compile Include="Models\Entity\Inflow.cs" />
     <Compile Include="Models\Entity\Outflow.cs" />
-    <Compile Include="Models\Entity\role.cs" />
+    <Compile Include="Models\Entity\Role.cs" />
     <Compile Include="Models\Entity\Stock.cs" />
     <Compile Include="Models\Entity\Storeroom.cs" />
     <Compile Include="Models\Entity\User.cs" />

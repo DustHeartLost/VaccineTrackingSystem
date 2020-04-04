@@ -4,6 +4,10 @@
     Protected Sub Button1_Click(sender As Object, e As EventArgs)
 
     End Sub
+
+    Protected Sub Page_Load(sender As Object, e As EventArgs)
+
+    End Sub
 </script>
 
 <html>
@@ -28,19 +32,19 @@
 
         <form id="form1" runat="server">
 
-        <div class="page-container">
-            <h1>登   录</h1>
-            <input id="Username" type="text" width="300px" />
-            <input id="Password" type="password" width="300px" /><div class="error"><span>+</span></div>
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="登   录" BackColor="#E95A25" Font-Bold="True" Font-Size="Large" Width="380px" />
-     
-        </div>
-	
         <script src="assets/js/jquery-1.8.2.min.js" ></script>
         <script src="assets/js/supersized.3.2.7.min.js" ></script>
         <script src="assets/js/supersized-init.js" ></script>
         <script src="assets/js/scripts.js" ></script>
 
+        <div class="page-container">
+            <h1>疫苗追踪管理系统</h1>
+            <input id="Username" type="text" />
+            <input id="Password" type="password" title="根本改变"/><div class="error"><span>+</span></div>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="登   录" BackColor="#E95A25" Font-Bold="True" Font-Size="Large" Width="365px" />
+     
+        </div>
+	
         </form>
 
     </body>
