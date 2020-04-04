@@ -87,15 +87,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DAL\HandleCategory.cs" />
-    <Compile Include="Models\DAL\HandleApartment.cs" />
-    <Compile Include="Models\DAL\HandleIndetail.cs" />
-    <Compile Include="Models\DAL\HandleInflow.cs" />
-    <Compile Include="Models\DAL\HandleOutflow.cs" />
-    <Compile Include="Models\DAL\HandleRole.cs" />
-    <Compile Include="Models\DAL\HandleStock.cs" />
-    <Compile Include="Models\DAL\HandleStoreroom.cs" />
-    <Compile Include="Models\DAL\HandleUser.cs" />
+    <Compile Include="Models\DAL\ApartmentDAL.cs" />
+    <Compile Include="Models\DAL\CategoryDAL.cs" />
+    <Compile Include="Models\DAL\Sql.cs" />
     <Compile Include="Models\Entity\Apartment.cs" />
     <Compile Include="Models\Entity\Category.cs" />
     <Compile Include="Models\Entity\Indetail.cs" />
@@ -122,7 +116,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAL\Sql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -138,7 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\BLL\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <PropertyGroup>
