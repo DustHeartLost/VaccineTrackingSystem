@@ -67,6 +67,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="VIew\Login\assets\css\reset.css" />
+    <Content Include="VIew\Login\assets\css\style.css" />
+    <Content Include="VIew\Login\assets\css\supersized.css" />
+    <Content Include="VIew\Login\assets\img\1.jpg" />
+    <Content Include="VIew\Login\assets\img\2.jpg" />
+    <Content Include="VIew\Login\assets\img\3.jpg" />
+    <Content Include="VIew\Login\assets\img\facebook.png" />
+    <Content Include="VIew\Login\assets\img\twitter.png" />
+    <Content Include="VIew\Login\assets\js\html5.js" />
+    <Content Include="VIew\Login\assets\js\jquery-1.8.2.min.js" />
+    <Content Include="VIew\Login\assets\js\scripts.js" />
+    <Content Include="VIew\Login\assets\js\supersized-init.js" />
+    <Content Include="VIew\Login\assets\js\supersized.3.2.7.min.js" />
+    <Content Include="VIew\Login\Login.aspx" />
     <Content Include="VIew\test.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -81,6 +95,13 @@
     <Compile Include="Models\Entity\Stock.cs" />
     <Compile Include="Models\Entity\Storeroom.cs" />
     <Compile Include="Models\Entity\User.cs" />
+    <Compile Include="VIew\Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VIew\Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VIew\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -104,10 +125,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\image\" />
+    <Folder Include="App_Data\" />
     <Folder Include="Models\BLL\" />
     <Folder Include="Util\" />
-    <Folder Include="VIew\Login\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
