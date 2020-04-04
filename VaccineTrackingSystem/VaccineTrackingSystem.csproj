@@ -72,6 +72,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Entity\apartment.cs" />
+    <Compile Include="Models\Entity\Category.cs" />
+    <Compile Include="Models\Entity\Indetail.cs" />
+    <Compile Include="Models\Entity\Inflow.cs" />
+    <Compile Include="Models\Entity\Outflow.cs" />
+    <Compile Include="Models\Entity\role.cs" />
+    <Compile Include="Models\Entity\Stock.cs" />
+    <Compile Include="Models\Entity\Storeroom.cs" />
+    <Compile Include="Models\Entity\User.cs" />
     <Compile Include="VIew\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -97,7 +106,6 @@
   <ItemGroup>
     <Folder Include="App_Data\image\" />
     <Folder Include="Models\BLL\" />
-    <Folder Include="Models\Entity\" />
     <Folder Include="Util\" />
     <Folder Include="VIew\Login\" />
   </ItemGroup>
