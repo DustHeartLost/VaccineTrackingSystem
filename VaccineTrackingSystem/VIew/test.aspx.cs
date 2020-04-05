@@ -1,4 +1,6 @@
 ﻿using System;
+using VaccineTrackingSystem.Models;
+using VaccineTrackingSystem.Models.DAL;
 
 namespace WebApplication2
 {
