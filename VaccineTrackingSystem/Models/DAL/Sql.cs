@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -62,10 +63,11 @@ namespace DAL
 					return false;
 				}
 			}
-			catch
+			catch(Exception ex)
 			{
 				Dispose();
-				return false;
+				//这里修改一下，改为抛出异常，合并冲突的时候不要合并
+				throw ex;
 			}
 		}
 		static public SqlDataReader getData(string Command)
