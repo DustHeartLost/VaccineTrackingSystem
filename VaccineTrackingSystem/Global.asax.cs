@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using VaccineTrackingSystem.Models;
+using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem
 {
