@@ -17,7 +17,7 @@ namespace VaccineTrackingSystem.Models
 		public string name;
 
 		/* 密保答案 */
-		public string note;
+		public  string note;
 
 		public Apartment(int id, string num, string name, string note)
 		{
@@ -26,5 +26,16 @@ namespace VaccineTrackingSystem.Models
 			this.name = name;
 			this.note = note;
 		}
+
+		public Apartment(string num, string name, string note)
+		{
+            /*this.id = id; int id,*/
+			this.num = num;
+			this.name = name;
+			this.note = note;
+		}
+
+		
+
 	}
 }

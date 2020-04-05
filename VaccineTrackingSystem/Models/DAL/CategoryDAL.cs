@@ -7,5 +7,7 @@ namespace VaccineTrackingSystem.Models.DAL
 {
     public class CategoryDAL
     {
+
+
     }
 }
