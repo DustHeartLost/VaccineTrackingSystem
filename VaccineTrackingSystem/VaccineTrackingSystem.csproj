@@ -67,6 +67,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="VIew\Home\css\alk_main.css" />
+    <Content Include="VIew\Home\css\animate.min.css" />
+    <Content Include="VIew\Home\css\bootstrap-touch-slider.css" />
+    <Content Include="VIew\Home\css\bootstrap.min.css" />
+    <Content Include="VIew\Home\css\default.css" />
+    <Content Include="VIew\Home\css\font-awesome%281%29.css" />
+    <Content Include="VIew\Home\css\font-awesome.css" />
+    <Content Include="VIew\Home\css\htmleaf-demo.css" />
+    <Content Include="VIew\Home\Home.aspx" />
+    <Content Include="VIew\Home\images\1._____________.png" />
+    <Content Include="VIew\Home\images\12.________.png" />
+    <Content Include="VIew\Home\images\2.____________.png" />
+    <Content Include="VIew\Home\images\3.__________________%281%29.png" />
+    <Content Include="VIew\Home\images\3.__________________.png" />
+    <Content Include="VIew\Home\images\5._______.png" />
+    <Content Include="VIew\Home\images\7._______________%281%29.png" />
+    <Content Include="VIew\Home\images\7._______________.png" />
+    <Content Include="VIew\Home\images\8._________________.png" />
+    <Content Include="VIew\Home\images\banner1.jpg" />
+    <Content Include="VIew\Home\images\footer-logo.png" />
+    <Content Include="VIew\Home\images\icon28.png" />
+    <Content Include="VIew\Home\images\logo.png" />
+    <Content Include="VIew\Home\images\more.png" />
+    <Content Include="VIew\Home\images\news-title.png" />
+    <Content Include="VIew\Home\images\notice-title.png" />
+    <Content Include="VIew\Home\images\sou.png" />
+    <Content Include="VIew\Home\images\u=1612077127,393485524&amp;fm=26&amp;gp=0.jpg" />
+    <Content Include="VIew\Home\images\____%281%29.png" />
+    <Content Include="VIew\Home\images\____.png" />
     <Content Include="VIew\Login\css\main.css" />
     <Content Include="VIew\Login\css\main1.css" />
     <Content Include="VIew\Login\images\air-balloon-1.png" />
@@ -101,6 +130,13 @@
     <Compile Include="Models\Entity\Stock.cs" />
     <Compile Include="Models\Entity\Storeroom.cs" />
     <Compile Include="Models\Entity\User.cs" />
+    <Compile Include="VIew\Home\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VIew\Home\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VIew\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
