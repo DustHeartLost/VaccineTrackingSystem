@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 body{
 	margin:0;
@@ -189,8 +189,8 @@ input{
 
 }
 .student_menu .student-tabList .flow-ul li a{
-    width:146px;
-    height:180px;
+    width:108px;
+    height:130px;
     float:left;
     cursor:pointer;
     margin-top:10px;

@@ -11,7 +11,9 @@ namespace VaccineTrackingSystem.VIew.Home
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-       
+            Panel4.Visible = false;
+            Panel3.Visible = false;
+            Panel7.Visible = false;
         }
     }
 }
