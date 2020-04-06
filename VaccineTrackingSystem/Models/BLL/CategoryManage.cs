@@ -8,30 +8,30 @@ namespace VaccineTrackingSystem.Models.BLL
 {
     public class CategoryManage
     {
-        static public bool Add(Category category, string msg)
+        static public bool Add(Category category, out string msg)
         {
-            if (CategoryDAL.Add(category, msg))
+            if (CategoryDAL.Add(category, out msg))
                 return true;
             return false;
         }
 
-        static public bool Update(Category category,string msg)
+        static public bool Update(Category category, out string msg)
         {
-            if (CategoryDAL.Update(category, msg))
+            if (CategoryDAL.Update(category, out msg))
                 return true;
             return false;
         }
-        static public Category Query(string num, string msg)
+        static public Category Query(string num, out string msg)
         {
-            if (CategoryDAL.Query(num, msg) == null)
+            if (CategoryDAL.Query(num, out msg) == null)
                 return null;
-            return CategoryDAL.Query(num, msg);
+            return CategoryDAL.Query(num, out msg);
         }
-        static public List<Category> QueryAll(string msg)
+        static public List<Category> QueryAll(out string msg)
         {
-            if (CategoryDAL.QueryAll(msg) == null)
+            if (CategoryDAL.QueryAll(out msg) == null)
                 return null;
-            return CategoryDAL.QueryAll(msg);
+            return CategoryDAL.QueryAll(out msg);
         }
 
     }

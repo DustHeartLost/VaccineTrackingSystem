@@ -9,11 +9,12 @@ namespace VaccineTrackingSystem.Models.DAL
 {
     public class StoreroomDAL
     {
-        static public bool Add(Storeroom storeroom,string msg)
+        static public bool Add(Storeroom storeroom, out string msg)
         {
             string command = $"insert into Storeroom(name,site,userNum) values('{storeroom.name}','{storeroom.site}','{storeroom.userNum}');";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception e)
@@ -23,11 +24,12 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public bool Delete(int id, string msg)
+        static public bool Delete(int id, out string msg)
         {
             string command = $"delete from Storeroom where id ={id}";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception e)
@@ -37,11 +39,12 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public bool Update(Storeroom storeroom,string msg)
+        static public bool Update(Storeroom storeroom, out string msg)
         {
             string command = $"update Storeroom set name = '{storeroom.name}',site = '{storeroom.site}',userNum =  '{storeroom.userNum}' where id = '{storeroom.id}'";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception e)
@@ -51,7 +54,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public Storeroom Query(int id, string msg)
+        static public Storeroom Query(int id, out string msg)
         {
             string command = $"select * from Storeroom where id = '{id}'";
             SqlDataReader read = SQL.getData(command);
@@ -63,9 +66,10 @@ namespace VaccineTrackingSystem.Models.DAL
             }
             Storeroom storeroom = new Storeroom((int)read["id"], (string)read["name"], (string)read["site"], (string)read["userNum"]);
             SQL.Dispose();
+            msg = null;
             return storeroom;
         }
-        static public List<Storeroom> QueryAll(string msg)
+        static public List<Storeroom> QueryAll(out string msg)
         {
             string command = $"select * from Storeroom";
             SqlDataReader read = SQL.getReader(command);
@@ -81,6 +85,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 list.Add(new Storeroom((int)read["id"], (string)read["name"], (string)read["site"], (string)read["userNum"]));
             }
             SQL.Dispose();
+            msg = null;
             return list;
         }
 
