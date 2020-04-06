@@ -26,5 +26,12 @@ namespace VaccineTrackingSystem.Models
             this.note = note;
             this.authority = authority;
         }
+
+        public Role(string name, string authority, string note)
+        {
+            this.name = name;
+            this.note = note;
+            this.authority = authority;
+        }
     }
 }

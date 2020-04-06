@@ -42,5 +42,15 @@ namespace VaccineTrackingSystem.Models
             this.price = price;
             this.batchNum = batchNum;
         }
+        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, int price, string batchNum)
+        {
+            this.cagNum = cagNum;
+            this.storeID = storeID;
+            this.date = date;
+            this.userNum = userNum;
+            this.quantity = quantity;
+            this.price = price;
+            this.batchNum = batchNum;
+        }
     }
 }

@@ -27,5 +27,11 @@ namespace VaccineTrackingSystem.Models
             this.site = site;
             this.userNum = userNum;
         }
+        public Storeroom(string name, string site, string userNum)
+        {
+            this.name = name;
+            this.site = site;
+            this.userNum = userNum;
+        }
     }
 }

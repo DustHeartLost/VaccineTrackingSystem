@@ -28,7 +28,7 @@ namespace VaccineTrackingSystem.Models.DAL
 				return false;
 			}
 		}
-		static public bool Delete(int id, string msg)
+		static public bool Delete(int id, String msg)
 		{
 			string command = $"delete from Apartment where id ={id}";
 			try
@@ -42,7 +42,7 @@ namespace VaccineTrackingSystem.Models.DAL
 				return false;
 			}
 		}
-		static public bool Update(Apartment apartment, string msg)
+		static public bool Update(Apartment apartment, String msg)
 		{
 			string command = $"update Apartment set num = '{apartment.num}',name = '{apartment.name}',note =  '{apartment.note}' where id = '{apartment.id}'";
 			try
