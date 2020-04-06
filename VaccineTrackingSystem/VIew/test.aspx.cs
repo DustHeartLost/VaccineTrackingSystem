@@ -1,5 +1,6 @@
 ﻿using System;
 using VaccineTrackingSystem.Models;
+using VaccineTrackingSystem.Models.BLL;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace WebApplication2
@@ -8,7 +9,10 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string msg=null;
+            System.Diagnostics.Debug.Write("###############################");
+            System.Diagnostics.Debug.Write(AprtManage.Query("wy", msg).note);
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)

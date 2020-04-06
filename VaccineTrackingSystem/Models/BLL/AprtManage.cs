@@ -14,12 +14,6 @@ namespace VaccineTrackingSystem.Models.BLL
                 return true;
             return false;
         }
-        /**static public bool Delete(int id, string msg)
-        {
-            if (ApartmentDAL.Delete(id, msg))
-                return true;
-            return false;
-        }*/
         static public bool Update(Apartment apartment,string msg)
         {
             if (ApartmentDAL.Update(apartment, msg))
@@ -34,7 +28,9 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public List<Apartment> QueryAll(string msg)
         {
-            return null;
+            if (ApartmentDAL.QueryAll(msg) == null)
+                return null;
+            return ApartmentDAL.QueryAll(msg);
         }
 
     }
