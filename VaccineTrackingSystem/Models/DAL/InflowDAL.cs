@@ -7,7 +7,7 @@ namespace VaccineTrackingSystem.Models.DAL
 {
     public class InflowDAL
     {
-        static public bool add(Inflow inflow, out string msg)
+        static public bool Add(Inflow inflow, out string msg)
         {
             string command = $"insert into Inflow (cagNum,storeID,date,userNum,quantity,price,batchNum) values ('{inflow.cagNum}','{inflow.storeID}','{inflow.date}','{inflow.userNum}','{inflow.quantity}','{inflow.price}','{inflow.batchNum}')";
             try
@@ -22,7 +22,7 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
 
-        static public Inflow query(int id, out string msg)
+        static public Inflow Query(int id, out string msg)
         {
             string command = $"select * from Inflow where id = '{id}'";
             SqlDataReader read = SQL.getData(command);
@@ -36,7 +36,7 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return inflow;
         }
-        static public List<Inflow> queryAll(out string msg)
+        static public List<Inflow> QueryAll(out string msg)
         {
             string command = "select * from Inflow";
             SqlDataReader read;

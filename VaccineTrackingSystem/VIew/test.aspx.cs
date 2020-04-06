@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using VaccineTrackingSystem.Models;
 using VaccineTrackingSystem.Models.DAL;
 
@@ -14,7 +15,7 @@ namespace WebApplication2
         protected void Button1_Click(object sender, EventArgs e)
         {
             /*测试outflow查询代码*/
-            //string msg = "";
+            string msg;
             //Outflow list = OutflowDAL.Query(2,msg);
             //if (list == null)
             //{
@@ -41,16 +42,44 @@ namespace WebApplication2
             //        Label1.Text = x.price.ToString();
             //    }
             //};*/
-            Indetail indetail = new Indetail(2, "123", "2020-04-05", 21, 13.05m, null);
-            string msg = " ";
-            if (IndetailDAL.Delete(6, out msg))
-            {
-                Label1.Text = "删除成功";
-            }
-            else
-            {
-                Label1.Text = msg;
-            }
+            //Indetail indetail = new Indetail(2, "123", "2020-04-05", 21, 13.05m, null);
+
+            //if (IndetailDAL.Delete(6, out msg))
+            //{
+            //    Label1.Text = "删除成功";
+            //}
+            //else
+            //{
+            //    Label1.Text = msg;
+            //}
+            //Inflow inflow = InflowDAL.Query(1,out msg);
+            //if (inflow == null)
+            //{
+            //    Label1.Text = "没有查询到结果";
+            //}
+            //else
+            //{
+            //    Label1.Text = inflow.date;
+            //};
+            //Inflow outflow = new Inflow(1, "123", 3, "2020-04-15", "123", 20, 12.8m, "2020-04-25");
+            //if (InflowDAL.Add(outflow,out msg)) { msg = "插入成功"; };
+            //Label1.Text = msg;
+            //List<Stock> stock = StockDAL.QueryAll ( out msg);
+            //if (stock == null)
+            //{
+            //    Label1.Text = "没有查询到结果";
+            //}
+            //else
+            //{
+            //    foreach (Stock x in stock)
+            //    {
+            //        Label1.Text = x.money.ToString();
+
+            //    };
+            //}
+            Stock stock = new Stock("123", 3, 20, 12.8m);
+            if (StockDAL.Add(stock, out msg)) { msg = "插入成功"; };
+            Label1.Text = msg;
         }
     }
 }

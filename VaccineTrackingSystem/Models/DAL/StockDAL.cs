@@ -9,7 +9,7 @@ namespace VaccineTrackingSystem.Models.DAL
     {
         static public bool Add(Stock stock, out string msg)
         {
-            string command = $"insert into Stock (cagNum,storeID,quantity,money) values ('{stock.cagNum}','{stock.storeID}','{stock.quantity}','{stock.money})";
+            string command = $"insert into Stock (cagNum,storeID,quantity,money) values ('{stock.cagNum}','{stock.storeID}','{stock.quantity}','{stock.money}')";
             try
             {
                 msg = null;
