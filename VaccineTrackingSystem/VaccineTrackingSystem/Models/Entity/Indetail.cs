@@ -10,46 +10,43 @@ namespace VaccineTrackingSystem.Models
         /* id */
         public int id;
 
-        /* 品类编码 */
-        public string num;
+        /* 库存id */
+        public string stockID;
 
-        /***权限***/
-        public string name;
+        /***批号***/
+        public string batchNum;
 
-        /****类别***/
-        public string kind;
+        /****入库时间***/
+        public string date;
 
-        /* 单位 */
-        public string unit;
+        /* 数量 */
+        public string quantity;
 
-        /***规格***/
-        public string spec;
+        /***单价***/
+        public string price;
 
-        /****生产厂家***/
-        public string factory;
 
         /****备注***/
         public string note;
 
-        public Indetail(int id, string num, string name, string kind, string unit, string spec, string factory, string note)
+        public Indetail(int id, string stockID, string batchNum, string date, string quantity, string price, string note)
         {
             this.id = id;
-            this.num = num;
-            this.name = name;
-            this.kind = kind;
-            this.unit = unit;
-            this.spec = spec;
-            this.factory = factory;
+            this.stockID = stockID;
+            this.batchNum = batchNum;
+            this.date = date;
+            this.quantity = quantity;
+            this.price = price;
             this.note = note;
         }
-        public Indetail(string num, string name, string kind, string unit, string spec, string factory, string note)
+
+        public Indetail(string stockID, string batchNum, string date, string quantity, string price, string note)
         {
-            this.num = num;
-            this.name = name;
-            this.kind = kind;
-            this.unit = unit;
-            this.spec = spec;
-            this.factory = factory;
+            this.stockID = stockID;
+            this.batchNum = batchNum;
+            this.date = date;
+            this.quantity = quantity;
+            this.price = price;
             this.note = note;
         }
     }

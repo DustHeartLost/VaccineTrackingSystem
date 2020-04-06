@@ -16,7 +16,7 @@ namespace VaccineTrackingSystem.Models
         /***库房编号***/
         public int storeID;
 
-        /****入库时间***/
+        /****出库时间***/
         public string date;
 
         /* 员工编号 */
