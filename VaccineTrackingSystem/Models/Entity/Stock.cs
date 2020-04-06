@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace VaccineTrackingSystem.Models
+﻿namespace VaccineTrackingSystem.Models
 {
-    public class Stock
-    {
+	public class Stock
+	{
 		/* 库存id */
 		public int id;
 

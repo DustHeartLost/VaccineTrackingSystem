@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace VaccineTrackingSystem.Models
+﻿namespace VaccineTrackingSystem.Models
 {
     public class Role
     {
@@ -19,7 +14,7 @@ namespace VaccineTrackingSystem.Models
         /****备注***/
         public string note;
 
-        public Role(int id, string name, string authority,string note)
+        public Role(int id, string name, string authority, string note)
         {
             this.id = id;
             this.name = name;

@@ -30,14 +30,26 @@ namespace WebApplication2
             //Label1.Text = msg;
 
             /*测试indetail代码*/
-            string msg="";
-            Indetail indetail=IndetailDAL.Query(1,msg);
-            if (indetail == null)
+
+            /*List<Indetail> indetail = IndetailDAL.QueryAll (msg);
+            //if (indetail == null)
+            //{
+            //    Label1.Text = "没有查询到结果";
+            //}
+            //else {
+            //    foreach (Indetail x in indetail) {
+            //        Label1.Text = x.price.ToString();
+            //    }
+            //};*/
+            Indetail indetail = new Indetail(2, "123", "2020-04-05", 21, 13.05m, null);
+            string msg = " ";
+            if (IndetailDAL.Delete(6, out msg))
+            {
+                Label1.Text = "删除成功";
+            }
+            else
             {
                 Label1.Text = msg;
-            }
-            else {
-                Label1.Text = indetail.name;
             }
         }
     }

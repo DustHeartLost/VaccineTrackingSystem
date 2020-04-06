@@ -2,18 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace VaccineTrackingSystem.Models.DAL
 {
     public class RoleDAL
     {
-        static public bool Add(Role role, string msg)
+        static public bool Add(Role role, out string msg)
         {
             string command = $"insert into Role(name,authority,note) values('{role.name}','{role.authority}','{role.note}');";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception e)
@@ -23,11 +22,12 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public bool Delete(int id, string msg)
+        static public bool Delete(int id, out string msg)
         {
             string command = $"delete from Role where id ={id}";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception e)
@@ -37,11 +37,12 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public bool Update(Role role, string msg)
+        static public bool Update(Role role, out string msg)
         {
             string command = $"update Role set name = '{role.name}',authority = '{role.authority}',note =  '{role.note}' where id = '{role.id}'";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception e)
@@ -51,7 +52,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public Role Query(string name, string msg)
+        static public Role Query(string name, out string msg)
         {
             string command = $"select * from Role where name = '{name}'";
             SqlDataReader read = SQL.getData(command);
@@ -61,11 +62,12 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            Role role = new Role((int)read["id"], (string)read["name"],(string)read["authority"],(string)read["note"]);
+            Role role = new Role((int)read["id"], (string)read["name"], (string)read["authority"], (string)read["note"]);
             SQL.Dispose();
+            msg = null;
             return role;
         }
-        static public List<Role> QueryAll(string msg)
+        static public List<Role> QueryAll(out string msg)
         {
             string command = "select * from Role";
             SqlDataReader read = SQL.getReader(command);
@@ -81,6 +83,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 list.Add(new Role((int)read["id"], (string)read["name"], (string)read["authority"], (string)read["note"]));
             }
             SQL.Dispose();
+            msg = null;
             return list;
         }
 

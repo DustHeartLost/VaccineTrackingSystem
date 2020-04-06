@@ -2,17 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace VaccineTrackingSystem.Models.DAL
 {
     public class IndetailDAL
     {
-        static public bool Add(Indetail indetail, string msg) {
-            string command = $"insert into Indetail (num,name,kind,unit,spec,factory,note) values ('{indetail.num}','{indetail.name}','{indetail.kind}','{indetail.unit}','{indetail.spec}','{indetail.factory}','{indetail.note}')";
+        static public bool Add(Indetail indetail, out string msg)
+        {
+            string command = $"insert into Indetail (stockID,batchNum,date,quantity,price,note) values ('{indetail.stockID}','{indetail.batchNum}','{indetail.date}','{indetail.quantity}','{indetail.price}','{indetail.note}')";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception ex)
@@ -21,8 +21,9 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        
-        static public Indetail Query(int id, string msg) {
+
+        static public Indetail Query(int id, out string msg)
+        {
             string command = $"select * from Indetail where id = '{id}'";
             SqlDataReader read = SQL.getData(command);
             if (read == null)
@@ -30,12 +31,14 @@ namespace VaccineTrackingSystem.Models.DAL
                 msg = "查询结果为空";
                 return null;
             }
-            Indetail indetail = new Indetail((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], (string)read["factory"], (string)read["note"]);
+            Indetail indetail = new Indetail((int)read["id"], (int)read["stockID"], (string)read["batchNum"], (string)read["date"], (int)read["quantity"], (decimal)read["price"], read["note"].ToString());
             SQL.Dispose();
+            msg = null;
             return indetail;
         }
-        
-        static public List<Indetail> QueryAll(string msg) {
+
+        static public List<Indetail> QueryAll(out string msg)
+        {
             string command = "select * from Indetail";
             SqlDataReader read;
             read = SQL.getReader(command);
@@ -48,17 +51,20 @@ namespace VaccineTrackingSystem.Models.DAL
             Indetail indetail;
             while (read.Read())
             {
-                indetail = new Indetail((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], (string)read["factory"], (string)read["note"]);
+                indetail = new Indetail((int)read["id"], (int)read["stockID"], (string)read["batchNum"], (string)read["date"], (int)read["quantity"], (decimal)read["price"], read["note"].ToString());
                 list.Add(indetail);
             }
             SQL.Dispose();
+            msg = null;
             return list;
         }
-        
-        static public bool Update(Indetail indetail, string msg) {
-            string command = $"update Indetail set num = '{indetail.num}',name = '{indetail.name}',kind = '{indetail.kind}',unit = '{indetail.unit}',spec = '{indetail.spec}',factory = '{indetail.factory}',note =  '{indetail.note}' where id = '{indetail.id}'";
+
+        static public bool Update(Indetail indetail, out string msg)
+        {
+            string command = $"update Indetail set stockID = '{indetail.stockID}',batchNum = '{indetail.batchNum}',date = '{indetail.date}',quantity = '{indetail.quantity}',price = '{indetail.price}',note = '{indetail.note}'  where id = '{indetail.id}'";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception e)
@@ -69,10 +75,12 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
 
-        static public bool Delete(int id, string msg) {
+        static public bool Delete(int id, out string msg)
+        {
             string command = $"delete from Indetail where id ={id}";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception e)

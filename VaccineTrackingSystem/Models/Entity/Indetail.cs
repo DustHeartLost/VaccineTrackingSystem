@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace VaccineTrackingSystem.Models
+﻿namespace VaccineTrackingSystem.Models
 {
     public class Indetail
     {
@@ -11,7 +6,7 @@ namespace VaccineTrackingSystem.Models
         public int id;
 
         /* 库存id */
-        public string stockID;
+        public int stockID;
 
         /***批号***/
         public string batchNum;
@@ -20,16 +15,16 @@ namespace VaccineTrackingSystem.Models
         public string date;
 
         /* 数量 */
-        public string quantity;
+        public int quantity;
 
         /***单价***/
-        public string price;
+        public decimal price;
 
 
         /****备注***/
         public string note;
 
-        public Indetail(int id, string stockID, string batchNum, string date, string quantity, string price, string note)
+        public Indetail(int id, int stockID, string batchNum, string date, int quantity, decimal price, string note)
         {
             this.id = id;
             this.stockID = stockID;
@@ -40,7 +35,7 @@ namespace VaccineTrackingSystem.Models
             this.note = note;
         }
 
-        public Indetail(string stockID, string batchNum, string date, string quantity, string price, string note)
+        public Indetail(int stockID, string batchNum, string date, int quantity, decimal price, string note)
         {
             this.stockID = stockID;
             this.batchNum = batchNum;

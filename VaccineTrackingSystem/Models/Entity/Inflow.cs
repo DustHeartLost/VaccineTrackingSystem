@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace VaccineTrackingSystem.Models
+﻿namespace VaccineTrackingSystem.Models
 {
     public class Inflow
     {
@@ -31,7 +26,7 @@ namespace VaccineTrackingSystem.Models
         /****批号***/
         public string batchNum;
 
-        public Inflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, int price, string batchNum)
+        public Inflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum)
         {
             this.id = id;
             this.cagNum = cagNum;
@@ -42,7 +37,7 @@ namespace VaccineTrackingSystem.Models
             this.price = price;
             this.batchNum = batchNum;
         }
-        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, int price, string batchNum)
+        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum)
         {
             this.cagNum = cagNum;
             this.storeID = storeID;

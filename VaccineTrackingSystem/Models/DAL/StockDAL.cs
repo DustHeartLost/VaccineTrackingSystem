@@ -2,17 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace VaccineTrackingSystem.Models.DAL
 {
     public class StockDAL
     {
-        static public bool Add(Stock stock, string msg) {
+        static public bool Add(Stock stock, out string msg)
+        {
             string command = $"insert into Stock (cagNum,storeID,quantity,money) values ('{stock.cagNum}','{stock.storeID}','{stock.quantity}','{stock.money})";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception ex)
@@ -22,7 +22,8 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
 
-        static public Stock Query(int id, string msg) {
+        static public Stock Query(int id, out string msg)
+        {
             string command = $"select * from Stock where id = '{id}'";
             SqlDataReader read = SQL.getData(command);
             if (read == null)
@@ -32,10 +33,12 @@ namespace VaccineTrackingSystem.Models.DAL
             }
             Stock stock = new Stock((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (int)read["quantity"], (decimal)read["money"]);
             SQL.Dispose();
+            msg = null;
             return stock;
         }
 
-        static public List<Stock> QueryAll(string msg) {
+        static public List<Stock> QueryAll(out string msg)
+        {
             string command = "select * from Stock";
             SqlDataReader read;
             read = SQL.getReader(command);
@@ -52,13 +55,16 @@ namespace VaccineTrackingSystem.Models.DAL
                 list.Add(stock);
             }
             SQL.Dispose();
+            msg = null;
             return list;
         }
 
-        static public bool Update(Stock stock, string msg) {
+        static public bool Update(Stock stock, out string msg)
+        {
             string command = $"update Stock set cagNum = '{stock.cagNum}',storeID = '{stock.storeID}',quantity = '{stock.quantity}',money = '{stock.money}'";
             try
             {
+                msg = null;
                 return SQL.Excute(command);
             }
             catch (Exception e)

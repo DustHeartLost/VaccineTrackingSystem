@@ -110,10 +110,12 @@
     <Compile Include="Models\DAL\ApartmentDAL.cs" />
     <Compile Include="Models\DAL\CategoryDAL.cs" />
     <Compile Include="Models\DAL\IndetailDAL.cs" />
+    <Compile Include="Models\DAL\InflowDAL.cs" />
     <Compile Include="Models\DAL\RoleDAL.cs" />
     <Compile Include="Models\DAL\OutflowDAL.cs" />
     <Compile Include="Models\DAL\Sql.cs" />
     <Compile Include="Models\DAL\StockDAL.cs" />
+    <Compile Include="Models\DAL\UserDAL.cs" />
     <Compile Include="Models\Entity\Apartment.cs" />
     <Compile Include="Models\Entity\Category.cs" />
     <Compile Include="Models\Entity\Indetail.cs" />
