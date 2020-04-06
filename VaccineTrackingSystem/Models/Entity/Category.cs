@@ -42,15 +42,5 @@ namespace VaccineTrackingSystem.Models
             this.factory = factory;
             this.note = note;
         }
-        public Category(string num, string name, string kind, string unit, string spec, string factory, string note)
-        {
-            this.num = num;
-            this.name = name;
-            this.kind = kind;
-            this.unit = unit;
-            this.spec = spec;
-            this.factory = factory;
-            this.note = note;
-        }
     }
 }

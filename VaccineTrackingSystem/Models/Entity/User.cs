@@ -15,36 +15,26 @@ namespace VaccineTrackingSystem.Models
 		public string userName;
 
 		/* 密码 */
-		public string password;
+		string password;
 
 		/* 关联部门id */
-		public int apartID;
+		int apartID;
 
 		/* 职务 */
-		public string job;
+		string job;
 
 		/* 关联角色id */
-		public int roleID;
+		int roleID;
 
 		/*员工编号*/
-		public string num;
+		string num;
 
 		/*用户名*/
-		public string name;
+		string name;
 
 		public User(int id, string userName, string password, int apartID, string job, int roleID, string num, string name)
 		{
 			this.id = id;
-			this.userName = userName;
-			this.password = password;
-			this.apartID = apartID;
-			this.job = job;
-			this.roleID = roleID;
-			this.num = num;
-			this.name = name;
-		}
-		public User(string userName, string password, int apartID, string job, int roleID, string num, string name)
-		{
 			this.userName = userName;
 			this.password = password;
 			this.apartID = apartID;

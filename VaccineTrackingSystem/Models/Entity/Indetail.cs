@@ -10,43 +10,36 @@ namespace VaccineTrackingSystem.Models
         /* id */
         public int id;
 
-        /* 库存id */
-        public string stockID;
+        /* 品类编码 */
+        public string num;
 
-        /***批号***/
-        public string batchNum;
+        /***权限***/
+        public string name;
 
-        /****入库时间***/
-        public string date;
+        /****类别***/
+        public string kind;
 
-        /* 数量 */
-        public string quantity;
+        /* 单位 */
+        public string unit;
 
-        /***单价***/
-        public string price;
+        /***规格***/
+        public string spec;
 
+        /****生产厂家***/
+        public string factory;
 
         /****备注***/
         public string note;
 
-        public Indetail(int id, string stockID, string batchNum, string date, string quantity, string price, string note)
+        public Indetail(int id, string num, string name, string kind, string unit, string spec, string factory, string note)
         {
             this.id = id;
-            this.stockID = stockID;
-            this.batchNum = batchNum;
-            this.date = date;
-            this.quantity = quantity;
-            this.price = price;
-            this.note = note;
-        }
-
-        public Indetail(string stockID, string batchNum, string date, string quantity, string price, string note)
-        {
-            this.stockID = stockID;
-            this.batchNum = batchNum;
-            this.date = date;
-            this.quantity = quantity;
-            this.price = price;
+            this.num = num;
+            this.name = name;
+            this.kind = kind;
+            this.unit = unit;
+            this.spec = spec;
+            this.factory = factory;
             this.note = note;
         }
     }

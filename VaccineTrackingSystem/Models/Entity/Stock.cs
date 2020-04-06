@@ -30,12 +30,5 @@ namespace VaccineTrackingSystem.Models
 			this.quantity = quantity;
 			this.money = money;
 		}
-		public Stock(string cagNum, int storeID, int quantity, decimal money)
-		{
-			this.cagNum = cagNum;
-			this.storeID = storeID;
-			this.quantity = quantity;
-			this.money = money;
-		}
 	}
 }
