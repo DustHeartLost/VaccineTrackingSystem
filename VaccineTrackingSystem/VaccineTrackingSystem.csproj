@@ -107,6 +107,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BLL\AprtManage.cs" />
     <Compile Include="Models\DAL\ApartmentDAL.cs" />
     <Compile Include="Models\DAL\CategoryDAL.cs" />
     <Compile Include="Models\DAL\OutflowDAL.cs" />
