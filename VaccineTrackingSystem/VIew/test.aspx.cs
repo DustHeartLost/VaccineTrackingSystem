@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using VaccineTrackingSystem.Models;
 using VaccineTrackingSystem.Models.BLL;
 using VaccineTrackingSystem.Models.DAL;
@@ -12,8 +13,31 @@ namespace WebApplication2
         {
             string msg=null;
             System.Diagnostics.Debug.Write("###############################");
-            System.Diagnostics.Debug.Write(AprtManage.Query("wy", msg).note);
-            
+            System.Diagnostics.Debug.Write(ApartManage.Query("wy", out msg).note);
+
+            Inflow inflow = new Inflow("duo",4,"2019-12-12","BDJee",3,250,"2020-07-25");
+            //if(InflowManage.InWarehouse(inflow,out msg))
+            //    System.Diagnostics.Debug.Write("入库成功");
+            //else
+            //    System.Diagnostics.Debug.Write(msg);
+
+            List<Indetail> indetailList = OutflowManage.QueryIndetail(8,out msg);
+
+            if (indetailList != null && indetailList.Count!=0)
+            {
+                for (int i = 0; i < indetailList.Count; i++)
+                    System.Diagnostics.Debug.WriteLine(indetailList[i].batchNum);
+                //System.Diagnostics.Debug.Write(indetailList.Last().batchNum);
+            }
+            else
+                System.Diagnostics.Debug.Write("NuuuuuuuuuuuLLLLLLLL");
+
+            if (OutflowManage.OutWarehouse(1, 1, "my",out  msg))
+                System.Diagnostics.Debug.WriteLine("出库成功");
+            else
+                System.Diagnostics.Debug.WriteLine("出库失败"+msg);
+
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)

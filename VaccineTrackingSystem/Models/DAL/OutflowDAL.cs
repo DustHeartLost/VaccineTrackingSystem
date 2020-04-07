@@ -36,7 +36,11 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return outflow;
         }
+        //根据药品编码精确
+        //static public List<Outflow> Query(string cagNum, out string msg)
+        //{
 
+        //}
         static public List<Outflow> QueryAll(out string msg)
         {
             string command = "select * from Outflow";

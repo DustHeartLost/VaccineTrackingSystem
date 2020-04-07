@@ -107,9 +107,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\BLL\AprtManage.cs" />
+    <Compile Include="Models\BLL\ApartManage.cs" />
     <Compile Include="Models\BLL\CategoryManage.cs" />
     <Compile Include="Models\BLL\InflowManage.cs" />
+    <Compile Include="Models\BLL\OutflowManage.cs" />
     <Compile Include="Models\BLL\RoleManage.cs" />
     <Compile Include="Models\BLL\StoreManage.cs" />
     <Compile Include="Models\BLL\UserManage.cs" />

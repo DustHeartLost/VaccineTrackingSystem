@@ -22,13 +22,29 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
 
-        static public Stock Query(int id, out string msg)
+        static public Stock QueryById(int id, out string msg)
         {
             string command = $"select * from Stock where id = '{id}'";
             SqlDataReader read = SQL.getData(command);
             if (read == null)
             {
                 msg = "查询结果为空";
+                return null;
+            }
+            Stock stock = new Stock((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (int)read["quantity"], (decimal)read["money"]);
+            SQL.Dispose();
+            msg = null;
+            return stock;
+        }
+
+        //新增查询库存
+        static public Stock QueryByCagNum(string cagNum,int storeID,out string msg)
+        {
+            string command = $"select * from Stock where cagNum = '{cagNum}' and storeID = '{storeID}' ";
+            SqlDataReader read = SQL.getData(command);
+            if (read == null)
+            {
+                msg = "该库房暂无该药品";
                 return null;
             }
             Stock stock = new Stock((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (int)read["quantity"], (decimal)read["money"]);
@@ -61,7 +77,7 @@ namespace VaccineTrackingSystem.Models.DAL
 
         static public bool Update(Stock stock, out string msg)
         {
-            string command = $"update Stock set cagNum = '{stock.cagNum}',storeID = '{stock.storeID}',quantity = '{stock.quantity}',money = '{stock.money}'";
+            string command = $"update Stock set cagNum = '{stock.cagNum}',storeID = '{stock.storeID}',quantity = '{stock.quantity}',money = '{stock.money}' where id = '{stock.id}' ";
             try
             {
                 msg = null;
