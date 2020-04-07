@@ -58,5 +58,28 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return list;
         }
+
+        //新增按照仓库ID查找出库流水表2020-04-07 18：07
+        static public List<Outflow> QueryAllByStoreID(int storeID,out string msg)
+        {
+            string command = $"select * from Outflow where storeID = '{storeID}'";
+            SqlDataReader read;
+            read = SQL.getReader(command);
+            if (!read.HasRows)
+            {
+                msg = "查询结果为空";
+                return null;
+            }
+            List<Outflow> list = new List<Outflow>();
+            Outflow outflow;
+            while (read.Read())
+            {
+                outflow = new Outflow((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (string)read["date"], (string)read["userNum"], (int)read["quantity"], (decimal)read["price"], (string)read["batchNum"], (string)read["state"]);
+                list.Add(outflow);
+            }
+            SQL.Dispose();
+            msg = null;
+            return list;
+        }
     }
 }

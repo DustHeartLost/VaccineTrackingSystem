@@ -82,8 +82,18 @@ namespace WebApplication2
             //    };
             //}
             //Stock stock = new Stock("123", 3, 20, 12.8m);
-            Stock stock = StockDAL.Query("123", 100, out msg);
-            Label1.Text = stock != null ? stock.money.ToString() : msg;
+            //Stock stock = StockDAL.Query("123", 100, out msg);
+            //Label1.Text = stock != null ? stock.money.ToString() : msg;
+            List<Outflow> list = TableManage.queryAllOutflow(3, out msg);
+            if (list == null)
+            {
+                Label1.Text = msg;
+            }
+            else {
+                foreach (Outflow x in list) {
+                    Label1.Text += x.date;
+                }
+            }
         }
     }
 }
