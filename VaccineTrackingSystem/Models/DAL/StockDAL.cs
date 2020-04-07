@@ -74,6 +74,19 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-
+        static public Stock Query(string cagNum, int storeID, out string msg)
+        {
+            string command = $"select * from Stock where cagNum = '{cagNum}' and storeID =  '{storeID}'";
+            SqlDataReader read = SQL.getData(command);
+            if (read == null)
+            {
+                msg = "查询结果为空";
+                return null;
+            }
+            Stock stock = new Stock((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (int)read["quantity"], (decimal)read["money"]);
+            SQL.Dispose();
+            msg = null;
+            return stock;
+        }
     }
 }

@@ -7,6 +7,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 <title>统一身份认证</title>
 <link href="css/login.css" rel="stylesheet">
+<script>
+    var CheckForm = function () {
+        var username = document.getElementById("Username").value;
+        var password = document.getElementById("Password").value;
+        if (username == "" | password=="") { alert("请输入账号或密码"); return false; }
+    }  
+</script>
 </head>
 <body>
 <div class="login-wrap">
@@ -30,7 +37,7 @@
       <%--<input type="button" name="login_submit" id="login-submit" value="登录">--%>
         
       <input type="hidden" name="_eventId" value="submit">
-        <asp:Button ID="Button1" runat="server" Text="登录" BackColor="#007CCC" Font-Bold="True" Font-Size="Medium" ForeColor="White" Height="46px" Width="250px" />
+        <asp:Button ID="Submit" runat="server" Text="登录" BackColor="#007CCC" Font-Bold="True" Font-Size="Medium" ForeColor="White" Height="46px" Width="250px" OnClick="submit" OnClientClick="return CheckForm()"/>
         
     </form>
   </div>

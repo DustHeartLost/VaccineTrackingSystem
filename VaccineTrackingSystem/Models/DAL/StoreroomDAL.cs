@@ -88,6 +88,19 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return list;
         }
-
+        //新加的按照用户编号查询的接口2020-04-07
+        static public Storeroom QueryByUserNum(string userNum)
+        {
+            string command = $"select id from Storeroom where userNum = '{userNum}'";
+            SqlDataReader read = SQL.getData(command);
+            if (read == null)
+            {
+                SQL.Dispose();
+                return null;
+            }
+            Storeroom storeroom = new Storeroom((int)read["id"],null,null,null);
+            SQL.Dispose();
+            return storeroom;
+        }
     }
 }

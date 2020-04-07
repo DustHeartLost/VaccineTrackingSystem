@@ -10,28 +10,28 @@ namespace VaccineTrackingSystem.Models.BLL
     {
         static public bool Add(User user, string msg)
         {
-            if (UserDAL.Add(user, msg))
+            if (UserDAL.Add(user,out msg))
                 return true;
             return false;
         }
      
         static public bool Update(User user,string msg)
         {
-            if (UserDAL.Update(user, msg))
+            if (UserDAL.Update(user, out msg))
                 return true;
             return false;
         }
         static public User Query(string num, string msg)
         {
-            if (UserDAL.Query(num, msg) == null)
+            if (UserDAL.Query(num, out msg) == null)
                 return null;
-            return UserDAL.Query(num, msg);
+            return UserDAL.Query(num, out msg);
         }
         static public List<User> QueryAll(string msg)
         {
-            if (UserDAL.QueryAll(msg) == null)
+            if (UserDAL.QueryAll(out msg) == null)
                 return null;
-            return UserDAL.QueryAll(msg);
+            return UserDAL.QueryAll(out msg);
         }
 
     }

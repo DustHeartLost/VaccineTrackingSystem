@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
@@ -10,7 +7,7 @@ namespace VaccineTrackingSystem.Models.BLL
     {
         static public bool Add(Apartment apartment, out string msg)
         {
-            if(ApartmentDAL.Add(apartment, out msg))
+            if (ApartmentDAL.Add(apartment, out msg))
                 return true;
             return false;
         }

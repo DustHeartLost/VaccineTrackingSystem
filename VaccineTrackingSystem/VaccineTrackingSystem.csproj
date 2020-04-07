@@ -110,6 +110,7 @@
     <Compile Include="Models\BLL\AprtManage.cs" />
     <Compile Include="Models\BLL\CategoryManage.cs" />
     <Compile Include="Models\BLL\InflowManage.cs" />
+    <Compile Include="Models\BLL\LoginManage.cs" />
     <Compile Include="Models\BLL\RoleManage.cs" />
     <Compile Include="Models\BLL\StoreManage.cs" />
     <Compile Include="Models\BLL\UserManage.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Models\DAL\CategoryDAL.cs" />
     <Compile Include="Models\DAL\IndetailDAL.cs" />
     <Compile Include="Models\DAL\InflowDAL.cs" />
+    <Compile Include="Models\DAL\Map.cs" />
     <Compile Include="Models\DAL\OutflowDAL.cs" />
     <Compile Include="Models\DAL\RoleDAL.cs" />
     <Compile Include="Models\DAL\Sql.cs" />

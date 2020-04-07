@@ -86,6 +86,24 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return list;
         }
-
+        //新加按照username查询的接口；2020-04-07,10:53
+        static public Dictionary<string,string> QueryByUserName(string userName,string password,out string msg)
+        {
+            string command = $"with temp as(select userName,password,num,authority from[User],Role where[User].roleID = Role.id) select userName,num,authority from temp where userName = '{userName}' and password = '{password}';";
+            SqlDataReader read = SQL.getData(command);
+            if (read == null)
+            {
+                msg = "查询结果为空";
+                SQL.Dispose();
+                return null;
+            }
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("userName",(string)read["userName"]);
+            dictionary.Add("num", (string)read["num"]);
+            dictionary.Add("authority", (string)read["authority"]);
+            SQL.Dispose();
+            msg = null;
+            return dictionary;
+        }
     }
 }

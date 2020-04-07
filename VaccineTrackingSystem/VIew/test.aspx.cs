@@ -10,9 +10,9 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string msg=null;
-            System.Diagnostics.Debug.Write("###############################");
-            System.Diagnostics.Debug.Write(AprtManage.Query("wy", msg).note);
+            //string msg=null;
+            //system.diagnostics.debug.write("###############################");
+            //system.diagnostics.debug.write(aprtmanage.query("wy",out msg).note);
             
         }
 
@@ -81,9 +81,9 @@ namespace WebApplication2
 
             //    };
             //}
-            Stock stock = new Stock("123", 3, 20, 12.8m);
-            if (StockDAL.Add(stock, out msg)) { msg = "插入成功"; };
-            Label1.Text = msg;
+            //Stock stock = new Stock("123", 3, 20, 12.8m);
+            Stock stock = StockDAL.Query("123", 100, out msg);
+            Label1.Text = stock != null ? stock.money.ToString() : msg;
         }
     }
 }
