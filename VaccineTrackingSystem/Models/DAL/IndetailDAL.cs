@@ -22,7 +22,7 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
 
-        static public Indetail Query(int id, out string msg)
+        static public Indetail QueryById(int id, out string msg)
         {
             string command = $"select * from Indetail where id = '{id}'";
             SqlDataReader read = SQL.getData(command);
@@ -35,6 +35,41 @@ namespace VaccineTrackingSystem.Models.DAL
             SQL.Dispose();
             msg = null;
             return indetail;
+        }
+        static public Indetail Query(int stockID, string batchNum,string date, decimal price,out String msg)
+        {
+            string command = $"select * from Indetail where stockID = '{stockID}' and batchNum = '{batchNum}' and date = '{date}' and price = '{price}'";
+            SqlDataReader read = SQL.getData(command);
+            if (read == null)
+            {
+                msg = "查询结果为空";
+                return null;
+            }
+            Indetail indetail = new Indetail((int)read["id"], (int)read["stockID"], (string)read["batchNum"], (string)read["date"], (int)read["quantity"], (decimal)read["price"], read["note"].ToString());
+            SQL.Dispose();
+            msg = null;
+            return indetail;
+        }
+        static public List<Indetail> QueryByStockID(int stockID,out string msg)
+        {
+            string command = $"select * from Indetail where stockID = '{stockID}'";
+            SqlDataReader read;
+            read = SQL.getReader(command);
+            if (!read.HasRows)
+            {
+                msg = "查询结果为空";
+                return null;
+            }
+            List<Indetail> list = new List<Indetail>();
+            Indetail indetail;
+            while (read.Read())
+            {
+                indetail = new Indetail((int)read["id"], (int)read["stockID"], (string)read["batchNum"], (string)read["date"], (int)read["quantity"], (decimal)read["price"], read["note"].ToString());
+                list.Add(indetail);
+            }
+            SQL.Dispose();
+            msg = null;
+            return list;
         }
 
         static public List<Indetail> QueryAll(out string msg)

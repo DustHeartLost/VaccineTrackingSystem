@@ -102,31 +102,22 @@
     <Content Include="VIew\Login\images\logo-white.6442b1c.png" />
     <Content Include="VIew\Login\images\user.png" />
     <Content Include="VIew\Login\Login.aspx" />
-    <Content Include="VIew\Template\css\font-awesome.min.css" />
-    <Content Include="VIew\Template\css\jquery.gritter.css" />
-    <Content Include="VIew\Template\css\jstarbox.css" />
-    <Content Include="VIew\Template\css\rateit.css" />
-    <Content Include="VIew\Template\css\taskcenter.css" />
-    <Content Include="VIew\Template\images\footer-logo.png" />
-    <Content Include="VIew\Template\images\logo.png" />
     <Content Include="VIew\test.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\BLL\AprtManage.cs" />
+    <Compile Include="Models\BLL\ApartManage.cs" />
     <Compile Include="Models\BLL\CategoryManage.cs" />
     <Compile Include="Models\BLL\InflowManage.cs" />
-    <Compile Include="Models\BLL\LoginManage.cs" />
+    <Compile Include="Models\BLL\OutflowManage.cs" />
     <Compile Include="Models\BLL\RoleManage.cs" />
     <Compile Include="Models\BLL\StoreManage.cs" />
-    <Compile Include="Models\BLL\TableManage.cs" />
     <Compile Include="Models\BLL\UserManage.cs" />
     <Compile Include="Models\DAL\ApartmentDAL.cs" />
     <Compile Include="Models\DAL\CategoryDAL.cs" />
     <Compile Include="Models\DAL\IndetailDAL.cs" />
     <Compile Include="Models\DAL\InflowDAL.cs" />
-    <Compile Include="Models\DAL\Map.cs" />
     <Compile Include="Models\DAL\OutflowDAL.cs" />
     <Compile Include="Models\DAL\RoleDAL.cs" />
     <Compile Include="Models\DAL\Sql.cs" />
@@ -156,13 +147,6 @@
     <Compile Include="VIew\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="VIew\Template\Site1.Master.cs">
-      <DependentUpon>Site1.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="VIew\Template\Site1.Master.designer.cs">
-      <DependentUpon>Site1.Master</DependentUpon>
-    </Compile>
     <Compile Include="VIew\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -177,7 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="VIew\Template\Site1.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -8,9 +8,9 @@ namespace VaccineTrackingSystem.Models.BLL
 {
     public class UserManage
     {
-        static public bool Add(User user, string msg)
+        static public bool Add(User user, out string msg)
         {
-            if (UserDAL.Add(user,out msg))
+            if (UserDAL.Add(user, out msg))
                 return true;
             return false;
         }
@@ -25,9 +25,9 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             if (UserDAL.Query(num, out msg) == null)
                 return null;
-            return UserDAL.Query(num, out msg);
+            return UserDAL.Query(num,out msg);
         }
-        static public List<User> QueryAll(string msg)
+        static public List<User> QueryAll(out string msg)
         {
             if (UserDAL.QueryAll(out msg) == null)
                 return null;
