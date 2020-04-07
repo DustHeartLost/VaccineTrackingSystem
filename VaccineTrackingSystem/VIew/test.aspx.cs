@@ -12,7 +12,7 @@ namespace WebApplication2
         {
             string msg=null;
             System.Diagnostics.Debug.Write("###############################");
-            System.Diagnostics.Debug.Write(AprtManage.Query("wy", msg).note);
+            System.Diagnostics.Debug.Write(ApartManage.Query("wy",out msg).note);
             
         }
 
