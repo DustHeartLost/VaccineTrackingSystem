@@ -11,8 +11,8 @@ namespace WebApplication2
         protected void Page_Load(object sender, EventArgs e)
         {
             string msg=null;
-            System.Diagnostics.Debug.Write("###############################");
-            System.Diagnostics.Debug.Write(AprtManage.Query("wy", msg).note);
+            //System.Diagnostics.Debug.Write("###############################");
+            //System.Diagnostics.Debug.Write(AprtManage.Query("wy", msg).note);
             
         }
 
