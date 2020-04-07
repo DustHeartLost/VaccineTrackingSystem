@@ -7,47 +7,56 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace VaccineTrackingSystem.VIew.Login
+namespace VaccineTrackingSystem.VIew
 {
 
 
-    public partial class Login
+    public partial class Site1
     {
 
         /// <summary>
-        /// login 控件。
+        /// CurrentList 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm login;
+        protected global::System.Web.UI.WebControls.PlaceHolder CurrentList;
 
         /// <summary>
-        /// Username 控件。
+        /// Search 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Username;
+        protected global::System.Web.UI.WebControls.PlaceHolder Search;
 
         /// <summary>
-        /// Password 控件。
+        /// Other 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
+        protected global::System.Web.UI.WebControls.PlaceHolder Other;
 
         /// <summary>
-        /// Submit 控件。
+        /// table 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Submit;
+        protected global::System.Web.UI.WebControls.PlaceHolder table;
+
+        /// <summary>
+        /// DownAndUp 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder DownAndUp;
     }
 }
