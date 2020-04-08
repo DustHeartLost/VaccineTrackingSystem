@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
@@ -10,26 +7,18 @@ namespace VaccineTrackingSystem.Models.BLL
     {
         static public bool Add(Storeroom storeroom, out string msg)
         {
-            if (StoreroomDAL.Add(storeroom, out msg))
-                return true;
-            return false;
+            return StoreroomDAL.Add(storeroom, out msg);
         }
         static public bool Update(Storeroom storeroom, out string msg)
         {
-            if (StoreroomDAL.Update(storeroom, out msg))
-                return true;
-            return false;
+            return StoreroomDAL.Update(storeroom, out msg);
         }
-        static public Storeroom Query(int id, string msg)
+        static public Storeroom Query(int id, out string msg)
         {
-            if (StoreroomDAL.Query(id, out msg) == null)
-                return null;
             return StoreroomDAL.Query(id, out msg);
         }
-        static public List<Storeroom> QueryAll(string msg)
+        static public List<Storeroom> QueryAll(out string msg)
         {
-            if (StoreroomDAL.QueryAll(out msg) == null)
-                return null;
             return StoreroomDAL.QueryAll(out msg);
         }
 

@@ -36,7 +36,7 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return indetail;
         }
-        static public Indetail Query(int stockID, string batchNum,string date, decimal price,out String msg)
+        static public Indetail Query(int stockID, string batchNum, string date, decimal price, out String msg)
         {
             string command = $"select * from Indetail where stockID = '{stockID}' and batchNum = '{batchNum}' and date = '{date}' and price = '{price}'";
             SqlDataReader read = SQL.getData(command);
@@ -50,7 +50,7 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return indetail;
         }
-        static public List<Indetail> QueryByStockID(int stockID,out string msg)
+        static public List<Indetail> QueryByStockID(int stockID, out string msg)
         {
             string command = $"select * from Indetail where stockID = '{stockID}'";
             SqlDataReader read;

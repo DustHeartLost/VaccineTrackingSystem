@@ -38,7 +38,7 @@ namespace VaccineTrackingSystem.Models.DAL
         }
 
         //新增查询库存
-        static public Stock QueryByCagNum(string cagNum,int storeID,out string msg)
+        static public Stock QueryByCagNum(string cagNum, int storeID, out string msg)
         {
             string command = $"select * from Stock where cagNum = '{cagNum}' and storeID = '{storeID}' ";
             SqlDataReader read = SQL.getData(command);
@@ -52,6 +52,31 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return stock;
         }
+
+        //新增 根库房id查询
+        static public List<Stock> QueryByStoreId(int storeID, out string msg)
+        {
+            string command = $"select * from Stock where storeID = '{storeID}' ";
+            SqlDataReader read;
+            read = SQL.getReader(command);
+            if (!read.HasRows)
+            {
+                msg = "查询结果为空";
+                return null;
+            }
+            List<Stock> list = new List<Stock>();
+            Stock stock;
+            while (read.Read())
+            {
+                stock = new Stock((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (int)read["quantity"], (decimal)read["money"]);
+                list.Add(stock);
+            }
+            SQL.Dispose();
+            msg = null;
+            return list;
+        }
+
+
 
         static public List<Stock> QueryAll(out string msg)
         {

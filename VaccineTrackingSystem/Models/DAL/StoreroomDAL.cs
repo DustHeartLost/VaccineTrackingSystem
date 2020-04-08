@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace VaccineTrackingSystem.Models.DAL
 {
@@ -98,7 +96,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            Storeroom storeroom = new Storeroom((int)read["id"],null,null,null);
+            Storeroom storeroom = new Storeroom((int)read["id"], null, null, null);
             SQL.Dispose();
             return storeroom;
         }

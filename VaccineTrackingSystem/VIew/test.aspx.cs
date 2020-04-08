@@ -10,10 +10,27 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string msg=null;
+            string msg = null;
             System.Diagnostics.Debug.Write("###############################");
-            System.Diagnostics.Debug.Write(ApartManage.Query("wy",out msg).note);
-            
+
+
+            List<Indetail> indetails = DestoryManage.Query(4, out msg);
+
+            if (indetails == null || indetails.Count == 0)
+            {
+                System.Diagnostics.Debug.WriteLine("没有过期药品");
+            }
+            else
+            {
+                for (int i = 0; i < indetails.Count; i++)
+                    System.Diagnostics.Debug.WriteLine(indetails[i].batchNum);
+            }
+            if (DestoryManage.Destory(indetails, "christy", out msg))
+            {
+                System.Diagnostics.Debug.WriteLine("过期药品销毁成功");
+            }
+            else
+                System.Diagnostics.Debug.WriteLine("过期药品销毁未成功" + msg);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
