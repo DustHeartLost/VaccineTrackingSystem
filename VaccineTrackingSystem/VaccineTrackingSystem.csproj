@@ -67,50 +67,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="VIew\Home\css\alk_main.css" />
-    <Content Include="VIew\Home\css\animate.min.css" />
-    <Content Include="VIew\Home\css\bootstrap-touch-slider.css" />
-    <Content Include="VIew\Home\css\bootstrap.min.css" />
-    <Content Include="VIew\Home\css\default.css" />
-    <Content Include="VIew\Home\css\font-awesome%281%29.css" />
-    <Content Include="VIew\Home\css\font-awesome.css" />
-    <Content Include="VIew\Home\css\htmleaf-demo.css" />
-    <Content Include="VIew\Home\Home.aspx" />
-    <Content Include="VIew\Home\images\1._____________.png" />
-    <Content Include="VIew\Home\images\12.________.png" />
-    <Content Include="VIew\Home\images\2.____________.png" />
-    <Content Include="VIew\Home\images\3.__________________%281%29.png" />
-    <Content Include="VIew\Home\images\3.__________________.png" />
-    <Content Include="VIew\Home\images\5._______.png" />
-    <Content Include="VIew\Home\images\7._______________%281%29.png" />
-    <Content Include="VIew\Home\images\7._______________.png" />
-    <Content Include="VIew\Home\images\8._________________.png" />
-    <Content Include="VIew\Home\images\banner1.jpg" />
-    <Content Include="VIew\Home\images\footer-logo.png" />
-    <Content Include="VIew\Home\images\icon28.png" />
-    <Content Include="VIew\Home\images\logo.png" />
-    <Content Include="VIew\Home\images\more.png" />
-    <Content Include="VIew\Home\images\news-title.png" />
-    <Content Include="VIew\Home\images\notice-title.png" />
-    <Content Include="VIew\Home\images\sou.png" />
-    <Content Include="VIew\Home\images\u=1612077127,393485524&amp;fm=26&amp;gp=0.jpg" />
-    <Content Include="VIew\Home\images\____%281%29.png" />
-    <Content Include="VIew\Home\images\____.png" />
-    <Content Include="VIew\Login\css\login.css" />
-    <Content Include="VIew\Login\images\bg.9500de7.jpg" />
-    <Content Include="VIew\Login\images\lock.png" />
-    <Content Include="VIew\Login\images\logo-white.6442b1c.png" />
-    <Content Include="VIew\Login\images\user.png" />
-    <Content Include="VIew\Login\Login.aspx" />
-    <Content Include="VIew\Module\RoleManage\Role.aspx" />
-    <Content Include="VIew\Template\css\font-awesome.min.css" />
-    <Content Include="VIew\Template\css\jquery.gritter.css" />
-    <Content Include="VIew\Template\css\jstarbox.css" />
-    <Content Include="VIew\Template\css\rateit.css" />
-    <Content Include="VIew\Template\css\taskcenter.css" />
-    <Content Include="VIew\Template\images\footer-logo.png" />
-    <Content Include="VIew\Template\images\logo.png" />
-    <Content Include="VIew\test.aspx" />
+    <Content Include="View\Home\css\alk_main.css" />
+    <Content Include="View\Home\css\animate.min.css" />
+    <Content Include="View\Home\css\bootstrap-touch-slider.css" />
+    <Content Include="View\Home\css\bootstrap.min.css" />
+    <Content Include="View\Home\css\default.css" />
+    <Content Include="View\Home\css\font-awesome%281%29.css" />
+    <Content Include="View\Home\css\font-awesome.css" />
+    <Content Include="View\Home\css\htmleaf-demo.css" />
+    <Content Include="View\Home\Home.aspx" />
+    <Content Include="View\Home\images\1._____________.png" />
+    <Content Include="View\Home\images\12.________.png" />
+    <Content Include="View\Home\images\2.____________.png" />
+    <Content Include="View\Home\images\3.__________________%281%29.png" />
+    <Content Include="View\Home\images\3.__________________.png" />
+    <Content Include="View\Home\images\5._______.png" />
+    <Content Include="View\Home\images\7._______________%281%29.png" />
+    <Content Include="View\Home\images\7._______________.png" />
+    <Content Include="View\Home\images\8._________________.png" />
+    <Content Include="View\Home\images\banner1.jpg" />
+    <Content Include="View\Home\images\footer-logo.png" />
+    <Content Include="View\Home\images\icon28.png" />
+    <Content Include="View\Home\images\logo.png" />
+    <Content Include="View\Home\images\more.png" />
+    <Content Include="View\Home\images\news-title.png" />
+    <Content Include="View\Home\images\notice-title.png" />
+    <Content Include="View\Home\images\sou.png" />
+    <Content Include="View\Home\images\u=1612077127,393485524&amp;fm=26&amp;gp=0.jpg" />
+    <Content Include="View\Home\images\____%281%29.png" />
+    <Content Include="View\Home\images\____.png" />
+    <Content Include="View\Login\css\login.css" />
+    <Content Include="View\Login\images\bg.9500de7.jpg" />
+    <Content Include="View\Login\images\lock.png" />
+    <Content Include="View\Login\images\logo-white.6442b1c.png" />
+    <Content Include="View\Login\images\user.png" />
+    <Content Include="View\Login\Login.aspx" />
+    <Content Include="View\Module\RoleManage\Role.aspx" />
+    <Content Include="View\Template\css\font-awesome.min.css" />
+    <Content Include="View\Template\css\jquery.gritter.css" />
+    <Content Include="View\Template\css\jstarbox.css" />
+    <Content Include="View\Template\css\rateit.css" />
+    <Content Include="View\Template\css\taskcenter.css" />
+    <Content Include="View\Template\images\footer-logo.png" />
+    <Content Include="View\Template\images\logo.png" />
+    <Content Include="View\test.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -145,39 +145,39 @@
     <Compile Include="Models\Entity\Stock.cs" />
     <Compile Include="Models\Entity\Storeroom.cs" />
     <Compile Include="Models\Entity\User.cs" />
-    <Compile Include="VIew\Home\Home.aspx.cs">
+    <Compile Include="View\Home\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="VIew\Home\Home.aspx.designer.cs">
+    <Compile Include="View\Home\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="VIew\Login\Login.aspx.cs">
+    <Compile Include="View\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="VIew\Login\Login.aspx.designer.cs">
+    <Compile Include="View\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="VIew\Module\RoleManage\Role.aspx.cs">
+    <Compile Include="View\Module\RoleManage\Role.aspx.cs">
       <DependentUpon>Role.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="VIew\Module\RoleManage\Role.aspx.designer.cs">
+    <Compile Include="View\Module\RoleManage\Role.aspx.designer.cs">
       <DependentUpon>Role.aspx</DependentUpon>
     </Compile>
-    <Compile Include="VIew\Template\Main.Master.cs">
+    <Compile Include="View\Template\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="VIew\Template\Main.Master.designer.cs">
+    <Compile Include="View\Template\Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
     </Compile>
-    <Compile Include="VIew\test.aspx.cs">
+    <Compile Include="View\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="VIew\test.aspx.designer.cs">
+    <Compile Include="View\test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -187,7 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="VIew\Template\Main.Master" />
+    <Content Include="View\Template\Main.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

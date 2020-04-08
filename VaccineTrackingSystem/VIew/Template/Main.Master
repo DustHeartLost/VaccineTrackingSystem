@@ -30,7 +30,7 @@
 		<div class="sysu-contents">
 			<div class="alk-header">
 				<div class="header-box">
-					<div class="alk-header-title"><img src="images/logo.png" alt=""></div>
+					<div class="alk-header-title"><img src="/View/Template/images/logo.png" alt=""></div>
 					<ul class="alk-header-ul"></ul>
         		</div>
     		</div>
