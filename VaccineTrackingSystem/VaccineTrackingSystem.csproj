@@ -102,6 +102,14 @@
     <Content Include="VIew\Login\images\logo-white.6442b1c.png" />
     <Content Include="VIew\Login\images\user.png" />
     <Content Include="VIew\Login\Login.aspx" />
+    <Content Include="VIew\Module\RoleManage\Role.aspx" />
+    <Content Include="VIew\Template\css\font-awesome.min.css" />
+    <Content Include="VIew\Template\css\jquery.gritter.css" />
+    <Content Include="VIew\Template\css\jstarbox.css" />
+    <Content Include="VIew\Template\css\rateit.css" />
+    <Content Include="VIew\Template\css\taskcenter.css" />
+    <Content Include="VIew\Template\images\footer-logo.png" />
+    <Content Include="VIew\Template\images\logo.png" />
     <Content Include="VIew\test.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -151,6 +159,20 @@
     <Compile Include="VIew\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="VIew\Module\RoleManage\Role.aspx.cs">
+      <DependentUpon>Role.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VIew\Module\RoleManage\Role.aspx.designer.cs">
+      <DependentUpon>Role.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VIew\Template\Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VIew\Template\Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
     <Compile Include="VIew\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -165,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="VIew\Template\Main.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

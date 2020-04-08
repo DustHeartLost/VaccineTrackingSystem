@@ -7,12 +7,30 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace VaccineTrackingSystem.VIew
+namespace VaccineTrackingSystem.VIew.Template
 {
 
 
     public partial class Site1
     {
+
+        /// <summary>
+        /// head 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+
+        /// <summary>
+        /// form2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
 
         /// <summary>
         /// CurrentList 控件。
@@ -21,16 +39,16 @@ namespace VaccineTrackingSystem.VIew
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder CurrentList;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder CurrentList;
 
         /// <summary>
-        /// Search 控件。
+        /// ContentPlaceHolder1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder Search;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
 
         /// <summary>
         /// Other 控件。
@@ -39,16 +57,16 @@ namespace VaccineTrackingSystem.VIew
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder Other;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Other;
 
         /// <summary>
-        /// table 控件。
+        /// Table 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder table;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder Table;
 
         /// <summary>
         /// DownAndUp 控件。
@@ -57,6 +75,6 @@ namespace VaccineTrackingSystem.VIew
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder DownAndUp;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder DownAndUp;
     }
 }
