@@ -1,0 +1,37 @@
+/*!
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */@font-face{font-family:FontAwesome;src:url(../../../static/fonts/fontawesome-webfont.674f50d.eot);src:url(../images/logo-white.6442b1c.png) 50%/200px no-repeat}.topbar-wrap{height: 100px;
+    background: #007ccc;
+    position: absolute;
+    width: 100%;
+    top: 0;}.topbar-wrap .title[data-v-b827f0d6]{line-height:30px;font-size:20px;padding:5px 0 5px 20px;margin-left:20px;margin-top:25px;border-left:2px solid #fff;}.footer-wrap[data-v-759ce404]{height:70px;line-height:70px;background-color:#007ccc;text-align:center;color:#fff;position:absolute;width:100%;bottom:0}.footer-wrap .layout-center[data-v-759ce404]{max-width:1200px;margin:0 auto;width:100%}*{padding:0;margin:0;-webkit-box-sizing:border-box;box-sizing:border-box}a{text-decoration:none}.clearfix:after{clear:both;content:"";display:block}.login-wrap,.main-center,body,html{height:100%}.login-wrap .main-center{background:url(../images/bg.9500de7.jpg) 50%/cover no-repeat;padding:100px 0 70px}.login-wrap .main-center.hasvertificode #login{margin-top:5%}.login-wrap .main-center.hasvertificode #login .input-item{margin-bottom:10px}.login-wrap .main-center #login{width:300px;float:right;margin-right:15%;margin-top:8%;background:#fff;background:hsla(0,0%,100%,.8);padding:20px;text-align:center;border-top:3px solid #007ccc}@media screen and (max-width:768px){.login-wrap .main-center #login{margin:50px auto;float:inherit}}.login-wrap .main-center #login .formtitle{text-align:left;margin:10px 0 20px;font-size:18px;color:#007ccc}.login-wrap .main-center #login .formtitle>span{cursor:default;display:block;margin-top:15px}.login-wrap .main-center #login .formtitle .link-to-staff{color:#007ccc;font-size:14px;text-decoration:underline}.login-wrap .main-center #login .input-item{position:relative;margin-bottom:20px}.login-wrap .main-center #login .input-item.login-capcha .verifyCode{position:absolute;right:5px;top:0}.login-wrap .main-center #login input[type=password],.login-wrap .main-center #login input[type=text]{padding:10px 0 10px 40px;color:#666;font-size:16px;outline:none;width:100%;max-width:100%;border:1px solid #ddd}.login-wrap .main-center #login input[type=button]{width:100%;border:none;border-radius:5px;background:#017ccc;color:#fff;font-size:16px;margin:0 0 10px;padding:10px 0;cursor:pointer;outline:none}.login-icon{position:absolute;color:#017ccc;top:13px;left:5px;width:30px;height:30px}.showMessage{font-size:12px;margin:10px 0;height:16px;color:red}.more-link,.showMessage{text-align:left}.more-link a{font-size:14px;color:#017ccc;text-decoration:underline}.more-link a+a{float:right;color:red}
+
+    .topbar-wrap .logo{
+    height: 70px;
+    margin-top: 15px;
+    width: 200px;
+    background: url(../images/logo-white.6442b1c.png) 50%/200px no-repeat;
+}
+
+.topbar-wrap .title {
+    line-height: 30px;
+    font-size: 20px;
+    padding: 5px 0 5px 20px;
+    margin-left: 20px;
+    margin-top: 25px;
+    border-left: 2px solid #fff;
+}
+.topbar-wrap .layout-center>div{
+    float: left;
+    color: #fff;
+}
+.topbar-wrap .title {
+    line-height: 30px; 
+    font-size: 20px; */
+    padding: 5px 0 5px 20px; 
+    margin-left: 20px;
+    margin-top: 25px;
+    border-left: 2px solid #fff;
+}
+
