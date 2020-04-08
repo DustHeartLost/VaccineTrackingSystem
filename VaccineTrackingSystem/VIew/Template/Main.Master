@@ -56,7 +56,7 @@
 			<div class="qu-form">
 				<%--<input type="text" placeholder="请输入已完成事项名称" id="queryWhole" class="sx_inp search-input">
  				<input type="button" class="sx_but is-button btn-search-input">--%>
-				<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+				<asp:ContentPlaceHolder ID="Search" runat="server"></asp:ContentPlaceHolder>
 			</div>
 		</div>
 
