@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Models\BLL\ApartManage.cs" />
     <Compile Include="Models\BLL\CategoryManage.cs" />
+    <Compile Include="Models\BLL\DestoryManage.cs" />
     <Compile Include="Models\BLL\InflowManage.cs" />
     <Compile Include="Models\BLL\LoginManage.cs" />
     <Compile Include="Models\BLL\OutflowManage.cs" />

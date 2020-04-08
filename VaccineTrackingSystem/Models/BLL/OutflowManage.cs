@@ -32,7 +32,7 @@ namespace VaccineTrackingSystem.Models.BLL
             // return null;
 
         }
-        static public List<Indetail> SortDate(List<Indetail> indetailList)
+        static private List<Indetail> SortDate(List<Indetail> indetailList)
         {
 
             string date = DateTime.Now.ToString("yyyy-MM-dd");
@@ -67,7 +67,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             return indetailList;
         }
-        static public List<Indetail> Swap(List<Indetail> indetailList, int m, int i)
+        static private List<Indetail> Swap(List<Indetail> indetailList, int m, int i)
         {
             Indetail t;
             t = indetailList[m];
@@ -127,8 +127,5 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             return true;
         }
-
-
-
     }
 }
