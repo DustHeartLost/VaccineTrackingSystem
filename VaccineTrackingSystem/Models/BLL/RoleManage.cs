@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
@@ -23,7 +20,7 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public Role Query(string name, out string msg)
         {
-            if (RoleDAL.Query(name, out msg)==null)
+            if (RoleDAL.Query(name, out msg) == null)
                 return null;
             return RoleDAL.Query(name, out msg);
         }

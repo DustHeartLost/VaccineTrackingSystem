@@ -47,9 +47,12 @@ namespace VaccineTrackingSystem.VIew.Login
         protected void submit(object sender, EventArgs e)
         {
             string msg;
-            if (LoginManage.Login(Username.Text, Password.Text, out msg)){
+            if (LoginManage.Login(Username.Text, Password.Text, out msg))
+            {
                 Response.Redirect("../Home/Home.aspx");
-            }else {
+            }
+            else
+            {
                 Response.Write("<script language='javascript'>alert('账号或密码输入错误')</script>");
             }
         }

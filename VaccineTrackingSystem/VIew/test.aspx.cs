@@ -10,10 +10,10 @@ namespace WebApplication2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string msg=null;
+            string msg = null;
             //System.Diagnostics.Debug.Write("###############################");
             //System.Diagnostics.Debug.Write(AprtManage.Query("wy", msg).note);
-            
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -81,9 +81,25 @@ namespace WebApplication2
 
             //    };
             //}
-            Stock stock = new Stock("123", 3, 20, 12.8m);
-            if (StockDAL.Add(stock, out msg)) { msg = "插入成功"; };
-            Label1.Text = msg;
+            //Stock stock = new Stock("123", 3, 20, 12.8m);
+            //if (StockDAL.Add(stock, out msg)) { msg = "插入成功"; };
+            //Label1.Text = msg;
+
+            //List<Indetail> list = StockManage.QueryInDetail(2, out msg);
+            decimal total;
+            List<Dictionary<string, string>> list = StockManage.Query("123", out msg);
+            if (list != null)
+            {
+                foreach (Dictionary<string, string>  temp in list)
+                {
+                    Label1.Text += temp["stockID"];
+                }
+            }
+            else
+            {
+                Label1.Text = msg;
+            }
+
         }
     }
 }

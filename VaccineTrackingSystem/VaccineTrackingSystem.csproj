@@ -113,7 +113,9 @@
     <Compile Include="Models\BLL\LoginManage.cs" />
     <Compile Include="Models\BLL\OutflowManage.cs" />
     <Compile Include="Models\BLL\RoleManage.cs" />
+    <Compile Include="Models\BLL\StockManage.cs" />
     <Compile Include="Models\BLL\StoreManage.cs" />
+    <Compile Include="Models\BLL\TableManage.cs" />
     <Compile Include="Models\BLL\UserManage.cs" />
     <Compile Include="Models\DAL\ApartmentDAL.cs" />
     <Compile Include="Models\DAL\CategoryDAL.cs" />

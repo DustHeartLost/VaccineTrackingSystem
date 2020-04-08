@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
@@ -14,8 +11,8 @@ namespace VaccineTrackingSystem.Models.BLL
                 return true;
             return false;
         }
-     
-        static public bool Update(User user,string msg)
+
+        static public bool Update(User user, string msg)
         {
             if (UserDAL.Update(user, out msg))
                 return true;
@@ -25,7 +22,7 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             if (UserDAL.Query(num, out msg) == null)
                 return null;
-            return UserDAL.Query(num,out msg);
+            return UserDAL.Query(num, out msg);
         }
         static public List<User> QueryAll(out string msg)
         {
