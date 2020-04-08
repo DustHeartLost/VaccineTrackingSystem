@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VaccineTrackingSystem.Models;
 using VaccineTrackingSystem.Models.BLL;
-using VaccineTrackingSystem.Models.DAL;
 
 namespace WebApplication2
 {
@@ -90,7 +88,7 @@ namespace WebApplication2
             List<Dictionary<string, string>> list = StockManage.Query("123", out msg);
             if (list != null)
             {
-                foreach (Dictionary<string, string>  temp in list)
+                foreach (Dictionary<string, string> temp in list)
                 {
                     Label1.Text += temp["stockID"];
                 }
