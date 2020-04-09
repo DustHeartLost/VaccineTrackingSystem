@@ -140,11 +140,12 @@
     <Compile Include="Models\DAL\StockDAL.cs" />
     <Compile Include="Models\DAL\StoreroomDAL.cs" />
     <Compile Include="Models\DAL\UserDAL.cs" />
-    <Compile Include="Models\Entity\apartment.cs" />
+    <Compile Include="Models\Entity\Apartment.cs" />
     <Compile Include="Models\Entity\Category.cs" />
     <Compile Include="Models\Entity\Indetail.cs" />
     <Compile Include="Models\Entity\Inflow.cs" />
     <Compile Include="Models\Entity\Outflow.cs" />
+    <Compile Include="Models\Entity\Packet.cs" />
     <Compile Include="Models\Entity\Role.cs" />
     <Compile Include="Models\Entity\Stock.cs" />
     <Compile Include="Models\Entity\Storeroom.cs" />

@@ -4,9 +4,12 @@
     <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
     <script src="js/createTable.js"></script>
     <script>
+        window.onload = create;
         function create() {
-            var obj = JSON.parse('<%=GetString()%>');
-            createTable(obj);
+            var obj =<%=GetALL()%>;
+            console.log(obj.code);
+            if (obj.code == 200) createTable(obj.data);
+            else alert(obj.data);
         }
     </script>
     <style type="text/css">
@@ -29,7 +32,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <input type="text" placeholder="请输入角色名称进行查找" id="search" class="sx_inp search-input">
-    <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="create()"/>
+    <input id="searchButton" type="button" value="搜索" class="auto-style2"/>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
 </asp:Content>

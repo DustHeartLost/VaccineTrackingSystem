@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.VIew.Module.Role
 {
@@ -10,13 +12,14 @@ namespace VaccineTrackingSystem.VIew.Module.Role
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            totalPage = 0;
+            currentPage = -1;
         }
 
-        public string GetString() {
+        public string GetALL() {
             string msg;
-            string jsonData = Models.BLL.RoleManage.QueryAll(out msg);
-            return jsonData;
+            string jsonData = Models.BLL.RoleManage.QueryAll(out msg,ref totalPage,ref currentPage);
+            return jsonData!=null?JsonConvert.SerializeObject(new Packet(200,jsonData)): JsonConvert.SerializeObject(new Packet(201,msg));
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿function createTable(data) {
+﻿function createTable(temp) {
+    var data = JSON.parse(temp);
     var html = "";
     for (var i = 0; i < data.length; i++) {
 
-        html += "<tr class=\"zz\" style=\"height:60px\"><td>" + data[i].id + "</td><td>" + data[i].name + "</td><td>";
+        html += "<tr class=\"dataRow\" style=\"height:60px\"><td>" + data[i].id + "</td><td>" + data[i].name + "</td><td>";
         for (var j = 0; j < 10; j++) {
             if (data[i].authority[j] == 1) {
                 html += "允许</td><td>";
@@ -18,10 +19,10 @@
 }
 
  $(document).ready(function () {
-        $("#tableContainer").delegate(".zz", "mouseenter", function () {
+     $("#tableContainer").delegate(".dataRow", "mouseenter", function () {
             $(this).addClass("tr-mouseover");
         });
-        $("#tableContainer").delegate(".zz", "mouseleave", function () {
+     $("#tableContainer").delegate(".dataRow", "mouseleave", function () {
             $(this).removeClass("tr-mouseover");
         });
     });
