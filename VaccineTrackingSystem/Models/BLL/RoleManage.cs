@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
@@ -18,9 +19,10 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return RoleDAL.Query(name, out msg);
         }
-        static public List<Role> QueryAll(out string msg)
+        static public string QueryAll(out string msg)
         {
-            return RoleDAL.QueryAll(out msg);
+            List<Role>list=RoleDAL.QueryAll(out msg);
+            return list != null ? JsonConvert.SerializeObject(list) : null;
         }
 
 

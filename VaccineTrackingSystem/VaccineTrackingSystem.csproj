@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -102,7 +103,9 @@
     <Content Include="View\Login\images\logo-white.6442b1c.png" />
     <Content Include="View\Login\images\user.png" />
     <Content Include="View\Login\Login.aspx" />
-    <Content Include="View\Module\RoleManage\Role.aspx" />
+    <Content Include="View\Module\Role\css\myStyle.css" />
+    <Content Include="View\Module\Role\js\createTable.js" />
+    <Content Include="View\Module\Role\Role.aspx" />
     <Content Include="View\Template\css\font-awesome.min.css" />
     <Content Include="View\Template\css\jquery.gritter.css" />
     <Content Include="View\Template\css\jstarbox.css" />
@@ -110,6 +113,7 @@
     <Content Include="View\Template\css\taskcenter.css" />
     <Content Include="View\Template\images\footer-logo.png" />
     <Content Include="View\Template\images\logo.png" />
+    <Content Include="View\Template\jquery\jquery-3.4.1.min.js" />
     <Content Include="View\test.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -159,11 +163,11 @@
     <Compile Include="View\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Module\RoleManage\Role.aspx.cs">
+    <Compile Include="View\Module\Role\Role.aspx.cs">
       <DependentUpon>Role.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Module\RoleManage\Role.aspx.designer.cs">
+    <Compile Include="View\Module\Role\Role.aspx.designer.cs">
       <DependentUpon>Role.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Template\Main.Master.cs">
@@ -196,7 +200,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <PropertyGroup>

@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace VaccineTrackingSystem.VIew.Module.RoleManage
+namespace VaccineTrackingSystem.VIew.Module.Role
 {
 
 
