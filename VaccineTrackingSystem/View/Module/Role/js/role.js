@@ -13,9 +13,7 @@
         }
         html+=data[i].note + "</td></tr>";
     }
-   
-    $("#caption").after(html);
-    
+    $("#caption").after(html); 
 }
 
  $(document).ready(function () {
@@ -25,7 +23,12 @@
      $("#tableContainer").delegate(".dataRow", "mouseleave", function () {
             $(this).removeClass("tr-mouseover");
         });
-    });
+ });
+function clear() {
+    $(".dataRow").remove;
+}
 
-
-    
+function down(temp) {
+    clear();
+    createTable(temp);
+} 

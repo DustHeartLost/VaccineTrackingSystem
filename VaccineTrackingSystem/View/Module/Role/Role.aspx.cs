@@ -21,5 +21,18 @@ namespace VaccineTrackingSystem.VIew.Module.Role
             string jsonData = Models.BLL.RoleManage.QueryAll(out msg,ref totalPage,ref currentPage);
             return jsonData!=null?JsonConvert.SerializeObject(new Packet(200,jsonData)): JsonConvert.SerializeObject(new Packet(201,msg));
         }
+        public string GetDown() {
+            currentPage++;
+            string msg;
+            string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+        public string GetUp() {
+            if (currentPage <= -1) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
+            currentPage--;
+            string msg;
+            string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
     }
 }

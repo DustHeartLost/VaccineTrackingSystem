@@ -106,7 +106,7 @@
     <Content Include="View\Module\Apartment\Apartment.aspx" />
     <Content Include="View\Module\Apartment\css\apartment.css" />
     <Content Include="View\Module\Role\css\myStyle.css" />
-    <Content Include="View\Module\Role\js\createTable.js" />
+    <Content Include="View\Module\Role\js\role.js" />
     <Content Include="View\Module\Role\Role.aspx" />
     <Content Include="View\Template\css\taskcenter.css" />
     <Content Include="View\Template\images\footer-logo.png" />
