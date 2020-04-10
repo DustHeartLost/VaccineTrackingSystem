@@ -9,22 +9,48 @@
         function createAspx() {
             var obj =<%=GetALL()%>;
             if (obj.code == 200) createTable(obj.data);
-            else alert(obj.data);
-           
+            else alert(obj.data);  
+
             var label = document.getElementById("total");
             var tolV =<%=GetTotal()%>;
             label.innerText = "共" + tolV + "页";
-            
+            var label = document.getElementById("current");
+            var currV =<%=GetCurr()%>;
+            label.innerText = "第" + currV + "页";
+
+        }
+
+        function down() {
+            var obj =<%=GetDown()%>;
+            if (obj.code == 200)  reCreateTable(obj.data, obj.extra); 
+            else alert(obj.data);
+
+            var label = document.getElementById("total");
+            var tolV =<%=GetTotal()%>;
+            label.innerText = "共" + tolV + "页";
+            var label = document.getElementById("current");
+            var currV =<%=GetCurr()%>;
+            label.innerText = "第" + currV + "页";
+        }
+
+        function up() {
+            var obj =<%=GetUp()%>;
+            if (obj.code == 200) reCreateTable(obj.data, obj.extra);
+            else alert(obj.data);
+
+            var label = document.getElementById("total");
+            var tolV =<%=GetTotal()%>;
+            label.innerText = "共" + tolV + "页";
             var label = document.getElementById("current");
             var currV =<%=GetCurr()%>;
             label.innerText = "第" + currV + "页";
         }
 
     </script>
-
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><a id="list">组织机构</a></div>
+    <div><a id="list">机构管理</a></div>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
@@ -33,12 +59,12 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
-    <div style="float: right" id="upAndDownArea">
-         <button id="up" class="upAnddown"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
-         <button id="down" class="upAnddown" onclick="down()"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
-         <label id="total">共页</label>
+    <div style="float: right;" id="upAndDownArea">
+        <button id="up" class="upAnddown" onclick="up()">上一页</button>
+        <button id="down" class="upAnddown" onclick="down()">下一页</button>
+         
          <label id="current">第页</label>
-
+         <label id="total">共页</label>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">

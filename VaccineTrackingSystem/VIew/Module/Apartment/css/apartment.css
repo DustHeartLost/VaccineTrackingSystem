@@ -30,6 +30,8 @@ td {
 
 .dataRow {
     background-color: white;
+    margin:0;
+    padding:0;
 }
 
 th {
@@ -38,12 +40,13 @@ th {
     font-family: Arial,Helvetica,sans-serif;
     font-size: medium;
     font-weight: bold;
-    padding-left: 12px;
+    padding-left: 0px;
     padding-right: 12px;
     padding-bottom: 10px;
     text-align: center;
     width: 2000px;
     height: 60px;
+    margin:0;
 }
 
 #searchButton {
@@ -57,7 +60,9 @@ th {
     background-color: antiquewhite;
 }
 
-
-.upAndDownArea {
-    float: left
+.upAnddown {
+    vertical-align: middle;
+    margin: 0;
+    
 }
+

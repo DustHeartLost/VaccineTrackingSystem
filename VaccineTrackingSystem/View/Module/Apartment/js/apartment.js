@@ -19,11 +19,10 @@ $(document).ready(function () {
 });
 
 function clear() {
-    $(".dataRow").remove;
+    $("tr").remove(".dataRow");
 }
 
-function down(temp) {
+function reCreateTable(temp, extra){
     clear();
     createTable(temp);
-}
-
+} 

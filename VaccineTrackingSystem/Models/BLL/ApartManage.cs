@@ -25,20 +25,20 @@ namespace VaccineTrackingSystem.Models.BLL
             if (apartments == null)
             {
                 totalPage = 0;
-                currentPage = -1;
+                currentPage = 0;
                 return null;
             }
             totalPage = (int)System.Math.Floor((decimal)(apartments.Count / 10));
-            currentPage = currentPage + 1;
-            if (currentPage > totalPage) return JsonConvert.SerializeObject(apartments.GetRange(--currentPage, apartments.Count - currentPage * 10));
-            try
-            {
+            if(currentPage< totalPage)
+            { 
                 return JsonConvert.SerializeObject(apartments.GetRange(currentPage * 10, 10));
             }
-            catch
+            if (currentPage == totalPage)
             {
-                return JsonConvert.SerializeObject(apartments.GetRange(currentPage, apartments.Count - currentPage * 10));
+                return JsonConvert.SerializeObject(apartments.GetRange(totalPage*10, apartments.Count - totalPage * 10));
             }
+            
+            return null;
         }
 
     }
