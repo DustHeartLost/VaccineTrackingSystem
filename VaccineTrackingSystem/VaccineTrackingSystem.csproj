@@ -103,6 +103,8 @@
     <Content Include="View\Login\images\logo-white.6442b1c.png" />
     <Content Include="View\Login\images\user.png" />
     <Content Include="View\Login\Login.aspx" />
+    <Content Include="View\Module\Apartment\Apartment.aspx" />
+    <Content Include="View\Module\Apartment\css\apartment.css" />
     <Content Include="View\Module\Role\css\myStyle.css" />
     <Content Include="View\Module\Role\js\createTable.js" />
     <Content Include="View\Module\Role\Role.aspx" />
@@ -164,6 +166,13 @@
     <Compile Include="View\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Module\Apartment\Apartment.aspx.cs">
+      <DependentUpon>Apartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Apartment\Apartment.aspx.designer.cs">
+      <DependentUpon>Apartment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Module\Role\Role.aspx.cs">
       <DependentUpon>Role.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -202,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Util\" />
+    <Folder Include="View\Module\Apartment\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
