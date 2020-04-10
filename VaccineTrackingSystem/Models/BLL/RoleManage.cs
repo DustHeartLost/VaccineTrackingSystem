@@ -28,16 +28,12 @@ namespace VaccineTrackingSystem.Models.BLL
                 return null;
             } 
             totalPage = (int)System.Math.Floor((decimal)(list.Count/10));
-            currentPage=currentPage+1;
-            if (currentPage > totalPage) return JsonConvert.SerializeObject(list.GetRange(--currentPage, list.Count - currentPage * 10));
-            try{ 
+            if (currentPage < totalPage) currentPage++;
+            try {
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
-            }
-            catch {
-                return JsonConvert.SerializeObject(list.GetRange(currentPage,list.Count-currentPage*10));
-            }
+            } catch {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
+            }            
         }
-
-
     }
 }

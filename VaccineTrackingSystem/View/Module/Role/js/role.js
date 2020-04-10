@@ -1,4 +1,4 @@
-﻿function createTable(temp) {
+﻿function createTable(temp,extra) {
     var data = JSON.parse(temp);
     var html = "";
     for (var i = 0; i < data.length; i++) {
@@ -14,6 +14,10 @@
         html+=data[i].note + "</td></tr>";
     }
     $("#caption").after(html); 
+    var x = extra.split('+');
+    console.log(x[1]);
+    $("#total").text("共"+x[0]+"页");
+    $("#current").text("第"+x[1]+"页");
 }
 
  $(document).ready(function () {
@@ -25,10 +29,10 @@
         });
  });
 function clear() {
-    $(".dataRow").remove;
+    $("tr").remove(".dataRow");
 }
 
-function down(temp) {
+function reCreateTable(temp,extra) {
     clear();
-    createTable(temp);
+    createTable(temp, extra);
 } 

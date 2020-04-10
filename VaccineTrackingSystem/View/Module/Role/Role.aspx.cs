@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.VIew.Module.Role
@@ -15,24 +14,25 @@ namespace VaccineTrackingSystem.VIew.Module.Role
             totalPage = 0;
             currentPage = -1;
         }
-
-        public string GetALL() {
-            string msg;
-            string jsonData = Models.BLL.RoleManage.QueryAll(out msg,ref totalPage,ref currentPage);
-            return jsonData!=null?JsonConvert.SerializeObject(new Packet(200,jsonData)): JsonConvert.SerializeObject(new Packet(201,msg));
-        }
-        public string GetDown() {
-            currentPage++;
+        public string GetALL()
+        {
             string msg;
             string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
-        public string GetUp() {
-            if (currentPage <= -1) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
-            currentPage--;
+        public string GetDown()
+        {
             string msg;
             string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage+1}+{currentPage+1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+        public string GetUp()
+        {
+            if (currentPage == -1) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
+            currentPage -= 2;
+            string msg;
+            string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage+1}+{currentPage+1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }
 }
