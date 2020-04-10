@@ -12,30 +12,25 @@
             else alert(obj.data);
         }
     </script>
-    <style type="text/css">
-        .auto-style2 {
-            width: 17px;
-            overflow: hidden;
-            position: relative;
-            margin-top: 10px;
-            left: -1px;
-            top: -10px;
-            height: 0px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 0;
-        }
-    </style>
+ 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
     <div><a id="list">角色管理</a></div>
 </asp:Content>
+
+
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <input type="text" placeholder="请输入角色名称进行查找" id="search" class="sx_inp search-input">
     <input id="searchButton" type="button" value="搜索" class="auto-style2"/>
 </asp:Content>
+
+
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
+    <button class="upAnddown"><i class="fa fa-chevron-left fa-1g"></i></button>
+    <button class="upAnddown"><i class="fa fa-chevron-right fa-1g" ></i></button>
 </asp:Content>
+
+
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">
     <div id="table">
         <table id="tableContainer">
@@ -45,5 +40,7 @@
         </table>
     </div>
 </asp:Content>
+
+
 <asp:Content ID="Content6" ContentPlaceHolderID="DownAndUp" runat="server">
 </asp:Content>
