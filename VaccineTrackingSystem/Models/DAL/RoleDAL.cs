@@ -80,7 +80,8 @@ namespace VaccineTrackingSystem.Models.DAL
             List<Role> list = new List<Role>();
             while (read.Read())
             {
-                list.Add(new Role((int)read["id"], (string)read["name"], (string)read["authority"], (string)read["note"]));
+                //此处为处理note为空的异常，不可以强制转换，只可以使用ToString方法
+                list.Add(new Role((int)read["id"], (string)read["name"], (string)read["authority"], read["note"].ToString()));
             }
             SQL.Dispose();
             msg = null;

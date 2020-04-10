@@ -23,6 +23,19 @@
 	<link rel="stylesheet" href="css/taskcenter.css">
 
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 1234px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 10px;
+            left: 23px;
+            top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
 <form id="form2" runat="server">
@@ -43,9 +56,7 @@
 			<div style="width:1150px; height:46px;  margin:0 auto;">
 				<ul>
 					<li navtap="todo" >
-					<a href="/taskcenter/workflow/todo"><asp:ContentPlaceHolder ID="CurrentList" runat="server">
-						 
-					                                    </asp:ContentPlaceHolder></asp:PlaceHolder></a>
+						<asp:ContentPlaceHolder ID="CurrentList" runat="server"></asp:ContentPlaceHolder></asp:PlaceHolder>
 					</li>
 				</ul>
 			</div>
@@ -53,12 +64,12 @@
 	</div>
 
 
-	<div class="contents1" style="background:#f6f7f7 url(&#39;/taskcenter/resources/jlu/default/images/contentsbg3.png&#39;) no-repeat -200%;">
+	<div class="auto-style1" style="background:#f6f7f7 url(&#39;&#39;) no-repeat -200%;">
 
 		<div class="sx_ss">
 			<div class="qu-form">
-				<input type="text" placeholder="请输入已完成事项名称" id="queryWhole" class="sx_inp search-input">
- 				<input type="button" class="sx_but is-button btn-search-input">
+				<%--<input type="text" placeholder="请输入已完成事项名称" id="queryWhole" class="sx_inp search-input">
+ 				<input type="button" class="sx_but is-button btn-search-input">--%>
 				<asp:ContentPlaceHolder ID="Search" runat="server"></asp:ContentPlaceHolder>
 			</div>
 		</div>
@@ -76,7 +87,7 @@
 
 
 		<div class="main-content">
-			<asp:ContentPlaceHolder ID="Table" runat="server"></asp:ContentPlaceHolder>
+			<asp:ContentPlaceHolder ID="Table" runat="server" ></asp:ContentPlaceHolder>
 				<%--<table border="0" class="sx_conter" cellpadding="0" cellspacing="0">
 					<tbody>
 				
