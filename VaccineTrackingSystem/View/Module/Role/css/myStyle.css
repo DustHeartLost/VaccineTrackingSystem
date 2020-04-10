@@ -53,6 +53,12 @@ th {
 .tr-mouseover {
     background-color:antiquewhite;
 }
+#upAndDownArea {
+    float:right;
+}
+
 .upAnddown {
-   
+   vertical-align:middle;
+   margin-right:0;
+   width:20px;
 }

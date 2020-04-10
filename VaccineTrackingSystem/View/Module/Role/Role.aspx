@@ -2,17 +2,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="css/myStyle.css" />
     <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
-    <script src="js/createTable.js"></script>
+    <script src="js/role.js"></script>
     <script>
         window.onload = create;
         function create() {
             var obj =<%=GetALL()%>;
-            console.log(obj.code);
             if (obj.code == 200) createTable(obj.data);
             else alert(obj.data);
         }
+        <%--function down() {
+            var obj =<%=GetDown()%>;
+            if (obj.code == 200) down(obj.data);
+            else alert(obj.data);
+        }--%>
     </script>
- 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
     <div><a id="list">角色管理</a></div>
@@ -26,8 +29,13 @@
 
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
-    <button class="upAnddown"><i class="fa fa-chevron-left fa-1g"></i></button>
-    <button class="upAnddown"><i class="fa fa-chevron-right fa-1g" ></i></button>
+    <div id="upAndDownArea">
+        
+        <button id="up" class="upAnddown"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+        <button id="down" class="upAnddown" onclick="down()"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+        <label id="total">共5页</label>
+        <label id="current">第2页</label>
+    </div>
 </asp:Content>
 
 
@@ -43,4 +51,6 @@
 
 
 <asp:Content ID="Content6" ContentPlaceHolderID="DownAndUp" runat="server">
+
+    <div style="height:50px"></div>
 </asp:Content>

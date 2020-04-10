@@ -39,7 +39,7 @@
     </style>
 </head>
 <body>
-<form id="form2" runat="server">
+
 	<div>
 		<div class="sysu-contents">
 			<div class="alk-header">
@@ -74,9 +74,9 @@
 		</div>
 
 
-		<div class="sx_dq">
-			<asp:ContentPlaceHolder ID="Other" runat="server"></asp:ContentPlaceHolder>
-		</div>
+        <div class="sx_dq">
+            <asp:ContentPlaceHolder ID="Other" runat="server"></asp:ContentPlaceHolder>
+        </div>
 
 
 		<div class="main-content">
@@ -93,6 +93,12 @@
 			<asp:ContentPlaceHolder ID="DownAndUp" runat="server"></asp:ContentPlaceHolder>
 		</div>
 	</div>
-</form>
+	<div>
+		<div class="sx_title">
+			<div style="margin-top:20px;" class="auto-style2">
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
