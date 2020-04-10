@@ -43,7 +43,10 @@
 			<div style="width:1150px; height:46px;  margin:0 auto;">
 				<ul>
 					<li navtap="todo" >
-					<a href="/taskcenter/workflow/todo"><asp:ContentPlaceHolder ID="CurrentList" runat="server"></asp:ContentPlaceHolder></asp:PlaceHolder></a></li>
+					<a href="/taskcenter/workflow/todo"><asp:ContentPlaceHolder ID="CurrentList" runat="server">
+						 
+					                                    </asp:ContentPlaceHolder></asp:PlaceHolder></a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -54,8 +57,8 @@
 
 		<div class="sx_ss">
 			<div class="qu-form">
-				<%--<input type="text" placeholder="请输入已完成事项名称" id="queryWhole" class="sx_inp search-input">
- 				<input type="button" class="sx_but is-button btn-search-input">--%>
+				<input type="text" placeholder="请输入已完成事项名称" id="queryWhole" class="sx_inp search-input">
+ 				<input type="button" class="sx_but is-button btn-search-input">
 				<asp:ContentPlaceHolder ID="Search" runat="server"></asp:ContentPlaceHolder>
 			</div>
 		</div>

@@ -102,6 +102,7 @@
     <Content Include="View\Login\images\logo-white.6442b1c.png" />
     <Content Include="View\Login\images\user.png" />
     <Content Include="View\Login\Login.aspx" />
+    <Content Include="View\Module\AptManage\Apart.aspx" />
     <Content Include="View\Module\RoleManage\Role.aspx" />
     <Content Include="View\Template\css\font-awesome.min.css" />
     <Content Include="View\Template\css\jquery.gritter.css" />
@@ -158,6 +159,13 @@
     </Compile>
     <Compile Include="View\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\AptManage\Apart.aspx.cs">
+      <DependentUpon>Apart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\AptManage\Apart.aspx.designer.cs">
+      <DependentUpon>Apart.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\RoleManage\Role.aspx.cs">
       <DependentUpon>Role.aspx</DependentUpon>

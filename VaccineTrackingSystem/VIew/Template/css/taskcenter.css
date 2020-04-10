@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 body, td, th ,input{
 	font-family: Arial, 微软雅黑, 'Microsoft yahei', 'Hiragino Sans GB', '冬青黑体简体中文 w3', 'Microsoft Yahei', 'Hiragino Sans GB', 
 	'冬青黑体简体中文 w3', STXihei, 华文细黑, SimSun, Heiti, 黑体, sans-serif;
@@ -133,15 +133,16 @@ body {
 	float:right;
 	position: relative;
 }
-.he_nav ul{
-	position: absolute;
-    width: 120px;
-    top: 40px;
-    left: 30px;
-    border: 2px solid #f3f3f3;
-    display: none;
-    z-index: 99;
-}
+	.he_nav ul {
+		position: absolute;
+		width: 120px;
+		top: 40px;
+		left: 30px;
+		border: 2px solid #f3f3f3;
+		display: none;
+		z-index: 99;
+		overflow: hidden;
+	}
 .he_nav ul li a{
 	color: #707070;
 	display: block;
@@ -155,11 +156,16 @@ body {
     color: #707070;
     line-height: 25px;
 }
-.he_nav ul li:hover{
-	background-color: #f0f4f3;
-	cursor: pointer;
-	text-decoration:underline;/** new add**/
+
+.he_nav li:hover {
+
+		background-color: #fff;
+		cursor: pointer;
+		text-decoration: underline; /** new add**/
 }
+
+
+
 .he_nav a {
 	color: #fff;
 	margin: 0 8px;
@@ -2289,7 +2295,7 @@ body {
 	font-weight: bold;
 }
 .sx_title ul li a {
-	width: 145px;
+	width: 938px;
 	height: 46px;
 	line-height: 46px;
 	display: block;
@@ -2391,11 +2397,13 @@ body {
 	float: left;
 }
 .sx_but {
-	width: 49px;
+	border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    width: 49px;
 	font-size: 14px;
-	height: 40px;
+	height: 37px;
 	float: left;
-	border: none;
 	font-size: 18px;
 	cursor: pointer;
 	color: #fff;
