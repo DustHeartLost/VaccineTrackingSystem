@@ -56,3 +56,8 @@ th {
 .tr-mouseover {
     background-color: antiquewhite;
 }
+
+
+.upAndDownArea {
+    float: left
+}

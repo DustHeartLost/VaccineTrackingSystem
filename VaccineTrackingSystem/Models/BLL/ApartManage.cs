@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
@@ -17,9 +19,26 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return ApartmentDAL.Query(num, out msg);
         }
-        static public List<Apartment> QueryAll(out string msg)
+        static public string QueryAll(out string msg,ref int totalPage, ref int currentPage)
         {
-            return ApartmentDAL.QueryAll(out msg);
+            List<Apartment> apartments= ApartmentDAL.QueryAll(out msg);
+            if (apartments == null)
+            {
+                totalPage = 0;
+                currentPage = -1;
+                return null;
+            }
+            totalPage = (int)System.Math.Floor((decimal)(apartments.Count / 10));
+            currentPage = currentPage + 1;
+            if (currentPage > totalPage) return JsonConvert.SerializeObject(apartments.GetRange(--currentPage, apartments.Count - currentPage * 10));
+            try
+            {
+                return JsonConvert.SerializeObject(apartments.GetRange(currentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(apartments.GetRange(currentPage, apartments.Count - currentPage * 10));
+            }
         }
 
     }
