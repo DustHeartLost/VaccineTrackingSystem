@@ -6,15 +6,21 @@
     <script>
         window.onload = create;
         function create() {
-            var obj =<%=GetALL()%>;
-            if (obj.code == 200) createTable(obj.data);
+            var obj =<%=GetALL() %>;
+            if (obj.code == 200) createTable(obj.data, obj.extra);
             else alert(obj.data);
         }
-        <%--function down() {
+        function down() {
             var obj =<%=GetDown()%>;
-            if (obj.code == 200) down(obj.data);
+            if (obj.code == 200) reCreateTable(obj.data,obj.extra);
             else alert(obj.data);
-        }--%>
+        }
+        function up() {
+            var obj =<%=GetUp()%>;
+            console.log(obj.code);
+            if (obj.code == 200) reCreateTable(obj.data, obj.extra);
+            else alert(obj.data);
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
@@ -31,10 +37,10 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <div id="upAndDownArea">
         
-        <button id="up" class="upAnddown"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+        <button id="up" class="upAnddown" onclick="up()"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
         <button id="down" class="upAnddown" onclick="down()"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
-        <label id="total">共5页</label>
-        <label id="current">第2页</label>
+        <label id="current"></label>
+        <label id="total"></label>
     </div>
 </asp:Content>
 
@@ -51,6 +57,5 @@
 
 
 <asp:Content ID="Content6" ContentPlaceHolderID="DownAndUp" runat="server">
-
     <div style="height:50px"></div>
 </asp:Content>
