@@ -1,6 +1,6 @@
 ﻿<%@ Page Title=" " Language="C#" MasterPageFile="~/View/Template/Main.Master" AutoEventWireup="true" CodeBehind="Role.aspx.cs" Inherits="VaccineTrackingSystem.VIew.Module.Role.Role" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="css/myStyle.css" />
+    <link rel="stylesheet" href="css/role.css" />
     <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
     <script src="js/role.js"></script>
     <script>
@@ -36,7 +36,6 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <div id="upAndDownArea">
-        
         <button id="up" class="upAnddown" onclick="up()"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
         <button id="down" class="upAnddown" onclick="down()"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
         <label id="current"></label>
