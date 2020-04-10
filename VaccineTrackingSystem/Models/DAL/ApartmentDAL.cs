@@ -82,7 +82,7 @@ namespace VaccineTrackingSystem.Models.DAL
             List<Apartment> list = new List<Apartment>();
             while (read.Read())
             {
-                list.Add(new Apartment((int)read["id"], (string)read["num"], (string)read["name"], (string)read["note"]));
+                list.Add(new Apartment((int)read["id"], (string)read["num"], (string)read["name"], read["note"].ToString()));
             }
             SQL.Dispose();
             msg = null;

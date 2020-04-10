@@ -130,7 +130,7 @@ namespace VaccineTrackingSystem.Models.DAL
             return stock;
         }
         //新加的查询详细库存的接口
-        static public List<Dictionary<string,string>> QueryAllStockDetail(out string msg)
+        static public List<Dictionary<string, string>> QueryAllStockDetail(out string msg)
         {
             string command = "select Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Stock.storeID,Stock.ID as stockID from Category, Stock where Category.num = Stock.cagNum";
             SqlDataReader read;
@@ -142,7 +142,7 @@ namespace VaccineTrackingSystem.Models.DAL
             }
             List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
             int i = 0;
-            Dictionary<string, string> dictionary = new Dictionary<string,string>();
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
             while (read.Read())
             {
                 dictionary.Add("id", (++i).ToString());
@@ -162,7 +162,8 @@ namespace VaccineTrackingSystem.Models.DAL
             return list;
         }
 
-        static public List<Dictionary<string, string>> QueryStockDetail(string num, out string msg) {
+        static public List<Dictionary<string, string>> QueryStockDetail(string num, out string msg)
+        {
             string command = $"select Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Stock.storeID,Stock.ID as stockID from Category, Stock where Category.num = Stock.cagNum and Category.num={num}";
             SqlDataReader read;
             read = SQL.getReader(command);

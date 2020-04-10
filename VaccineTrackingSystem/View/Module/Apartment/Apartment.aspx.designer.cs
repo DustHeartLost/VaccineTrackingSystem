@@ -7,11 +7,11 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace VaccineTrackingSystem.View.Module.ApartManage
+namespace VaccineTrackingSystem.View.Module.Apartment
 {
 
 
-    public partial class Apart
+    public partial class Apartment
     {
     }
 }
