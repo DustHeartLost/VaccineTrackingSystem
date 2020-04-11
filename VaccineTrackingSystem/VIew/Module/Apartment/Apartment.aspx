@@ -82,7 +82,7 @@
             var a = JSON.parse(data);
             $.ajax({
                 type: "post", //要用post方式                 
-                url: "AddRecord",//方法所在页面和方法名
+                url: "Apartment.aspx/AddRecord",//方法所在页面和方法名
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data:a,
