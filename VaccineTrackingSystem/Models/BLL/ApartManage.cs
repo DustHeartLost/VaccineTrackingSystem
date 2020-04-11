@@ -7,13 +7,13 @@ namespace VaccineTrackingSystem.Models.BLL
 {
     public class ApartManage
     {
-        static public bool Add(Apartment apartment, out string msg)
+        static public string Add(Apartment apartment, out string msg)
         {
-            return ApartmentDAL.Add(apartment, out msg);
+            return JsonConvert.SerializeObject(ApartmentDAL.Add(apartment, out msg));
         }
-        static public bool Update(Apartment apartment, out string msg)
+        static public string  Update(Apartment apartment, out string msg)
         {
-            return ApartmentDAL.Update(apartment, out msg);
+            return JsonConvert.SerializeObject(ApartmentDAL.Update(apartment, out msg));
         }
         static public Apartment Query(string num, out string msg)
         {
