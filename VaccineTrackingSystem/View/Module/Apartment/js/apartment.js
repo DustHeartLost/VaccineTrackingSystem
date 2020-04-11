@@ -63,3 +63,53 @@ function addRecord() {
         });
     });
 }
+
+
+function add() {
+    $("#up").hide();
+    $("#down").hide();
+    $("#current").hide();
+    $("#total").hide();
+    $("#add").hide();
+    $("#confirm").show();
+    $("#concel").show();
+    clear();
+    addRecord();
+}
+
+function confirmAdd() {
+    var tempCon = "";
+    var i = 0;
+    $("#newOne").find("td").each(function () {
+        //循环获取每行td的内容
+        if (i != 0) {
+            var sValue2 = $(this).text();//获取td里面的input内容 
+            tempCon = tempCon + sValue2 + ";";
+        }
+        i++;
+    });
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Apartment.aspx/AddRecord",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json", 
+        data: "{'apt':'"+tempCon+ "'}",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            alert(temp.data);
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
+}
+
+function concelAdd() {
+    clear();
+    $("#up").show();
+    $("#down").show();
+    $("#current").show();
+    $("#total").show();
+    $("#add").show();
+    createAspx();
+}
