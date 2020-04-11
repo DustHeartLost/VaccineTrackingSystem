@@ -87,5 +87,5 @@ body{
 
 .main-content{
 	min-height:593px;
-	/*padding-bottom: 30px;*/
+	margin-left:0;
 }

@@ -7,6 +7,8 @@
         window.onload = create;
         function create() {
             var obj =<%=GetALL() %>;
+            $("#cancelUpdate").hide();
+            $("#confirmUpdate").hide();
             if (obj.code == 200) createTable(obj.data, obj.extra);
             else alert(obj.data);
         }
@@ -35,9 +37,12 @@
 
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
+    <button id="update" onclick="showCheckBox()" style="padding:5px">修改记录</button>
+    <button id="cancelUpdate" onclick="cancelUpdate()" style="padding:5px">取消修改</button>
+    <button id="confirmUpdate" onclick="confirmUpdate()" style="padding:5px">确认记录</button>
     <div id="upAndDownArea">
-        <button id="up" class="upAnddown" onclick="up()"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
-        <button id="down" class="upAnddown" onclick="down()"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+        <button id="up" class="upAnddown" onclick="up()"><</button>
+        <button id="down" class="upAnddown" onclick="down()">></button>
         <label id="current"></label>
         <label id="total"></label>
     </div>
@@ -48,7 +53,8 @@
     <div id="table">
         <table id="tableContainer">
             <tr id="caption">
-                <th>角色ID</th><th>名称</th><th>机构管理</th><th>角色管理</th><th>用户管理</th><th>库房管理</th><th>品类管理</th><th>入库管理</th><th>出库管理</th><th>销毁管理</th><th>库存查询</th><th>报表管理</th><th>备注</th>
+                <th></th><th>ID</th><th>名称</th><th>机构管理</th><th>角色管理</th><th>用户管理</th><th>库房管理</th><th>品类管理</th><th>入库管理</th><th>出库管理</th><th>销毁管理</th><th>库存查询</th><th>报表管理</th><th>备注</th>
+                <td contenteditable="true">
             </tr>
         </table>
     </div>
