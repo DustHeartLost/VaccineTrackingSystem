@@ -105,6 +105,7 @@
     <Content Include="View\Login\Login.aspx" />
     <Content Include="View\Module\Apartment\Apartment.aspx" />
     <Content Include="View\Module\Apartment\css\apartment.css" />
+    <Content Include="View\Module\Apartment\js\apartment.js" />
     <Content Include="View\Module\Role\css\role.css" />
     <Content Include="View\Module\Role\js\role.js" />
     <Content Include="View\Module\Role\Role.aspx" />
@@ -244,7 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Util\" />
-    <Folder Include="View\Module\Apartment\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

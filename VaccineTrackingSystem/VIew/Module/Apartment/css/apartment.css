@@ -10,6 +10,7 @@
 #table {
     margin: 0;
     padding: 0;
+    
 }
 
 #tableContainer {
@@ -30,9 +31,17 @@ td {
 
 .dataRow {
     background-color: white;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
+
+.dataRow2 {
+    background-color: gainsboro;
+    margin: 0;
+    padding: 0;
+
+}
+
 
 th {
     color: #4b4b4b;
@@ -63,6 +72,5 @@ th {
 .upAnddown {
     vertical-align: middle;
     margin: 0;
-    
 }
 

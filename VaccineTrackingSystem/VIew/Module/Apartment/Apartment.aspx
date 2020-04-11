@@ -18,24 +18,30 @@
             var currV =<%=GetCurr()%>;
             label.innerText = "第" + currV + "页";
 
+            $("#confirm").hide();
+            $("#concel").hide();
+
         }
 
         function down() {
-            var obj =<%=GetDown()%>;
-            if (obj.code == 200)  reCreateTable(obj.data, obj.extra); 
-            else alert(obj.data);
+            var obj =<%=GetDown() %>;
+           if (obj.code == 200) reCreateTable(obj.data);
+           else alert(obj.data);
 
-            var label = document.getElementById("total");
-            var tolV =<%=GetTotal()%>;
-            label.innerText = "共" + tolV + "页";
-            var label = document.getElementById("current");
-            var currV =<%=GetCurr()%>;
-            label.innerText = "第" + currV + "页";
+           var label = document.getElementById("total");
+           var tolV =<%=GetTotal() %>;
+           label.innerText = "共" + tolV + "页";
+           var label = document.getElementById("current");
+           var currV =<%=GetCurr() %>;
+           label.innerText = "第" + currV + "页";
+
+           $("#confirm").hide();
+            $("#concel").hide();
         }
 
         function up() {
             var obj =<%=GetUp()%>;
-            if (obj.code == 200) reCreateTable(obj.data, obj.extra);
+            if (obj.code == 200) reCreateTable(obj.data);
             else alert(obj.data);
 
             var label = document.getElementById("total");
@@ -44,7 +50,22 @@
             var label = document.getElementById("current");
             var currV =<%=GetCurr()%>;
             label.innerText = "第" + currV + "页";
+
+            $("#confirm").hide();
+            $("#concel").hide();
         }
+
+        function add() {
+            $("#up").hide();
+            $("#down").hide();
+            $("#current").hide();
+            $("#total").hide();
+            $("#add").hide();
+            $("#confirm").show();
+            $("#concel").show();
+            clear();
+            addRecord();
+        };
 
     </script>
     
@@ -60,11 +81,16 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <div style="float: right;" id="upAndDownArea">
-        <button id="up" class="upAnddown" onclick="up()">上一页</button>
-        <button id="down" class="upAnddown" onclick="down()">下一页</button>
+        <button id="up" class="upAnddown" onclick="up()" aria-valuetext="&lt;"> <</button>
+        <button id="down" class="upAnddown" onclick="down()" aria-valuetext="&gt;"> ></button>
          
          <label id="current">第页</label>
          <label id="total">共页</label>
+    </div>
+     <div style="float: left;" id="addArea">
+        <button id="add" class="upAnddown" onclick="add()">增加机构</button>
+        <button id="confirm" class="upAnddown" onclick="confirm()" >确认增加</button>
+        <button id="concel" class="upAnddown" onclick="concel()" >取消增加</button>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">
