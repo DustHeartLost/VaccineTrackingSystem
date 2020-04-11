@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Web.Services;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.Module.Apartment
@@ -8,6 +9,7 @@ namespace VaccineTrackingSystem.View.Module.Apartment
     {
         protected int totalPage;
         protected int currentPage;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,6 +51,20 @@ namespace VaccineTrackingSystem.View.Module.Apartment
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
+        public static string AddRecord(string data)
+        {
+            string[] strArray = data.Split(';');
+            string msg;
+            Models.Apartment apartment1=new Models.Apartment(strArray[0], strArray[1],strArray[2]);
+            string jsonData = Models.BLL.ApartManage.Add(apartment1, out msg);
+            return jsonData.Equals("false") ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
 
+        [WebMethod]
+        public static string Atest(string data)
+        {
+            System.Diagnostics.Debug.Write("###############################"+ data);
+            return "ok"+ data;
+        }
     }
 }
