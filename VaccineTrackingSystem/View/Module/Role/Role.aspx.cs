@@ -7,8 +7,8 @@ namespace VaccineTrackingSystem.VIew.Module.Role
 {
     public partial class Role : System.Web.UI.Page
     {
-        protected int totalPage;
-        protected int currentPage;
+        protected static int totalPage;
+        protected static int currentPage;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,13 +21,15 @@ namespace VaccineTrackingSystem.VIew.Module.Role
             string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
-        public string GetDown()
+        [System.Web.Services.WebMethod]
+        public static string GetDown()
         {
             string msg;
             string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage+1}+{currentPage+1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
-        public string GetUp()
+        [System.Web.Services.WebMethod]
+        public static string GetUp()
         {
             if (currentPage == -1) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
             currentPage -= 2;

@@ -109,3 +109,42 @@ function clickCheck(obj) {
         $(this).attr("contenteditable", true);
     });
 }
+
+function down() {
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Role.aspx/GetDown",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+              var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                reCreateTable(temp.data, temp.extra);
+            } else {
+                alert(temp.data);
+            }
+        },
+        error: function (err) {
+               alert(err);
+        }
+    });
+}
+function up() {
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Role.aspx/GetUp",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                reCreateTable(temp.data, temp.extra);
+            } else {
+                alert(temp.data);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
+}
