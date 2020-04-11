@@ -65,8 +65,45 @@
             $("#concel").show();
             clear();
             addRecord();
-        };
+        }
 
+        function confirmAdd() {
+            var data = "";
+            var i = 0;
+            $("#newOne").find("td").each(function(){
+                //循环获取每行td的内容
+                if (i != 0) {
+                    var sValue2 = $(this).text();//获取td里面的input内容 
+                    data = data + sValue2+ ";" ;
+                }
+                i++;
+            });
+            alert(data);
+            var a = JSON.parse(data);
+            $.ajax({
+                type: "post", //要用post方式                 
+                url: "AddRecord",//方法所在页面和方法名
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data:a,
+                success: function (data) {
+                    alert(data.d);//返回的数据用data.d获取内容
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            });
+        }
+
+        function concelAdd() {
+            clear();
+            $("#up").show();
+            $("#down").show();
+            $("#current").show();
+            $("#total").show();
+            $("#add").show();
+            createAspx();
+        }
     </script>
     
 </asp:Content>
@@ -89,13 +126,13 @@
     </div>
      <div style="float: left;" id="addArea">
         <button id="add" class="upAnddown" onclick="add()">增加机构</button>
-        <button id="confirm" class="upAnddown" onclick="confirm()" >确认增加</button>
-        <button id="concel" class="upAnddown" onclick="concel()" >取消增加</button>
+        <button id="confirm" class="upAnddown" onclick="confirmAdd()" >确认增加</button>
+        <button id="concel" class="upAnddown" onclick="concelAdd()" >取消增加</button>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">
     <div id="table">
-        <table id="tableContainer">
+        <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
                 <th>部门ID</th>
                 <th>部门编号</th>

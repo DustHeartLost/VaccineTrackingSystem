@@ -24,7 +24,6 @@
 
         public Apartment(string num, string name, string note)
         {
-            /*this.id = id; int id,*/
             this.num = num;
             this.name = name;
             this.note = note;
