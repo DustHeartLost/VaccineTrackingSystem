@@ -12,17 +12,6 @@
             if (obj.code == 200) createTable(obj.data, obj.extra);
             else alert(obj.data);
         }
-        function down() {
-            var obj =<%=GetDown()%>;
-            if (obj.code == 200) reCreateTable(obj.data,obj.extra);
-            else alert(obj.data);
-        }
-        function up() {
-            var obj =<%=GetUp()%>;
-            console.log(obj.code);
-            if (obj.code == 200) reCreateTable(obj.data, obj.extra);
-            else alert(obj.data);
-        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
