@@ -27,9 +27,6 @@ td {
     font-size: medium;
     padding: 5px;
     color: #3d3d3d;
-    border-style: solid;   /*新增边框*/
-    border-width: 1px;
-    border-color:white;
 }
 
 .dataRow {
