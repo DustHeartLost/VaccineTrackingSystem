@@ -23,11 +23,12 @@
 
 td {
     font-family: sans-serif;
-    text-align: center;
+    text-align: left;
     font-size: medium;
     padding: 5px;
     color: #3d3d3d;
 }
+
 
 .dataRow {
     background-color: white;
@@ -56,7 +57,7 @@ th {
     padding-left: 0px;
     padding-right: 12px;
     padding-bottom: 10px;
-    text-align: center;
+    text-align: left;
     width: 2000px;
     height: 60px;
     margin:0;

@@ -83,6 +83,25 @@ function cancelUpdate() {
     $("#concelAdd").hide();
     $("#confirmAdd").hide();
     $("#add").show();
+
+    clear();
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Role.aspx/GetALL",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                reCreateTable(temp.data, temp.extra);
+            } else {
+                alert(temp.data);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
 }
 
 function confirmUpdate() {
@@ -172,11 +191,8 @@ function up() {
         dataType: "json",
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
-            if (temp.code == 200) {
+            if (temp.code == 200) 
                 reCreateTable(temp.data, temp.extra);
-            } else {
-                alert(temp.data);
-            }
         },
         error: function (err) {
             alert(err);
@@ -294,7 +310,7 @@ function search() {
                     reCreateTable(tempT.data, tempT.extra);
                 }
                 else {
-                    alert(tempT.extra);
+                    alert(tempT.data);
                 }
             },
             error: function (err) {
@@ -303,5 +319,5 @@ function search() {
         });
     }
     else
-        alert("请输入");
+        alert("请输入角色名称");
 }

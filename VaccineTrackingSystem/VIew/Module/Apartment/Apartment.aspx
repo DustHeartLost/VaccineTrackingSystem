@@ -5,55 +5,18 @@
     <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
     <script src="js/apartment.js"></script>
     <script>
-        window.onload = createAspx;
-        function createAspx() {
-            var obj =<%=GetALL()%>;
-            if (obj.code == 200) createTable(obj.data);
-            else alert(obj.data);  
-
-            var label = document.getElementById("total");
-            var tolV =<%=GetTotal()%>;
-            label.innerText = "共" + tolV + "页";
-            var label = document.getElementById("current");
-            var currV =<%=GetCurr()%>;
-            label.innerText = "第" + currV + "页";
-
-            $("#confirm").hide();
-            $("#concel").hide();
-        }
-        function down() {
-            var obj =<%=GetDown() %>;
-            if (obj.code == 200) reCreateTable(obj.data);
+        window.onload = create;
+        function create() {
+            var obj =<%=GetALL() %>;
+            $("#cancelUpdate").hide();
+            $("#confirmUpdate").hide();
+            $("#concelAdd").hide();
+            $("#confirmAdd").hide();
+            $("#add").show();
+            $("#update").show();
+            if (obj.code == 200) createTable(obj.data, obj.extra);
             else alert(obj.data);
-
-            var label = document.getElementById("total");
-            var tolV =<%=GetTotal() %>;
-            label.innerText = "共" + tolV + "页";
-            var label = document.getElementById("current");
-            var currV =<%=GetCurr() %>;
-            label.innerText = "第" + currV + "页";
-
-            $("#confirm").hide();
-            $("#concel").hide();
         }
-
-        function up() {
-            var obj =<%=GetUp() %>;
-            if (obj.code == 200) reCreateTable(obj.data);
-            else alert(obj.data);
-
-            var label = document.getElementById("total");
-            var tolV =<%=GetTotal() %>;
-            label.innerText = "共" + tolV + "页";
-            var label = document.getElementById("current");
-            var currV =<%=GetCurr() %>;
-            label.innerText = "第" + currV + "页";
-
-            $("#confirm").hide();
-            $("#concel").hide();
-        }
-
-       
     </script>
     
 </asp:Content>
@@ -62,8 +25,8 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-    <input type="text" placeholder="请输入部门名称进行查找" id="search" class="sx_inp search-input">
-    <input id="searchButton" type="button" value="搜索" class="auto-style2"/>
+    <input type="text" placeholder="请输入部门编号进行查找" id="searchText" class="sx_inp search-input">
+    <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
@@ -76,14 +39,18 @@
     </div>
      <div style="float: left;" id="addArea">
         <button id="add" class="upAnddown" onclick="add()">增加机构</button>
-        <button id="confirm" class="upAnddown" onclick="confirmAdd()" >确认增加</button>
-        <button id="concel" class="upAnddown" onclick="concelAdd()" >取消增加</button>
+        <button id="confirmAdd" class="upAnddown" onclick="confirmAdd()" >确认增加</button>
+        <button id="concelAdd" class="upAnddown" onclick="concelAdd()" >取消增加</button>
+        <button id="update" onclick="showCheckBox()" style="padding:5px">修改部门</button>
+        <button id="cancelUpdate"  onclick="cancelUpdate()"  style="padding:5px">取消修改</button>
+        <button id="confirmUpdate"  onclick="confirmUpdate()"  style="padding:5px">确认修改</button>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">
     <div id="table">
         <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
+                <th></th>
                 <th>部门ID</th>
                 <th>部门编号</th>
                 <th>部门名称</th>
