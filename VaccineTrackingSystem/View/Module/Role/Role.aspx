@@ -9,6 +9,10 @@
             var obj =<%=GetALL() %>;
             $("#cancelUpdate").hide();
             $("#confirmUpdate").hide();
+            $("#concelAdd").hide();
+            $("#confirmAdd").hide();
+            $("#add").show();
+            $("#update").show();
             if (obj.code == 200) createTable(obj.data, obj.extra);
             else alert(obj.data);
         }
@@ -26,9 +30,12 @@
 
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
-    <button id="update" onclick="showCheckBox()" style="padding:5px">修改记录</button>
-    <button id="cancelUpdate" onclick="cancelUpdate()" style="padding:5px">取消修改</button>
-    <button id="confirmUpdate" onclick="confirmUpdate()" style="padding:5px">确认记录</button>
+    <button id="add"  onclick="add()" style="padding:5px">增加角色</button>
+    <button id="confirmAdd"  onclick="confirmAdd()" style="padding:5px">确认增加</button>
+    <button id="concelAdd"  onclick="concelAdd()"  style="padding:5px">取消增加</button>
+    <button id="update" onclick="showCheckBox()" style="padding:5px">修改角色</button>
+    <button id="cancelUpdate"  onclick="cancelUpdate()"  style="padding:5px">取消修改</button>
+    <button id="confirmUpdate"  onclick="confirmUpdate()"  style="padding:5px">确认修改</button>
     <div id="upAndDownArea">
         <button id="up" class="upAnddown" onclick="up()"><</button>
         <button id="down" class="upAnddown" onclick="down()">></button>
@@ -43,7 +50,6 @@
         <table id="tableContainer">
             <tr id="caption">
                 <th></th><th>ID</th><th>名称</th><th>机构管理</th><th>角色管理</th><th>用户管理</th><th>库房管理</th><th>品类管理</th><th>入库管理</th><th>出库管理</th><th>销毁管理</th><th>库存查询</th><th>报表管理</th><th>备注</th>
-                <td contenteditable="true">
             </tr>
         </table>
     </div>
