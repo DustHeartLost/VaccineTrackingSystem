@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Web.Services;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.VIew.Module.Role
@@ -45,5 +46,15 @@ namespace VaccineTrackingSystem.VIew.Module.Role
             Models.Role role = new Models.Role((int)jo["id"],jo["name"].ToString(),jo["authority"].ToString(), jo["note"].ToString());
             return Models.BLL.RoleManage.Update(role, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")):JsonConvert.SerializeObject(new Packet(202, msg));
         }
-    }
+
+        [WebMethod]
+        public static string SearchCon(string temp)
+        {
+            string msg;
+            totalPage = 0;
+            currentPage = 0;
+            string jsonData = Models.BLL.RoleManage.Query(temp,out msg);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+    }  
 }

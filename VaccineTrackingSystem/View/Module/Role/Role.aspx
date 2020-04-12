@@ -20,8 +20,8 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-    <input type="text" placeholder="请输入角色名称进行查找" id="search" class="sx_inp search-input">
-    <input id="searchButton" type="button" value="搜索" class="auto-style2"/>
+    <input type="text" placeholder="请输入角色名称进行查找" id="searchText" class="sx_inp search-input">
+    <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 
 

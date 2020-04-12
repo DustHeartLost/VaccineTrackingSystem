@@ -7,15 +7,15 @@
         else
              html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td>" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td>";
 
-            for (var j = 0; j < 10; j++) {
-                if (data[i].authority[j] == 1) {
-                    html += "<td><select class=\"edit\" disabled=\"disabled\"><option>允许</option><option>拒绝</option></select ></td>";
-                } else {
-                    html += "<td><select class=\"edit\" disabled=\"disabled\"><option>拒绝</option ><option>允许</option></select ></td>";
-                }
+        for (var j = 0; j < 10; j++) {
+           if (data[i].authority[j] == 1) {
+              html += "<td><select class=\"edit\" disabled=\"disabled\"><option>允许</option><option>拒绝</option></select ></td>";
+           }
+           else {
+                html += "<td><select class=\"edit\" disabled=\"disabled\"><option>拒绝</option ><option>允许</option></select ></td>";
             }
-            html += "<td class=\"editTd\">" + data[i].note + "</td></tr>";
-
+        }
+        html += "<td class=\"editTd\">" + data[i].note + "</td></tr>";
     }
     $("#caption").after(html);
     var x = extra.split('+');
@@ -24,6 +24,7 @@
     $("#current").text("第" + x[1] + "页");
     $(".checkBox").hide();
 }
+
 
  $(document).ready(function () {
      $("#tableContainer").delegate(".dataRow", "mouseenter", function () {
@@ -159,4 +160,32 @@ function up() {
             alert(err);
         }
     });
+}
+
+
+function search() {
+    var tempCon = $("#searchText").val();
+    if (tempCon != "") {
+        $.ajax({
+            type: "post",               
+            url: "Role.aspx/SearchCon",//方法所在页面和方法名
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: "{'temp':'" + tempCon + "'}",
+            success: function (data) {
+                var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
+                if (tempT.code == 200) {
+                    reCreateTable(tempT.data, tempT.extra);
+                }
+                else {
+                    alert(tempT.extra);
+                }
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    }
+    else
+        alert("请输入");
 }

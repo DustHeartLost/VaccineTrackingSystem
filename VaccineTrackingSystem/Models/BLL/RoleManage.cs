@@ -15,9 +15,14 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return RoleDAL.Update(role, out msg);
         }
-        static public Role Query(string name, out string msg)
+        static public string Query(string name, out string msg)
         {
-            return RoleDAL.Query(name, out msg);
+            List<Role> roles = new List<Role>();
+            if (RoleDAL.Query(name, out msg) != null)
+                roles.Add(RoleDAL.Query(name, out msg));
+            else
+               return null;
+            return JsonConvert.SerializeObject(roles);
         }
         static public string QueryAll(out string msg,ref int totalPage,ref int currentPage)
         {
@@ -28,11 +33,8 @@ namespace VaccineTrackingSystem.Models.BLL
                 return null;
             } 
             totalPage = (int)System.Math.Floor((decimal)(list.Count/10));
-            System.Diagnostics.Debug.WriteLine("###############################");
             if (currentPage < totalPage) 
                 ++currentPage;
-            System.Diagnostics.Debug.WriteLine(totalPage);
-            System.Diagnostics.Debug.WriteLine(currentPage);
             try {
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
             } catch {
