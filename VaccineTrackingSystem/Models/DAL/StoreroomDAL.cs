@@ -52,20 +52,24 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public Storeroom Query(int id, out string msg)
+        static public List<Storeroom> Query(string name, out string msg)
         {
-            string command = $"select * from Storeroom where id = '{id}'";
-            SqlDataReader read = SQL.getData(command);
+            string command = $"select * from Storeroom where name = '{name}'";
+            SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
                 msg = "查询结果为空";
                 SQL.Dispose();
                 return null;
             }
-            Storeroom storeroom = new Storeroom((int)read["id"], (string)read["name"], (string)read["site"], (string)read["userNum"]);
+            List<Storeroom> list = new List<Storeroom>();
+            while (read.Read())
+            {
+                list.Add(new Storeroom((int)read["id"], (string)read["name"], (string)read["site"], (string)read["userNum"]));
+            }
             SQL.Dispose();
             msg = null;
-            return storeroom;
+            return list;
         }
         static public List<Storeroom> QueryAll(out string msg)
         {

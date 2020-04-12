@@ -18,8 +18,9 @@ namespace VaccineTrackingSystem.Models.BLL
         static public string Query(string num, out string msg)
         {
             List<Apartment> apartments = new List<Apartment>();
-            if (ApartmentDAL.Query(num, out msg) != null)
-                apartments.Add(ApartmentDAL.Query(num, out msg));
+            Apartment apartment = ApartmentDAL.Query(num, out msg);
+            if (apartment != null)
+                apartments.Add(apartment);
             else
                 return null;
             return JsonConvert.SerializeObject(apartments);
