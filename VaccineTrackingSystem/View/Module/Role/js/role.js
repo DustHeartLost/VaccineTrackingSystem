@@ -42,6 +42,8 @@ function showCheckBox() {
     $("#cancelUpdate").show();
     $("#confirmUpdate").show();
     $("#update").hide();
+    $("#down").hide();
+    $("#up").hide();
 }
 
 function cancelUpdate() {
@@ -49,6 +51,10 @@ function cancelUpdate() {
     $("#cancelUpdate").hide();
     $("#confirmUpdate").hide();
     $("#update").show();
+    $(".editTd").attr("contenteditable", false);
+    $(".edit").attr("disabled", true);
+    $("#down").show();
+    $("#up").show();
 }
 
 function confirmUpdate() {
