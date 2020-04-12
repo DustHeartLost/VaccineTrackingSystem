@@ -20,90 +20,40 @@
 
             $("#confirm").hide();
             $("#concel").hide();
-
         }
-
         function down() {
             var obj =<%=GetDown() %>;
-           if (obj.code == 200) reCreateTable(obj.data);
-           else alert(obj.data);
-
-           var label = document.getElementById("total");
-           var tolV =<%=GetTotal() %>;
-           label.innerText = "共" + tolV + "页";
-           var label = document.getElementById("current");
-           var currV =<%=GetCurr() %>;
-           label.innerText = "第" + currV + "页";
-
-           $("#confirm").hide();
-            $("#concel").hide();
-        }
-
-        function up() {
-            var obj =<%=GetUp()%>;
             if (obj.code == 200) reCreateTable(obj.data);
             else alert(obj.data);
 
             var label = document.getElementById("total");
-            var tolV =<%=GetTotal()%>;
+            var tolV =<%=GetTotal() %>;
             label.innerText = "共" + tolV + "页";
             var label = document.getElementById("current");
-            var currV =<%=GetCurr()%>;
+            var currV =<%=GetCurr() %>;
             label.innerText = "第" + currV + "页";
 
             $("#confirm").hide();
             $("#concel").hide();
         }
 
-        function add() {
-            $("#up").hide();
-            $("#down").hide();
-            $("#current").hide();
-            $("#total").hide();
-            $("#add").hide();
-            $("#confirm").show();
-            $("#concel").show();
-            clear();
-            addRecord();
+        function up() {
+            var obj =<%=GetUp() %>;
+            if (obj.code == 200) reCreateTable(obj.data);
+            else alert(obj.data);
+
+            var label = document.getElementById("total");
+            var tolV =<%=GetTotal() %>;
+            label.innerText = "共" + tolV + "页";
+            var label = document.getElementById("current");
+            var currV =<%=GetCurr() %>;
+            label.innerText = "第" + currV + "页";
+
+            $("#confirm").hide();
+            $("#concel").hide();
         }
 
-        function confirmAdd() {
-            var data = "";
-            var i = 0;
-            $("#newOne").find("td").each(function(){
-                //循环获取每行td的内容
-                if (i != 0) {
-                    var sValue2 = $(this).text();//获取td里面的input内容 
-                    data = data + sValue2+ ";" ;
-                }
-                i++;
-            });
-            alert(data);
-            var a = JSON.parse(data);
-            $.ajax({
-                type: "post", //要用post方式                 
-                url: "Apartment.aspx/AddRecord",//方法所在页面和方法名
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data:a,
-                success: function (data) {
-                    alert(data.d);//返回的数据用data.d获取内容
-                },
-                error: function (err) {
-                    alert(err);
-                }
-            });
-        }
-
-        function concelAdd() {
-            clear();
-            $("#up").show();
-            $("#down").show();
-            $("#current").show();
-            $("#total").show();
-            $("#add").show();
-            createAspx();
-        }
+       
     </script>
     
 </asp:Content>

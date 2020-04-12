@@ -2,15 +2,20 @@
     var data = JSON.parse(temp);
     var html = "";
     for (var i = 0; i < data.length; i++) {
-        html += "<tr class=\"dataRow\" style=\"height:60px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td>" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td>";
-        for (var j = 0; j < 10; j++) {
-            if (data[i].authority[j] == 1) {
-                html += "<td><select class=\"edit\" disabled=\"disabled\"><option>允许</option><option>拒绝</option></select ></td>";
-            } else {
-                html += "<td><select class=\"edit\" disabled=\"disabled\"><option>拒绝</option ><option>允许</option></select ></td>";
+        if (i % 2 == 0)
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td>" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td>";
+        else
+             html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td>" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td>";
+
+            for (var j = 0; j < 10; j++) {
+                if (data[i].authority[j] == 1) {
+                    html += "<td><select class=\"edit\" disabled=\"disabled\"><option>允许</option><option>拒绝</option></select ></td>";
+                } else {
+                    html += "<td><select class=\"edit\" disabled=\"disabled\"><option>拒绝</option ><option>允许</option></select ></td>";
+                }
             }
-        }
-        html += "<td class=\"editTd\">"+data[i].note + "</td></tr>";
+            html += "<td class=\"editTd\">" + data[i].note + "</td></tr>";
+
     }
     $("#caption").after(html);
     var x = extra.split('+');
@@ -26,10 +31,17 @@
         });
      $("#tableContainer").delegate(".dataRow", "mouseleave", function () {
             $(this).removeClass("tr-mouseover");
-        });
+     });
+     $("#tableContainer").delegate(".dataRow2", "mouseenter", function () {
+         $(this).addClass("tr-mouseover");
+     });
+     $("#tableContainer").delegate(".dataRow2", "mouseleave", function () {
+         $(this).removeClass("tr-mouseover");
+     });
  });
 function clear() {
     $("tr").remove(".dataRow");
+    $("tr").remove(".dataRow2");
 }
 
 function reCreateTable(temp,extra) {

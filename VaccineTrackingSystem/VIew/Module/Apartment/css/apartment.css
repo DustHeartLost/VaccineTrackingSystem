@@ -27,9 +27,6 @@ td {
     font-size: medium;
     padding: 5px;
     color: #3d3d3d;
-    border-style: solid;   /*新增边框*/
-    border-width: 1px;
-    border-color:white;
 }
 
 .dataRow {
@@ -39,13 +36,13 @@ td {
 }
 
 .dataRow2 {
-    background-color: lightcyan;
+    background-color: #f1f2f6;
     margin: 0;
     padding: 0;
 }
 
 .dataRow3 {
-    background-color: lightblue;
+    background-color: #f7f1e3;
     margin: 0;
     padding: 0;
 }
@@ -79,5 +76,6 @@ th {
 .upAnddown {
     vertical-align: middle;
     margin: 0;
+    padding:5px;
 }
 
