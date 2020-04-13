@@ -1,34 +1,64 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
     public class TableManage
     {
-        static public List<Inflow> queryAllInflow(int storeID, out string msg, out decimal money)
+        static public string queryAllInflow(int storeID, ref int inflowTotalPage, ref int inflowCurrentPage,  out string msg, out decimal money)
         {
             money = 0m;
             List<Inflow> list = InflowDAL.QueryAllByStoreID(storeID, out msg);
-            if (list == null) return null;
-            msg = null;
-            foreach (Inflow inflow in list)
+            if (list == null)
             {
-                money += inflow.quantity * inflow.price;
+                inflowTotalPage = 0;
+                inflowCurrentPage = -1;
+                return null;
             }
-            return list;
+            msg = null;
+            foreach (Inflow inflow in list) {
+                money += inflow.price * inflow.quantity;
+            }
+            inflowTotalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (inflowCurrentPage < inflowTotalPage)
+                ++inflowCurrentPage;
+            try
+            {
+                return JsonConvert.SerializeObject(list.GetRange(inflowCurrentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(list.GetRange(inflowCurrentPage * 10, list.Count - inflowCurrentPage * 10));
+            }
         }
 
-        static public List<Outflow> queryAllOutflow(int storeID, out string msg, out decimal money)
+        static public string queryAllOutflow(int storeID, ref int outflowTotalPage, ref int outflowCurrentPage, out string msg, out decimal money)
         {
             money = 0m;
             List<Outflow> list = OutflowDAL.QueryAllByStoreID(storeID, out msg);
-            if (list == null) return null;
+            if (list == null)
+                {
+                    outflowTotalPage = 0;
+                    outflowCurrentPage = -1;
+                    return null;
+                }
             msg = null;
             foreach (Outflow outflow in list)
             {
                 money += outflow.price * outflow.quantity;
             }
-            return list;
+            outflowTotalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (outflowCurrentPage < outflowTotalPage)
+                ++outflowCurrentPage;
+            try
+            {
+                return JsonConvert.SerializeObject(list.GetRange(outflowCurrentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(list.GetRange(outflowCurrentPage * 10, list.Count - outflowCurrentPage * 10));
+            }
         }
 
     }
