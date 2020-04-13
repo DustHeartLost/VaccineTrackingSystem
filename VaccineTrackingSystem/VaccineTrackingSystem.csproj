@@ -106,6 +106,9 @@
     <Content Include="View\Module\Apartment\Apartment.aspx" />
     <Content Include="View\Module\Apartment\css\apartment.css" />
     <Content Include="View\Module\Apartment\js\apartment.js" />
+    <Content Include="View\Module\Category\Category.aspx" />
+    <Content Include="View\Module\Category\css\category.css" />
+    <Content Include="View\Module\Category\js\category.js" />
     <Content Include="View\Module\Role\css\role.css" />
     <Content Include="View\Module\Role\js\role.js" />
     <Content Include="View\Module\Role\Role.aspx" />
@@ -179,6 +182,13 @@
     </Compile>
     <Compile Include="View\Module\Apartment\Apartment.aspx.designer.cs">
       <DependentUpon>Apartment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Category\Category.aspx.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Category\Category.aspx.designer.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\Role\Role.aspx.cs">
       <DependentUpon>Role.aspx</DependentUpon>

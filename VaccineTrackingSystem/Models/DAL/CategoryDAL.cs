@@ -62,7 +62,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            Category category = new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], (string)read["factory"], (string)read["note"]);
+            Category category = new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], (string)read["factory"], read["note"].ToString());
             SQL.Dispose();
             msg = null;
             return category;
@@ -80,7 +80,7 @@ namespace VaccineTrackingSystem.Models.DAL
             List<Category> list = new List<Category>();
             while (read.Read())
             {
-                list.Add(new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], (string)read["factory"], (string)read["note"]));
+                list.Add(new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], (string)read["factory"], read["note"].ToString()));
             }
             SQL.Dispose();
             msg = null;
