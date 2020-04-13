@@ -304,5 +304,5 @@ function search() {
         });
     }
     else
-        alert("请输入角色名称");
+        alert("请输入库房名称");
 }
