@@ -109,6 +109,9 @@
     <Content Include="View\Module\Role\css\role.css" />
     <Content Include="View\Module\Role\js\role.js" />
     <Content Include="View\Module\Role\Role.aspx" />
+    <Content Include="View\Module\User\css\user.css" />
+    <Content Include="View\Module\User\js\user.js" />
+    <Content Include="View\Module\User\User.aspx" />
     <Content Include="View\Template\css\taskcenter.css" />
     <Content Include="View\Template\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="View\Template\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -180,6 +183,13 @@
     </Compile>
     <Compile Include="View\Module\Role\Role.aspx.designer.cs">
       <DependentUpon>Role.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\User\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\User\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Template\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>

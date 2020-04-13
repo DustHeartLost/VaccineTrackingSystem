@@ -59,7 +59,7 @@ namespace VaccineTrackingSystem.VIew.Module.Role
             Models.Role role = new Models.Role(jo["name"].ToString(), jo["authority"].ToString(), jo["note"].ToString());
             return Models.BLL.RoleManage.Add(role, out msg) ? JsonConvert.SerializeObject(new Packet(200, "插入成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
         }
-    }
+    
 
         [WebMethod]
         public static string SearchCon(string temp)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
@@ -14,13 +15,36 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return UserDAL.Update(user, out msg);
         }
-        static public User Query(string num, out string msg)
+        static public string Query(string num, out string msg)
         {
-            return UserDAL.Query(num, out msg);
+            User user=UserDAL.Query(num,out msg);
+            if (user != null) {
+                List<User> list = new List<User>();
+                list.Add(user);
+                return JsonConvert.SerializeObject(list);
+            }else
+                return null;
         }
-        static public List<User> QueryAll(out string msg)
+        static public string  QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
-            return UserDAL.QueryAll(out msg);
+            List<User> list = UserDAL.QueryAll(out msg);
+            if (list == null)
+            {
+                totalPage = 0;
+                currentPage = -1;
+                return null;
+            }
+            totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (currentPage < totalPage)
+                ++currentPage;
+            try
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
+            }
         }
 
     }
