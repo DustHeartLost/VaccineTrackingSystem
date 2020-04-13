@@ -106,6 +106,9 @@
     <Content Include="View\Module\Apartment\Apartment.aspx" />
     <Content Include="View\Module\Apartment\css\apartment.css" />
     <Content Include="View\Module\Apartment\js\apartment.js" />
+    <Content Include="View\Module\Category\Category.aspx" />
+    <Content Include="View\Module\Category\css\category.css" />
+    <Content Include="View\Module\Category\js\category.js" />
     <Content Include="View\Module\Role\css\role.css" />
     <Content Include="View\Module\Role\js\role.js" />
     <Content Include="View\Module\Role\Role.aspx" />
@@ -119,6 +122,9 @@
     <Content Include="View\SetPassword\images\ico_logo.png" />
     <Content Include="View\SetPassword\js\setpassword.js" />
     <Content Include="View\SetPassword\set.aspx" />
+    <Content Include="View\Module\User\css\user.css" />
+    <Content Include="View\Module\User\js\user.js" />
+    <Content Include="View\Module\User\User.aspx" />
     <Content Include="View\Template\css\taskcenter.css" />
     <Content Include="View\Template\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="View\Template\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -184,6 +190,13 @@
     <Compile Include="View\Module\Apartment\Apartment.aspx.designer.cs">
       <DependentUpon>Apartment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Module\Category\Category.aspx.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Category\Category.aspx.designer.cs">
+      <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Module\Role\Role.aspx.cs">
       <DependentUpon>Role.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -197,6 +210,13 @@
     </Compile>
     <Compile Include="View\Module\Storeroom\Storeroom.aspx.designer.cs">
       <DependentUpon>Storeroom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\User\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\User\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\SetPassword\set.aspx.cs">
       <DependentUpon>set.aspx</DependentUpon>
@@ -267,9 +287,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Util\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

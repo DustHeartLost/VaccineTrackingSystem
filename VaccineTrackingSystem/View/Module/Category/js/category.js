@@ -2,19 +2,13 @@
     var data = JSON.parse(temp);
     var html = "";
     for (var i = 0; i < data.length; i++) {
-        if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td><td class=\"editTd\">";
-            html += data[i].userNum + "</td></tr>";
-        }
-        else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td><td class=\"editTd\">";
-            html += data[i].userNum + "</td></tr>";
-        }
-           
-}
+        if (i % 2 == 0) 
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].num + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].unit + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].factory + "</td><td class=\"editTd\">" + data[i].note + "</td></tr>";
+        else 
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].num + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].unit + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].factory + "</td><td class=\"editTd\">" + data[i].note + "</td></tr>";
+    }
     $("#caption").after(html);
     var x = extra.split('+');
-    console.log(x[1]);
     $("#total").text("共" + x[0] + "页");
     $("#current").text("第" + x[1] + "页");
     $(".checkBox").hide();
@@ -82,7 +76,7 @@ function cancelUpdate() {
     clear();
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Storeroom.aspx/GetALL",//方法所在页面和方法名
+        url: "Category.aspx/GetALL",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -107,15 +101,19 @@ function confirmUpdate() {
                 temp += $(this).text() + "@@";
             });
             temp1 = temp.split("@@");
-            if (temp1[1] == "" || temp1[2] == "" || temp1[3] == "") { alert("请输入完整信息"); return; };
+            if (temp1[1] == "" || temp1[2] == "" || temp1[3] == ""||temp1[4] == "" || temp1[5] == "" || temp1[6] == "") { alert("请输入完整信息"); return; };
             var data1 = new Object();
             data1.id = temp1[0];
-            data1.name = temp1[1];
-            data1.site = temp1[2];
-            data1.userNum = temp1[3];
+            data1.num = temp1[1];
+            data1.name = temp1[2];
+            data1.kind = temp1[3];
+            data1.unit = temp1[4];
+            data1.spec = temp1[5];
+            data1.factory = temp1[6];
+            data1.note = temp1[7];
             $.ajax({
                 type: "post", //要用post方式                 
-                url: "Storeroom.aspx/Update",//方法所在页面和方法名
+                url: "Category.aspx/Update",//方法所在页面和方法名
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: "{'temp':'" + JSON.stringify(data1) + "'}",
@@ -155,7 +153,7 @@ function clickCheck(obj) {
 function down() {
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Storeroom.aspx/GetDown",//方法所在页面和方法名
+        url: "Category.aspx/GetDown",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -174,7 +172,7 @@ function down() {
 function up() {
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Storeroom.aspx/GetUp",//方法所在页面和方法名
+        url: "Category.aspx/GetUp",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -223,7 +221,7 @@ function concelAdd() {
     clear();
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Storeroom.aspx/GetALL",//方法所在页面和方法名
+        url: "Category.aspx/GetALL",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -242,8 +240,7 @@ function concelAdd() {
 }
 
 function addRecord() {
-    html = "<tr id=\"newOne\" class=\"dataRow3\"  style=\"height:50px;width:130px\"><td></td><td></td><td contentEditable=\"true\" class=\"editTd\"></td>";
-    html += "<td contentEditable=\"true\" class=\"editTd\"></td><td contentEditable=\"true\" class=\"editTd\"></td></tr>";
+    html = "<tr class=\"dataRow3\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td class=\"ID\"></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\"></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\"></td></tr>";
     $("#caption").after(html);
 }
 
@@ -253,15 +250,19 @@ function confirmAdd() {
         temp += $(this).text() + "@@";
     });
     temp1 = temp.split("@@");
-    if (temp1[0] == "" || temp1[1] == "" || temp1[2] == "") { alert("请输入完整信息"); return; }
+    if ( temp1[0] == "" ||temp1[1] == "" || temp1[2] == "" || temp1[3] == "" || temp1[4] == "" || temp1[5] == "" ) { alert("请输入完整信息"); return; };
     var data1 = new Object();
-    data1.id = 0;
-    data1.name = temp1[0];
-    data1.site = temp1[1];
-    data1.userNum = temp1[2];
+    data1.id = 0;;
+    data1.num = temp1[0];
+    data1.name = temp1[1];
+    data1.kind = temp1[2];
+    data1.unit = temp1[3];
+    data1.spec = temp1[4];
+    data1.factory = temp1[5];
+    data1.note = temp1[6];
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Storeroom.aspx/Insert",//方法所在页面和方法名
+        url: "Category.aspx/Insert",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: "{'temp':'" + JSON.stringify(data1) + "'}",
@@ -277,11 +278,15 @@ function confirmAdd() {
 
 
 function search() {
+    $("#cancelUpdate").hide();
+    $("#confirmUpdate").hide();
+    $("#confirmAdd").hide();
+    $("#concelAdd").hide();
     var tempCon = $("#searchText").val();
     if (tempCon != "") {
         $.ajax({
             type: "post",
-            url: "Storeroom.aspx/SearchCon",//方法所在页面和方法名
+            url: "Category.aspx/SearchCon",//方法所在页面和方法名
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: "{'temp':'" + tempCon + "'}",
@@ -300,5 +305,5 @@ function search() {
         });
     }
     else
-        alert("请输入库房名称");
+        alert("请输入品类编号名称");
 }
