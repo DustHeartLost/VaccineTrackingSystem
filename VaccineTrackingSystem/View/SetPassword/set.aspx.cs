@@ -23,7 +23,8 @@ namespace VaccineTrackingSystem.View.SetPassword
             string msg;
             Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
             string userName = user["userName"].ToString();
-            return Models.BLL.UserManage.UpdateByOther(userName,temp,out msg)? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            string passwordMD = Models.BLL.LoginManage.GenerateMD5(temp);
+            return Models.BLL.UserManage.UpdateByOther(userName, passwordMD, out msg)? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }
 }  

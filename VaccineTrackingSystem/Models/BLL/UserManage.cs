@@ -25,7 +25,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }else
                 return null;
         }
-        static public string  QueryAll(out string msg, ref int totalPage, ref int currentPage)
+        static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
             List<User> list = UserDAL.QueryAll(out msg);
             if (list == null)
@@ -45,19 +45,11 @@ namespace VaccineTrackingSystem.Models.BLL
             {
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
             }
+        }
 
         static public bool UpdateByOther(string userName, string password, out string msg)
         {
             return UserDAL.UpdateByName(userName, password, out msg);
-        }
-
-        static public User Query(string num, out string msg)
-        {
-            return UserDAL.Query(num, out msg);
-        }
-        static public List<User> QueryAll(out string msg)
-        {
-            return UserDAL.QueryAll(out msg);
         }
 
     }
