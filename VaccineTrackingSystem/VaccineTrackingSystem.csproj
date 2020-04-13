@@ -122,6 +122,9 @@
     <Content Include="View\SetPassword\images\ico_logo.png" />
     <Content Include="View\SetPassword\js\setpassword.js" />
     <Content Include="View\SetPassword\set.aspx" />
+    <Content Include="View\Module\Table\css\table.css" />
+    <Content Include="View\Module\Table\js\table.js" />
+    <Content Include="View\Module\Table\Table.aspx" />
     <Content Include="View\Module\User\css\user.css" />
     <Content Include="View\Module\User\js\user.js" />
     <Content Include="View\Module\User\User.aspx" />
@@ -210,6 +213,13 @@
     </Compile>
     <Compile Include="View\Module\Storeroom\Storeroom.aspx.designer.cs">
       <DependentUpon>Storeroom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Table\Table.aspx.cs">
+      <DependentUpon>Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Table\Table.aspx.designer.cs">
+      <DependentUpon>Table.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\User\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
