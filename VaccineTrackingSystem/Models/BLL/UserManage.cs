@@ -14,6 +14,12 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return UserDAL.Update(user, out msg);
         }
+
+        static public bool UpdateByOther(string userName, string password, out string msg)
+        {
+            return UserDAL.UpdateByName(userName, password, out msg);
+        }
+
         static public User Query(string num, out string msg)
         {
             return UserDAL.Query(num, out msg);

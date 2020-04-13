@@ -296,10 +296,6 @@ function confirmAdd() {
 
 
 function search() {
-    $("#cancelUpdate").hide();
-    $("#confirmUpdate").hide();
-    $("#confirmAdd").hide();
-    $("#concelAdd").hide();
     var tempCon = $("#searchText").val();
     if (tempCon != "") {
         $.ajax({

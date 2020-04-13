@@ -52,6 +52,23 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
+        static public bool UpdateByName(string userName, string password, out string msg)
+        {
+            {
+                string command = $"update [User] set password = '{password}' where userName = '{userName}'";
+                try
+                {
+                    msg = null;
+                    return SQL.Excute(command);
+                }
+                catch (Exception e)
+                {
+                    msg = e.Message;
+                    System.Diagnostics.Debug.Write(msg);
+                    return false;
+                }
+            }
+        }
         static public User Query(string num, out string msg)
         {
             string command = $"select * from [User] where num = '{num}'";

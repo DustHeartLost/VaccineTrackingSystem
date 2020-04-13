@@ -49,7 +49,10 @@ namespace VaccineTrackingSystem.VIew.Login
             string msg;
             if (LoginManage.Login(Username.Text, Password.Text, out msg))
             {
-                Response.Redirect("../Home/Home.aspx");
+                if(Password.Text=="123456")
+                    Response.Redirect("../SetPassword/set.aspx");
+                else
+                    Response.Redirect("../Home/Home.aspx");
             }
             else
             {

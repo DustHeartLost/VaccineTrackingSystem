@@ -112,6 +112,13 @@
     <Content Include="View\Module\Storeroom\css\storeroom.css" />
     <Content Include="View\Module\Storeroom\js\storeroom.js" />
     <Content Include="View\Module\Storeroom\Storeroom.aspx" />
+    <Content Include="View\SetPassword\css\login.css" />
+    <Content Include="View\SetPassword\css\main.css" />
+    <Content Include="View\SetPassword\css\setPassword.css" />
+    <Content Include="View\SetPassword\images\bg.jpg" />
+    <Content Include="View\SetPassword\images\ico_logo.png" />
+    <Content Include="View\SetPassword\js\setpassword.js" />
+    <Content Include="View\SetPassword\set.aspx" />
     <Content Include="View\Template\css\taskcenter.css" />
     <Content Include="View\Template\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="View\Template\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -190,6 +197,13 @@
     </Compile>
     <Compile Include="View\Module\Storeroom\Storeroom.aspx.designer.cs">
       <DependentUpon>Storeroom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetPassword\set.aspx.cs">
+      <DependentUpon>set.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\SetPassword\set.aspx.designer.cs">
+      <DependentUpon>set.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Template\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
