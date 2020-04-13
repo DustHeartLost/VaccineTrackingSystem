@@ -1,16 +1,20 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Services;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using VaccineTrackingSystem.Models.Entity;
 
-namespace VaccineTrackingSystem.VIew.Module.Role
+namespace VaccineTrackingSystem.View.Module.Storeroom
 {
-    public partial class Role : System.Web.UI.Page
+    public partial class Storeroom : System.Web.UI.Page
     {
         protected static int totalPage;
         protected static int currentPage;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
@@ -19,19 +23,20 @@ namespace VaccineTrackingSystem.VIew.Module.Role
         [System.Web.Services.WebMethod]
         public static string GetALL()
         {
-            if (currentPage !=-1) {
+            if (currentPage != -1)
+            {
                 currentPage--;
             }
             string msg;
-            string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
+            string jsonData = Models.BLL.StoreManage.QueryAll(out msg, ref totalPage, ref currentPage);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [System.Web.Services.WebMethod]
         public static string GetDown()
         {
             string msg;
-            string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage+1}+{currentPage+1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            string jsonData = Models.BLL.StoreManage.QueryAll(out msg, ref totalPage, ref currentPage);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [System.Web.Services.WebMethod]
         public static string GetUp()
@@ -39,16 +44,17 @@ namespace VaccineTrackingSystem.VIew.Module.Role
             if (currentPage == -1 || currentPage == 0) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
             currentPage -= 2;
             string msg;
-            string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
+            string jsonData = Models.BLL.StoreManage.QueryAll(out msg, ref totalPage, ref currentPage);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
         [System.Web.Services.WebMethod]
-        public static string Update(string temp) {
-            JObject jo =(JObject)JsonConvert.DeserializeObject(temp);
+        public static string Update(string temp)
+        {
+            JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
-            Models.Role role = new Models.Role((int)jo["id"],jo["name"].ToString(),jo["authority"].ToString(), jo["note"].ToString());
-            return Models.BLL.RoleManage.Update(role, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")):JsonConvert.SerializeObject(new Packet(202, msg));
+            Models.Storeroom storeroom = new Models.Storeroom((int)jo["id"],jo["name"].ToString(), jo["site"].ToString(), jo["userNum"].ToString());
+            return Models.BLL.StoreManage.Update(storeroom, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
 
         [System.Web.Services.WebMethod]
@@ -56,10 +62,12 @@ namespace VaccineTrackingSystem.VIew.Module.Role
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
-            Models.Role role = new Models.Role(jo["name"].ToString(), jo["authority"].ToString(), jo["note"].ToString());
-            return Models.BLL.RoleManage.Add(role, out msg) ? JsonConvert.SerializeObject(new Packet(200, "插入成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
+            System.Diagnostics.Debug.Write("###############################");
+            System.Diagnostics.Debug.Write(temp);
+            Models.Storeroom storeroom = new Models.Storeroom(jo["name"].ToString(), jo["site"].ToString(), jo["userNum"].ToString());
+            return Models.BLL.StoreManage.Add(storeroom, out msg) ? JsonConvert.SerializeObject(new Packet(200, "插入成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
         }
-    
+
 
         [WebMethod]
         public static string SearchCon(string temp)
@@ -67,7 +75,7 @@ namespace VaccineTrackingSystem.VIew.Module.Role
             string msg;
             totalPage = 0;
             currentPage = 0;
-            string jsonData = Models.BLL.RoleManage.Query(temp,out msg);
+            string jsonData = Models.BLL.StoreManage.Query(temp, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }

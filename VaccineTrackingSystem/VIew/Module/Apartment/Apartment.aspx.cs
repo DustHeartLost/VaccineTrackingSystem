@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Web.Services;
 using VaccineTrackingSystem.Models.Entity;
@@ -7,48 +8,42 @@ namespace VaccineTrackingSystem.View.Module.Apartment
 {
     public partial class Apartment : System.Web.UI.Page
     {
-        protected int totalPage;
-        protected int currentPage;
+        protected static int totalPage;
+        protected static int currentPage;
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
-            currentPage = 0;
+            currentPage = -1;
         }
 
-        public string GetTotal()
+        [WebMethod]
+        public static string GetALL()
         {
-            return (totalPage+1).ToString();
+            if (currentPage != -1)
+            {
+                currentPage--;
+            }
+            string msg;
+            string jsonData = Models.BLL.ApartManage.QueryAll(out msg, ref totalPage, ref currentPage);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
-
-        public string GetCurr()
-        {
-            return (currentPage+1).ToString();
-        }
-
-        public string GetALL()
+        [WebMethod]
+        public static string GetDown()
         {
             string msg;
             string jsonData = Models.BLL.ApartManage.QueryAll(out msg, ref totalPage, ref currentPage);
-            return jsonData != null ? Newtonsoft.Json.JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
-        public string GetDown()
+        [WebMethod]
+        public static string GetUp()
         {
-           
-            if (currentPage >= (totalPage+1)) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
+            if (currentPage == -1 || currentPage == 0) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
+            currentPage -= 2;
             string msg;
-            currentPage += 1;
             string jsonData = Models.BLL.ApartManage.QueryAll(out msg, ref totalPage, ref currentPage);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
-        }
-        public string GetUp()
-        {
-            if (currentPage <= 0) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
-            string msg;
-            currentPage -= 1;
-            string jsonData = Models.BLL.ApartManage.QueryAll(out msg, ref totalPage, ref currentPage);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
         [WebMethod]
@@ -56,9 +51,27 @@ namespace VaccineTrackingSystem.View.Module.Apartment
         {
             string[] strArray = apt.Split(';');
             string msg;
-            Models.Apartment apartment1=new Models.Apartment(strArray[0], strArray[1],strArray[2]);
+            Models.Apartment apartment1=new Models.Apartment(strArray[2], strArray[3],strArray[4]);
             return Models.BLL.ApartManage.Add(apartment1, out msg) ? JsonConvert.SerializeObject(new Packet(200, "插入成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
         }
 
+        [System.Web.Services.WebMethod]
+        public static string Update(string temp)
+        {
+            JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
+            string msg;
+            Models.Apartment apartment= new Models.Apartment((int)jo["id"], jo["num"].ToString(), jo["name"].ToString(), jo["note"].ToString());
+            return Models.BLL.ApartManage.Update(apartment, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
+        }
+
+        [WebMethod]
+        public static string SearchCon(string temp)
+        {
+            string msg;
+            totalPage = 0;
+            currentPage = 0;
+            string jsonData = Models.BLL.ApartManage.Query(temp, out msg);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
     }
 }

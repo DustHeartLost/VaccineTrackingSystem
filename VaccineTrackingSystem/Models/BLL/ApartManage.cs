@@ -15,30 +15,36 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return ApartmentDAL.Update(apartment, out msg);
         }
-        static public Apartment Query(string num, out string msg)
+        static public string Query(string num, out string msg)
         {
-            return ApartmentDAL.Query(num, out msg);
+            List<Apartment> apartments = new List<Apartment>();
+            Apartment apartment = ApartmentDAL.Query(num, out msg);
+            if (apartment != null)
+                apartments.Add(apartment);
+            else
+                return null;
+            return JsonConvert.SerializeObject(apartments);
         }
         static public string QueryAll(out string msg,ref int totalPage, ref int currentPage)
         {
-            List<Apartment> apartments= ApartmentDAL.QueryAll(out msg);
-            if (apartments == null)
+            List<Apartment> list = ApartmentDAL.QueryAll(out msg);
+            if (list == null)
             {
                 totalPage = 0;
-                currentPage = 0;
+                currentPage = -1;
                 return null;
             }
-            totalPage = (int)System.Math.Floor((decimal)(apartments.Count / 10));
-            if(currentPage< totalPage)
-            { 
-                return JsonConvert.SerializeObject(apartments.GetRange(currentPage * 10, 10));
-            }
-            if (currentPage == totalPage)
+            totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (currentPage < totalPage)
+                ++currentPage;
+            try
             {
-                return JsonConvert.SerializeObject(apartments.GetRange(totalPage*10, apartments.Count - totalPage * 10));
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
             }
-            
-            return null;
+            catch
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
+            }
         }
 
     }

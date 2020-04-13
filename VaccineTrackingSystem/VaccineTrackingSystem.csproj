@@ -109,6 +109,9 @@
     <Content Include="View\Module\Role\css\role.css" />
     <Content Include="View\Module\Role\js\role.js" />
     <Content Include="View\Module\Role\Role.aspx" />
+    <Content Include="View\Module\Storeroom\css\storeroom.css" />
+    <Content Include="View\Module\Storeroom\js\storeroom.js" />
+    <Content Include="View\Module\Storeroom\Storeroom.aspx" />
     <Content Include="View\Module\User\css\user.css" />
     <Content Include="View\Module\User\js\user.js" />
     <Content Include="View\Module\User\User.aspx" />
@@ -183,6 +186,13 @@
     </Compile>
     <Compile Include="View\Module\Role\Role.aspx.designer.cs">
       <DependentUpon>Role.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Storeroom\Storeroom.aspx.cs">
+      <DependentUpon>Storeroom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Storeroom\Storeroom.aspx.designer.cs">
+      <DependentUpon>Storeroom.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\User\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
