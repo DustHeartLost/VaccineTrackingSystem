@@ -18,8 +18,7 @@
     <div class="common-header">
 	<div class="header-wrap">
 		<div class="header-left">
-			<img class="header-logo" src="images/ico_logo.png" style="cursor:pointer" onclick="javascript:goto_index()"></img>
-			<p id="sub_title" class="page-title"></p>
+           <span style="color:white;font-size:x-large;font-weight:bolder;vertical-align:middle;"> 疫苗管理中心</span>
 		</div>
 		<div class="header-right">
 			<div class="header-divide-line"></div>
@@ -50,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="mod-btn blue large"  id="next_step" style="margin-top:15px;width:80px" onclick="newPassword()">确定</button>
+                    <button type="button" class="mod-btn blue large"  id="next_step" style="margin-top:15px;width:80px;padding:5px" onclick="newPassword()">确定</button>
                 </form>
             </div>
     	

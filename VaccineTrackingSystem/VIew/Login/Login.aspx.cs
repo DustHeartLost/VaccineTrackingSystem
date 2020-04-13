@@ -47,11 +47,9 @@ namespace VaccineTrackingSystem.VIew.Login
         protected void submit(object sender, EventArgs e)
         {
             string msg;
-            System.Diagnostics.Debug.WriteLine(Models.BLL.LoginManage.GenerateMD5(Password.Text));
-            System.Diagnostics.Debug.WriteLine(Password.Text);
-            if (LoginManage.Login(Username.Text, Models.BLL.LoginManage.GenerateMD5(Password.Text), out msg))
+            if (LoginManage.Login(Username.Text, Password.Text, out msg))
             {
-                if(Password.Text=="123456")
+                if (Password.Text=="123456")
                     Response.Redirect("../SetPassword/set.aspx");
                 else
                     Response.Redirect("../Home/Home.aspx");

@@ -37,11 +37,13 @@ button {
     .common-header .header-left {
         position: relative;
         width: 28%;
-        height: 100%;
+        height: 88%;
         float: left;
         margin-left: 75px;
         display: inline-block;
-    }
+    top: 8px;
+    left: 0px;
+}
 
         .common-header .header-left img {
             width: 167px;

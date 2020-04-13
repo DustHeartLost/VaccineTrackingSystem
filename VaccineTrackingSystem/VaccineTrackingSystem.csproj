@@ -118,8 +118,6 @@
     <Content Include="View\SetPassword\css\login.css" />
     <Content Include="View\SetPassword\css\main.css" />
     <Content Include="View\SetPassword\css\setPassword.css" />
-    <Content Include="View\SetPassword\images\bg.jpg" />
-    <Content Include="View\SetPassword\images\ico_logo.png" />
     <Content Include="View\SetPassword\js\setpassword.js" />
     <Content Include="View\SetPassword\set.aspx" />
     <Content Include="View\Module\Table\css\table.css" />
