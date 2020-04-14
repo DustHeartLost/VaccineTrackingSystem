@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Web;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.Module.Category
@@ -13,6 +14,8 @@ namespace VaccineTrackingSystem.View.Module.Category
         {
             totalPage = 0;
             currentPage = -1;
+            if (HttpContext.Current.Session["user"] == null)
+                Response.Write("<script language='javascript'>alert('登录信息过期，请重新登录');location.href='../../Login/Login.aspx'</script>");
         }
         [System.Web.Services.WebMethod]
         public static string GetALL()

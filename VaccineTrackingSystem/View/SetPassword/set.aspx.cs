@@ -14,7 +14,8 @@ namespace VaccineTrackingSystem.View.SetPassword
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (HttpContext.Current.Session["user"] == null)
+                Response.Write("<script language='javascript'>alert('登录信息过期，请重新登录');location.href='Login/Login.aspx'</script>");
         }
 
         [WebMethod]

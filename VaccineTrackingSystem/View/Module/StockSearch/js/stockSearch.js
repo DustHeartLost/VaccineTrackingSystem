@@ -3,10 +3,10 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].factory + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td>" + data[i].stockID + "</td><td><button onclick=\"detail()\"  style=\"padding:5px\">查看明细</button></td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].factory + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\"  style=\"padding:5px\">查看明细</button></td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].factory + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td>" + data[i].stockID + "</td><td><button onclick=\"detail()\" style=\"padding:5px\">查看明细</button></td></tr>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].factory + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\" style=\"padding:5px\">查看明细</button></td></tr>";
         }
     }
     $("#caption").after(html);
@@ -64,20 +64,16 @@ function search() {
 }
 
 function down() {
-    var tempCon = $("#searchText").val();
     $.ajax({
         type: "post", //要用post方式                 
         url: "StockSearch.aspx/GetDown",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        data: "{'temp':'" + tempCon + "'}",
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
                 clear();
                 createTable(temp.data, temp.extra);
-            } else {
-                alert(temp.data);
             }
         },
         error: function (err) {
@@ -87,13 +83,11 @@ function down() {
 }
 
 function up() {
-    var tempCon = $("#searchText").val();
     $.ajax({
         type: "post", //要用post方式                 
         url: "StockSearch.aspx/GetUp",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        data: "{'temp':'" + tempCon + "'}",
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200)
@@ -106,6 +100,7 @@ function up() {
     });
 }
 
-function detail() {
-    alert("nihao");
+function detail(obj) {
+    var stockID = $(obj).closest("tr").find("td.need").text()
+    window.open("Detail.aspx?stockID=" + stockID);
 }
