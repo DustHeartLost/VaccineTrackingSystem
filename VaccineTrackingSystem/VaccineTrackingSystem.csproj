@@ -109,6 +109,9 @@
     <Content Include="View\Module\Category\Category.aspx" />
     <Content Include="View\Module\Category\css\category.css" />
     <Content Include="View\Module\Category\js\category.js" />
+    <Content Include="View\Module\Inflow\css\inflow.css" />
+    <Content Include="View\Module\Inflow\Inflow.aspx" />
+    <Content Include="View\Module\Inflow\js\inflow.js" />
     <Content Include="View\Module\Role\css\role.css" />
     <Content Include="View\Module\Role\js\role.js" />
     <Content Include="View\Module\Role\Role.aspx" />
@@ -121,8 +124,6 @@
     <Content Include="View\SetPassword\css\login.css" />
     <Content Include="View\SetPassword\css\main.css" />
     <Content Include="View\SetPassword\css\setPassword.css" />
-    <Content Include="View\SetPassword\images\bg.jpg" />
-    <Content Include="View\SetPassword\images\ico_logo.png" />
     <Content Include="View\SetPassword\js\setpassword.js" />
     <Content Include="View\SetPassword\set.aspx" />
     <Content Include="View\Module\Table\css\table.css" />
@@ -201,6 +202,13 @@
     </Compile>
     <Compile Include="View\Module\Category\Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Inflow\Inflow.aspx.cs">
+      <DependentUpon>Inflow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Inflow\Inflow.aspx.designer.cs">
+      <DependentUpon>Inflow.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\Role\Role.aspx.cs">
       <DependentUpon>Role.aspx</DependentUpon>
