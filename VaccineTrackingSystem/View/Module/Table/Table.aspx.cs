@@ -20,6 +20,8 @@ namespace VaccineTrackingSystem.View.Module.Table
             totalPage = 0;
             currentPage = -1;
             states = 0;
+            Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
+            storeID = int.Parse(user["storeID"]);
         }
 
         [System.Web.Services.WebMethod]
