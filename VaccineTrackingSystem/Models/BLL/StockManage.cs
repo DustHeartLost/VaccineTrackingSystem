@@ -1,30 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
     public class StockManage
     {
-        static public List<Dictionary<string, string>> QueryAll(out decimal total, out string msg)
+       
+        static public string QueryInDetail(int stockID, out string msg)
         {
-            total = 0m;
-            List<Dictionary<string, string>> list = StockDAL.QueryAllStockDetail(out msg);
-            if (list == null) return null;
+            List < Indetail >list= IndetailDAL.QueryByStockID(stockID, out msg);
+            return list == null ? null : JsonConvert.SerializeObject(list);
+        }
+
+        static public string Query(int storeID, string num, out string msg,ref decimal money, ref int totalPage, ref int currentPage)
+        {
+            List<Dictionary<string, string>> list = StockDAL.QueryStockDetail(storeID, num, out msg);
+            if (list == null)
+            {
+                totalPage = 0;
+                currentPage = -1;
+                return null;
+            }
+            totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             foreach (Dictionary<string, string> dictionary in list)
             {
-                total += decimal.Parse(dictionary["money"]);
+                money += decimal.Parse(dictionary["money"]);
             }
-            return list;
-        }
-
-        static public List<Indetail> QueryInDetail(int stockID, out string msg)
-        {
-            return IndetailDAL.QueryByStockID(stockID, out msg);
-        }
-
-        static public List<Dictionary<string, string>> Query(string num, out string msg)
-        {
-            return StockDAL.QueryStockDetail(num, out msg);
+            if (currentPage < totalPage)
+                ++currentPage;
+            try
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
+            }
         }
     }
 }

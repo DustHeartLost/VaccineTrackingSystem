@@ -129,10 +129,14 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return stock;
         }
-        //新加的查询详细库存的接口
-        static public List<Dictionary<string, string>> QueryAllStockDetail(out string msg)
+
+        static public List<Dictionary<string, string>> QueryStockDetail(int storeID,string num, out string msg)
         {
-            string command = "select Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Stock.storeID,Stock.ID as stockID from Category, Stock where Category.num = Stock.cagNum";
+            string command = "";
+            if(storeID==-1)
+                command = $"select Category.id, Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Stock.storeID,Stock.ID as stockID from Category, Stock where Category.num = Stock.cagNum and Category.num={num}";
+            else
+                command = $"select Category.id, Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Stock.storeID,Stock.ID as stockID from Category, Stock where Category.num = Stock.cagNum and Category.num={num} and Stock.storeID={storeID}";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)
@@ -141,11 +145,10 @@ namespace VaccineTrackingSystem.Models.DAL
                 return null;
             }
             List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
-            int i = 0;
-            Dictionary<string, string> dictionary = new Dictionary<string, string>();
             while (read.Read())
             {
-                dictionary.Add("id", (++i).ToString());
+                Dictionary<string, string> dictionary = new Dictionary<string, string>();
+                dictionary.Add("id", read["id"].ToString());
                 dictionary.Add("num", (string)read["num"]);
                 dictionary.Add("name", (string)read["name"]);
                 dictionary.Add("unit", (string)read["unit"]);
@@ -160,39 +163,6 @@ namespace VaccineTrackingSystem.Models.DAL
             SQL.Dispose();
             msg = null;
             return list;
-        }
-
-        static public List<Dictionary<string, string>> QueryStockDetail(string num, out string msg)
-        {
-            string command = $"select Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Stock.storeID,Stock.ID as stockID from Category, Stock where Category.num = Stock.cagNum and Category.num={num}";
-            SqlDataReader read;
-            read = SQL.getReader(command);
-            if (!read.HasRows)
-            {
-                msg = "查询结果为空";
-                return null;
-            }
-            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
-            int i = 0;
-            Dictionary<string, string> dictionary = new Dictionary<string, string>();
-            while (read.Read())
-            {
-                dictionary.Add("id", (++i).ToString());
-                dictionary.Add("num", (string)read["num"]);
-                dictionary.Add("name", (string)read["name"]);
-                dictionary.Add("unit", (string)read["unit"]);
-                dictionary.Add("spec", (string)read["spec"]);
-                dictionary.Add("factory", (string)read["factory"]);
-                dictionary.Add("quantity", read["quantity"].ToString());
-                dictionary.Add("money", read["money"].ToString());
-                dictionary.Add("storeID", read["storeID"].ToString());
-                dictionary.Add("stockID", read["stockID"].ToString());
-                list.Add(dictionary);
-            }
-            SQL.Dispose();
-            msg = null;
-            return list;
-
         }
     }
 }

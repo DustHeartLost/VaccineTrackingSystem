@@ -55,7 +55,7 @@ namespace VaccineTrackingSystem.View.Module.Apartment
             return Models.BLL.ApartManage.Add(apartment1, out msg) ? JsonConvert.SerializeObject(new Packet(200, "插入成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
         }
 
-        [System.Web.Services.WebMethod]
+        [WebMethod]
         public static string Update(string temp)
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
