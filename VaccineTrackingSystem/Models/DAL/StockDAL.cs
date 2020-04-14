@@ -29,6 +29,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (read == null)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             Stock stock = new Stock((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (int)read["quantity"], (decimal)read["money"]);
@@ -45,6 +46,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (read == null)
             {
                 msg = "该库房暂无该药品";
+                SQL.Dispose();
                 return null;
             }
             Stock stock = new Stock((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (int)read["quantity"], (decimal)read["money"]);
@@ -62,6 +64,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             List<Stock> list = new List<Stock>();
@@ -86,6 +89,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             List<Stock> list = new List<Stock>();
@@ -122,6 +126,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (read == null)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             Stock stock = new Stock((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (int)read["quantity"], (decimal)read["money"]);
@@ -138,6 +143,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
@@ -170,6 +176,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();

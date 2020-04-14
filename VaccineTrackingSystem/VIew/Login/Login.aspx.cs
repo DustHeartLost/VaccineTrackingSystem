@@ -51,7 +51,7 @@ namespace VaccineTrackingSystem.VIew.Login
             {
                 if (Password.Text=="123456")
                     // Response.Redirect("../SetPassword/set.aspx");
-                    Response.Redirect("../Module/Inflow/Inflow.aspx");
+                    Response.Redirect("../Module/Outflow/Outflow.aspx");
                 else
                     Response.Redirect("../Home/Home.aspx");
             }

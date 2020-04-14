@@ -29,6 +29,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (read == null)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             Inflow inflow = new Inflow((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (string)read["date"], (string)read["userNum"], (int)read["quantity"], (decimal)read["price"], (string)read["batchNum"]);
@@ -44,6 +45,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             List<Inflow> list = new List<Inflow>();
@@ -66,6 +68,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             List<Inflow> list = new List<Inflow>();

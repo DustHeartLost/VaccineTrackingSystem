@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
+using Newtonsoft.Json;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
     public class OutflowManage
     {
         //新增根据药品编码查询库存表   4/7
-        static public Stock QueryStrock(String cagNum, int storeID, out string msg)
+        static public string QueryStrock(String cagNum, int storeID, out string msg)
         {
-            if (StockDAL.QueryByCagNum(cagNum, storeID, out msg) == null)
+            Stock stock = StockDAL.QueryByCagNum(cagNum, storeID, out msg);
+            List<Stock> stockList = new List<Stock>();
+            if (stock == null)
             {
                 msg = "该库房暂无该药品";
                 return null;
             }
-            return StockDAL.QueryByCagNum(cagNum, storeID, out msg);
+            stockList.Add(stock);
+            return JsonConvert.SerializeObject(stockList);
         }
 
 
