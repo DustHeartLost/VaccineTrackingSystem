@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
@@ -6,11 +7,13 @@ namespace VaccineTrackingSystem.Models.BLL
 {
     public class DestoryManage
     {
-        static public List<Indetail> Query(int storeID, out string msg)
+        static public List<Indetail> Query(int storeID, ref int totalPage, ref int currentPage, out string msg)
         {
             List<Stock> stockList = StockDAL.QueryByStoreId(storeID, out msg);
             if (stockList == null || stockList.Count == 0)
             {
+                totalPage = 0;
+                currentPage = -1;
                 msg = "暂无库存记录";
                 return null;
             }
@@ -35,12 +38,25 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             if (indetails == null || indetails.Count == 0)
             {
+                totalPage = 0;
+                currentPage = -1;
                 msg = "库房暂无单品明细记录";
                 return null;
             }
-            return SortDate(indetails);
+            List<Indetail> list = SortDate(indetails);
+            totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (currentPage < totalPage)
+                ++currentPage;
+            try
+            {
+                return list.GetRange(currentPage * 10, 10);
+            }
+            catch
+            {
+                return list.GetRange(currentPage * 10, list.Count - currentPage * 10);
+            }
         }
-
+    
         static private List<Indetail> SortDate(List<Indetail> indetailList)
         {
             string date = DateTime.Now.ToString("yyyy-MM-dd");

@@ -109,6 +109,9 @@
     <Content Include="View\Module\Category\Category.aspx" />
     <Content Include="View\Module\Category\css\category.css" />
     <Content Include="View\Module\Category\js\category.js" />
+    <Content Include="View\Module\Destory\css\destory.css" />
+    <Content Include="View\Module\Destory\Destory.aspx" />
+    <Content Include="View\Module\Destory\js\destory.js" />
     <Content Include="View\Module\Inflow\css\inflow.css" />
     <Content Include="View\Module\Inflow\Inflow.aspx" />
     <Content Include="View\Module\Inflow\js\inflow.js" />
@@ -205,6 +208,13 @@
     </Compile>
     <Compile Include="View\Module\Category\Category.aspx.designer.cs">
       <DependentUpon>Category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Destory\Destory.aspx.cs">
+      <DependentUpon>Destory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Destory\Destory.aspx.designer.cs">
+      <DependentUpon>Destory.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\Inflow\Inflow.aspx.cs">
       <DependentUpon>Inflow.aspx</DependentUpon>

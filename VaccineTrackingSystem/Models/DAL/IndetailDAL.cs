@@ -29,6 +29,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (read == null)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             Indetail indetail = new Indetail((int)read["id"], (int)read["stockID"], (string)read["batchNum"], (string)read["date"], (int)read["quantity"], (decimal)read["price"], read["note"].ToString());
@@ -43,6 +44,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (read == null)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             Indetail indetail = new Indetail((int)read["id"], (int)read["stockID"], (string)read["batchNum"], (string)read["date"], (int)read["quantity"], (decimal)read["price"], read["note"].ToString());
@@ -58,6 +60,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             List<Indetail> list = new List<Indetail>();
@@ -80,6 +83,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
+                SQL.Dispose();
                 return null;
             }
             List<Indetail> list = new List<Indetail>();
