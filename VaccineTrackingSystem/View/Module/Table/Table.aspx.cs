@@ -14,14 +14,26 @@ namespace VaccineTrackingSystem.View.Module.Table
         protected static int totalPage;
         protected static int currentPage;
         protected static int states;
-        protected static int storeID = 3;
+        protected static int storeID;
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
             currentPage = -1;
             states = 0;
-            Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
-            storeID = int.Parse(user["storeID"]);
+            if (HttpContext.Current.Session["user"] == null)
+                Response.Write("<script language='javascript'>alert('登录信息过期，请重新登录');location.href='../../Login/Login.aspx'</script>");
+            else
+            {
+                Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
+                try
+                {
+                    storeID = int.Parse(user["storeID"]);
+                }
+                catch
+                {
+                    storeID = -1;
+                };
+            }
         }
 
         [System.Web.Services.WebMethod]
@@ -64,7 +76,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             decimal money = 0;
             string msg;
             //TODO:此处的ID将来换成从session中取
-            string jsonData = Models.BLL.TableManage.queryAllOutflow(3, ref totalPage, ref currentPage, out msg, out money);
+            string jsonData = Models.BLL.TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
