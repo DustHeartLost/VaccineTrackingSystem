@@ -2,6 +2,7 @@
 
 <!-- saved from url=(0041)https://ehall.jlu.edu.cn/jlu_portal/login -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <link href="css/default.css" rel="stylesheet">
 <link href="css/alk_main.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css" media="all">
@@ -16,7 +17,6 @@
 
 		 <div class="alk-header">
     	<div class="header-box">
-        	<div class="alk-header-title"><img src="" alt=""></div>
             <ul class="alk-header-ul">
 	           <li><i class="fa fa-user"></i>&nbsp;您好&nbsp;&nbsp;&nbsp;</li>
 		         
@@ -45,7 +45,7 @@
             <!--tab-->
             <div class="student-tab">
                 <ul>
-                    <li id="one2" onClick="setTab(&quot;one&quot;,2,3)" class="on">
+                    <li id="one2" class="on">
                         业务流程
                     </li>
                 </ul>
@@ -58,7 +58,7 @@
                 <ul id="cont_one_2" class="one flow-ul" style="display: block;">
                     
                     <asp:Panel ID="Panel1" runat="server">
-                     <li>
+                     <li >
                          <a href="../Module/Apartment/Apartment.aspx">
                                <dl>
                                    <dt><img src="images/7._______________.png" width="94px" height="94px" alt=""></dt>

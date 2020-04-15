@@ -103,9 +103,14 @@
 			<asp:ContentPlaceHolder ID="DownAndUp" runat="server"></asp:ContentPlaceHolder>
 		</div>
 	</div>
-	<div>
+	<div style="height:10px"></div>
+		<div>
 		<div class="sx_title">
-			<div style="margin-top:20px;" class="auto-style2">
+			<div style="margin:0 auto;" class="auto-style2">
+				<ul>
+					<li navtap="todo" >
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
