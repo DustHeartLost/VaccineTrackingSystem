@@ -62,7 +62,11 @@ namespace VaccineTrackingSystem.Models.DAL
         //新增按照仓库ID查找入库流水表2020-04-07 18：07
         static public List<Inflow> QueryAllByStoreID(int storeID, out string msg)
         {
-            string command = $"select * from Inflow where storeID = '{storeID}'";
+            string command;
+            if(storeID!=-1)
+                command = $"select * from Inflow where storeID = '{storeID}'";
+            else
+                command = $"select * from Inflow";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)
