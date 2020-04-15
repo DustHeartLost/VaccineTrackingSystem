@@ -30,7 +30,9 @@ function createOutflowTable(temp, extra) {
     $("#money").text("共" + x[2] + "元");
 }
 function clear() {
-    $("tr").remove();
+    $("#caption").remove();
+    $("tr.dataRow").remove();
+    $("tr.dataRow2").remove();
 }
 
 function confirm() {
@@ -74,8 +76,6 @@ function down() {
                     case "0": createInflowTable(temp.data, temp.extra); break;
                     case "1": createOutflowTable(temp.data, temp.extra); break;
                 }
-            } else {
-                alert(temp.data);
             }
         },
         error: function (err) {
