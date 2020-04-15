@@ -50,7 +50,7 @@ function reCreateTable(temp, extra){
 
 
 function addRecord() { 
-    html = "<tr id=\"newOne\" class=\"dataRow3\"  style=\"height:50px;width:130px\"><td></td><td>请依次填充id之后的内容 </td><td contentEditable=\"true\" class=\"dbclicktd\"> </td><td contentEditable=\"true\" class=\"dbclicktd\"> </td><td contentEditable=\"true\" class=\"dbclicktd\"> </td></tr>";
+    html = "<tr id=\"newOne\" class=\"dataRow3\"  style=\"height:50px;width:130px\"><td></td><td>请依次填充id之后的内容</td><td contentEditable=\"true\" class=\"dbclicktd\"></td><td contentEditable=\"true\" class=\"dbclicktd\"></td><td contentEditable=\"true\" class=\"dbclicktd\"></td></tr>";
     $("#caption").after(html);
 }
 
@@ -74,18 +74,16 @@ function add() {
 
 function confirmAdd() {
     var tempCon = "";
-    var i = 0;
     $("#newOne").find("td").each(function () {
         //循环获取每行td的内容
-        if (i != 0 ||i!=1) {
             var sValue2 = $(this).text();//获取td里面的input内容 
             tempCon = tempCon + sValue2 + ";";
-        }
-        i++;
     });
     var arr = tempCon.split(";");
-    if (arr[1] == "" || arr[2] == "")
+    if (arr[2] == "" || arr[3] == "") {
         alert("请输入编号或名称");
+        return;
+    }
     else {
     $.ajax({
         type: "post", //要用post方式                 

@@ -149,7 +149,6 @@
     <Content Include="View\Template\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="View\Template\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="View\Template\font-awesome-4.7.0\HELP-US-OUT.txt" />
-    <Content Include="View\Template\images\footer-logo.png" />
     <Content Include="View\Template\images\logo.png" />
     <Content Include="View\Template\jquery\jquery-3.4.1.min.js" />
     <Content Include="Global.asax" />
