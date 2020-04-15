@@ -19,6 +19,8 @@ namespace VaccineTrackingSystem.View.Module.Storeroom
         {
             totalPage = 0;
             currentPage = -1;
+            if (HttpContext.Current.Session["user"] == null)
+                Response.Write("<script language='javascript'>alert('登录信息过期，请重新登录');location.href='../../Login/Login.aspx'</script>");
         }
         [System.Web.Services.WebMethod]
         public static string GetALL()

@@ -6,8 +6,6 @@
     <script>
         window.onload = create;
         function create() {
-            var obj =<%=GetStoreroom()%>;
-           
             $("#concelAdd").hide();
             $("#confirmAdd").hide();
             $("#add").hide();
@@ -15,9 +13,6 @@
                 $("#concelAdd").hide();
                 $("#confirmAdd").hide();
                 $("#add").show();
-            }
-            else {
-                alert(obj.data);
             }
         }
     </script>
@@ -41,6 +36,7 @@
                 <th>批号</th>
             </tr>
         </table>
+         </div>
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="DownAndUp" runat="server">
     <div style="height:50px"></div>

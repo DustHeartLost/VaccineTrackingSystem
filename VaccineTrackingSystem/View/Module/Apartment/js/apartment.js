@@ -13,7 +13,6 @@
     }
     $("#caption").after(html);
     var x = extra.split('+');
-    console.log(x[1]);
     $("#total").text("共" + x[0] + "页");
     $("#current").text("第" + x[1] + "页");
     $(".checkBox").hide();

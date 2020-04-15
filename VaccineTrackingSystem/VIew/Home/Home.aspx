@@ -11,14 +11,9 @@
 <link href="css/bootstrap-touch-slider.css" rel="stylesheet" media="all">
 <link href="css/font-awesome(1).css" rel="stylesheet" media="all">
 
-
+<title>疫苗管理系统</title>
 </head><body>
-<!--顶部-->
-    
-    <title>疫苗管理系统</title>
-    
 
-<!--header-->
 		 <div class="alk-header">
     	<div class="header-box">
         	<div class="alk-header-title"><img src="" alt=""></div>
@@ -64,7 +59,7 @@
                     
                     <asp:Panel ID="Panel1" runat="server">
                      <li>
-                         <a href="">
+                         <a href="../Module/Apartment/Apartment.aspx">
                                <dl>
                                    <dt><img src="images/7._______________.png" width="94px" height="94px" alt=""></dt>
                                    <dd>机构管理</dd>
@@ -75,7 +70,7 @@
 
                     <asp:Panel ID="Panel2" runat="server">
                         <li>
-                                <a href="">
+                                <a href="../Module/Role/Role.aspx">
                                     <dl>
                                         <dt><img src="images/8._________________.png" width="94px" height="94px" alt=""></dt>
                                         <dd>角色管理</dd>
@@ -86,7 +81,7 @@
                             
                     <asp:Panel ID="Panel3" runat="server">
                         <li>
-                                <a href="">
+                                <a href="../Module/User/User.aspx">
                                     <dl>
                                         <dt><img src="images/12.________.png" width="94px" height="94px" alt=""></dt>
                                         <dd>用户管理</dd>
@@ -98,7 +93,7 @@
                         
                     <asp:Panel ID="Panel4" runat="server">
                         <li>
-                           <a href="">
+                           <a href="../Module/Storeroom/Storeroom.aspx">
                                     <dl>
                                         <dt><img src="images/7._______________(1).png" width="94px" height="94px" alt=""></dt>
                                         <dd>库房管理</dd>
@@ -110,7 +105,7 @@
                      
                     <asp:Panel ID="Panel5" runat="server">
                          <li>
-                             <a href="">
+                             <a href="../Module/Category/Category.aspx">
                                 <dl>
                                     <dt><img src="images/____(1).png" width="94px" height="94px" alt=""></dt>
                                     <dd>品类管理</dd>
@@ -122,7 +117,7 @@
                         
                    <asp:Panel ID="Panel6" runat="server">
                        <li>
-                          <a href="">
+                          <a href="../Module/Inflow/Inflow.aspx">
                              <dl>
                                 <dt><img src="images/3.__________________(1).png" width="94px" height="94px" alt=""></dt>
                                  <dd>入库管理</dd>
@@ -156,7 +151,7 @@
 
                     <asp:Panel ID="Panel9" runat="server">
                     <li>
-                                <a href="">
+                                <a href="../Module/StockSearch/StockSearch.aspx">
                                     <dl>
                                         <dt><img src="images/5._______.png" width="94px" height="94px" alt=""></dt>
                                         <dd>库存查询</dd>
@@ -167,7 +162,7 @@
 
                     <asp:Panel ID="Panel10" runat="server">
                     <li>
-                        <a href="">
+                        <a href="../Module/Table/Table.aspx">
                             <dl>
                                 <dt><img src="images/icon28.png" alt=""></dt>
                                 <dd>报表管理</dd>

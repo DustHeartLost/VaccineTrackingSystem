@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Web;
 using System.Web.Services;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -16,6 +17,8 @@ namespace VaccineTrackingSystem.View.Module.Apartment
         {
             totalPage = 0;
             currentPage = -1;
+            if (HttpContext.Current.Session["user"] == null)
+                Response.Write("<script language='javascript'>alert('登录信息过期，请重新登录');location.href='../../Login/Login.aspx'</script>");
         }
 
         [WebMethod]
@@ -55,7 +58,7 @@ namespace VaccineTrackingSystem.View.Module.Apartment
             return Models.BLL.ApartManage.Add(apartment1, out msg) ? JsonConvert.SerializeObject(new Packet(200, "插入成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
         }
 
-        [System.Web.Services.WebMethod]
+        [WebMethod]
         public static string Update(string temp)
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
