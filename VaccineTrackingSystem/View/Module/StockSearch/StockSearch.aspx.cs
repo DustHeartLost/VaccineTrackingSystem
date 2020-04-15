@@ -57,7 +57,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             string msg;
             decimal money=0;
             num = temp;
-            string data=StockManage.Query(storeID, temp.ToString(),out msg,ref money, ref totalPage, ref currentPage);
+            string data=StockManage.Query(storeID, temp,out msg,ref money, ref totalPage, ref currentPage);
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         
