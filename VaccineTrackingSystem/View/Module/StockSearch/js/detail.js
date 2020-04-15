@@ -47,8 +47,6 @@ function down() {
             if (temp.code == 200) {
                 clear();
                 createTable(temp.data, temp.extra);
-            } else {
-                alert(temp.data);
             }
         },
         error: function (err) {
