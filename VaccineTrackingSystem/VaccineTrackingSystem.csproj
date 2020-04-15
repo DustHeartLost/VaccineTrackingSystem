@@ -115,6 +115,12 @@
     <Content Include="View\Module\Inflow\css\inflow.css" />
     <Content Include="View\Module\Inflow\Inflow.aspx" />
     <Content Include="View\Module\Inflow\js\inflow.js" />
+    <Content Include="View\Module\Outflow\css\indetail.css" />
+    <Content Include="View\Module\Outflow\css\outflow.css" />
+    <Content Include="View\Module\Outflow\Indetail.aspx" />
+    <Content Include="View\Module\Outflow\js\indetail.js" />
+    <Content Include="View\Module\Outflow\js\outflow.js" />
+    <Content Include="View\Module\Outflow\Outflow.aspx" />
     <Content Include="View\Module\Role\css\role.css" />
     <Content Include="View\Module\Role\js\role.js" />
     <Content Include="View\Module\Role\Role.aspx" />
@@ -222,6 +228,20 @@
     </Compile>
     <Compile Include="View\Module\Inflow\Inflow.aspx.designer.cs">
       <DependentUpon>Inflow.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Outflow\Indetail.aspx.cs">
+      <DependentUpon>Indetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Outflow\Indetail.aspx.designer.cs">
+      <DependentUpon>Indetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Outflow\Outflow.aspx.cs">
+      <DependentUpon>Outflow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Outflow\Outflow.aspx.designer.cs">
+      <DependentUpon>Outflow.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\Role\Role.aspx.cs">
       <DependentUpon>Role.aspx</DependentUpon>

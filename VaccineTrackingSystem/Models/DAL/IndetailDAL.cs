@@ -56,7 +56,7 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command = $"select * from Indetail where stockID = '{stockID}'";
             SqlDataReader read;
-            read = SQL.getReader(command);
+            read = SQL.getReader(command); 
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
