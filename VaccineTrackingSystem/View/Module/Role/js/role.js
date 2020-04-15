@@ -174,9 +174,7 @@ function down() {
               var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
                 reCreateTable(temp.data, temp.extra);
-            } else {
-                alert(temp.data);
-            }
+            } 
         },
         error: function (err) {
                alert(err);
