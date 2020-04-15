@@ -8,12 +8,7 @@
         function create() {
             $("#concelAdd").hide();
             $("#confirmAdd").hide();
-            $("#add").hide();
-            if (obj.code == 200) {
-                $("#concelAdd").hide();
-                $("#confirmAdd").hide();
-                $("#add").show();
-            }
+            $("#add").show();
         }
     </script>
 </asp:Content>

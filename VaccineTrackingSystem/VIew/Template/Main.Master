@@ -37,9 +37,19 @@
             height: 46px;
         }
     </style>
+	
 </head>
 <body>
-
+	 <div class="alk-header" style="float:right;width:200px;padding:30px;margin-right:80px">
+	<div class="header-box">
+        	
+            <ul class="alk-header-ul">
+	          
+	          <a href="/View/Home/Home.aspx"><li style="font-size:large"><i class="fa fa-user"></i>&nbsp;系统主页</li></a>  
+                
+            </ul>
+        </div>
+    </div>
 	<div>
 		<div class="sysu-contents">
 			<div class="alk-header">

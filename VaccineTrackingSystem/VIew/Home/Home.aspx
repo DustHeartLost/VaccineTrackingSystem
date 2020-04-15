@@ -129,7 +129,7 @@
                         
                     <asp:Panel ID="Panel7" runat="server">
                      <li>
-                         <a href="">
+                         <a href="../Module/Outflow/Outflow.aspx">
                              <dl>
                                 <dt><img src="images/5._______.png" width="94px" height="94px" alt=""></dt>
                                 <dd>出库管理</dd>
@@ -140,7 +140,7 @@
 
                     <asp:Panel ID="Panel8" runat="server">
                     <li>
-                        <a href="">
+                        <a href="../Module/Destory/Destory.aspx">
                             <dl>
                                 <dt><img src="images/icon28.png" alt=""></dt>
                                 <dd>销毁管理</dd>

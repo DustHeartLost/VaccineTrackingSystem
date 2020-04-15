@@ -37,6 +37,7 @@ namespace VaccineTrackingSystem.View.Module.Destory
                 catch
                 {
                     storeID = -1;
+                    Response.Write("<script language='javascript'>alert('您没有绑定的仓库');location.href='../../Home/Home.aspx'</script>");
                 };
             }
         }
