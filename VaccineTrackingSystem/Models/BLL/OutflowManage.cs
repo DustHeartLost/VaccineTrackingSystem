@@ -23,19 +23,38 @@ namespace VaccineTrackingSystem.Models.BLL
 
 
         //新增 单品明细数据进行批号排序，返回list  4/7
-        static public List<Indetail> QueryIndetail(int stockID, out string msg)
+        static public string QueryIndetail(int stockID, out string msg, ref int totalPage, ref int currentPage)
         {
-            if (IndetailDAL.QueryByStockID(stockID, out msg) == null)
+            List<Indetail> list = IndetailDAL.QueryByStockID(stockID, out msg);
+            if (list == null)
             {
                 msg = "暂无该库存的单品明细";
+                totalPage = 0;
+                currentPage = -1;
                 return null;
             }
             //排序+过滤过期药品
-            List<Indetail> list = IndetailDAL.QueryByStockID(stockID, out msg);
-            return SortDate(list);
-            // return null;
-
+            List<Indetail> sortList = SortDate(list);
+            if (sortList == null)
+            {
+                msg = "暂无未过期的单品明细";
+                totalPage = 0;
+                currentPage = -1;
+                return null;
+            }
+            totalPage = (int)System.Math.Floor((decimal)(sortList.Count / 10));
+            if (currentPage < totalPage)
+                ++currentPage;
+            try
+            {
+                return JsonConvert.SerializeObject(sortList.GetRange(currentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(sortList.GetRange(currentPage * 10, sortList.Count - currentPage * 10));
+            }
         }
+
         static private List<Indetail> SortDate(List<Indetail> indetailList)
         {
 
@@ -112,7 +131,7 @@ namespace VaccineTrackingSystem.Models.BLL
             Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetail.price, indetail.batchNum, "正常出库");
             if (indetail.quantity == 0)
             {
-                if (IndetailDAL.Delete(indetailId, out msg))
+                if (!(IndetailDAL.Delete(indetailId, out msg)))
                 {
                     msg = "单品明细删除失败";
                     return false;

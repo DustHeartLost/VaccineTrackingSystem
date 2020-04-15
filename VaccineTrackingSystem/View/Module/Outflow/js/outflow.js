@@ -54,6 +54,7 @@ function search() {
                 var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
                 if (tempT.code == 200) {
                     reCreateTable(tempT.data);
+                    $("#addOutflow").show();
                 }
                 else {
                     alert(tempT.data);
@@ -69,5 +70,28 @@ function search() {
 }
 
 function addOutflow() {
+    var tempCon = "";
+    $("tr.dataRow").find("td.ID").each(function () {
+        tempCon = $(this).text();
+    });
+    if (tempCon == "") { alert("暂无记录");return;}
+    $.ajax({
+        type: "post",
+        url: "Indetail.aspx/setStockId",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: "{'temp':'" + tempCon + "'}",
+        success: function (data) {
+            var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (tempT.code != 200) {
+                alert("跳转失败");
+                return;
+            }
+           
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
     window.location.href = "Indetail.aspx";
 }

@@ -73,7 +73,7 @@ function clickCheck(obj) {
 function down() {
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Storeroom.aspx/GetDown",//方法所在页面和方法名
+        url: "Indetail.aspx/GetDown",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -92,7 +92,7 @@ function down() {
 function up() {
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Storeroom.aspx/GetUp",//方法所在页面和方法名
+        url: "Indetail.aspx/GetUp",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -134,20 +134,20 @@ function cancelUpdate() {
 function confirmUpdate() {
     $(":checkbox").each(function () {
         if ($(this).prop("checked")) {
-            var temp = $(this).closest("tr").find("td.ID").text() + "@@";
-            $(this).closest("tr").find("td.editTd").each(function () {
+            var temp = "";
+            $(this).closest("tr").find("td").each(function () {
                 temp += $(this).text() + "@@";
             });
             temp1 = temp.split("@@");
-            if (temp1[6] == "") { alert("请输入出库数量"); return; };
-            if (parseInt(temp1[6]) > parseInt(temp1[4])) { alert("出库数量超过明细记录数量"); return; };
+            if (temp1[7] == "") { alert("请输入出库数量"); return; };
+            if (parseInt(temp1[7]) > parseInt(temp1[5])) { alert("出库数量超过明细记录数量"); return; };
             var data1 = new Object();
-            data1.id = temp1[0];
-            data1.stockID = temp1[1];
-            data1.batchNum = temp1[2];
-            data1.date = temp1[3];
-            data1.quantity = (parseInt(temp1[4] - parseInt(temp1[6])))+"";
-            data1.price = temp1[5];
+            data1.id = temp1[1];
+            data1.stockID = temp1[2];
+            data1.batchNum = temp1[3];
+            data1.date = temp1[4];
+            data1.quantity = parseInt(temp1[7])+"";
+            data1.price = temp1[6];
             $.ajax({
                 type: "post", //要用post方式                 
                 url: "Indetail.aspx/Update",//方法所在页面和方法名
@@ -157,6 +157,7 @@ function confirmUpdate() {
                 success: function (data) {
                     var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
                     alert(temp.data);
+                    cancelUpdate();
                 },
                 error: function (err) {
                     alert(err);

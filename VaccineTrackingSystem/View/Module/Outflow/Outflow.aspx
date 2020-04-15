@@ -6,7 +6,7 @@
     <script>
         window.onload = create;
         function create() {
-           
+            $("#addOutflow").hide();
         }
     </script>
 </asp:Content>
@@ -18,7 +18,7 @@
     <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
-    <button id="add"  onclick="addOutflow()" style="padding:5px">出库</button>
+    <button id="addOutflow"  onclick="addOutflow()" style="padding:5px">出库</button>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">
      <div id="table">

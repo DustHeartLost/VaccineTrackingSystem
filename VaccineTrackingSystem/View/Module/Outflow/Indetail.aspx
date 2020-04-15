@@ -24,6 +24,12 @@
     <button id="confirmUpdate"  onclick="confirmUpdate()" style="padding:5px">确认出库</button>
     <button id="cancelUpdate"  onclick="cancelUpdate()"  style="padding:5px">取消出库</button>
     <button id="returnOutflow"  onclick="returnOutflow()"  style="padding:5px">返回</button>
+    <div id="upAndDownArea" style="float: right;">
+        <button id="up" class="upAnddown" onclick="up()"><</button>
+        <button id="down" class="upAnddown" onclick="down()">></button>
+        <label id="current"></label>
+        <label id="total"></label>
+    </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">
      <div id="table">
