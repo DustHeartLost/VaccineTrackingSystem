@@ -65,7 +65,7 @@ function up() {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200)
                 clear();
-            createTable(temp.data, temp.extra);
+                createTable(temp.data, temp.extra);
         },
         error: function (err) {
             alert(err);
