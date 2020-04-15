@@ -46,7 +46,10 @@ function confirm() {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
                 clear();
-                createInflowTable(temp.data, temp.extra);
+                switch (temp.extra.split("+")[3]) {
+                    case "0": createInflowTable(temp.data, temp.extra); break;
+                    case "1": createOutflowTable(temp.data, temp.extra); break;
+                }
             } else {
                 alert(temp.data);
             }
