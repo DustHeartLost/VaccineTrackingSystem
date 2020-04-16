@@ -134,7 +134,7 @@ input{
     margin:0 auto;
     overflow:auto;
     background:#fff;
-    margin-bottom:20px;
+    margin-bottom:8%;
 }
 /*tab*/
 .student_menu .student-tab{
@@ -354,9 +354,11 @@ input{
 
 /*footer*/
 .alk-footer{
+    padding-top:150px;
 	width:100%;
 }
 .tj-footer{
+ 
 	width:100%;
 	height:100px;
 	background:#007CCC;

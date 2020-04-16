@@ -15,10 +15,24 @@
 #tableContainer {
     border-collapse: collapse;
     border-spacing: 0;
+    border: none;
+    display: block;
+}
+
+tbody {
+    width: 100%;
+    display: block;
+}
+
+#table {
     margin: 0;
     padding: 0;
-    border: none;
 }
+
+tr {
+    width: 100%;
+}
+
 
 td {
     font-family: sans-serif;
@@ -26,7 +40,6 @@ td {
     font-size: medium;
     padding: 5px;
     color: #3d3d3d;
-    width:150px;
 }
 
 
@@ -42,21 +55,29 @@ td {
     padding: 0;
 }
 
+.dataRow3 {
+    background-color: #f7f1e3;
+    margin: 0;
+    padding: 0;
+}
+
 th {
     color: #4b4b4b;
     /*color: #636e72;*/
     font-family: Arial,Helvetica,sans-serif;
     font-size: medium;
     font-weight: bold;
-    padding-left: 0px;
-    padding-right: 12px;
-    padding-bottom: 10px;
     text-align: center;
-    width: 200px;
+    width: 1%;
     height: 60px;
-    margin: 0;
 }
 
+#searchButton {
+    height: 40px;
+    width: 40px;
+    margin-left: 2px;
+    color: black;
+}
 
 .tr-mouseover {
     background-color: antiquewhite;
@@ -66,4 +87,10 @@ th {
     vertical-align: middle;
     margin: 0;
     padding: 5px;
+}
+
+
+
+#upAndDownArea {
+    float: right;
 }

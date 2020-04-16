@@ -21,21 +21,8 @@
 
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
     <style type="text/css">
-        .auto-style1 {
-            width: 1234px;
-            overflow: hidden;
-            position: relative;
-            margin-top: 10px;
-            left: 23px;
-            top: 0px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 0;
-        }
-        .auto-style2 {
-            width: 1150px;
-            height: 46px;
-        }
+        
+        
     </style>
 	
 </head>
@@ -64,7 +51,7 @@
 
 	<div>
 		<div class="sx_title">
-			<div style="margin:0 auto;" class="auto-style2">
+			<div style="margin:0 auto;" class="currentlist">
 				<ul>
 					<li navtap="todo" >
 						<asp:ContentPlaceHolder ID="CurrentList" runat="server"></asp:ContentPlaceHolder></asp:PlaceHolder>
@@ -75,7 +62,7 @@
 	</div>
 
 
-	<div class="auto-style1" style="background:#f6f7f7 url(&#39;&#39;) no-repeat -200%;">
+	<div class="main" style="background:#f6f7f7 url(&#39;&#39;) no-repeat -200%;">
 
 		<div class="sx_ss">
 			<div class="qu-form">

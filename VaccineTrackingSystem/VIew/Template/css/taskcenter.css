@@ -4,18 +4,13 @@ body, td, th ,input{
 	'冬青黑体简体中文 w3', STXihei, 华文细黑, SimSun, Heiti, 黑体, sans-serif;
 	font-size: 12px;
 }
-body{
-	width:96%;
-	margin:0 auto;
+body {
+	width: 1500px;
+	/*width:96%*/;
+	margin: 0 auto;
 	background-color: #ededea;
 }
-* {
-	padding: 0;
-	list-style: none;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-}
+
 .alk-header-title {
 	margin-left:10%;
 }
@@ -24,7 +19,8 @@ body{
 	border-bottom: 2px solid #deede8;
 	height: 46px;
 	position: relative;
-	width: 100%;
+	/*width: 100%;*/
+	width: 1500px;
 	margin: 0 auto;
 	background: #0093dd;
 	/*box-shadow: 0px 2px 6px rgba(0 ,0, 0,0.2);*/
@@ -45,7 +41,8 @@ body{
 
 
 .sx_ss {
-	width: 100%;
+	width: 1500px;
+	/*width: 100%;*/
 	height: 94px;
 	margin: 0 auto;
 	background: #f6f7f7;
@@ -74,7 +71,7 @@ body{
 }
 
 .sx_inp {
-	width: 348px;
+	width: 60%;
 	height: 38px;
 	line-height: 38px;
 	border: none;
@@ -90,12 +87,28 @@ body{
 .sx_dq {
 	height: 26px;
 	line-height: 26px;
-	width: 1150px;
+	width: 90%;
 	background: #f6f7f7;
 	margin: 20px auto;
 }
 
-.main-content{
-	min-height:593px;
-	margin-left:0;
+.main-content {
+	/*width:100%;*/
+	margin:0;
+}
+
+.currentlist {
+	width: 90%;
+	height: 46px;
+}
+
+.main {
+	width: 90%;
+	height:750px;
+	overflow: hidden;
+	position: relative;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0;
 }
