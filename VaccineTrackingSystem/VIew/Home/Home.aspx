@@ -16,7 +16,6 @@
 
 		 <div class="alk-header">
     	<div class="header-box">
-        	<div class="alk-header-title"><img src="" alt=""></div>
             <ul class="alk-header-ul">
 	           <li><i class="fa fa-user"></i>&nbsp;您好&nbsp;&nbsp;&nbsp;</li>
 		         
@@ -45,7 +44,7 @@
             <!--tab-->
             <div class="student-tab">
                 <ul>
-                    <li id="one2" onClick="setTab(&quot;one&quot;,2,3)" class="on">
+                    <li id="one2" class="on">
                         业务流程
                     </li>
                 </ul>
@@ -58,10 +57,10 @@
                 <ul id="cont_one_2" class="one flow-ul" style="display: block;">
                     
                     <asp:Panel ID="Panel1" runat="server">
-                     <li>
+                     <li >
                          <a href="../Module/Apartment/Apartment.aspx">
                                <dl>
-                                   <dt><img src="images/7._______________.png" width="94px" height="94px" alt=""></dt>
+                                   <dt><img src="images/7._______________.png"  alt=""></dt>
                                    <dd>机构管理</dd>
                                </dl>
                           </a>
@@ -72,7 +71,7 @@
                         <li>
                                 <a href="../Module/Role/Role.aspx">
                                     <dl>
-                                        <dt><img src="images/8._________________.png" width="94px" height="94px" alt=""></dt>
+                                        <dt><img src="images/8._________________.png"  alt=""></dt>
                                         <dd>角色管理</dd>
                                     </dl>
                                 </a>
@@ -83,7 +82,7 @@
                         <li>
                                 <a href="../Module/User/User.aspx">
                                     <dl>
-                                        <dt><img src="images/12.________.png" width="94px" height="94px" alt=""></dt>
+                                        <dt><img src="images/12.________.png"  alt=""></dt>
                                         <dd>用户管理</dd>
                                     </dl>
                                 </a>
@@ -95,7 +94,7 @@
                         <li>
                            <a href="../Module/Storeroom/Storeroom.aspx">
                                     <dl>
-                                        <dt><img src="images/7._______________(1).png" width="94px" height="94px" alt=""></dt>
+                                        <dt><img src="images/7._______________(1).png"  alt=""></dt>
                                         <dd>库房管理</dd>
                                     </dl>
                                 </a>
@@ -107,7 +106,7 @@
                          <li>
                              <a href="../Module/Category/Category.aspx">
                                 <dl>
-                                    <dt><img src="images/____(1).png" width="94px" height="94px" alt=""></dt>
+                                    <dt><img src="images/____(1).png"  alt=""></dt>
                                     <dd>品类管理</dd>
                                 </dl>
                              </a>
@@ -119,7 +118,7 @@
                        <li>
                           <a href="../Module/Inflow/Inflow.aspx">
                              <dl>
-                                <dt><img src="images/3.__________________(1).png" width="94px" height="94px" alt=""></dt>
+                                <dt><img src="images/3.__________________(1).png" alt=""></dt>
                                  <dd>入库管理</dd>
                               </dl>
                            </a>
@@ -131,7 +130,7 @@
                      <li>
                          <a href="../Module/Outflow/Outflow.aspx">
                              <dl>
-                                <dt><img src="images/5._______.png" width="94px" height="94px" alt=""></dt>
+                                <dt><img src="images/5._______.png"  alt=""></dt>
                                 <dd>出库管理</dd>
                              </dl>
                           </a>
@@ -153,7 +152,7 @@
                     <li>
                                 <a href="../Module/StockSearch/StockSearch.aspx">
                                     <dl>
-                                        <dt><img src="images/5._______.png" width="94px" height="94px" alt=""></dt>
+                                        <dt><img src="images/5._______.png"  alt=""></dt>
                                         <dd>库存查询</dd>
                                     </dl>
                                 </a>
@@ -179,7 +178,6 @@
 <div class="alk-footer">
     <div class="tj-footer">
         <ul class="tj-box">
-            <li class="tj-fwl"><img src=""></li>
             <li class="tj-fwl">你好</li>
             <li class="tj-fwl">欢迎您</li>
         </ul>

@@ -15,14 +15,22 @@
 #tableContainer {
     border-collapse: collapse;
     border-spacing: 0;
-    margin: 0;
-    padding: 0;
     border: none;
+    display: block;
 }
+
+tbody {
+    width: 100%;
+    display: block;
+}
+tr {
+    width: 100%;
+}
+
 
 td {
     font-family: sans-serif;
-    text-align: left;
+    text-align: center;
     font-size: medium;
     padding: 5px;
     color: #3d3d3d;
@@ -53,13 +61,9 @@ th {
     font-family: Arial,Helvetica,sans-serif;
     font-size: medium;
     font-weight: bold;
-    padding-left: 0px;
-    padding-right: 12px;
-    padding-bottom: 10px;
-    text-align: left;
-    width: 2000px;
+    text-align: center;
+    width: 1%;
     height: 60px;
-    margin: 0;
 }
 
 #searchButton {

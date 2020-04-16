@@ -46,6 +46,7 @@ body, html { font-size: 100%; 	padding: 0; margin: 0;}
 }
 
 body{
+	text-align:center;
 	background: #494A5F;
 	color: #D5D6E2;
 	font-weight: 500;
@@ -55,6 +56,7 @@ body{
 a.htmleaf-icon{ color: rgba(255, 255, 255, 0.6);outline: none;text-decoration: none;-webkit-transition: 0.2s;transition: 0.2s;}
 a.htmleaf-icon:hover,a.htmleaf-icon:focus{color:#74777b;text-decoration: none;}
 .htmleaf-container{
+	width:98%;
 	margin: 0 auto;
 }
 
