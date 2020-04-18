@@ -266,6 +266,7 @@ function confirmAdd() {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             alert(temp.data);
+            concelAdd();
         },
         error: function (err) {
             alert(err);
