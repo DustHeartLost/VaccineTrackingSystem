@@ -28,7 +28,7 @@ namespace VaccineTrackingSystem.VIew.Home
                 Response.Write("<script>alert('登录信息过期，请重新登录');location.href='../Login/Login.aspx'</script>");
                 return;
             }
-            userName = user["userName"].ToString();
+            userName = user["name"].ToString();
             char[] temp = user["authority"].ToCharArray();
             for (int i = 0; i < temp.Length; i++)
             {

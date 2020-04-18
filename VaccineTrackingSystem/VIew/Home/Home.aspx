@@ -27,12 +27,11 @@
 
 		 <div class="alk-header">
     	<div class="header-box">
+            <a id="ex" class="alk-header-ul"  style="margin-right:20px"  OnClick="ExitOu()">退出</a> 
             <ul class="alk-header-ul">
                   <li id="uname"><i class="fa fa-user"></i> </li>
-
             </ul>
-            
-               <button id="ex" class="butt"  style="float:right;width:80px"  OnClick="ExitOu()">退出</button> 
+
         </div>
          
     </div>
