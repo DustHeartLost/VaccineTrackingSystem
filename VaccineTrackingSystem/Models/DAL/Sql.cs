@@ -63,8 +63,9 @@ namespace DAL
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.Number);
                 Dispose();
                 //这里修改一下，改为抛出异常，合并冲突的时候不要合并
                 throw ex;
