@@ -14,7 +14,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
     {
         protected static int totalPage;
         protected static int currentPage;
-        protected static int stockID=2;
+        protected static int stockID=-1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
