@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       <link rel="stylesheet" href="css/table.css" />
     <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../Template/jquery/FileSaver.min.js"></script>
+    <script src="../../Template/jquery/tableExport.min.js"></script>
     <script src="js/table.js"></script>
     <script>
         window.onload = create;
