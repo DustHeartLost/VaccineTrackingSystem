@@ -139,7 +139,7 @@ function confirmUpdate() {
             temp1 = temp.split("@@");
             if (temp1[7] == "") { alert("请输入出库数量"); return; };
             if (parseInt(temp1[7]) > parseInt(temp1[5])) { alert("出库数量超过明细记录数量"); return; };
-            var data1 = new Object();
+            var data1 = new Object();  
             data1.id = temp1[1];
             data1.stockID = temp1[2];
             data1.batchNum = temp1[3];

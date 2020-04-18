@@ -97,6 +97,7 @@
     <Content Include="View\Home\images\u=1612077127,393485524&amp;fm=26&amp;gp=0.jpg" />
     <Content Include="View\Home\images\____%281%29.png" />
     <Content Include="View\Home\images\____.png" />
+    <Content Include="View\Home\js\home.js" />
     <Content Include="View\Login\css\login.css" />
     <Content Include="View\Login\images\bg.9500de7.jpg" />
     <Content Include="View\Login\images\lock.png" />

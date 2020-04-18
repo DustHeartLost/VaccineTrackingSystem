@@ -10,19 +10,31 @@
 <link href="css/animate.min.css" rel="stylesheet" media="all">
 <link href="css/bootstrap-touch-slider.css" rel="stylesheet" media="all">
 <link href="css/font-awesome(1).css" rel="stylesheet" media="all">
-
+<script src="../Template/jquery/jquery-3.4.1.min.js"></script>
+<script src="js/home.js"></script>
 <title>疫苗管理系统</title>
+    
+ <script>
+     window.onload = getName;
+     function getName() {
+         var obj =<%=GetUserName() %>; 
+         $("#uname").html("您好，"+obj);
+     }
+</script>
+
+
 </head><body>
 
 		 <div class="alk-header">
     	<div class="header-box">
             <ul class="alk-header-ul">
-	           <li><i class="fa fa-user"></i>&nbsp;您好&nbsp;&nbsp;&nbsp;</li>
-		         
-	            <li>&nbsp;系统主页</li>
-                
+                  <li id="uname"><i class="fa fa-user"></i> </li>
+
             </ul>
+            
+               <button id="ex" class="butt"  style="float:right;width:80px"  OnClick="ExitOu()">退出</button> 
         </div>
+         
     </div>
 
 
@@ -176,12 +188,6 @@
     
 <!--footer-->
 <div class="alk-footer">
-    <div class="tj-footer">
-        <ul class="tj-box">
-            <li class="tj-fwl">你好</li>
-            <li class="tj-fwl">欢迎您</li>
-        </ul>
-    </div>
     <div class="copy-footer">
         地址：吉林省长春市 &nbsp; &nbsp;&nbsp; 版权：疫苗管理中心 &nbsp; &nbsp;&nbsp; 信息管理：疫苗管理中心
     </div>

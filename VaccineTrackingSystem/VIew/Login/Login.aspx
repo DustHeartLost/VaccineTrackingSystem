@@ -33,12 +33,12 @@
           <asp:TextBox ID="Password"  runat="server" TextMode="Password" placeholder="请输入密码" CssClass="hasvertificode"></asp:TextBox>
       </div>
       <!---->
-      <div class="showMessage"></div>
+     
+    <div class="showMessage"></div>
       <%--<input type="button" name="login_submit" id="login-submit" value="登录">--%>
-        
       <input type="hidden" name="_eventId" value="submit">
-        <asp:Button ID="Submit" runat="server" Text="登录" BackColor="#007CCC" Font-Bold="True" Font-Size="Medium" ForeColor="White" Height="46px" Width="250px" OnClick="submit" OnClientClick="return CheckForm()"/>
-        
+       <asp:Button ID="Submit" runat="server" Text="登录" BackColor="#007CCC" Font-Bold="True" Font-Size="Medium" ForeColor="White" Height="46px" Width="250px" OnClick="submit" OnClientClick="return CheckForm()"/>
+    
     </form>
   </div>
   <div data-v-759ce404="" class="footer-wrap">
