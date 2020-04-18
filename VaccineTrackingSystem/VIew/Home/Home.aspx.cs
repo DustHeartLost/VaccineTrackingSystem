@@ -36,7 +36,7 @@ namespace VaccineTrackingSystem.VIew.Home
             }
         }
         [System.Web.Services.WebMethod]
-        public static  string GetUserName()
+        public static string GetUserName()
         {
             if (userName != null)
                 return JsonConvert.SerializeObject(userName);
@@ -56,6 +56,6 @@ namespace VaccineTrackingSystem.VIew.Home
             userName = null;
             return JsonConvert.SerializeObject(new Packet(200, "退出登录"));
         }
-        protected static string userName=null;
+        protected static string userName = null;
     }
 }

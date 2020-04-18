@@ -35,22 +35,22 @@ input{
 /*顶部*/
 .alk-header{
 	width:100%;
-	height:90px;
+	height:40px;
 	background:#fff;
 }
 .alk-header .header-box{
 	width:100%;
-	height:90px;
+	height:40px;
 	margin:0 auto;
 }
 .alk-header-title{
 	float:left;
-	line-height:90px;
+	line-height:40px;
 	margin-top: 10px;
 }
 .alk-header-ul{
 	float:right;
-	line-height: 90px;
+	line-height: 40px;
 	margin-bottom: 0;
 }
 .butt {
@@ -129,8 +129,8 @@ input{
 /*学生服务*/
 .student-box{
     width:100%;
-    height:260px;
-    margin:40px auto;
+    height:250px;
+    margin:5px auto;
 }
 /*student_menu*/
 .student_menu{
@@ -139,7 +139,6 @@ input{
     margin:0 auto;
     overflow:auto;
     background:#fff;
-    margin-bottom:8%;
 }
 /*tab*/
 .student_menu .student-tab{
@@ -314,52 +313,8 @@ input{
     top: 4px;
 }
 
-
-/*通知公告*/
-.alk-notice-box{
-    float:right;
-    width:370px;
-}
-.alk-notice-list{
-    width:85%;
-    margin-top:30px;
-}
-.alk-notice-list a li{
-    height:65px;
-    margin-bottom:20px;
-}
-.alk-notice-list a li dl{
-    float:left;
-    background:#007ccc;
-    width:60px;
-    height:65px;
-    text-align:center;
-}
-.alk-notice-list a li dl dt{
-    font-size:18px;
-    width:80%;
-    margin:0 auto;
-    line-height:36px;
-    border-bottom:1px solid #fff;
-    color:#fff;
-}
-.alk-notice-list a li dl dd{
-    font-size:14px;
-    color:#fff;
-    line-height:30px;
-}
-.alk-notice-list a li p{ font-style:normal;
-    float:left;
-    color:#333;
-    line-height:24px;
-    padding-left:20px;
-    width:240px;
-    padding-top:8px;
-}
-
 /*footer*/
 .alk-footer{
-    padding-top:150px;
 	width:100%;
 }
 .tj-footer{
