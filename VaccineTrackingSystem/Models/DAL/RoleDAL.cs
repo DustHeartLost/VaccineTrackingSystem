@@ -15,10 +15,16 @@ namespace VaccineTrackingSystem.Models.DAL
                 msg = null;
                 return SQL.Excute(command);
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                msg = e.Message;
-                System.Diagnostics.Debug.Write(msg);
+                if (e.Number == 2627)
+                {
+                    msg = "角色名称重复";
+                }
+                else
+                {
+                    msg = e.Message;
+                }
                 return false;
             }
         }
@@ -31,10 +37,16 @@ namespace VaccineTrackingSystem.Models.DAL
                 msg = null;
                 return SQL.Excute(command);
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                msg = e.Message;
-                System.Diagnostics.Debug.Write(msg);
+                if (e.Number == 2627)
+                {
+                    msg = "角色名称重复";
+                }
+                else
+                {
+                    msg = e.Message;
+                }
                 return false;
             }
         }
