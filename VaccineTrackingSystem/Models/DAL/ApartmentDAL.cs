@@ -16,28 +16,19 @@ namespace VaccineTrackingSystem.Models.DAL
                 msg = null;
                 return SQL.Excute(command);
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                msg = e.Message;
-                System.Diagnostics.Debug.Write(msg);
+                if (e.Number == 2627)
+                {
+                    msg = "部门编号重复";
+                }
+                else { 
+                    msg = e.Message;
+                }   
                 return false;
             }
         }
-        static public bool Delete(int id, out string msg)
-        {
-            string command = $"delete from Apartment where id ={id}";
-            try
-            {
-                msg = null;
-                return SQL.Excute(command);
-            }
-            catch (Exception e)
-            {
-                msg = e.Message;
-                System.Diagnostics.Debug.Write(msg);
-                return false;
-            }
-        }
+        
         static public bool Update(Apartment apartment, out string msg)
         {
             string command = $"update Apartment set num = '{apartment.num}',name = '{apartment.name}',note =  '{apartment.note}' where id = '{apartment.id}'";
@@ -46,10 +37,16 @@ namespace VaccineTrackingSystem.Models.DAL
                 msg = null;
                 return SQL.Excute(command);
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                msg = e.Message;
-                System.Diagnostics.Debug.Write(msg);
+                if (e.Number == 2627)
+                {
+                    msg = "部门编号重复";
+                }
+                else
+                {
+                    msg = e.Message;
+                }
                 return false;
             }
         }
