@@ -9,7 +9,7 @@ namespace VaccineTrackingSystem.Models.BLL
         static public string queryAllInflow(int storeID, ref int inflowTotalPage, ref int inflowCurrentPage,  out string msg, out decimal money)
         {
             money = 0m;
-            List<Inflow> list = InflowDAL.QueryAllByStoreID(storeID, out msg);
+            List<Dictionary<string,string>> list = InflowDAL.QueryAllByStoreID(storeID, out msg);
             if (list == null)
             {
                 inflowTotalPage = 0;
@@ -17,8 +17,8 @@ namespace VaccineTrackingSystem.Models.BLL
                 return null;
             }
             msg = null;
-            foreach (Inflow inflow in list) {
-                money += inflow.price * inflow.quantity;
+            foreach (Dictionary<string, string> d in list) {
+                money += decimal.Parse(d["price"] )* decimal.Parse(d["quantity"]);
             }
             inflowTotalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             if (list.Count != 0 && list.Count % 10 == 0)
@@ -38,7 +38,7 @@ namespace VaccineTrackingSystem.Models.BLL
         static public string queryAllOutflow(int storeID, ref int outflowTotalPage, ref int outflowCurrentPage, out string msg, out decimal money)
         {
             money = 0m;
-            List<Outflow> list = OutflowDAL.QueryAllByStoreID(storeID, out msg);
+            List<Dictionary<string, string>> list = OutflowDAL.QueryAllByStoreID(storeID, out msg);
             if (list == null)
                 {
                     outflowTotalPage = 0;
@@ -46,9 +46,9 @@ namespace VaccineTrackingSystem.Models.BLL
                     return null;
                 }
             msg = null;
-            foreach (Outflow outflow in list)
+            foreach (Dictionary<string, string> d in list)
             {
-                money += outflow.price * outflow.quantity;
+                money += decimal.Parse(d["price"]) * decimal.Parse(d["quantity"]);
             }
             outflowTotalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             if (outflowCurrentPage < outflowTotalPage)

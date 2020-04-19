@@ -60,13 +60,13 @@ namespace VaccineTrackingSystem.Models.DAL
             return list;
         }
         //新增按照仓库ID查找入库流水表2020-04-07 18：07
-        static public List<Inflow> QueryAllByStoreID(int storeID, out string msg)
+        static public List<Dictionary<string,string>> QueryAllByStoreID(int storeID, out string msg)
         {
             string command;
             if(storeID!=-1)
-                command = $"select * from Inflow where storeID = '{storeID}'";
+                command = $"select inflow.id,Inflow.cagNum,Storeroom.name as storeID,Inflow.date,[User].name as userName,[User].num,Inflow.quantity,inflow.price,Inflow.batchNum from Inflow,[User], Storeroom where inflow.storeID = Storeroom.id and Inflow.userNum =[User].num and Storeroom.id = '{storeID}'";
             else
-                command = $"select * from Inflow";
+                command = $" select inflow.id,Inflow.cagNum,Storeroom.name as storeID,Inflow.date,[User].name as userName,[User].num,Inflow.quantity,inflow.price,Inflow.batchNum from Inflow,[User], Storeroom where inflow.storeID = Storeroom.id and Inflow.userNum =[User].num;";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)
@@ -75,12 +75,19 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            List<Inflow> list = new List<Inflow>();
-            Inflow inflow;
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
             while (read.Read())
             {
-                inflow = new Inflow((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (string)read["date"], (string)read["userNum"], (int)read["quantity"], (decimal)read["price"], (string)read["batchNum"]);
-                list.Add(inflow);
+                Dictionary<string, string> d = new Dictionary<string, string>();
+                d.Add("id",read["id"].ToString());
+                d.Add("cagNum", (string)read["cagNum"]);
+                d.Add("storeID", (string)read["storeID"]);
+                d.Add("date", (string)read["date"]);
+                d.Add("userNum", (string)read["userName"]+"("+ (string)read["num"] + ")");
+                d.Add("quantity", read["quantity"].ToString());
+                d.Add("price", read["price"].ToString());
+                d.Add("batchNum", (string)read["batchNum"]);
+                list.Add(d);
             }
             SQL.Dispose();
             msg = null;

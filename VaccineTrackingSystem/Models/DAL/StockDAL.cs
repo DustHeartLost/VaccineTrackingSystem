@@ -139,9 +139,9 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command = "";
             if(storeID==-1)
-                command = $"select Category.id, Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Stock.storeID,Stock.ID as stockID from Category, Stock where Category.num = Stock.cagNum and Category.num='{num}'";
+                command = $"select Category.id, Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}';";
             else
-                command = $"select Category.id, Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Stock.storeID,Stock.ID as stockID from Category, Stock where Category.num = Stock.cagNum and Category.num='{num}' and Stock.storeID={storeID}";
+                command = $"select Category.id, Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}' and Stock.storeID={storeID};";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)
