@@ -91,13 +91,13 @@ function confirmUpdate() {
             temp += $(this).closest("tr").find(".roleID").find("option:selected").text() + "@@";
             temp += $(this).closest("tr").find(".apartID").find("option:selected").text() + "@@";
             temp1 = temp.split("@@");
-            if (temp1[1] == "") alert("请输入用户名");
-            if (temp1[2] == "") alert("请输入密码");
-            if (temp1[3] == "") alert("请输入职务");
-            if (temp1[4] == "") alert("请输入员工编号");
-            if (temp1[5] == "") alert("请输入真实姓名");
-            if (temp1[6] == "") alert("请选择角色");
-            if (temp1[7] == "") alert("请选择所在部门");
+            if (temp1[1] == "") { alert("请输入用户名"); return; }
+            if (temp1[2] == "") { alert("请输入密码"); return; }
+            if (temp1[3] == "") { alert("请输入职务"); return; }
+            if (temp1[4] == "") { alert("请输入员工编号"); return; }
+            if (temp1[5] == "") { alert("请输入真实姓名"); return; }
+            if (temp1[6] == "") { alert("请选择角色"); return; }
+            if (temp1[7] == "") { alert("请选择所在部门"); return; }
             var data1 = new Object();
             data1.id = temp1[0];
             data1.userName = temp1[1];
@@ -286,16 +286,16 @@ function confirmAdd() {
     $("tr.dataRow3").find("td.editTd").each(function () {
         temp += $(this).text() + "@@";
     });
-    temp += $("tr.dataRow3").find(".roleID").find("option:selected").text() + "@@";
-    temp += $("tr.dataRow3").find(".apartID").find("option:selected").text() + "@@";
+    temp += $("#apartID").find("option:selected").text() + "@@";
+    temp += $("#roleID").find("option:selected").text() + "@@";
     temp1 = temp.split("@@");
-    if (temp1[0] == "") alert("请输入用户名");
-    if (temp1[1] == "") alert("请输入密码");
-    if (temp1[2] == "") alert("请输入职务");
-    if (temp1[3] == "") alert("请输入员工编号");
-    if (temp1[4] == "") alert("请输入真实姓名");
-    if (temp1[5] == "") alert("请选择所在部门");
-    if (temp1[6] == "") alert("请选择角色");
+    if (temp1[0] == "") { alert("请输入用户名"); return;}
+    if (temp1[1] == "") {alert("请输入密码"); return; }
+    if (temp1[2] == "") {alert("请输入职务"); return; }
+    if (temp1[3] == "") {alert("请输入员工编号"); return; }
+    if (temp1[4] == "") {alert("请输入真实姓名"); return; }
+    if (temp1[5] == "") {alert("请选择所在部门"); return; }
+    if (temp1[6] == "") {alert("请选择角色"); return; }
     var data1 = new Object();
     data1.id =0;
     data1.userName = temp1[0];

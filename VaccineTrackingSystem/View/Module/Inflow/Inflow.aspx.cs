@@ -2,17 +2,15 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.Module.Inflow
 {
     public partial class Inflow : System.Web.UI.Page
     {
-        private static int store;
+        private static int storeId;
+        private static string userNum;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (HttpContext.Current.Session["user"] == null)
@@ -21,11 +19,12 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             {
                 Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
                 try {
-                    store = int.Parse(user["storeID"]);
+                    storeId = int.Parse(user["storeID"]);
                 }
                 catch { 
                     Response.Write("<script language='javascript'>alert('您没有绑定的仓库');location.href='../../Home/Home.aspx'</script>");
                 };
+                userNum = user["num"];
             }
         }
 
@@ -36,9 +35,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
             Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
-            int storeId = int.Parse(user["storeID"]);
             string nowTime= DateTime.Now.ToString("yyyy-MM-dd");
-            string userNum = user["num"];
             int quantity= int.Parse(jo["quantity"].ToString());
             decimal price = decimal.Parse(jo["price"].ToString());
             Models.Inflow inflow= new Models.Inflow(jo["cagNum"].ToString(), storeId, nowTime, userNum, quantity, price, jo["batchNum"].ToString());
