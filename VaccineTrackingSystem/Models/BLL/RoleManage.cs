@@ -43,5 +43,9 @@ namespace VaccineTrackingSystem.Models.BLL
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
             }            
         }
+        static public Dictionary<string, int> GetRole()
+        {
+            return RoleDAL.GetRole();
+        }
     }
 }

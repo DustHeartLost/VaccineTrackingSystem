@@ -80,8 +80,11 @@ function confirmAdd() {
             tempCon = tempCon + sValue2 + ";";
     });
     var arr = tempCon.split(";");
-    if (arr[2] == "" || arr[3] == "") {
-        alert("请输入编号或名称");
+    if (arr[2] == "") {
+        alert("请输入编号");
+        return;
+    }if(arr[3] == "") {
+        alert("请输入名称");
         return;
     }
     else {
@@ -198,7 +201,14 @@ function confirmUpdate() {
                 temp += $(this).text() + "@@";
             });
             temp1 = temp.split("@@");
-            if (temp1[1] == "" || temp1[0] == "") alert("请输入部门名称或编号");
+            if (temp1[1] == "") {
+                alert("请输入部门编号");
+                return;
+            }
+            if (temp1[2] == "") {
+                alert("请输入部门名称");
+                return;
+            }
             var data1 = new Object();
             data1.id = temp1[0];
             data1.num = temp1[1];
@@ -268,7 +278,7 @@ function search() {
         });
     }
     else
-        alert("请输入角色名称");
+        alert("请输入部门名称");
 }
 
 function down() {

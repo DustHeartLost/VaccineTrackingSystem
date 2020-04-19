@@ -27,7 +27,7 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
-            List<User> list = UserDAL.QueryAll(out msg);
+            List<Dictionary<string,string>> list = UserDAL.QueryAll(out msg);
             if (list == null)
             {
                 totalPage = 0;
@@ -53,6 +53,7 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return UserDAL.UpdateByName(userName, password, out msg);
         }
+       
 
     }
 }

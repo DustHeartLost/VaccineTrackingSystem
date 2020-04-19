@@ -101,7 +101,30 @@ function confirmUpdate() {
                 temp += $(this).text() + "@@";
             });
             temp1 = temp.split("@@");
-            if (temp1[1] == "" || temp1[2] == "" || temp1[3] == ""||temp1[4] == "" || temp1[5] == "" || temp1[6] == "") { alert("请输入完整信息"); return; };
+            if (temp1[1] == "") {
+                alert("请输入药品编码");
+                return;
+            };
+            if (temp1[2] == "") {
+                alert("请输入药品名称");
+                return;
+            };
+            if (temp1[3] == "") {
+                alert("请输入药品类别");
+                return;
+            };
+            if (temp1[4] == "") {
+                alert("请输入规格");
+                return;
+            };
+            if (temp1[5] == "") {
+                alert("请输入单位");
+                return;
+            };
+            if (temp1[6] == "") {
+                alert("请输入生产厂家");
+                return;
+            };
             var data1 = new Object();
             data1.id = temp1[0];
             data1.num = temp1[1];
@@ -248,7 +271,30 @@ function confirmAdd() {
         temp += $(this).text() + "@@";
     });
     temp1 = temp.split("@@");
-    if ( temp1[0] == "" ||temp1[1] == "" || temp1[2] == "" || temp1[3] == "" || temp1[4] == "" || temp1[5] == "" ) { alert("请输入完整信息"); return; };
+    if (temp1[0] == "") {
+        alert("请输入药品编码");
+        return;
+    };
+    if (temp1[1] == "") {
+        alert("请输入药品名称");
+        return;
+    };
+    if (temp1[2] == "") {
+        alert("请输入药品类别");
+        return;
+    };
+    if (temp1[3] == "") {
+        alert("请输入规格");
+        return;
+    };
+    if (temp1[4] == "") {
+        alert("请输入单位");
+        return;
+    };
+    if (temp1[5] == "") {
+        alert("请输入生产厂家");
+        return;
+    };
     var data1 = new Object();
     data1.id = 0;;
     data1.num = temp1[0];

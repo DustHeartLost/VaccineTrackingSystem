@@ -49,5 +49,10 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
 
+        static public Dictionary<string, int> GetApartment()
+        {
+            return ApartmentDAL.GetApartment();
+        }
+
     }
 }

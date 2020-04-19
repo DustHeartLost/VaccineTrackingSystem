@@ -22,21 +22,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public bool Delete(int id, out string msg)
-        {
-            string command = $"delete from Role where id ={id}";
-            try
-            {
-                msg = null;
-                return SQL.Excute(command);
-            }
-            catch (Exception e)
-            {
-                msg = e.Message;
-                System.Diagnostics.Debug.Write(msg);
-                return false;
-            }
-        }
+
         static public bool Update(Role role, out string msg)
         {
             string command = $"update Role set name = '{role.name}',authority = '{role.authority}',note =  '{role.note}' where id = '{role.id}'";
@@ -87,6 +73,18 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return list;
         }
-
+        static public Dictionary<string,int> GetRole()
+        {
+            string command = $"select id,name from role;";
+            SqlDataReader read = SQL.getReader(command);
+            if (read == null) return null;
+            Dictionary<string, int> role = new Dictionary<string, int>();
+            while (read.Read())
+            {
+                role.Add((string)read["name"] ,(int)read["id"]);
+            }
+            SQL.Dispose();
+            return role;
+        }
     }
 }

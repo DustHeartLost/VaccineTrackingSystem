@@ -22,24 +22,13 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public bool Delete(int id, out string msg)
-        {
-            string command = $"delete from [User] where id ={id}";
-            try
-            {
-                msg = null;
-                return SQL.Excute(command);
-            }
-            catch (Exception e)
-            {
-                msg = e.Message;
-                System.Diagnostics.Debug.Write(msg);
-                return false;
-            }
-        }
         static public bool Update(User user, out string msg)
-        {
-            string command = $"update [User] set userName = '{user.userName}',password = '{user.password}',apartID =  '{user.apartID}',job = '{user.job}',roleID = '{user.roleID}',num = '{user.num}',name = '{user.name}' where id = '{user.id}'";
+        { 
+            string command;
+            if (user.password != null)
+                command = $"update [User] set userName = '{user.userName}',password = '{user.password}',apartID =  '{user.apartID}',job = '{user.job}',roleID = '{user.roleID}',num = '{user.num}',name = '{user.name}' where id = '{user.id}'";
+            else
+                command= $"update [User] set userName = '{user.userName}',apartID =  '{user.apartID}',job = '{user.job}',roleID = '{user.roleID}',num = '{user.num}',name = '{user.name}' where id = '{user.id}'";
             try
             {
                 msg = null;
@@ -84,9 +73,9 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return user;
         }
-        static public List<User> QueryAll(out string msg)
+        static public List<Dictionary<string,string>> QueryAll(out string msg)
         {
-            string command = "select * from [User]";
+            string command = "select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id;";
             SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
@@ -94,10 +83,18 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            List<User> list = new List<User>();
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
             while (read.Read())
             {
-                list.Add(new User((int)read["id"], (string)read["userName"], (string)read["password"], (int)read["apartID"], (string)read["job"], (int)read["roleID"], (string)read["num"], (string)read["name"]));
+                Dictionary<string,string> d = new Dictionary<string,string>();
+                d.Add("id", read["id"].ToString());
+                d.Add("userName", read["userName"].ToString());
+                d.Add("apartID",(string)read["apartID"]+"("+(string)read["apartNum"] +")");
+                d.Add("job", read["job"].ToString());
+                d.Add("roleID", read["roleID"].ToString());
+                d.Add("num", read["num"].ToString());
+                d.Add("name", read["name"].ToString());
+                list.Add(d);
             }
             SQL.Dispose();
             msg = null;
@@ -123,5 +120,6 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return dictionary;
         }
+        
     }
 }

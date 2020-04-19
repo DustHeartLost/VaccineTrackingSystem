@@ -66,6 +66,24 @@ namespace VaccineTrackingSystem.Models.DAL
             return apartment;
         }
 
+        public static Dictionary<string, int> GetApartment()
+        {
+            string command = $"select id,num,name from Apartment";
+            SqlDataReader read = SQL.getReader(command);
+            if (read == null)
+            {   
+                SQL.Dispose();
+                return null;
+            }
+            Dictionary<string,int> apartment = new Dictionary<string,int>();
+            while (read.Read())
+            {
+                apartment.Add((string)read["name"]+"("+(string)read["num"]+")", (int)read["id"]);
+            }
+            SQL.Dispose();
+            return apartment;
+        }
+
         static public List<Apartment> QueryAll(out string msg)
         {
             string command = $"select * from Apartment";
