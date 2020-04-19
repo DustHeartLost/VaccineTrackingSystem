@@ -22,24 +22,11 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public bool Delete(int id, out string msg)
-        {
-            string command = $"delete from Storeroom where id ={id}";
-            try
-            {
-                msg = null;
-                return SQL.Excute(command);
-            }
-            catch (Exception e)
-            {
-                msg = e.Message;
-                System.Diagnostics.Debug.Write(msg);
-                return false;
-            }
-        }
+
         static public bool Update(Storeroom storeroom, out string msg)
         {
-            string command = $"update Storeroom set name = '{storeroom.name}',site = '{storeroom.site}',userNum =  '{storeroom.userNum}' where id = '{storeroom.id}'";
+            
+            string command = $"update Storeroom set name = '{storeroom.name}',site = '{storeroom.site}',userNum = '{storeroom.userNum}' where id = '{storeroom.id}'";
             try
             {
                 msg = null;
@@ -52,9 +39,9 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public List<Storeroom> Query(string name, out string msg)
+        static public List<Dictionary<string, string>> Query(string name, out string msg)
         {
-            string command = $"select * from Storeroom where name = '{name}'";
+            string command = $"select Storeroom.id,Storeroom.name,Storeroom.site,Storeroom.userNum,[User].name as username  from Storeroom,[User] where Storeroom.userNum=[User].num and Storeroom.name = '{name}'";
             SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
@@ -62,18 +49,23 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            List<Storeroom> list = new List<Storeroom>();
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
             while (read.Read())
             {
-                list.Add(new Storeroom((int)read["id"], (string)read["name"], (string)read["site"], (string)read["userNum"]));
+                Dictionary<string, string> dictionary = new Dictionary<string, string>();
+                dictionary.Add("id", read["id"].ToString());
+                dictionary.Add("name", read["name"].ToString());
+                dictionary.Add("site", read["site"].ToString());
+                dictionary.Add("userNum", read["username"].ToString()+"("+ read["userNum"].ToString()+")");
+                list.Add(dictionary);
             }
             SQL.Dispose();
             msg = null;
             return list;
         }
-        static public List<Storeroom> QueryAll(out string msg)
+        static public List<Dictionary<string, string>> QueryAll(out string msg)
         {
-            string command = $"select * from Storeroom";
+            string command = $"select Storeroom.id,Storeroom.name,Storeroom.site,Storeroom.userNum,[User].name as username  from Storeroom,[User] where Storeroom.userNum=[User].num";
             SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
@@ -81,15 +73,21 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            List<Storeroom> list = new List<Storeroom>();
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
             while (read.Read())
             {
-                list.Add(new Storeroom((int)read["id"], (string)read["name"], (string)read["site"], (string)read["userNum"]));
+                Dictionary<string, string> dictionary = new Dictionary<string, string>();
+                dictionary.Add("id", read["id"].ToString());
+                dictionary.Add("name", read["name"].ToString());
+                dictionary.Add("site", read["site"].ToString());
+                dictionary.Add("userNum", read["username"].ToString()+"("+ read["userNum"].ToString()+")");
+                list.Add(dictionary);
             }
             SQL.Dispose();
             msg = null;
             return list;
         }
+
         //新加的按照用户编号查询的接口2020-04-07
         static public Storeroom QueryByUserNum(string userNum)
         {

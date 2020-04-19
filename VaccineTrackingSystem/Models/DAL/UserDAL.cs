@@ -132,6 +132,21 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return dictionary;
         }
-        
+
+        static public Dictionary<string, string> GetUser()
+        {
+            string command = $"select num,[User].name from [User],Role where Role.id=[User].roleID and Role.name='库管员';";
+            SqlDataReader read = SQL.getReader(command);
+            if (read == null) return null;
+            Dictionary<string, string> role = new Dictionary<string, string>();
+            while (read.Read())
+            {
+                role.Add((string)read["name"]+"("+(string)read["num"]+")", read["num"].ToString());
+               
+            }
+            SQL.Dispose();
+            return role;
+        }
+
     }
 }

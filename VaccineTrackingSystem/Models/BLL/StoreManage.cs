@@ -16,14 +16,14 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public string Query(string name, out string msg)
         {
-            List<Storeroom> storerooms = StoreroomDAL.Query(name, out msg);
+            List<Dictionary<string, string>> storerooms = StoreroomDAL.Query(name, out msg);
             if (storerooms == null)
                 return null;
             return JsonConvert.SerializeObject(storerooms);
         }
         static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
-            List<Storeroom> list = StoreroomDAL.QueryAll(out msg);
+            List<Dictionary<string, string>> list = StoreroomDAL.QueryAll(out msg);
             if (list == null)
             {
                 totalPage = 0;

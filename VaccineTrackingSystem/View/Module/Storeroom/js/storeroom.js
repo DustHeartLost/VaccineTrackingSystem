@@ -3,14 +3,14 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td><td class=\"editTd\">";
-            html += data[i].userNum + "</td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td><td>";
+            html += "<select class=\"userNum\"><option>" + data[i].userNum + "</option></select></td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td><td class=\"editTd\">";
-            html += data[i].userNum + "</td></tr>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td><td>";
+            html += "<select class=\"userNum\"><option>" + data[i].userNum + "</option></select></td></tr>";
         }
-           
+            
 }
     $("#caption").after(html);
     var x = extra.split('+');
@@ -106,6 +106,7 @@ function confirmUpdate() {
             $(this).closest("tr").find("td.editTd").each(function () {
                 temp += $(this).text() + "@@";
             });
+            temp += $(this).closest("tr").find(".userNum").find("option:selected").text() + "@@";
             temp1 = temp.split("@@");
             if (temp1[1] == "" || temp1[2] == "" || temp1[3] == "") { alert("请输入完整信息"); return; };
             var data1 = new Object();
@@ -143,13 +144,32 @@ function clickCheck(obj) {
     $(".editTd").closest("tr").find("td").each(function () {
         $(this).attr("contenteditable", false);
     });
-
-    $(obj).closest("tr").find("select").each(function () {
-        $(this).attr("disabled", false);
+    $(".userNum").each(function () {
+        var temp = "<option>" + $(this).find("option:selected").text() + "</option>";
+        $(this).find("option").remove();
+        $(this).html(temp);
     });
-    $(obj).closest("tr").find("td.editTd").each(function () {
-        $(this).attr("contenteditable", true);
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Storeroom.aspx/GetData",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                $(obj).closest("tr").find(".userNum").each(function () {
+                    var tp = "<option>" + $(this).find("option:selected").text() + "</option>";
+                    $(this).html(tp + createOption(temp.data, $(this).find("option:selected").text()));
+                });
+            } else {
+                alert(temp.data);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
     });
+   
 }
 
 function down() {
@@ -241,8 +261,25 @@ function concelAdd() {
 
 function addRecord() {
     html = "<tr id=\"newOne\" class=\"dataRow3\"  style=\"height:50px;width:130px\"><td></td><td></td><td contentEditable=\"true\" class=\"editTd\"></td>";
-    html += "<td contentEditable=\"true\" class=\"editTd\"></td><td contentEditable=\"true\" class=\"editTd\"></td></tr>";
+    html += "<td contentEditable=\"true\" class=\"editTd\"></td><td><select id=\"userNum\"></select></td></tr>";
     $("#caption").after(html);
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Storeroom.aspx/GetData",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                $("#userNum").html(createOption(temp.data, ""));
+            } else {
+                alert(temp.data);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
 }
 
 function confirmAdd() {
@@ -250,6 +287,7 @@ function confirmAdd() {
     $("tr.dataRow3").find("td.editTd").each(function () {
         temp += $(this).text() + "@@";
     });
+    temp += $("tr.dataRow3").find("#userNum").find("option:selected").text() + "@@"; 
     temp1 = temp.split("@@");
     if (temp1[0] == "" || temp1[1] == "" || temp1[2] == "") { alert("请输入完整信息"); return; }
     var data1 = new Object();
@@ -301,4 +339,14 @@ function search() {
     }
     else
         alert("请输入库房名称");
+}
+
+function createOption(data, value) {
+    var temp = JSON.parse(data);
+    var result = "";
+    for (var i = 0; i < temp.length; i++) {
+        if (temp[i] != value)
+            result += "<option>" + temp[i] + "</option>"
+    }
+    return result;
 }

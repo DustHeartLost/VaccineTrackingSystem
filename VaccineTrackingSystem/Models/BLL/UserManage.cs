@@ -53,7 +53,10 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return UserDAL.UpdateByName(userName, password, out msg);
         }
-       
 
+        static public Dictionary<string, string> GetUser()
+        {
+            return UserDAL.GetUser();
+        }
     }
 }
