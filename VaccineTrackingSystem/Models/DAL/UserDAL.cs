@@ -137,7 +137,11 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command = $"select num,[User].name from [User],Role where Role.id=[User].roleID and Role.name='库管员';";
             SqlDataReader read = SQL.getReader(command);
-            if (read == null) return null;
+            if (read == null)
+            {
+                SQL.Dispose();
+                return null;
+            }
             Dictionary<string, string> role = new Dictionary<string, string>();
             while (read.Read())
             {

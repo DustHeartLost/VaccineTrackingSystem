@@ -10,6 +10,10 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return CategoryDAL.Add(category, out msg);
         }
+        static public Dictionary<string, string> GetCate()
+        {
+            return CategoryDAL.GetCate();
+        }
 
         static public bool Update(Category category, out string msg)
         {

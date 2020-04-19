@@ -29,19 +29,33 @@ function concelAdd() {
 }
 
 function addRecord() {
-    html = "<tr id=\"newOne\" class=\"dataRow\"  style=\"height:50px;width:130px\"><td></td><td contentEditable=\"true\" class=\"editTd\"></td>";
+    html = "<tr id=\"newOne\" class=\"dataRow\"  style=\"height:50px;width:130px\"><td></td><td><select id=\"cagNum\"></select></td>";
     html += "<td contentEditable=\"true\" class=\"editTd\"></td><td contentEditable=\"true\" class=\"editTd\"></td><td contentEditable=\"true\" class=\"editTd\"></td></tr>";
     $("#caption").after(html);
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Inflow.aspx/GetData",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                $("#cagNum").html(createOption(temp.data, ""));
+            } else {
+                alert(temp.data);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
 }
 
 function confirmAdd() {
     var temp = "";
-    var i = 1;
+    temp += $("tr.dataRow").find("#cagNum").find("option:selected").text() + "@@"; 
     $("tr.dataRow").find("td.editTd").each(function () {
         temp += $(this).text() + "@@";
-        if (i == 4)
-            return false;
-        ++i;
     });
     temp1 = temp.split("@@");
     if (temp1[0] == "" || temp1[1] == "" || temp1[2] == "" || temp1[3] == "") { alert("请输入完整信息"); return; }
@@ -69,4 +83,14 @@ function confirmAdd() {
         }
     });
     
+}
+
+function createOption(data, value) {
+    var temp = JSON.parse(data);
+    var result = "";
+    for (var i = 0; i < temp.length; i++) {
+        if (temp[i] != value)
+            result += "<option>" + temp[i] + "</option>"
+    }
+    return result;
 }

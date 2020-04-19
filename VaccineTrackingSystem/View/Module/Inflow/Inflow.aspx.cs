@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Web;
+using VaccineTrackingSystem.Models.BLL;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.Module.Inflow
@@ -11,6 +12,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
     {
         private static int storeId;
         private static string userNum;
+        protected static Dictionary<string, string> category;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (HttpContext.Current.Session["user"] == null)
@@ -25,6 +27,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
                     Response.Write("<script language='javascript'>alert('您没有绑定的仓库');location.href='../../Home/Home.aspx'</script>");
                 };
                 userNum = user["num"];
+                category = CategoryManage.GetCate();
             }
         }
 
@@ -38,9 +41,17 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             string nowTime= DateTime.Now.ToString("yyyy-MM-dd");
             int quantity= int.Parse(jo["quantity"].ToString());
             decimal price = decimal.Parse(jo["price"].ToString());
-            Models.Inflow inflow= new Models.Inflow(jo["cagNum"].ToString(), storeId, nowTime, userNum, quantity, price, jo["batchNum"].ToString());
+            string cagNum = category[jo["cagNum"].ToString()];
+            Models.Inflow inflow= new Models.Inflow(cagNum, storeId, nowTime, userNum, quantity, price, jo["batchNum"].ToString());
             return Models.BLL.InflowManage.InWarehouse(inflow, out msg) ? JsonConvert.SerializeObject(new Packet(200, "入库成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
         }
-         
+
+        [System.Web.Services.WebMethod]
+        public static string GetData()
+        {
+            if (category == null || category.Count == 0) return JsonConvert.SerializeObject(new Packet(201, "暂无药品,请增加后刷新重试"));
+            return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(category.Keys)));
+        }
+
     }
 }

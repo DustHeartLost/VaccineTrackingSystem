@@ -85,6 +85,24 @@ namespace VaccineTrackingSystem.Models.DAL
             return list;
         }
 
+        static public Dictionary<string, string> GetCate()
+        {
+            string command = $"select num,name from  Category;";
+            SqlDataReader read = SQL.getReader(command);
+            if (read == null)
+            {
+                SQL.Dispose();
+                return null;
+            }
+            Dictionary<string, string>  category = new Dictionary<string, string>();
+            while (read.Read())
+            {
+                category.Add((string)read["name"] + "(" + (string)read["num"] + ")", read["num"].ToString());
+
+            }
+            SQL.Dispose();
+            return category;
+        }
 
     }
 }
