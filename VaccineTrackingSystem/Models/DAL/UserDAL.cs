@@ -19,7 +19,7 @@ namespace VaccineTrackingSystem.Models.DAL
             {
                 if (e.Number == 2627)
                 {
-                    msg = "员工编号重复";
+                    msg = "员工编号或用户名重复";
                 }
                 else
                 {
@@ -44,7 +44,7 @@ namespace VaccineTrackingSystem.Models.DAL
             {
                 if (e.Number == 2627)
                 {
-                    msg = "员工编号重复";
+                    msg = "员工编号或用户名重复";
                 }
                 else
                 {
