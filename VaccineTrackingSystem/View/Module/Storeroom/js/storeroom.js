@@ -68,7 +68,6 @@ function cancelUpdate() {
     $("#confirmUpdate").hide();
     $("#update").show();
     $(".editTd").attr("contenteditable", false);
-    $(".edit").attr("disabled", true);
 
     $("#down").show();
     $("#up").show();
@@ -108,6 +107,7 @@ function confirmUpdate() {
             });
             temp += $(this).closest("tr").find(".userNum").find("option:selected").text() + "@@";
             temp1 = temp.split("@@");
+            alert(temp);
             if (temp1[1] == "" || temp1[2] == "" || temp1[3] == "") { alert("请输入完整信息"); return; };
             var data1 = new Object();
             data1.id = temp1[0];
@@ -138,11 +138,9 @@ function clickCheck(obj) {
     });
     $(obj).prop("checked", true);
 
-    $(".edit").each(function () {
-        $(this).attr("disabled", true);
-    });
-    $(".editTd").closest("tr").find("td").each(function () {
-        $(this).attr("contenteditable", false);
+    $(".editTd").attr("contenteditable", false);
+    $(obj).closest("tr").find("td.editTd").each(function () {
+        $(this).attr("contenteditable", true);
     });
     $(".userNum").each(function () {
         var temp = "<option>" + $(this).find("option:selected").text() + "</option>";
@@ -157,6 +155,7 @@ function clickCheck(obj) {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
+                alert(data.d);
                 $(obj).closest("tr").find(".userNum").each(function () {
                     var tp = "<option>" + $(this).find("option:selected").text() + "</option>";
                     $(this).html(tp + createOption(temp.data, $(this).find("option:selected").text()));

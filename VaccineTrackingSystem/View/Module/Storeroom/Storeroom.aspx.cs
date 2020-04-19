@@ -58,6 +58,7 @@ namespace VaccineTrackingSystem.View.Module.Storeroom
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
+            string xx = JsonConvert.SerializeObject(users);
             string userNum = users[jo["userNum"].ToString()];
             Models.Storeroom storeroom = new Models.Storeroom((int)jo["id"],jo["name"].ToString(), jo["site"].ToString(), userNum);
             return Models.BLL.StoreManage.Update(storeroom, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
