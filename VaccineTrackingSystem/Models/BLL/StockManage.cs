@@ -43,6 +43,8 @@ namespace VaccineTrackingSystem.Models.BLL
             {
                 money += decimal.Parse(dictionary["money"]);
             }
+            if (list.Count != 0 && list.Count % 10 == 0)
+                --totalPage;
             if (currentPage < totalPage)
                 ++currentPage;
             try

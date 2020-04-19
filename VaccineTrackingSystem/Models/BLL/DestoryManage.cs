@@ -45,6 +45,8 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             List<Indetail> list = SortDate(indetails);
             totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (list.Count != 0 && list.Count % 10 == 0)
+                --totalPage;
             if (currentPage < totalPage)
                 ++currentPage;
             try

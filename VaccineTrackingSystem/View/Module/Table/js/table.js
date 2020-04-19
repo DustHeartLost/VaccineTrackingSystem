@@ -119,3 +119,10 @@ function up() {
         }
     });
 }
+
+function tableExport() {
+    $(".tables").tableExport({
+        type: "xlsx",
+        escape: "false",
+    });
+}

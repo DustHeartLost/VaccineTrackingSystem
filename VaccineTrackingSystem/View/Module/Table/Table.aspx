@@ -4,6 +4,7 @@
     <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
     <script src="../../Template/jquery/FileSaver.min.js"></script>
     <script src="../../Template/jquery/tableExport.min.js"></script>
+    <script src="../../Template/jquery/xlsx.core.min.js"></script>
     <script src="js/table.js"></script>
     <script>
         window.onload = create;
@@ -24,6 +25,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <input id="inflow"  type="radio"  name="obey" checked="checked"/>入库流水
     <input id="outflow"  type="radio" name="obey"/>出库流水
+    <button id="export" type="button" onclick="tableExport()">导出</button>
     <div id="upAndDownArea" style="float: right;">
         <button id="up" class="upAnddown" onclick="up()"><</button>
         <button id="down" class="upAnddown" onclick="down()">></button>
@@ -33,7 +35,7 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">
     <div id="table">
-        <table id="tableContainer">
+        <table id="tableContainer" class="tables">
         </table>
     </div>
 </asp:Content>

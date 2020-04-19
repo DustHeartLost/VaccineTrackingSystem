@@ -21,6 +21,8 @@ namespace VaccineTrackingSystem.Models.BLL
                 money += inflow.price * inflow.quantity;
             }
             inflowTotalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (list.Count != 0 && list.Count % 10 == 0)
+                --inflowTotalPage;
             if (inflowCurrentPage < inflowTotalPage)
                 ++inflowCurrentPage;
             try

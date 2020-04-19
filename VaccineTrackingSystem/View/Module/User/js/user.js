@@ -270,7 +270,8 @@ function confirmAdd() {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             alert(temp.data);
-            concelAdd();
+            if (temp.code == 200)
+                concelAdd();
         },
         error: function (err) {
             alert(err);
