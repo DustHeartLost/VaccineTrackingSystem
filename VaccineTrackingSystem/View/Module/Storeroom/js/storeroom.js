@@ -156,7 +156,6 @@ function clickCheck(obj) {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
-                alert(data.d);
                 $(obj).closest("tr").find(".userNum").each(function () {
                     var tp = "<option>" + $(this).find("option:selected").text() + "</option>";
                     $(this).html(tp + createOption(temp.data, $(this).find("option:selected").text()));
