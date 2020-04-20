@@ -85,7 +85,7 @@ function destory() {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200)
-                clear();
+            { clear(); alert("销毁成功"); }
             else alert(temp.data);
         },
         error: function (err) {

@@ -49,7 +49,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
         [System.Web.Services.WebMethod]
         public static string GetData()
         {
-            if (category == null || category.Count == 0) return JsonConvert.SerializeObject(new Packet(201, "暂无药品,请增加后刷新重试"));
+            if (category == null || category.Count == 0) return JsonConvert.SerializeObject(new Packet(201, "暂无药品相关的品类,请增加后品类后刷新重试"));
             return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(category.Keys)));
         }
 

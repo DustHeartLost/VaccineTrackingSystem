@@ -70,6 +70,7 @@ namespace VaccineTrackingSystem.Models.BLL
             List<Dictionary<string, string>> list = InflowDAL.QueryAllByStoreID(storeID, out msg);
             if (list == null)
             {
+                msg = "没有需要导出的记录";
                 return null;
             }
             msg = null;
@@ -86,6 +87,7 @@ namespace VaccineTrackingSystem.Models.BLL
             List<Dictionary<string, string>> list = OutflowDAL.QueryAllByStoreID(storeID, out msg);
             if (list == null)
             {
+                msg = "没有需要导出的记录";
                 return null;
             }
             msg = null;

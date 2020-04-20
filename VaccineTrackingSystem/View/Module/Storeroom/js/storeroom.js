@@ -161,7 +161,7 @@ function clickCheck(obj) {
                     var tp = "<option>" + $(this).find("option:selected").text() + "</option>";
                     $(this).html(tp + createOption(temp.data, $(this).find("option:selected").text()));
                 });
-            } else {
+            } else  {
                 alert(temp.data);
             }
         },
@@ -272,6 +272,9 @@ function addRecord() {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
                 $("#userNum").html("<option>(无)</option>"+createOption(temp.data, ""));
+            } else if (temp.code == 201) {
+                alert(temp.data);
+                concelAdd();
             } else {
                 alert(temp.data);
             }

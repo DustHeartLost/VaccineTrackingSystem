@@ -19,7 +19,7 @@ namespace VaccineTrackingSystem.Models.DAL
             {
                 if (e.Number == 2627)
                 {
-                    msg = "仓库名称重复";
+                    msg = "请检查仓库名称是否重复或库管员是否已经绑定仓库";
                 }
                 else
                 {

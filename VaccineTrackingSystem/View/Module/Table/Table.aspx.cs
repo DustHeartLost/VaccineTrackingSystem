@@ -122,8 +122,6 @@ namespace VaccineTrackingSystem.View.Module.Table
                 case 1: temp = Models.BLL.TableManage.ExportOutflow(storeID, out msg, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
-
-           
         }
     }
 }

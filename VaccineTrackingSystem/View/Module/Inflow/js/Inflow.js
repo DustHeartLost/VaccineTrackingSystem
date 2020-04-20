@@ -40,8 +40,11 @@ function addRecord() {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
-                $("#cagNum").html(createOption(temp.data, ""));
-            } else {
+                $("#cagNum").html("<option>(无)</option>"+createOption(temp.data, ""));
+            } else if (temp.code == 201) {
+                alert(temp.data);
+                concelAdd();
+            }else {
                 alert(temp.data);
             }
         },
@@ -53,12 +56,12 @@ function addRecord() {
 
 function confirmAdd() {
     var temp = "";
-    temp += $("tr.dataRow").find("#cagNum").find("option:selected").text() + "@@"; 
-    $("tr.dataRow").find("td.editTd").each(function () {
+    temp += $("#cagNum").find("option:selected").text() + "@@";
+    $("tr.dataRow").first().find("td.editTd").each(function () {
         temp += $(this).text() + "@@";
     });
     temp1 = temp.split("@@");
-    if (temp1[0] == "") { alert("请输入药品编号"); return; }
+    if (temp1[0] == "(无)") { alert("请输入药品编号"); return; }
     if (temp1[1] == "") { alert("请输入数量"); return; }
     if (temp1[2] == "") { alert("请输入单价"); return; }
     if (temp1[3] == "") { alert("请输入批号"); return; }   

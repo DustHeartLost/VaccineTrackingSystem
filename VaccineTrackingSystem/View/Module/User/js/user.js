@@ -303,8 +303,8 @@ function confirmAdd() {
     data1.job = temp1[2];
     data1.num = temp1[3];
     data1.name = temp1[4];
-    data1.roleID = temp1[5];
-    data1.apartID = temp1[6];
+    data1.apartID = temp1[5];
+    data1.roleID = temp1[6];
     $.ajax({
         type: "post", //要用post方式                 
         url: "User.aspx/Insert",//方法所在页面和方法名
