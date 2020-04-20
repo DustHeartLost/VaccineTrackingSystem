@@ -107,8 +107,9 @@ function confirmUpdate() {
             });
             temp += $(this).closest("tr").find(".userNum").find("option:selected").text() + "@@";
             temp1 = temp.split("@@");
-            alert(temp);
-            if (temp1[1] == "" || temp1[2] == "" || temp1[3] == "") { alert("请输入完整信息"); return; };
+            if (temp1[1] == "") { alert("请输入库房名称"); return; };
+            if (temp1[2] == "") { alert("请输入所在位置"); return; };
+            if (temp1[3] == "") { alert("请选择库管员"); return; };
             var data1 = new Object();
             data1.id = temp1[0];
             data1.name = temp1[1];
@@ -270,7 +271,7 @@ function addRecord() {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
-                $("#userNum").html(createOption(temp.data, ""));
+                $("#userNum").html("<option>(无)</option>"+createOption(temp.data, ""));
             } else {
                 alert(temp.data);
             }
@@ -288,7 +289,9 @@ function confirmAdd() {
     });
     temp += $("tr.dataRow3").find("#userNum").find("option:selected").text() + "@@"; 
     temp1 = temp.split("@@");
-    if (temp1[0] == "" || temp1[1] == "" || temp1[2] == "") { alert("请输入完整信息"); return; }
+    if (temp1[0] == "") { alert("请输入库房名称"); return; };
+    if (temp1[1] == "") { alert("请输入所在位置"); return; };
+    if (temp1[2] == "(无)") { alert("请选择库管员"); return; };
     var data1 = new Object();
     data1.id = 0;
     data1.name = temp1[0];

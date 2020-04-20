@@ -67,15 +67,15 @@ namespace VaccineTrackingSystem.Models.BLL
         static public string ExportInflow(int storeID,out string msg, out decimal money)
         {
             money = 0m;
-            List<Inflow> list = InflowDAL.QueryAllByStoreID(storeID, out msg);
+            List<Dictionary<string, string>> list = InflowDAL.QueryAllByStoreID(storeID, out msg);
             if (list == null)
             {
                 return null;
             }
             msg = null;
-            foreach (Inflow inflow in list)
+            foreach (Dictionary<string, string> d in list)
             {
-                money += inflow.price * inflow.quantity;
+                money += decimal.Parse(d["price"]) * decimal.Parse(d["quantity"]);
             } 
             return JsonConvert.SerializeObject(list);
         }
@@ -83,15 +83,15 @@ namespace VaccineTrackingSystem.Models.BLL
         static public string ExportOutflow(int storeID, out string msg, out decimal money)
         {
             money = 0m;
-            List<Outflow> list = OutflowDAL.QueryAllByStoreID(storeID, out msg);
+            List<Dictionary<string, string>> list = OutflowDAL.QueryAllByStoreID(storeID, out msg);
             if (list == null)
             {
                 return null;
             }
             msg = null;
-            foreach (Outflow outflow in list)
+            foreach (Dictionary<string, string> d in list)
             {
-                money += outflow.price * outflow.quantity;
+                money += decimal.Parse(d["price"]) * decimal.Parse(d["quantity"]);
             }
             return JsonConvert.SerializeObject(list);
         }

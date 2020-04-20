@@ -58,7 +58,10 @@ function confirmAdd() {
         temp += $(this).text() + "@@";
     });
     temp1 = temp.split("@@");
-    if (temp1[0] == "" || temp1[1] == "" || temp1[2] == "" || temp1[3] == "") { alert("请输入完整信息"); return; }
+    if (temp1[0] == "") { alert("请输入药品编号"); return; }
+    if (temp1[1] == "") { alert("请输入数量"); return; }
+    if (temp1[2] == "") { alert("请输入单价"); return; }
+    if (temp1[3] == "") { alert("请输入批号"); return; }   
     var data1 = new Object();
     data1.id = 0;
     data1.cagNum = temp1[0];
