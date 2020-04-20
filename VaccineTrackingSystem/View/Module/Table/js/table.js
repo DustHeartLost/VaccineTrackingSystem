@@ -121,17 +121,30 @@ function up() {
 }
 
 function tableExport() {
-    alert("dccccca");
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Table.aspx/ExportALLInflow",//方法所在页面和方法名
+        url: "Table.aspx/ExportALL",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
-                clear();
-                createInflowTable(temp.data, temp.extra); 
+                var option = {};
+                option.fileName = "export";
+                var shhead ="";
+                switch (temp.extra) {
+                    case "0": option.fileName = "入库流水表"; shhead = ['ID', '药品编码', '关联库房', '入库时间', '操作人', '数量', '单价', '批号']; break;
+                    case "1": option.fileName = "出库流水表"; shhead = ['ID', '药品编码', '关联库房', '出库时间', '操作人', '数量', '单价', '批号','状态']; break;
+                } 
+                option.datas = [
+                    {
+                        sheetData: JSON.parse(temp.data),
+                        sheetName: "",
+                        sheetHeader: shhead
+                    }
+                ];
+                var toExcel = new ExportJsonExcel(option);
+                toExcel.saveExcel();
             } 
             else
                alert(temp.extra);
@@ -142,8 +155,8 @@ function tableExport() {
     });
 
    
-    $(".tables").tableExport({
-        type: "xlsx",
-        escape: "false",
-    });
+    //$(".tables").tableExport({
+    //    type: "xlsx",
+    //    escape: "false",
+    //});
 }
