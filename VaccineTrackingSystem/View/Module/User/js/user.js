@@ -270,8 +270,8 @@ function addRecord() {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
-                $("#apartID").html(createOption(temp.data,""));
-                $("#roleID").html(createOption(temp.extra,""));
+                $("#apartID").html(createOption(temp.extra,""));
+                $("#roleID").html(createOption(temp.data,""));
             } else {
                 alert(temp.data);
             }

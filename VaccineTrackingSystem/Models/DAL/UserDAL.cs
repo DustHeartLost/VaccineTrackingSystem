@@ -142,14 +142,14 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            Dictionary<string, string> role = new Dictionary<string, string>();
+            Dictionary<string, string> list = new Dictionary<string, string>();
             while (read.Read())
             {
-                role.Add((string)read["name"]+"("+(string)read["num"]+")", read["num"].ToString());
+                list.Add((string)read["name"]+"("+(string)read["num"]+")", read["num"].ToString());
                
             }
             SQL.Dispose();
-            return role;
+            return list;
         }
 
     }
