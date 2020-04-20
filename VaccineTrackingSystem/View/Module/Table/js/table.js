@@ -121,6 +121,27 @@ function up() {
 }
 
 function tableExport() {
+    alert("dccccca");
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Table.aspx/ExportALLInflow",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                clear();
+                createInflowTable(temp.data, temp.extra); 
+            } 
+            else
+               alert(temp.extra);
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
+
+   
     $(".tables").tableExport({
         type: "xlsx",
         escape: "false",

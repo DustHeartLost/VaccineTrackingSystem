@@ -109,5 +109,23 @@ namespace VaccineTrackingSystem.View.Module.Table
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
 
         }
+
+        [System.Web.Services.WebMethod]
+        public static string ExportALLInflow()
+        {
+            decimal money = 0;
+            string msg;
+            string jsonData = Models.BLL.TableManage.ExportInflow(storeID,out msg, out money);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+        [System.Web.Services.WebMethod]
+        public static string ExportALLOutflow()
+        {
+            decimal money = 0;
+            string msg;
+            //TODO:此处的ID将来换成从session中取
+            string jsonData = Models.BLL.TableManage.ExportOutflow(storeID, out msg, out money);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
     }
 }
