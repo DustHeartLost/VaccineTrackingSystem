@@ -84,13 +84,13 @@ namespace VaccineTrackingSystem.View.Module.Storeroom
             string jsonData = Models.BLL.StoreManage.Query(temp, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
-
         [WebMethod]
         public static string GetData()
         {
             if (users == null || users.Count==0) return JsonConvert.SerializeObject(new Packet(201, "暂无库管员,请增加后刷新重试"));
             return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(users.Keys)));
         }
+        
 
     }
 }

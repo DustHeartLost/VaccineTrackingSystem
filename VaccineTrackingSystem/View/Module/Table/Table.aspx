@@ -5,6 +5,7 @@
     <script src="../../Template/jquery/FileSaver.min.js"></script>
     <script src="../../Template/jquery/tableExport.min.js"></script>
     <script src="../../Template/jquery/xlsx.core.min.js"></script>
+    <script src="https://cuikangjie.github.io/JsonExportExcel/dist/JsonExportExcel.min.js"></script>
     <script src="js/table.js"></script>
     <script>
         window.onload = create;
