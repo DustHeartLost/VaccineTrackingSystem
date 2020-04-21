@@ -52,9 +52,12 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return indetail;
         }
-        static public List<Indetail> QueryByStockID(int stockID, out string msg)
+        static public List<Dictionary<string,string>> QueryByStockID(int stockID, out string msg)
         {
-            string command = $"select * from Indetail where stockID = '{stockID}'";
+            string command = $"with temp as(select Stock.cagNum,Indetail.id,stockID,batchNum,date,Indetail.quantity,price,Indetail.note from Indetail,Stock where stockID = '{stockID}' and Indetail.stockID=Stock.id) "+
+                             "select temp.cagNum,Category.name,Category.kind,Category.spec,temp.id,temp.stockID,temp.batchNum,temp.date,temp.quantity,temp.price,temp.note "+
+                             "from temp,Category "+
+                             "where Category.num = cagNum;";
             SqlDataReader read;
             read = SQL.getReader(command); 
             if (!read.HasRows)
@@ -63,12 +66,22 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            List<Indetail> list = new List<Indetail>();
-            Indetail indetail;
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
             while (read.Read())
             {
-                indetail = new Indetail((int)read["id"], (int)read["stockID"], (string)read["batchNum"], (string)read["date"], (int)read["quantity"], (decimal)read["price"], read["note"].ToString());
-                list.Add(indetail);
+                Dictionary<string, string> d = new Dictionary<string, string>();
+                d.Add("cagNum",(string)read["cagNum"]);
+                d.Add("name", (string)read["name"]);
+                d.Add("kind", (string)read["kind"]);
+                d.Add("spec", (string)read["spec"]);
+                d.Add("id", read["id"].ToString());
+                d.Add("stockID", read["stockID"].ToString());
+                d.Add("batchNum", (string)read["batchNum"]);
+                d.Add("date", (string)read["date"]);
+                d.Add("quantity", read["quantity"].ToString());
+                d.Add("price", read["price"].ToString());
+                d.Add("note",read["note"].ToString());
+                list.Add(d);
             }
             SQL.Dispose();
             msg = null;

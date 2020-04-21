@@ -44,5 +44,6 @@
             this.price = price;
             this.note = note;
         }
+        public Indetail() { }
     }
 }

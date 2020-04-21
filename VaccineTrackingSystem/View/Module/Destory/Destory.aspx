@@ -6,8 +6,9 @@
     <script>
         window.onload = create;
         function create() {
-            var obj =<%=GetALL() %>;
-            if (obj.code == 200) createTable(obj.data, obj.extra);
+            var obj =<%=GetALL()%>;
+            if (obj.code == 200)
+                createTable(obj.data, obj.extra);
             else alert(obj.data);
         }
     </script>
@@ -18,7 +19,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
-    <button style="padding:5px" onclick="destory()">一键销毁</button>
+    <button style="padding:5px" onclick="destory()">销毁</button>
+    <button style="padding:5px" onclick="destoryAll()">一键销毁</button>
     <div style="float: right;" id="upAndDownArea">
         <button id="up" class="upAnddown" onclick="up()" aria-valuetext="&lt;"> <</button>
         <button id="down" class="upAnddown" onclick="down()" aria-valuetext="&gt;"> ></button>
@@ -30,8 +32,13 @@
     <div id="table">
         <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
-                <th>ID</th>
-                <th>库存id</th>
+                <th></th>
+                <th>药品编号</th>
+                <th>药品名称</th>
+                <th>药品类别</th>
+                <th>药品规格</th>
+                <th>明细号</th>
+                <th>库存号</th>
                 <th>批号</th>
                 <th>入库时间</th>
                 <th>数量</th>

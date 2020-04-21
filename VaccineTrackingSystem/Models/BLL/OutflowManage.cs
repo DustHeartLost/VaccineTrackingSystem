@@ -25,7 +25,7 @@ namespace VaccineTrackingSystem.Models.BLL
         //新增 单品明细数据进行批号排序，返回list  4/7
         static public string QueryIndetail(int stockID, out string msg, ref int totalPage, ref int currentPage)
         {
-            List<Indetail> list = IndetailDAL.QueryByStockID(stockID, out msg);
+            List<Dictionary<string,string>> list= IndetailDAL.QueryByStockID(stockID, out msg);
             if (list == null)
             {
                 msg = "暂无该库存的单品明细";
@@ -34,7 +34,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 return null;
             }
             //排序+过滤过期药品
-            List<Indetail> sortList = SortDate(list);
+            List<Indetail> sortList = null;// SortDate(list);
             if (sortList == null)
             {
                 msg = "暂无未过期的单品明细";

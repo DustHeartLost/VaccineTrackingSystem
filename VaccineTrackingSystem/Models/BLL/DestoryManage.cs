@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
     public class DestoryManage
     {
-        static public List<Indetail> Query(int storeID, ref int totalPage, ref int currentPage, out string msg)
+        static public List<Dictionary<string, string>> Query(int storeID, ref int totalPage, ref int currentPage, out string msg)
         {
             List<Stock> stockList = StockDAL.QueryByStoreId(storeID, out msg);
             if (stockList == null || stockList.Count == 0)
@@ -17,20 +18,21 @@ namespace VaccineTrackingSystem.Models.BLL
                 msg = "暂无库存记录";
                 return null;
             }
-            List<Indetail> indetails = new List<Indetail>();
+            List<Dictionary<string, string>> indetails = new List<Dictionary<string, string>>();
             for (int i = 0; i < stockList.Count; i++)
             {
-                List<Indetail> temp = IndetailDAL.QueryByStockID(stockList[i].id, out msg);
+                List<Dictionary<string, string>> temp = IndetailDAL.QueryByStockID(stockList[i].id, out msg);
                 if (temp != null && temp.Count != 0)
                 {
                     indetails.AddRange(temp);
                 }
             }
             string nowTime = DateTime.Now.ToString("yyyy-MM-dd");
-
+       
             for (int i = 0; i < indetails.Count; i++)
             {
-                if (Convert.ToDateTime(indetails[i].batchNum) > Convert.ToDateTime(nowTime))
+                string time=indetails[i]["batchNum"].Substring(0, 4) + "-" + indetails[i]["batchNum"].Substring(4, 2) + "-" + indetails[i]["batchNum"].Substring(6, 2);
+                if (Convert.ToDateTime(time) >= Convert.ToDateTime(nowTime))
                 {
                     indetails.Remove(indetails[i]);
                     i--;
@@ -40,10 +42,10 @@ namespace VaccineTrackingSystem.Models.BLL
             {
                 totalPage = 0;
                 currentPage = -1;
-                msg = "库房暂无单品明细记录";
+                msg = "库房暂无过期药品";
                 return null;
             }
-            List<Indetail> list = SortDate(indetails);
+            List<Dictionary<string, string>> list = SortDate(indetails);
             totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             if (list.Count != 0 && list.Count % 10 == 0)
                 --totalPage;
@@ -59,7 +61,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
     
-        static private List<Indetail> SortDate(List<Indetail> indetailList)
+        static private List<Dictionary<string, string>> SortDate(List<Dictionary<string, string>> indetailList)
         {
             string date = DateTime.Now.ToString("yyyy-MM-dd");
             DateTime nowdate = Convert.ToDateTime(date);
@@ -70,10 +72,12 @@ namespace VaccineTrackingSystem.Models.BLL
             for (int i = 0; i < indetailList.Count - 1; i++)
             {
                 m = i;
-                tempdate = Convert.ToDateTime(indetailList[i].batchNum);
+                string time1 = indetailList[i]["batchNum"].Substring(0, 4) + "-" + indetailList[i]["batchNum"].Substring(4, 2) + "-" + indetailList[i]["batchNum"].Substring(6, 2);
+                tempdate = Convert.ToDateTime(time1);
                 for (int j = i + 1; j < indetailList.Count; j++)
                 {
-                    DateTime indetaildt = Convert.ToDateTime(indetailList[j].batchNum);
+                    string time2 = indetailList[j]["batchNum"].Substring(0, 4) + "-" + indetailList[j]["batchNum"].Substring(4, 2) + "-" + indetailList[j]["batchNum"].Substring(6, 2);
+                    DateTime indetaildt = Convert.ToDateTime(time2);
                     if (indetaildt > tempdate)
                     {
                         tempdate = indetaildt;
@@ -85,9 +89,9 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             return indetailList;
         }
-        static private List<Indetail> Swap(List<Indetail> indetailList, int m, int i)
+        static private List<Dictionary<string, string>> Swap(List<Dictionary<string, string>> indetailList, int m, int i)
         {
-            Indetail t;
+            Dictionary<string, string> t;
             t = indetailList[m];
             indetailList[m] = indetailList[i];
             indetailList[i] = t;

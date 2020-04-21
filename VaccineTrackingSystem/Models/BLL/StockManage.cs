@@ -9,7 +9,7 @@ namespace VaccineTrackingSystem.Models.BLL
        
         static public string QueryInDetail(int stockID, ref int totalPage, ref int currentPage, out string msg)
         {
-            List < Indetail >list= IndetailDAL.QueryByStockID(stockID, out msg);
+            List <Dictionary<string,string>>list= IndetailDAL.QueryByStockID(stockID, out msg);
             if (list == null)
             {
                 totalPage = 0;
