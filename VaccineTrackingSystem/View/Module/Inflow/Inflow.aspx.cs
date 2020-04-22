@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Web.Services;
 using VaccineTrackingSystem.Models.BLL;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -10,6 +11,8 @@ namespace VaccineTrackingSystem.View.Module.Inflow
 {
     public partial class Inflow : System.Web.UI.Page
     {
+        protected static int totalPage;
+        protected static int currentPage;
         private static int storeId;
         private static string userNum;
         protected static Dictionary<string, string> category;
@@ -31,27 +34,37 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             }
         }
 
-         
-        [System.Web.Services.WebMethod]
-        public static string Insert(string temp)
+        [WebMethod]
+        public static string GetALL()
         {
-            JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
+            if (currentPage != -1)
+            {
+                currentPage--;
+            }
             string msg;
-            Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
             string nowTime= DateTime.Now.ToString("yyyy-MM-dd");
-            int quantity= int.Parse(jo["quantity"].ToString());
-            decimal price = decimal.Parse(jo["price"].ToString());
-            string cagNum = category[jo["cagNum"].ToString()];
-            Models.Inflow inflow= new Models.Inflow(cagNum, storeId, nowTime, userNum, quantity, price, jo["batchNum"].ToString());
-            return Models.BLL.InflowManage.InWarehouse(inflow, out msg) ? JsonConvert.SerializeObject(new Packet(200, "入库成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
+            string jsonData = Models.BLL.InflowManage.QueryTodayRecoder(storeId, nowTime, out msg, ref totalPage, ref currentPage);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+        [WebMethod]
+        public static string GetDown()
+        {
+            string msg;
+            string nowTime = DateTime.Now.ToString("yyyy-MM-dd");
+            string jsonData = Models.BLL.InflowManage.QueryTodayRecoder(storeId, nowTime, out msg, ref totalPage, ref currentPage);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+        [WebMethod]
+        public static string GetUp()
+        {
+            if (currentPage == -1 || currentPage == 0) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
+            currentPage -= 2;
+            string msg;
+            string nowTime = DateTime.Now.ToString("yyyy-MM-dd");
+            string jsonData = Models.BLL.InflowManage.QueryTodayRecoder(storeId, nowTime, out msg, ref totalPage, ref currentPage);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
-        [System.Web.Services.WebMethod]
-        public static string GetData()
-        {
-            if (category == null || category.Count == 0) return JsonConvert.SerializeObject(new Packet(201, "暂无药品相关的品类,请增加后品类后刷新重试"));
-            return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(category.Keys)));
-        }
 
     }
 }

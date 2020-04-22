@@ -24,7 +24,7 @@
      <div id="table">
         <table id="tableContainer">
             <tr id="caption" class="test">
-                    <th> ID</th>
+                    <th> 库存编号</th>
                     <th >药品编码</th>
                     <th >库房编号</th>
                     <th>库存数量</th>

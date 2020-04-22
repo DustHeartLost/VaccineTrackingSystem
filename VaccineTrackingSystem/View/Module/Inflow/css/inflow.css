@@ -7,6 +7,11 @@
     font-size: large;
 }
 
+#table {
+    margin: 0;
+    padding: 0;
+}
+
 #tableContainer {
     border-collapse: collapse;
     border-spacing: 0;
@@ -19,9 +24,19 @@ tbody {
     display: block;
 }
 
+#table {
+    margin: 0;
+    padding: 0;
+}
+
+tr {
+    width: 100%;
+}
+
+
 td {
     font-family: sans-serif;
-    text-align: center;
+    text-align: left;
     font-size: medium;
     padding: 5px;
     color: #3d3d3d;
@@ -52,8 +67,9 @@ th {
     font-family: Arial,Helvetica,sans-serif;
     font-size: medium;
     font-weight: bold;
-    text-align: center;
-    width: 1%;
+    padding-bottom: 10px;
+    text-align: left;
+    width: 4.9%;
     height: 60px;
     margin: 0;
 }

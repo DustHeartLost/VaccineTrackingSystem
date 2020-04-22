@@ -3,11 +3,11 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].batchNum + "</td><td>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td>" + data[i].batchNum + "</td><td>";
             html += data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td class=\"editTd\"></td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].batchNum + "</td><td>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td>" + data[i].batchNum + "</td><td>";
             html += data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td class=\"editTd\"></td></tr>";
         }
 
@@ -137,15 +137,15 @@ function confirmUpdate() {
                 temp += $(this).text() + "@@";
             });
             temp1 = temp.split("@@");
-            if (temp1[7] == "") { alert("请输入出库数量"); return; };
+            if (temp1[11] == "") { alert("请输入出库数量"); return; };
             if (parseInt(temp1[7]) > parseInt(temp1[5])) { alert("出库数量超过明细记录数量"); return; };
             var data1 = new Object();  
             data1.id = temp1[1];
             data1.stockID = temp1[2];
-            data1.batchNum = temp1[3];
-            data1.date = temp1[4];
-            data1.quantity = parseInt(temp1[7])+"";
-            data1.price = temp1[6];
+            data1.batchNum = temp1[7];
+            data1.date = temp1[8];
+            data1.quantity = parseInt(temp1[11])+"";
+            data1.price = temp1[10];
             $.ajax({
                 type: "post", //要用post方式                 
                 url: "Indetail.aspx/Update",//方法所在页面和方法名

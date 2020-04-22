@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
@@ -34,7 +35,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 return null;
             }
             //排序+过滤过期药品
-            List<Indetail> sortList = null;// SortDate(list);
+            List<Dictionary<string, string>> sortList = SortDate(list);
             if (sortList == null)
             {
                 msg = "暂无未过期的单品明细";
@@ -57,16 +58,16 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
 
-        static private List<Indetail> SortDate(List<Indetail> indetailList)
+        static private List<Dictionary<string, string>> SortDate(List<Dictionary<string, string>> indetailList)
         {
 
-            string date = DateTime.Now.ToString("yyyy-MM-dd");
-            DateTime nowdate = Convert.ToDateTime(date);
+            string date = DateTime.Now.ToString("yyyyMMdd");
+            DateTime nowdate = DateTime.ParseExact(date, "yyyyMMdd",CultureInfo.CurrentCulture);
             int m = 0;
-            DateTime tempdate;
+            DateTime tempdate; 
             for (int i = 0; i < indetailList.Count; i++)
             {
-                if (Convert.ToDateTime(indetailList[i].batchNum) <= nowdate)
+                if (DateTime.ParseExact(indetailList[i]["batchNum"], "yyyyMMdd", CultureInfo.CurrentCulture) <= nowdate)
                 {
                     indetailList.Remove(indetailList[i]);
                     i--;
@@ -77,10 +78,10 @@ namespace VaccineTrackingSystem.Models.BLL
             for (int i = 0; i < indetailList.Count - 1; i++)
             {
                 m = i;
-                tempdate = Convert.ToDateTime(indetailList[i].batchNum);
+                tempdate = DateTime.ParseExact(indetailList[i]["batchNum"], "yyyyMMdd", CultureInfo.CurrentCulture);
                 for (int j = i + 1; j < indetailList.Count; j++)
                 {
-                    DateTime indetaildt = Convert.ToDateTime(indetailList[j].batchNum);
+                    DateTime indetaildt = DateTime.ParseExact(indetailList[i]["batchNum"], "yyyyMMdd", CultureInfo.CurrentCulture);
                     if (indetaildt < tempdate)
                     {
                         tempdate = indetaildt;
@@ -92,9 +93,9 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             return indetailList;
         }
-        static private List<Indetail> Swap(List<Indetail> indetailList, int m, int i)
+        static private List<Dictionary<string, string>> Swap(List<Dictionary<string, string>> indetailList, int m, int i)
         {
-            Indetail t;
+            Dictionary<string, string> t;
             t = indetailList[m];
             indetailList[m] = indetailList[i];
             indetailList[i] = t;

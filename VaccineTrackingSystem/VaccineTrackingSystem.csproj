@@ -115,7 +115,9 @@
     <Content Include="View\Module\Destory\js\destory.js" />
     <Content Include="View\Module\Inflow\css\inflow.css" />
     <Content Include="View\Module\Inflow\Inflow.aspx" />
+    <Content Include="View\Module\Inflow\InflowAdd.aspx" />
     <Content Include="View\Module\Inflow\js\inflow.js" />
+    <Content Include="View\Module\Inflow\js\inflowAdd.js" />
     <Content Include="View\Module\Outflow\css\indetail.css" />
     <Content Include="View\Module\Outflow\css\outflow.css" />
     <Content Include="View\Module\Outflow\Indetail.aspx" />
@@ -228,6 +230,13 @@
     </Compile>
     <Compile Include="View\Module\Inflow\Inflow.aspx.designer.cs">
       <DependentUpon>Inflow.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Inflow\InflowAdd.aspx.cs">
+      <DependentUpon>InflowAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Inflow\InflowAdd.aspx.designer.cs">
+      <DependentUpon>InflowAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\Outflow\Indetail.aspx.cs">
       <DependentUpon>Indetail.aspx</DependentUpon>

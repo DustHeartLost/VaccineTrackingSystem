@@ -1,4 +1,24 @@
-﻿$(document).ready(function () {
+﻿function createTable(temp, extra) {
+    var data = JSON.parse(temp);
+    var html = "";
+    for (var i = 0; i < data.length; i++) {
+        if (i % 2 == 0) {
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].cagName + "</td><td class=\"editTd\">";
+            html += data[i].kind + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].date + "</td><td class=\"editTd\">" + data[i].quantity + "</td><td class=\"editTd\">" + data[i].price + "</td><td class=\"editTd\">" + data[i].batchNum + "</td></tr>";
+        }
+        else {
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].cagName + "</td><td class=\"editTd\">";
+            html += data[i].kind + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].date + "</td><td class=\"editTd\">" + data[i].quantity + "</td><td class=\"editTd\">" + data[i].price + "</td><td class=\"editTd\">" + data[i].batchNum + "</td></tr>";
+        }
+    }
+    $("#caption").after(html);
+    var x = extra.split('+');
+    $("#total").text("共" + x[0] + "页");
+    $("#current").text("第" + x[1] + "页");
+    $(".checkBox").hide();
+}
+
+$(document).ready(function () {
     $("#tableContainer").delegate(".dataRow", "mouseenter", function () {
         $(this).addClass("tr-mouseover");
     });
@@ -13,39 +33,34 @@
     });
 });
 
-function add() {
-    $("#add").hide();
-    $("#confirmAdd").show();
-    $("#concelAdd").show();
-
-    addRecord();
-}
-
-function concelAdd() {
-    $("#add").show();
-    $("#confirmAdd").hide();
-    $("#concelAdd").hide();
+function clear() {
     $("tr").remove(".dataRow");
+    $("tr").remove(".dataRow2");
+    $("tr").remove(".dataRow3");
 }
 
-function addRecord() {
-    html = "<tr id=\"newOne\" class=\"dataRow\"  style=\"height:50px;width:130px\"><td></td><td><select id=\"cagNum\"></select></td>";
-    html += "<td contentEditable=\"true\" class=\"editTd\"></td><td contentEditable=\"true\" class=\"editTd\"></td><td contentEditable=\"true\" class=\"editTd\"></td></tr>";
-    $("#caption").after(html);
+
+
+function reCreateTable(temp, extra) {
+    clear();
+    createTable(temp, extra);
+} 
+
+
+function add() {
+    window.location.href = "InflowAdd.aspx";
+}
+
+function down() {
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Inflow.aspx/GetData",//方法所在页面和方法名
+        url: "Inflow.aspx/GetDown",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
-                $("#cagNum").html("<option>(无)</option>"+createOption(temp.data, ""));
-            } else if (temp.code == 201) {
-                alert(temp.data);
-                concelAdd();
-            }else {
-                alert(temp.data);
+                reCreateTable(temp.data, temp.extra);
             }
         },
         error: function (err) {
@@ -54,49 +69,19 @@ function addRecord() {
     });
 }
 
-function confirmAdd() {
-    var temp = "";
-    temp += $("#cagNum").find("option:selected").text() + "@@";
-    $("tr.dataRow").first().find("td.editTd").each(function () {
-        temp += $(this).text() + "@@";
-    });
-    temp1 = temp.split("@@");
-    if (temp1[0] == "(无)") { alert("请输入药品编号"); return; }
-    if (temp1[1] == "") { alert("请输入数量"); return; }
-    if (temp1[2] == "") { alert("请输入单价"); return; }
-    if (temp1[3] == "") { alert("请输入批号"); return; }   
-    var data1 = new Object();
-    data1.id = 0;
-    data1.cagNum = temp1[0];
-    data1.quantity = temp1[1];
-    data1.price = temp1[2];
-    data1.batchNum = temp1[3];
+function up() {
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Inflow.aspx/Insert",//方法所在页面和方法名
+        url: "Inflow.aspx/GetUp",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        data: "{'temp':'" + JSON.stringify(data1) + "'}",
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
-            alert(temp.data);
-            $("#add").show();
-            $("#confirmAdd").hide();
-            $("#concelAdd").hide();
+            if (temp.code == 200)
+                reCreateTable(temp.data, temp.extra);
         },
         error: function (err) {
             alert(err);
         }
     });
-    
-}
-
-function createOption(data, value) {
-    var temp = JSON.parse(data);
-    var result = "";
-    for (var i = 0; i < temp.length; i++) {
-        if (temp[i] != value)
-            result += "<option>" + temp[i] + "</option>"
-    }
-    return result;
 }

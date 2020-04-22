@@ -1,9 +1,36 @@
-﻿using VaccineTrackingSystem.Models.DAL;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
     public class InflowManage
     {
+        static public string QueryTodayRecoder(int storeID, string nowTime, out string msg, ref int totalPage, ref int currentPage)
+        {
+             List<Dictionary<string,string>> list=InflowDAL.QueryTodayRecoder(storeID, nowTime, out msg);
+            if (list == null)
+            {
+                msg = "今日还没有入库操作，今日入库记录为空";
+                totalPage = 0;
+                currentPage = -1;
+                return null;
+            }
+            totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (list.Count != 0 && list.Count % 10 == 0)
+                --totalPage;
+            if (currentPage < totalPage)
+                ++currentPage;
+            try
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
+            }
+        }
+
 
         static public bool InWarehouse(Inflow inflow, out string msg)
         {

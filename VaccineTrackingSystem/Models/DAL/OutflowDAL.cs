@@ -70,9 +70,9 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command;
             if (storeID != -1)
-                command = $"select Outflow.id,Outflow.cagNum,Storeroom.name as storeID,Outflow.date,[User].name as userName,[User].num,Outflow.quantity,Outflow.price,Outflow.batchNum,Outflow.state from Outflow,[User], Storeroom where Outflow.storeID = Storeroom.id and Outflow.userNum =[User].num and Storeroom.id = '{storeID}'";
+                command = $"select Outflow.id,Outflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Outflow.date,[User].name as userName,[User].num,Outflow.quantity,Outflow.price,Outflow.batchNum,Outflow.state from Outflow,[User], Storeroom,Category where Outflow.storeID = Storeroom.id and Outflow.userNum =[User].num and  Outflow.cagNum=Category.num and Storeroom.id = '{storeID}'";
             else
-                command = $"select Outflow.id,Outflow.cagNum,Storeroom.name as storeID,Outflow.date,[User].name as userName,[User].num,Outflow.quantity,Outflow.price,Outflow.batchNum,Outflow.state from Outflow,[User], Storeroom where Outflow.storeID = Storeroom.id and Outflow.userNum =[User].num;";
+                command = $"select Outflow.id,Outflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Outflow.date,[User].name as userName,[User].num,Outflow.quantity,Outflow.price,Outflow.batchNum,Outflow.state from Outflow,[User], Storeroom,Category where Outflow.storeID = Storeroom.id and Outflow.userNum =[User].num and  Outflow.cagNum=Category.num;";
 
             SqlDataReader read;
             read = SQL.getReader(command);
@@ -88,6 +88,9 @@ namespace VaccineTrackingSystem.Models.DAL
                 Dictionary<string, string> d = new Dictionary<string, string>();
                 d.Add("id", read["id"].ToString());
                 d.Add("cagNum", (string)read["cagNum"]);
+                d.Add("name", (string)read["name"]);
+                d.Add("kind", (string)read["kind"]);
+                d.Add("spec", (string)read["spec"]);
                 d.Add("storeID", (string)read["storeID"]);
                 d.Add("date", (string)read["date"]);
                 d.Add("userNum", (string)read["userName"] + "(" + (string)read["num"] + ")");

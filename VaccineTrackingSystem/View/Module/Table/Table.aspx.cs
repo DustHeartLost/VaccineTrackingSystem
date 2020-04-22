@@ -89,7 +89,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             switch (states)
             {
                 case 0: temp=Models.BLL.TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
-                case 1: temp = Models.BLL.TableManage.queryAllOutflow(3, ref totalPage, ref currentPage, out msg, out money); break;
+                case 1: temp = Models.BLL.TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
             }
             return temp!= null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
@@ -104,7 +104,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             switch (states)
             {
                 case 0: temp = Models.BLL.TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
-                case 1: temp = Models.BLL.TableManage.queryAllOutflow(3, ref totalPage, ref currentPage, out msg, out money); break;
+                case 1: temp = Models.BLL.TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
 

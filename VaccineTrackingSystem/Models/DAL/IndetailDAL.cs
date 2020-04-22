@@ -70,12 +70,12 @@ namespace VaccineTrackingSystem.Models.DAL
             while (read.Read())
             {
                 Dictionary<string, string> d = new Dictionary<string, string>();
-                d.Add("cagNum",(string)read["cagNum"]);
+                d.Add("id", read["id"].ToString());
+                d.Add("stockID", read["stockID"].ToString());
+                d.Add("cagNum", (string)read["cagNum"]);
                 d.Add("name", (string)read["name"]);
                 d.Add("kind", (string)read["kind"]);
                 d.Add("spec", (string)read["spec"]);
-                d.Add("id", read["id"].ToString());
-                d.Add("stockID", read["stockID"].ToString());
                 d.Add("batchNum", (string)read["batchNum"]);
                 d.Add("date", (string)read["date"]);
                 d.Add("quantity", read["quantity"].ToString());

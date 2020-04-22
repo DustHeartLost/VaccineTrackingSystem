@@ -51,6 +51,8 @@ namespace VaccineTrackingSystem.Models.BLL
                 money += decimal.Parse(d["price"]) * decimal.Parse(d["quantity"]);
             }
             outflowTotalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (list.Count != 0 && list.Count % 10 == 0)
+                --outflowTotalPage;
             if (outflowCurrentPage < outflowTotalPage)
                 ++outflowCurrentPage;
             try
