@@ -36,7 +36,7 @@ tr {
 
 td {
     font-family: sans-serif;
-    text-align: left;
+    text-align: center;
     font-size: medium;
     padding: 5px;
     color: #3d3d3d;
@@ -68,7 +68,7 @@ th {
     font-size: medium;
     font-weight: bold;
     padding-bottom: 10px;
-    text-align: left;
+    text-align: center;
     width: 4.9%;
     height: 60px;
     margin: 0;
