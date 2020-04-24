@@ -57,7 +57,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
 
-        static public string QueryAll(int storeID, string num, out string msg, ref decimal money, ref int totalPage, ref int currentPage)
+        static public string QueryAll(int storeID, string num, out string msg, ref decimal money, ref int totalPage, ref int currentPage,bool flag)
         {
             List<Dictionary<string, string>> list = StockDAL.QueryStockDetail(storeID, num, out msg);
             if (list == null)
@@ -66,6 +66,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 currentPage = -1;
                 return null;
             }
+            if (flag) return JsonConvert.SerializeObject(list);
             totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             foreach (Dictionary<string, string> dictionary in list)
             {

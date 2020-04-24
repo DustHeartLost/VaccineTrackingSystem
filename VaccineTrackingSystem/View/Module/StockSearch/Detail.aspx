@@ -31,7 +31,7 @@
         <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
                 <th>ID</th>
-                <th>库存id</th>
+                <th>库存ID</th>
                 <th>批号</th>
                 <th>入库时间</th>
                 <th>数量</th>

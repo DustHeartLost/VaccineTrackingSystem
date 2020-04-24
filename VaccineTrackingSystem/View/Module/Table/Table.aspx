@@ -2,9 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       <link rel="stylesheet" href="css/table.css" />
     <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
-    <script src="../../Template/jquery/FileSaver.min.js"></script>
-    <script src="../../Template/jquery/tableExport.min.js"></script>
-    <script src="../../Template/jquery/xlsx.core.min.js"></script>
     <script src="https://cuikangjie.github.io/JsonExportExcel/dist/JsonExportExcel.min.js"></script>
     <script src="js/table.js"></script>
     <script>
@@ -18,7 +15,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><a id="list">报表管理</a></div>
+    <div><a id="list">入库流水</a></div>
+    <div><a id="list">出库流水</a></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <button id="confirm"  onclick="confirm()" style="padding:5px">确认</button><label id="money" style="text-align:center;font-size:medium">共0元</label>

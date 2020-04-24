@@ -105,3 +105,35 @@ function detail(obj) {
     var stockID = $(obj).closest("tr").find("td.need").text();
     window.open("Detail.aspx?stockID=" + stockID);
 }
+
+function tableExport() {
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "StockSearch.aspx/ExportALL",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                var option = {};
+                var shhead = "";
+                option.fileName = "库存表";
+                shhead = ['药品编码', '药品名称', '规格', '单位', '生产厂家', '库存数量', '库存金额', '所在库房', '库存号'];
+                option.datas = [
+                    {
+                        sheetData: JSON.parse(temp.data),
+                        sheetName: "库存表",
+                        sheetHeader: shhead
+                    }
+                ];
+                var toExcel = new ExportJsonExcel(option);
+                toExcel.saveExcel();
+            }
+            else
+                alert(temp.extra);
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
+}

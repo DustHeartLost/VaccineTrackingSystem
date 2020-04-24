@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="css/stockSearch.css" />
     <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
     <script src="js/stockSearch.js"></script>
+    <script src="https://cuikangjie.github.io/JsonExportExcel/dist/JsonExportExcel.min.js"></script>
     <script>
         window.onload = create;
         function create() {
@@ -22,6 +23,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <label id="money" style="text-align:center;font-size:medium">共0元</label>
+    <button id="export"  onclick="tableExport()" style="padding:5px">导出</button>
     <div style="float: right;" id="upAndDownArea">
         <button id="up" class="upAnddown" onclick="up()" aria-valuetext="&lt;"> <</button>
         <button id="down" class="upAnddown" onclick="down()" aria-valuetext="&gt;"> ></button>
