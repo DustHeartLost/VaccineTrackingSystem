@@ -153,10 +153,4 @@ function tableExport() {
             alert(err);
         }
     });
-
-   
-    //$(".tables").tableExport({
-    //    type: "xlsx",
-    //    escape: "false",
-    //});
 }

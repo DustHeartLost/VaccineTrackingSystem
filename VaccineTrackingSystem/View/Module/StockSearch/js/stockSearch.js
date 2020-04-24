@@ -3,10 +3,10 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].factory + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\"  style=\"padding:5px\">查看明细</button></td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].factory + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\"  style=\"padding:5px\">查看明细</button></td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].factory + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\" style=\"padding:5px\">查看明细</button></td></tr>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].factory + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\" style=\"padding:5px\">查看明细</button></td></tr>";
         }
     }
     $("#caption").after(html);

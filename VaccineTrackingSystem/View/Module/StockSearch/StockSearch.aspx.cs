@@ -53,6 +53,13 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             }
             return temp;
         }
+        [WebMethod]
+        public static string GetAll() {
+            string msg;
+            decimal money = 0;
+            string data = StockManage.QueryAll(storeID,null, out msg,ref money,ref totalPage, ref currentPage);
+            return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
         public static string precise(string temp) {
             string msg;
             decimal money=0;

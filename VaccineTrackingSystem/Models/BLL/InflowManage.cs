@@ -11,7 +11,7 @@ namespace VaccineTrackingSystem.Models.BLL
              List<Dictionary<string,string>> list=InflowDAL.QueryTodayRecoder(storeID, nowTime, out msg);
             if (list == null)
             {
-                msg = "今日还没有入库操作，今日入库记录为空";
+                msg = "今日无入库记录";
                 totalPage = 0;
                 currentPage = -1;
                 return null;
