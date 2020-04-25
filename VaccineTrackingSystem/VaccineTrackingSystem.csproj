@@ -136,28 +136,18 @@
     <Content Include="View\Module\Storeroom\css\storeroom.css" />
     <Content Include="View\Module\Storeroom\js\storeroom.js" />
     <Content Include="View\Module\Storeroom\Storeroom.aspx" />
-    <Content Include="View\Module\Table\InflowTable.aspx" />
-    <Content Include="View\Module\Table\js\JsonExportExcel.min.js" />
-    <Content Include="View\Module\Table\js\outflowTable.js" />
-    <Content Include="View\Module\Table\OutflowTable.aspx" />
     <Content Include="View\SetPassword\css\login.css" />
     <Content Include="View\SetPassword\css\main.css" />
     <Content Include="View\SetPassword\css\setPassword.css" />
     <Content Include="View\SetPassword\js\setpassword.js" />
     <Content Include="View\SetPassword\set.aspx" />
-    <Content Include="View\Module\Table\css\table.css" />
-    <Content Include="View\Module\Table\js\inflowTable.js" />
     <Content Include="View\Module\User\css\user.css" />
     <Content Include="View\Module\User\js\user.js" />
     <Content Include="View\Module\User\User.aspx" />
     <Content Include="View\Template\css\taskcenter.css" />
     <Content Include="View\Template\images\logo.png" />
-    <Content Include="View\Template\jquery\FileSaver.min.js" />
     <Content Include="View\Template\jquery\jquery-3.4.1.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="View\Template\jquery\tableExport.js" />
-    <Content Include="View\Template\jquery\tableExport.min.js" />
-    <Content Include="View\Template\jquery\xlsx.core.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -282,20 +272,6 @@
     </Compile>
     <Compile Include="View\Module\Storeroom\Storeroom.aspx.designer.cs">
       <DependentUpon>Storeroom.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Module\Table\InflowTable.aspx.cs">
-      <DependentUpon>InflowTable.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Module\Table\InflowTable.aspx.designer.cs">
-      <DependentUpon>InflowTable.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Module\Table\OutflowTable.aspx.cs">
-      <DependentUpon>OutflowTable.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Module\Table\OutflowTable.aspx.designer.cs">
-      <DependentUpon>OutflowTable.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\User\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>

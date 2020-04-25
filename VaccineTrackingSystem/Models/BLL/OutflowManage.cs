@@ -22,8 +22,40 @@ namespace VaccineTrackingSystem.Models.BLL
             return JsonConvert.SerializeObject(stockList);
         }
 
+        //默认库房列表
+        static public string QueryStockByStoreID(int storeID, out string msg, ref int totalPage, ref int currentPage)
+        {
+            List<Dictionary<string, string>> list = StockDAL.QueryAllByStoreID(storeID, out msg);
+            if (list == null)
+            {
+                msg = "库存列表暂无记录";
+                totalPage = 0;
+                currentPage = -1;
+                return null;
+            }
+            totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (list.Count != 0 && list.Count % 10 == 0)
+                --totalPage;
+            if (currentPage < totalPage)
+                ++currentPage;
+            try
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
+            }
+        }
 
-        //新增 单品明细数据进行批号排序，返回list  4/7
+        //根据药品编码查找库存记录
+        static public string QueryByCagNum( string cagNum,int storeID, out string msg)
+        {
+            return  JsonConvert.SerializeObject(StockDAL.QueryCagNum(cagNum,storeID, out msg));
+        }
+        
+
+        //单品明细数据进行批号排序，返回list  4/7
         static public string QueryIndetail(int stockID, out string msg, ref int totalPage, ref int currentPage)
         {
             List<Dictionary<string,string>> list= IndetailDAL.QueryByStockID(stockID, out msg);

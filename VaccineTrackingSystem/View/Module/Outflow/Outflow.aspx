@@ -6,7 +6,12 @@
     <script>
         window.onload = create;
         function create() {
+            var obj =<%=GetALL() %>;
             $("#addOutflow").hide();
+            $("#returnAll").hide();
+            if (obj.code == 200)
+                createTable(obj.data, obj.extra);
+            else alert(obj.data); 
         }
     </script>
 </asp:Content>
@@ -19,6 +24,13 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <button id="addOutflow"  onclick="addOutflow()" style="padding:5px">出库</button>
+    <button id="returnAll"  onclick="returnAll()"  style="padding:5px">返回</button>
+    <div id="upAndDownArea" style="float: right;">
+        <button id="up" class="upAnddown" onclick="up()"><</button>
+        <button id="down" class="upAnddown" onclick="down()">></button>
+        <label id="current"></label>
+        <label id="total"></label>
+    </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">
      <div id="table">
@@ -26,6 +38,9 @@
             <tr id="caption" class="test">
                     <th> 库存编号</th>
                     <th >药品编码</th>
+                    <th>药品名称</th>
+                    <th>药品种类</th>
+                    <th>药品规格</th>
                     <th >库房编号</th>
                     <th>库存数量</th>
                     <th>库存金额</th>

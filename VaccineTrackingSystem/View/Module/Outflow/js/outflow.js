@@ -1,18 +1,23 @@
-﻿function createTable(temp) {
+﻿function createTable(temp, extra) {
     var data = JSON.parse(temp);
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].storeID + "</td><td class=\"editTd\">";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].storeID + "</td><td class=\"editTd\">";
             html += data[i].quantity + "</td><td class=\"editTd\">" + data[i].money + "</td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].storeID + "</td><td class=\"editTd\">";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].storeID + "</td><td class=\"editTd\">";
             html += data[i].quantity + "</td><td class=\"editTd\">" + data[i].money + "</td></tr>";
         }
 
     }
     $("#caption").after(html);
+    var x = extra.split('+');
+    $("#up").show();
+    $("#down").show();
+    $("#total").text("共" + x[0] + "页");
+    $("#current").text("第" + x[1] + "页");
 }
 
 $(document).ready(function () {
@@ -35,12 +40,48 @@ function clear() {
     $("tr").remove(".dataRow3");
 }
 
-function reCreateTable(temp) {
+function reCreateTable(temp, extra) {
     clear();
-    createTable(temp);
+    createTable(temp, extra);
 }
 
 
+function down() {
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Outflow.aspx/GetDown",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                reCreateTable(temp.data, temp.extra);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
+}
+function up() {
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Outflow.aspx/GetUp",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200)
+                reCreateTable(temp.data, temp.extra);
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
+}
+
+
+ 
 function search() {
     var tempCon = $("#searchText").val();
     if (tempCon != "") {
@@ -53,8 +94,14 @@ function search() {
             success: function (data) {
                 var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
                 if (tempT.code == 200) {
-                    reCreateTable(tempT.data);
                     $("#addOutflow").show();
+                    $("#returnAll").show();
+                    $("#total").text("共 1 页");
+                    $("#current").text("第 1 页");
+                    $("#up").hide();
+                    $("#down").hide();
+                    reCreateTable(tempT.data, tempT.extra);
+
                 }
                 else {
                     alert(tempT.data);
@@ -68,6 +115,28 @@ function search() {
     else
         alert("请输入药品编号");
 }
+
+function returnAll() {
+    clear();
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Outflow.aspx/GetALL",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                $("#addOutflow").hide();
+                $("#returnAll").hide();
+                reCreateTable(temp.data, temp.extra);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
+}
+
 
 function addOutflow() {
     var tempCon = "";
