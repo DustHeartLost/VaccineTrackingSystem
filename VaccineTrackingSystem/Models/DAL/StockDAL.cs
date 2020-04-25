@@ -143,7 +143,7 @@ namespace VaccineTrackingSystem.Models.DAL
             read = SQL.getReader(command);
             if (!read.HasRows)
             {
-                msg = "库存列表为空";
+                msg = "未查询到库存记录";
                 SQL.Dispose();
                 return null;
             }

@@ -16,6 +16,7 @@
     var x = extra.split('+');
     $("#up").show();
     $("#down").show();
+    $("#update").show();
     $("#total").text("共" + x[0] + "页");
     $("#current").text("第" + x[1] + "页");
 }
@@ -146,6 +147,7 @@ function up() {
 
  
 function search() {
+    $("#update").hide();
     var tempCon = $("#searchText").val();
     if (tempCon != "") {
         $.ajax({
@@ -164,7 +166,6 @@ function search() {
                     $("#up").hide();
                     $("#down").hide();
                     reCreateTable(tempT.data, tempT.extra);
-
                 }
                 else {
                     alert(tempT.data);

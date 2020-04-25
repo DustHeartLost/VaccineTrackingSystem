@@ -29,7 +29,7 @@ function search() {
                     reCreateTable(tempT.data, tempT.extra);
                 }
                 else {
-                    alert(tempT.extra);
+                    alert(tempT.data);
                 }
             },
             error: function (err) {

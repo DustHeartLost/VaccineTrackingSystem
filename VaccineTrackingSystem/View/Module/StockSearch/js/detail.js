@@ -3,10 +3,10 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].note + "</td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].note + "</td></tr>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td></tr>";
        }
     }
     $("#caption").after(html);
