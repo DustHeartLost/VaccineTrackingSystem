@@ -5,7 +5,12 @@
     letter-spacing: 3px;
     font-weight: bold;
     font-size: large;
-    float:left;
+    float: left;
+    text-decoration: none;
+}
+
+#list1:hover {
+    text-decoration:underline;
 }
 
 #list2 {
@@ -15,6 +20,11 @@
     letter-spacing: 3px;
     font-weight: bold;
     font-size: large;
+    text-decoration: none;
+}
+
+#list2:hover {
+    text-decoration: underline;
 }
 
 #table {

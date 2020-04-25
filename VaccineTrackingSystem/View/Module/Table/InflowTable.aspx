@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Template/Main.Master" AutoEventWireup="true" CodeBehind="InflowTable.aspx.cs" Inherits="VaccineTrackingSystem.View.Module.Table.InflowTable" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="css/table.css" />
-    <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
     <script src="js/JsonExportExcel.min.js"></script>
+    <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
     <script src="js/inflowTable.js"></script>
     <script>
         window.onload = create;

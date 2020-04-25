@@ -152,12 +152,8 @@
     <Content Include="View\Module\User\User.aspx" />
     <Content Include="View\Template\css\taskcenter.css" />
     <Content Include="View\Template\images\logo.png" />
-    <Content Include="View\Template\jquery\FileSaver.min.js" />
     <Content Include="View\Template\jquery\jquery-3.4.1.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="View\Template\jquery\tableExport.js" />
-    <Content Include="View\Template\jquery\tableExport.min.js" />
-    <Content Include="View\Template\jquery\xlsx.core.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
