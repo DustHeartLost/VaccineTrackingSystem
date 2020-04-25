@@ -3,11 +3,11 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].storeID + "</td><td class=\"editTd\">";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].storeID + "</td><td class=\"editTd\">";
             html += data[i].quantity + "</td><td class=\"editTd\">" + data[i].money + "</td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].storeID + "</td><td class=\"editTd\">";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].cagNum + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].storeID + "</td><td class=\"editTd\">";
             html += data[i].quantity + "</td><td class=\"editTd\">" + data[i].money + "</td></tr>";
         }
 
@@ -44,6 +44,69 @@ function reCreateTable(temp, extra) {
     clear();
     createTable(temp, extra);
 }
+
+function showCheckBox() {
+    $(".checkBox").show();
+
+    $("#down").hide();
+    $("#up").hide();
+    $("#current").hide();
+    $("#total").hide();
+
+    $("#returnAll").hide();
+
+    $(":checkbox").each(function () {
+        if ($(this).prop("checked")) {
+            var tempCon = $(this).closest("tr").find("td.ID").text();
+            if (tempCon == "") { alert("暂无记录"); return; }
+            $.ajax({
+                type: "post",
+                url: "Indetail.aspx/setStockId",//方法所在页面和方法名
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: "{'temp':'" + tempCon + "'}",
+                success: function (data) {
+                    var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
+                    if (tempT.code == 200) {
+                        window.location.href = "Indetail.aspx";
+                    }
+                    else {
+                        alert("跳转失败");
+                        return;
+                    }
+
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            });
+            
+        }
+    });
+}
+
+function clickCheck(obj) {
+    $(":checkbox").each(function () {
+        $(this).prop("checked", false);   //选中，不选中 是false        
+    });
+    $(obj).prop("checked", true);
+
+    $(".edit").each(function () {
+        $(this).attr("disabled", true);
+    });
+    $(".editTd").closest("tr").find("td").each(function () {
+        $(this).attr("contenteditable", false);
+    });
+
+
+    $(obj).closest("tr").find("select").each(function () {
+        $(this).attr("disabled", false);
+    });
+    $(obj).closest("tr").find("td.editTd").each(function () {
+        $(this).attr("contenteditable", true);
+    });
+}
+
 
 
 function down() {
@@ -152,7 +215,10 @@ function addOutflow() {
         data: "{'temp':'" + tempCon + "'}",
         success: function (data) {
             var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
-            if (tempT.code != 200) {
+            if (tempT.code == 200) {
+                window.location.href = "Indetail.aspx";
+            }
+            else {
                 alert("跳转失败");
                 return;
             }
@@ -162,5 +228,5 @@ function addOutflow() {
             alert(err);
         }
     });
-    window.location.href = "Indetail.aspx";
+   
 }

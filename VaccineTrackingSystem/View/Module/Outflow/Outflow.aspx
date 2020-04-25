@@ -23,6 +23,7 @@
     <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
+    <button id="update" onclick="showCheckBox()" style="padding:5px">确认出库</button>
     <button id="addOutflow"  onclick="addOutflow()" style="padding:5px">出库</button>
     <button id="returnAll"  onclick="returnAll()"  style="padding:5px">返回</button>
     <div id="upAndDownArea" style="float: right;">
@@ -36,6 +37,7 @@
      <div id="table">
         <table id="tableContainer">
             <tr id="caption" class="test">
+                    <th></th>
                     <th> 库存编号</th>
                     <th >药品编码</th>
                     <th>药品名称</th>
