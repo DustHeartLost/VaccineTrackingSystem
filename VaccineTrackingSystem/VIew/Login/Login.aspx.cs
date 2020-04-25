@@ -8,6 +8,11 @@ namespace VaccineTrackingSystem.VIew.Login
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.Write(DateTime.Now.ToString("yyyyMMdd"));
+            string dateString = "20200603";
+
+            DateTime dt = DateTime.ParseExact(dateString, "yyyyMMdd", System.Globalization.CultureInfo.CurrentCulture);
+            System.Diagnostics.Debug.Write(dt);
             //char[] letters = { 'H', 'e', 'l', 'l', 'o' };
             //string msg = new string(letters);
             /**
