@@ -14,7 +14,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <ul><li style="float:left;width:160px"><a id="list1" href="InflowTable.aspx">入库流水</a></li><li><a id="list2" href="OutflowTable.aspx">出库流水</a></li></ul>  
+    <ul><li style="float:left;width:160px;"><a id="list1" href="InflowTable.aspx" style="background-color:#63b5de9c">入库流水</a></li><li style="float:left;width:160px;"><a id="list2" href="OutflowTable.aspx">出库流水</a></li></ul>  
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <input type="text" placeholder="暂未添加功能" id="searchText" class="sx_inp search-input">
