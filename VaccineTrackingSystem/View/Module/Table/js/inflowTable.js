@@ -37,6 +37,7 @@ $(document).ready(function () {
 
 function confirm() {
     //此处需要有多种情况，不同的情况不同的state；
+    //所有的请求发给controller
     state = 0;
     $.ajax({
         type: "post", //要用post方式                 
