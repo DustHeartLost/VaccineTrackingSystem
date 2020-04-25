@@ -3,9 +3,9 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) 
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].num + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].unit + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].factory + "</td><td class=\"editTd\">" + data[i].note + "</td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td id=\"ban\" class=\"editTd\">" + data[i].num + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].unit + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].factory + "</td><td class=\"editTd\">" + data[i].note + "</td></tr>";
         else 
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].num + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].unit + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].factory + "</td><td class=\"editTd\">" + data[i].note + "</td></tr>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td id=\"ban\" class=\"editTd\">" + data[i].num + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].kind + "</td><td class=\"editTd\">" + data[i].unit + "</td><td class=\"editTd\">" + data[i].spec + "</td><td class=\"editTd\">" + data[i].factory + "</td><td class=\"editTd\">" + data[i].note + "</td></tr>";
     }
     $("#caption").after(html);
     var x = extra.split('+');
@@ -172,6 +172,10 @@ function clickCheck(obj) {
     $(obj).closest("tr").find("td.editTd").each(function () {
         $(this).attr("contenteditable", true);
     });
+    $(obj).closest("tr").find("#ban").each(function () {
+        $(this).attr("contenteditable", false);
+    });
+
 }
 
 function down() {
