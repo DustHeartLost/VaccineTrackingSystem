@@ -60,7 +60,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            Role role = new Role((int)read["id"], (string)read["name"], (string)read["authority"], (string)read["note"]);
+            Role role = new Role((int)read["id"], (string)read["name"], (string)read["authority"], read["note"].ToString());
             SQL.Dispose();
             msg = null;
             return role;

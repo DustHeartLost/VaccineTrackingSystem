@@ -23,6 +23,7 @@
     $("#total").text("共"+x[0]+"页");
     $("#current").text("第" + x[1] + "页");
     $(".checkBox").hide();
+    $("#showAll").hide();
 }
 
 
@@ -308,6 +309,19 @@ function search() {
                 var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
                 if (tempT.code == 200) {
                     reCreateTable(tempT.data, tempT.extra);
+                    $("#showAll").show();
+                    $("#up").hide();
+                    $("#down").hide();
+                    $("#current").hide();
+                    $("#total").hide();
+
+                    $("#add").hide();
+                    $("#confirmAdd").hide();
+                    $("#concelAdd").hide();
+
+                    $("#cancelUpdate").hide();
+                    $("#confirmUpdate").hide();
+                    $("#update").show();
                 }
                 else {
                     alert(tempT.data);
@@ -320,4 +334,8 @@ function search() {
     }
     else
         alert("请输入角色名称");
+}
+
+function showAll() {
+    concelAdd();
 }

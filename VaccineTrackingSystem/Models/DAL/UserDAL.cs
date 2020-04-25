@@ -70,24 +70,14 @@ namespace VaccineTrackingSystem.Models.DAL
                 }
             }
         }
-        static public User Query(string num, out string msg)
+      
+        static public List<Dictionary<string,string>> Query(string num, out string msg)
         {
-            string command = $"select * from [User] where num = '{num}'";
-            SqlDataReader read = SQL.getData(command);
-            if (read == null)
-            {
-                msg = "查询结果为空";
-                SQL.Dispose();
-                return null;
-            }
-            User user = new User((int)read["id"], (string)read["userName"], (string)read["password"], (int)read["apartID"], (string)read["job"], (int)read["roleID"], (string)read["num"], (string)read["name"]);
-            SQL.Dispose();
-            msg = null;
-            return user;
-        }
-        static public List<Dictionary<string,string>> QueryAll(out string msg)
-        {
-            string command = "select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id;";
+            string command;
+            if (num == null)
+                command = "select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id;";
+            else
+                command = $"select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id and [User].num='{num}';";
             SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {

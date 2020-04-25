@@ -40,12 +40,13 @@
     <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
-    <button id="add"  onclick="add()" style="padding:5px">增加用户</button>
-    <button id="confirmAdd"  onclick="confirmAdd()" style="padding:5px">确认增加</button>
-    <button id="concelAdd"  onclick="concelAdd()"  style="padding:5px">取消增加</button>
-    <button id="update" onclick="showCheckBox()" style="padding:5px">修改用户</button>
-    <button id="cancelUpdate"  onclick="cancelUpdate()"  style="padding:5px">取消修改</button>
-    <button id="confirmUpdate"  onclick="confirmUpdate()"  style="padding:5px">确认修改</button>
+    <button id="add" class="upAnddown" onclick="add()">增加用户</button>
+    <button id="confirmAdd" class="upAnddown" onclick="confirmAdd()">确认增加</button>
+    <button id="concelAdd" class="upAnddown" onclick="concelAdd()">取消增加</button>
+    <button id="update"class="upAnddown" onclick="showCheckBox()">修改用户</button>
+    <button id="cancelUpdate" class="upAnddown" onclick="cancelUpdate()">取消修改</button>
+    <button id="confirmUpdate" class="upAnddown" onclick="confirmUpdate()">确认修改</button>
+    <button id="showAll" class="upAnddown" onclick="showAll()">返回</button>
     <div id="upAndDownArea">
         <button id="up" class="upAnddown" onclick="up()"><</button>
         <button id="down" class="upAnddown" onclick="down()">></button>

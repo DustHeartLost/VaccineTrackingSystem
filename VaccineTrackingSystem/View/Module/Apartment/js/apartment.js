@@ -16,8 +16,7 @@
     $("#total").text("共" + x[0] + "页");
     $("#current").text("第" + x[1] + "页");
     $(".checkBox").hide();
-    $("#showAll").hide();
-    
+    $("#showAll").hide(); 
 }
 
 
@@ -287,7 +286,7 @@ function search() {
 
                     $("#cancelUpdate").hide();
                     $("#confirmUpdate").hide();
-                    $("#update").hide();
+                    $("#update").show();
                 }
                 else {
                     alert(tempT.data);
