@@ -16,8 +16,7 @@
     $("#total").text("共" + x[0] + "页");
     $("#current").text("第" + x[1] + "页");
     $(".checkBox").hide();
-    $("#showAll").hide();
-    
+    $("#showAll").hide(); 
 }
 
 
@@ -199,6 +198,8 @@ function cancelUpdate() {
         }
     });
 }
+
+
 function confirmUpdate() {
     $(":checkbox").each(function () {
         if ($(this).prop("checked")) {

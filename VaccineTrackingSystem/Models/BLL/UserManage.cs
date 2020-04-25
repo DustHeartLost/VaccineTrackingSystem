@@ -17,17 +17,12 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public string Query(string num, out string msg)
         {
-            User user=UserDAL.Query(num,out msg);
-            if (user != null) {
-                List<User> list = new List<User>();
-                list.Add(user);
-                return JsonConvert.SerializeObject(list);
-            }else
-                return null;
+            List<Dictionary<string, string>> list = UserDAL.Query(num,out msg);
+            return list != null?JsonConvert.SerializeObject(list): null;
         }
         static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
-            List<Dictionary<string,string>> list = UserDAL.QueryAll(out msg);
+            List<Dictionary<string,string>> list = UserDAL.Query(null,out msg);
             if (list == null)
             {
                 totalPage = 0;

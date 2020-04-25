@@ -13,6 +13,7 @@
     $("#total").text("共" + x[0] + "页");
     $("#current").text("第" + x[1] + "页");
     $(".checkBox").hide();
+    $("#showAll").hide();
 };
 function search() {
     var tempCon = $("#searchText").val();
@@ -27,6 +28,19 @@ function search() {
                 var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
                 if (tempT.code == 200) {
                     reCreateTable(tempT.data, tempT.extra);
+                    $("#showAll").show();
+                    $("#up").hide();
+                    $("#down").hide();
+                    $("#current").hide();
+                    $("#total").hide();
+
+                    $("#add").hide();
+                    $("#confirmAdd").hide();
+                    $("#concelAdd").hide();
+
+                    $("#cancelUpdate").hide();
+                    $("#confirmUpdate").hide();
+                    $("#update").show();
                 }
                 else {
                     alert(tempT.data);
@@ -330,4 +344,7 @@ function createOption(data,value) {
         result += "<option>" + temp[i] + "</option>"
     }
     return result;
+}
+function showAll() {
+    concelAdd();
 }
