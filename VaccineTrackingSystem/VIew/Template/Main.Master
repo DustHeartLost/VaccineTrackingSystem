@@ -52,7 +52,7 @@
 	<div>
 		<div class="sx_title">
 			<div style="margin:0 auto;" class="currentlist">
-				<asp:ContentPlaceHolder ID="CurrentList" runat="server"></asp:ContentPlaceHolder></asp:PlaceHolder>
+				<asp:ContentPlaceHolder ID="CurrentList" runat="server"></asp:ContentPlaceHolder>
 			</div>
 		</div>
 	</div>
@@ -90,10 +90,6 @@
 		<div>
 		<div class="sx_title">
 			<div style="margin:0 auto;" class="auto-style2">
-				<ul>
-					<li navtap="todo" >
-					</li>
-				</ul>
 			</div>
 		</div>
 	</div>

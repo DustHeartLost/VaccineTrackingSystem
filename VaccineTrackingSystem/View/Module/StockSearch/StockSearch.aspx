@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="css/stockSearch.css" />
     <script src="../../Template/jquery/jquery-3.4.1.min.js"></script>
     <script src="js/stockSearch.js"></script>
-    <script src="https://cuikangjie.github.io/JsonExportExcel/dist/JsonExportExcel.min.js"></script>
+    <script src="../Table/js/JsonExportExcel.min.js"></script>
     <script>
         window.onload = create;
         function create() {
@@ -15,7 +15,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><ul><li><a id="list">库存查询</a></li></ul></div>
+    <ul><li><a id="list">库存查询</a></li></ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <input type="text" placeholder="请输入药品编号进行查找" id="searchText" class="sx_inp search-input">

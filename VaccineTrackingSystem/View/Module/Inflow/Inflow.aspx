@@ -17,7 +17,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><ul><li><a id="list">产品入库</a></li></ul></div>
+    <ul><li><a id="list">产品入库</a></li></ul>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
      <div style="float: right;" id="upAndDownArea">

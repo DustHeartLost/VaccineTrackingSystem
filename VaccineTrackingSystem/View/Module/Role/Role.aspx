@@ -19,7 +19,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><ul><li><a id="list">角色管理</a></li></ul></div>
+    <ul><li><a id="list">角色管理</a></li></ul>
 </asp:Content>
 
 

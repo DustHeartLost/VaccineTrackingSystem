@@ -14,7 +14,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><ul><li><a id="list">销毁管理</a></li></ul></div>
+    <ul><li><a id="list">销毁管理</a></li></ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
 </asp:Content>
