@@ -44,11 +44,10 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
                 totalPage = 0;
                 currentPage = -1;
             }
-            states = state;
             string temp = "";
             switch (state)
             {
-                case 0: temp = precise(data); break;
+                case 1: temp = precise(data); break;
            
             }
             return temp;
@@ -57,10 +56,13 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         public static string GetAll() {
             string msg;
             decimal money = 0;
+            states = 0;
             string data = StockManage.QueryAll(storeID,null, out msg,ref money,ref totalPage, ref currentPage,false);
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         public static string precise(string temp) {
+            if (num == null) return JsonConvert.SerializeObject(new Packet(201, "请输入药品编号"));
+            states = 1;
             string msg;
             decimal money=0;
             num = temp;
@@ -71,20 +73,19 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         [WebMethod]
         public static string GetDown()
         {
-            if (num == null) return JsonConvert.SerializeObject(new Packet(201, "请输入药品编号"));
             string data = "";
             string msg="";
             decimal money = 0;
             switch (states)
             {
-                case 0: data = StockManage.Query(storeID, num.ToString(), out msg, ref money, ref totalPage, ref currentPage); break;
+                case 0:data=GetAll();break;
+                case 1: data = StockManage.Query(storeID, num.ToString(), out msg, ref money, ref totalPage, ref currentPage); break;
             }
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
         public static string GetUp()
         {
-            if (num == null) return JsonConvert.SerializeObject(new Packet(201, "请输入药品编号"));
             if (currentPage == -1 || currentPage == 0) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
             currentPage -= 2;
             string data = "";
@@ -92,7 +93,8 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             decimal money = 0;
             switch (states)
             {
-                case 0: data = StockManage.Query(storeID, num, out msg, ref money, ref totalPage, ref currentPage); break;
+                case 0: data = GetAll(); return data;
+                case 1: data = StockManage.Query(storeID, num, out msg, ref money, ref totalPage, ref currentPage); break;
             }
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }

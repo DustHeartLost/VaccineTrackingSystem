@@ -50,7 +50,7 @@ function search() {
             url: "StockSearch.aspx/Controller",//方法所在页面和方法名
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: "{'state':'0','data':'" + tempCon + "'}",
+            data: "{'state':'1','data':'" + tempCon + "'}",
             success: function (data) {
                 var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
                 if (tempT.code == 200) {
