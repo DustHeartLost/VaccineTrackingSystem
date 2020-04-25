@@ -31,7 +31,6 @@ body {
 	line-height: 46px;
 	display: block;
 }
-
 .sx_ss {
 	width: 1500px;
 	/*width: 100%;*/
@@ -103,4 +102,11 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 0;
+}
+.alk-header {
+	float: right;
+	width: 200px;
+	margin-right: 80px;
+	margin-top:20px;
+	font-size:medium;
 }

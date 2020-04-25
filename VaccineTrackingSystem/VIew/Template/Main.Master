@@ -17,34 +17,20 @@
 	<meta http-equiv="pragma" content="no-cache">
 
 	<link rel="stylesheet" href="css/taskcenter.css">
-	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
-    <style type="text/css">
-        
-        
-    </style>
-	
 </head>
 <body>
-	 <div class="alk-header" style="float:right;width:200px;margin-right:80px">
-	<div class="header-box">
-        	
-            <ul class="alk-header-ul">
-	          
-	          <a href="/View/Home/Home.aspx"><li style="font-size:large"><i class="fa fa-user"></i>&nbsp;系统主页</li></a>  
-                
-            </ul>
+	 <div class="alk-header" >
+		<div class="header-box">
+	          <a href="/View/Home/Home.aspx" style="text-decoration:none;color:cornflowerblue">系统主页</a>
         </div>
     </div>
 	<div>
 		<div class="sysu-contents">
-			<div class="alk-header">
 				<div class="header-box">
 					<div class="alk-header-title"><img src="/View/Template/images/logo.png" alt=""></div>
 					<ul class="alk-header-ul"></ul>
         		</div>
-    		</div>
 		</div>
 	</div>
 
