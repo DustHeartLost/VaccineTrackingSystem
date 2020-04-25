@@ -79,8 +79,6 @@ namespace VaccineTrackingSystem.Models.DAL
             return list;
         }
 
-
-
         static public List<Stock> QueryAll(out string msg)
         {
             string command = "select * from Stock";
@@ -119,6 +117,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
+
         static public Stock Query(string cagNum, int storeID, out string msg)
         {
             string command = $"select * from Stock where cagNum = '{cagNum}' and storeID =  '{storeID}'";
@@ -138,10 +137,14 @@ namespace VaccineTrackingSystem.Models.DAL
         static public List<Dictionary<string, string>> QueryStockDetail(int storeID,string num, out string msg)
         {
             string command = "";
-            if(storeID==-1)
-                command = $"select Category.id, Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}';";
-            else
-                command = $"select Category.id, Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}' and Stock.storeID={storeID};";
+            if (storeID == -1 && num != null)
+                command = $"select Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}';";
+            else if (storeID != -1 && num != null)
+                command = $"select Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}' and Stock.storeID={storeID};";
+            else if (storeID == -1 && num == null)
+                command = $"select Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID;";
+            else if (storeID != -1 && num == null)
+                command = $"select Category.num,Category.name,Category.unit,Category.spec,Category.factory,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Stock.storeID={storeID};";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)
@@ -154,7 +157,6 @@ namespace VaccineTrackingSystem.Models.DAL
             while (read.Read())
             {
                 Dictionary<string, string> dictionary = new Dictionary<string, string>();
-                dictionary.Add("id", read["id"].ToString());
                 dictionary.Add("num", (string)read["num"]);
                 dictionary.Add("name", (string)read["name"]);
                 dictionary.Add("unit", (string)read["unit"]);

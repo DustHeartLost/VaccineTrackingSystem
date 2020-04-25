@@ -172,7 +172,7 @@
 
                     <asp:Panel ID="Panel10" runat="server">
                     <li>
-                        <a href="../Module/Table/Table.aspx">
+                        <a href="../Module/Table/InflowTable.aspx">
                             <dl>
                                 <dt><img src="images/icon28.png" alt=""></dt>
                                 <dd>报表管理</dd>

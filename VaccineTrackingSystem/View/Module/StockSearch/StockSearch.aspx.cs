@@ -53,6 +53,13 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             }
             return temp;
         }
+        [WebMethod]
+        public static string GetAll() {
+            string msg;
+            decimal money = 0;
+            string data = StockManage.QueryAll(storeID,null, out msg,ref money,ref totalPage, ref currentPage,false);
+            return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
         public static string precise(string temp) {
             string msg;
             decimal money=0;
@@ -88,6 +95,15 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
                 case 0: data = StockManage.Query(storeID, num, out msg, ref money, ref totalPage, ref currentPage); break;
             }
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+        [WebMethod]
+        public static string ExportALL()
+        {
+            string data;
+            string msg;
+            decimal money = 0;
+            data = StockManage.QueryAll(storeID, num, out msg, ref money, ref totalPage, ref currentPage,true);
+            return data != null ? JsonConvert.SerializeObject(new Packet(200, data)) : JsonConvert.SerializeObject(new Packet(201, "没有需要导出的数据"));
         }
     }
 }

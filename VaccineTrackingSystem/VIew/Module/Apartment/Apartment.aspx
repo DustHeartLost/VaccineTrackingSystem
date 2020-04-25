@@ -21,8 +21,7 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><a id="list">机构管理</a></div>
-
+    <ul><li><a id="list">机构管理</a></li></ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <input type="text" placeholder="请输入部门编号进行查找" id="searchText" class="sx_inp search-input">

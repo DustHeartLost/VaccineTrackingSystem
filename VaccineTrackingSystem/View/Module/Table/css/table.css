@@ -1,4 +1,14 @@
-﻿#list {
+﻿#list1 {
+    width: 136px;
+    height: 46px;
+    color: #fdcb6e;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: large;
+    float:left;
+}
+
+#list2 {
     width: 136px;
     height: 46px;
     color: #fdcb6e;
@@ -36,7 +46,7 @@ td {
     text-align: center;
     vertical-align:middle;
     color: #3d3d3d;
-    width:10%;
+    width:9%;
 }
 
 .dataRow {
@@ -72,4 +82,11 @@ th {
 }
 .tr-mouseover {
     background-color: antiquewhite;
+}
+
+#searchButton {
+    height: 40px;
+    width: 40px;
+    margin-left: 2px;
+    color: black;
 }

@@ -13,7 +13,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><a id="list">单品明细</a></div>
+    <ul><li><a id="list">单品明细</a></li></ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
 </asp:Content>
@@ -31,7 +31,7 @@
         <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
                 <th>ID</th>
-                <th>库存id</th>
+                <th>库存ID</th>
                 <th>批号</th>
                 <th>入库时间</th>
                 <th>数量</th>
