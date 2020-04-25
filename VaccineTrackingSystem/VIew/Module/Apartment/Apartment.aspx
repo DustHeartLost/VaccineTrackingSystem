@@ -40,9 +40,10 @@
         <button id="add" class="upAnddown" onclick="add()">增加机构</button>
         <button id="confirmAdd" class="upAnddown" onclick="confirmAdd()" >确认增加</button>
         <button id="concelAdd" class="upAnddown" onclick="concelAdd()" >取消增加</button>
-        <button id="update" onclick="showCheckBox()" style="padding:5px">修改部门</button>
-        <button id="cancelUpdate"  onclick="cancelUpdate()"  style="padding:5px">取消修改</button>
-        <button id="confirmUpdate"  onclick="confirmUpdate()"  style="padding:5px">确认修改</button>
+        <button id="update" class="upAnddown" onclick="showCheckBox()">修改部门</button>
+        <button id="cancelUpdate"  class="upAnddown" onclick="cancelUpdate()">取消修改</button>
+        <button id="confirmUpdate" class="upAnddown" onclick="confirmUpdate()">确认修改</button>
+         <button id="showAll" class="upAnddown" onclick="showAll()">返回</button>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">

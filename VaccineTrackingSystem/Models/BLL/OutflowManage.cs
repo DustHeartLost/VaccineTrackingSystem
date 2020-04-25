@@ -37,7 +37,8 @@ namespace VaccineTrackingSystem.Models.BLL
         //根据药品编码查找库存记录
         static public string QueryByCagNum( string cagNum,int storeID, out string msg)
         {
-            return  JsonConvert.SerializeObject(StockDAL.QueryCagNum(cagNum,storeID, out msg));
+            List<Dictionary<string, string>> list = StockDAL.QueryCagNum(cagNum, storeID, out msg);
+            return list != null ? JsonConvert.SerializeObject(list) : null;
         }
         
 

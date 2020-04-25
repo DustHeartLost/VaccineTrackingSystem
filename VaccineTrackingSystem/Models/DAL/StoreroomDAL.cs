@@ -55,7 +55,7 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command = $"select Storeroom.id,Storeroom.name,Storeroom.site,Storeroom.userNum,[User].name as username  from Storeroom,[User] where Storeroom.userNum=[User].num and Storeroom.name = '{name}'";
             SqlDataReader read = SQL.getReader(command);
-            if (read == null)
+            if (!read.HasRows)
             {
                 msg = "查询结果为空";
                 SQL.Dispose();
@@ -79,7 +79,7 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command = $"select Storeroom.id,Storeroom.name,Storeroom.site,Storeroom.userNum,[User].name as username  from Storeroom,[User] where Storeroom.userNum=[User].num";
             SqlDataReader read = SQL.getReader(command);
-            if (read == null)
+            if (!read.HasRows)
             {
                 msg = "当前暂无记录";
                 SQL.Dispose();
@@ -105,7 +105,7 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command = $"select id from Storeroom where userNum = '{userNum}'";
             SqlDataReader read = SQL.getData(command);
-            if (read == null)
+            if (read==null)
             {
                 SQL.Dispose();
                 return null;
