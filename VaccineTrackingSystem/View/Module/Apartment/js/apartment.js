@@ -193,6 +193,8 @@ function cancelUpdate() {
         }
     });
 }
+
+
 function confirmUpdate() {
     $(":checkbox").each(function () {
         if ($(this).prop("checked")) {
