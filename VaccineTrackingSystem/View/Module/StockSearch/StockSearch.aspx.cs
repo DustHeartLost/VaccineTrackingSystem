@@ -54,6 +54,10 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         }
         [WebMethod]
         public static string GetAll() {
+            if (currentPage != -1)
+            {
+                currentPage--;
+            }
             string msg;
             decimal money = 0;
             states = 0;
@@ -61,7 +65,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         public static string precise(string temp) {
-            if (num == null) return JsonConvert.SerializeObject(new Packet(201, "请输入药品编号"));
+            if (temp == null) return JsonConvert.SerializeObject(new Packet(201, "请输入药品编号"));
             states = 1;
             string msg;
             decimal money=0;
@@ -78,7 +82,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             decimal money = 0;
             switch (states)
             {
-                case 0:data=GetAll();break;
+                case 0:data=GetAll();return data;
                 case 1: data = StockManage.Query(storeID, num.ToString(), out msg, ref money, ref totalPage, ref currentPage); break;
             }
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
