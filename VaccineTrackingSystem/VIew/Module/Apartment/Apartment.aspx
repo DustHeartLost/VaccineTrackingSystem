@@ -21,7 +21,7 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><a id="list">机构管理</a></div>
+    <div><ul><li><a id="list">机构管理</a></li></ul></div>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">

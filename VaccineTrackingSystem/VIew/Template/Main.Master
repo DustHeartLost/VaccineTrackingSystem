@@ -27,7 +27,7 @@
 	
 </head>
 <body>
-	 <div class="alk-header" style="float:right;width:200px;padding:30px;margin-right:80px">
+	 <div class="alk-header" style="float:right;width:200px;margin-right:80px">
 	<div class="header-box">
         	
             <ul class="alk-header-ul">
@@ -52,11 +52,7 @@
 	<div>
 		<div class="sx_title">
 			<div style="margin:0 auto;" class="currentlist">
-				<ul>
-					<li navtap="todo" >
-						<asp:ContentPlaceHolder ID="CurrentList" runat="server"></asp:ContentPlaceHolder></asp:PlaceHolder>
-					</li>
-				</ul>
+				<asp:ContentPlaceHolder ID="CurrentList" runat="server"></asp:ContentPlaceHolder></asp:PlaceHolder>
 			</div>
 		</div>
 	</div>

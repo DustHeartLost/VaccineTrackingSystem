@@ -13,7 +13,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-     <div><a id="list">产品入库</a></div>
+     <div><ul><li><a id="list">产品入库</a></li></ul></div>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
