@@ -31,6 +31,9 @@ body {
 	line-height: 46px;
 	display: block;
 }
+.sx_title ul li a:hover{
+	text-decoration:underline;
+}
 .sx_ss {
 	width: 1500px;
 	/*width: 100%;*/
