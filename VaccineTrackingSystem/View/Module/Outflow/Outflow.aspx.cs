@@ -31,6 +31,10 @@ namespace VaccineTrackingSystem.View.Module.Outflow
             };
         }
 
+
+
+
+
         [WebMethod]
         public static string SearchCon(string temp)
         {
