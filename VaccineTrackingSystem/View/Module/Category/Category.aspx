@@ -32,6 +32,7 @@
     <button id="update" onclick="showCheckBox()" style="padding:5px">修改品类</button>
     <button id="cancelUpdate"  onclick="cancelUpdate()"  style="padding:5px">取消修改</button>
     <button id="confirmUpdate"  onclick="confirmUpdate()"  style="padding:5px">确认修改</button>
+     <button id="showAll" onclick="showAll()"  style="padding:5px">返回</button>
     <div id="upAndDownArea" style="float: right;">
         <button id="up" class="upAnddown" onclick="up()"><</button>
         <button id="down" class="upAnddown" onclick="down()">></button>

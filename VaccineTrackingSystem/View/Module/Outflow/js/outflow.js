@@ -161,8 +161,8 @@ function search() {
                 if (tempT.code == 200) {
                     $("#addOutflow").show();
                     $("#returnAll").show();
-                    $("#total").text("共 1 页");
-                    $("#current").text("第 1 页");
+                    $("#total").hide();
+                    $("#current").hide();
                     $("#up").hide();
                     $("#down").hide();
                     reCreateTable(tempT.data, tempT.extra);

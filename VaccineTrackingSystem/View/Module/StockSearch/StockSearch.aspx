@@ -24,6 +24,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <label id="money" style="text-align:center;font-size:medium">共0元</label>
     <button id="export"  onclick="tableExport()" style="padding:5px">导出</button>
+    <button id="showAll" onclick="showAll()"  style="padding:5px">返回</button>
     <div style="float: right;" id="upAndDownArea">
         <button id="up" class="upAnddown" onclick="up()" aria-valuetext="&lt;"> <</button>
         <button id="down" class="upAnddown" onclick="down()" aria-valuetext="&gt;"> ></button>

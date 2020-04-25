@@ -285,7 +285,7 @@ function search() {
 
                     $("#cancelUpdate").hide();
                     $("#confirmUpdate").hide();
-                    $("#update").hide();
+                    $("#update").show();
                 }
                 else {
                     alert(tempT.data);

@@ -10,10 +10,17 @@
         }
     }
     $("#caption").after(html);
+    $("#total").show();
+    $("#current").show();
+    $("#money").show();
+    $("#up").show();
+    $("#down").show();
+    $("#export").show();
     var x = extra.split('+');
     $("#total").text("共" + x[0] + "页");
     $("#current").text("第" + x[1] + "页");
     $("#money").text("共" + x[2] + "元");
+    $("#showAll").hide();
 }
 
 $(document).ready(function () {
@@ -49,6 +56,14 @@ function search() {
                 if (tempT.code == 200) {
                     clear();
                     createTable(tempT.data, tempT.extra);
+                    $("#showAll").show();
+                    $("#up").hide();
+                    $("#down").hide();
+                    $("#current").hide();
+                    $("#total").hide();
+
+                    $("#export").hide();
+                    $("#money").hide();
                 }
                 else {
                     alert(tempT.data);
@@ -61,6 +76,26 @@ function search() {
     }
     else
         alert("请输入药品编号");
+}
+
+function showAll() {
+    clear();
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "StockSearch.aspx/GetALL",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                clear();
+                createTable(temp.data, temp.extra);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
 }
 
 function down() {
