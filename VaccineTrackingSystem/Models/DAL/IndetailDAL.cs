@@ -88,29 +88,6 @@ namespace VaccineTrackingSystem.Models.DAL
             return list;
         }
 
-        static public List<Indetail> QueryAll(out string msg)
-        {
-            string command = "select * from Indetail";
-            SqlDataReader read;
-            read = SQL.getReader(command);
-            if (!read.HasRows)
-            {
-                msg = "查询结果为空";
-                SQL.Dispose();
-                return null;
-            }
-            List<Indetail> list = new List<Indetail>();
-            Indetail indetail;
-            while (read.Read())
-            {
-                indetail = new Indetail((int)read["id"], (int)read["stockID"], (string)read["batchNum"], (string)read["date"], (int)read["quantity"], (decimal)read["price"], read["note"].ToString());
-                list.Add(indetail);
-            }
-            SQL.Dispose();
-            msg = null;
-            return list;
-        }
-
         static public bool Update(Indetail indetail, out string msg)
         {
             string command = $"update Indetail set stockID = '{indetail.stockID}',batchNum = '{indetail.batchNum}',date = '{indetail.date}',quantity = '{indetail.quantity}',price = '{indetail.price}',note = '{indetail.note}'  where id = '{indetail.id}'";

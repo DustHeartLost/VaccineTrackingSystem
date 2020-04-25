@@ -8,20 +8,6 @@ namespace VaccineTrackingSystem.Models.BLL
 {
     public class OutflowManage
     {
-        //新增根据药品编码查询库存表   4/7
-        static public string QueryStrock(String cagNum, int storeID, out string msg)
-        {
-            Stock stock = StockDAL.QueryByCagNum(cagNum, storeID, out msg);
-            List<Stock> stockList = new List<Stock>();
-            if (stock == null)
-            {
-                msg = "该库房暂无该药品";
-                return null;
-            }
-            stockList.Add(stock);
-            return JsonConvert.SerializeObject(stockList);
-        }
-
         //默认库房列表
         static public string QueryStockByStoreID(int storeID, out string msg, ref int totalPage, ref int currentPage)
         {

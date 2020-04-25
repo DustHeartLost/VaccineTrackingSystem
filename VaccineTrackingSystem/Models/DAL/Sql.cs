@@ -27,21 +27,6 @@ namespace DAL
         }
         #endregion
 
-        static public void End()
-        {
-            Ada.Update(Set);
-            Ada.Dispose();
-            CB.Dispose();
-            Set.Dispose();
-        }
-        static public void start(string command)
-        {
-            Ada = new SqlDataAdapter(command, ConnectionStringSQL);
-            Ada.MissingSchemaAction = MissingSchemaAction.AddWithKey;
-            CB = new SqlCommandBuilder(Ada);
-            Set = new DataSet();
-            Ada.Fill(Set);
-        }
         static public bool Excute(string Command)
         {
             Con = new SqlConnection(ConnectionStringSQL);

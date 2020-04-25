@@ -22,49 +22,6 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
 
-        static public Outflow Query(int id, out string msg)
-        {
-            string command = $"select * from Outflow where id = '{id}'";
-            SqlDataReader read = SQL.getData(command);
-            if (read == null)
-            {
-                msg = "查询结果为空";
-                SQL.Dispose();
-                return null;
-            }
-            Outflow outflow = new Outflow((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (string)read["date"], (string)read["userNum"], (int)read["quantity"], (decimal)read["price"], (string)read["batchNum"], (string)read["state"]);
-            SQL.Dispose();
-            msg = null;
-            return outflow;
-        }
-        //根据药品编码精确
-        //static public List<Outflow> Query(string cagNum, out string msg)
-        //{
-
-        //}
-        static public List<Outflow> QueryAll(out string msg)
-        {
-            string command = "select * from Outflow";
-            SqlDataReader read;
-            read = SQL.getReader(command);
-            if (!read.HasRows)
-            {
-                msg = "查询结果为空";
-                SQL.Dispose();
-                return null;
-            }
-            List<Outflow> list = new List<Outflow>();
-            Outflow outflow;
-            while (read.Read())
-            {
-                outflow = new Outflow((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (string)read["date"], (string)read["userNum"], (int)read["quantity"], (decimal)read["price"], (string)read["batchNum"], (string)read["state"]);
-                list.Add(outflow);
-            }
-            SQL.Dispose();
-            msg = null;
-            return list;
-        }
-
         //新增按照仓库ID查找出库流水表2020-04-07 18：07
         static public List<Dictionary<string, string>> QueryAllByStoreID(int storeID, out string msg)
         {

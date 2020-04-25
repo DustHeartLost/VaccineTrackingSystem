@@ -22,44 +22,6 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
 
-        static public Inflow Query(int id, out string msg)
-        {
-            string command = $"select * from Inflow where id = '{id}'";
-            SqlDataReader read = SQL.getData(command);
-            if (read == null)
-            {
-                msg = "查询结果为空";
-                SQL.Dispose();
-                return null;
-            }
-            Inflow inflow = new Inflow((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (string)read["date"], (string)read["userNum"], (int)read["quantity"], (decimal)read["price"], (string)read["batchNum"]);
-            SQL.Dispose();
-            msg = null;
-            return inflow;
-        }
-        static public List<Inflow> QueryAll(out string msg)
-        {
-            string command = "select * from Inflow";
-            SqlDataReader read;
-            read = SQL.getReader(command);
-            if (!read.HasRows)
-            {
-                msg = "查询结果为空";
-                SQL.Dispose();
-                return null;
-            }
-            List<Inflow> list = new List<Inflow>();
-            Inflow inflow;
-            while (read.Read())
-            {
-                inflow = new Inflow((int)read["id"], (string)read["cagNum"], (int)read["storeID"], (string)read["date"], (string)read["userNum"], (int)read["quantity"], (decimal)read["price"], (string)read["batchNum"]);
-                list.Add(inflow);
-            }
-            SQL.Dispose();
-            msg = null;
-            return list;
-        }
-
         //新增按照仓库ID查找入库流水表2020-04-07 18：07
         static public List<Dictionary<string,string>> QueryAllByStoreID(int storeID, out string msg)
         {
