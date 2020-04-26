@@ -47,6 +47,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             string temp = "";
             switch (state)
             {
+                case 0: temp = GetAll();break;
                 case 1: temp = precise(data); break;
            
             }
@@ -54,10 +55,6 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         }
         [WebMethod]
         public static string GetAll() {
-            if (currentPage != -1&&states!=0)
-            {
-                currentPage--;
-            }
             string msg;
             decimal money = 0;
             states = 0;
