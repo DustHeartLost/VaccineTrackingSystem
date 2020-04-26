@@ -54,7 +54,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         }
         [WebMethod]
         public static string GetAll() {
-            if (currentPage != -1)
+            if (currentPage != -1&&states!=0)
             {
                 currentPage--;
             }
@@ -66,12 +66,15 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         }
         public static string precise(string temp) {
             if (temp == null) return JsonConvert.SerializeObject(new Packet(201, "请输入药品编号"));
-            states = 1;
             string msg;
-            decimal money=0;
-            num = temp;
+            decimal money = 0;
             string data=StockManage.Query(storeID, temp,out msg,ref money, ref totalPage, ref currentPage);
-            return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            if (data != null) { 
+                states = 1; 
+                num = temp;
+                return JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}"));
+            }
+            return  JsonConvert.SerializeObject(new Packet(201, msg));
         }
         
         [WebMethod]
