@@ -20,10 +20,7 @@
 		<div class="header-left">
            <span style="color:white;font-size:x-large;font-weight:bolder;vertical-align:middle;"> 疫苗管理中心</span>
 		</div>
-		<div class="header-right">
-			<div class="header-divide-line"></div>
 		
-		</div>
 	</div> 
     </div>
 
@@ -50,11 +47,13 @@
                         </div>
                     </div>
                     <button type="button" class="mod-btn blue large"  id="next_step" style="margin-top:15px;width:80px;padding:5px" onclick="newPassword()">确定</button>
+                                        <button type="button" class="mod-btn blue large"  id="cs" style="margin-top:15px;width:80px;padding:5px" onclick="javascript:history.go(-1)">取消</button>
+
                 </form>
             </div>
     	
      <div id="footer_new">
-		<p> <span id="current_year">2020</span> Copyright © 疫苗管理中心 </p>
+		<p> <span id="current_year">2020</span> Copyright © 吉林中新正大食品有限公司 </p>
 	</div>             
 
 </body>

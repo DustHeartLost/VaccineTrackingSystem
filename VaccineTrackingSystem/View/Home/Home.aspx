@@ -26,8 +26,9 @@
 </head><body>
 
 		 <div class="alk-header">
-    	<div class="header-box">
-            <a id="ex" class="alk-header-ul"  style="margin-right:20px"  OnClick="ExitOu()">退出</a> 
+    	<div class="header-box"> <a id="ex" class="alk-header-ul"  style="margin-right:20px" href="#"  OnClick="ExitOu()">退出</a>
+             <a id="pass" class="alk-header-ul"  style="margin-right:20px" href="../SetPassword/set.aspx">修改密码</a> 
+            
             <ul class="alk-header-ul">
                   <li id="uname"><i class="fa fa-user"></i> </li>
             </ul>
@@ -69,7 +70,7 @@
                     
                     <asp:Panel ID="Panel1" runat="server">
                      <li >
-                         <a href="../Module/Apartment/Apartment.aspx">
+                         <a href="../Module/Apartment/Apartment.aspx" >
                                <dl>
                                    <dt><img src="images/7._______________.png"  alt=""></dt>
                                    <dd>机构管理</dd>
@@ -80,7 +81,7 @@
 
                     <asp:Panel ID="Panel2" runat="server">
                         <li>
-                                <a href="../Module/Role/Role.aspx">
+                                <a href="../Module/Role/Role.aspx" >
                                     <dl>
                                         <dt><img src="images/8._________________.png"  alt=""></dt>
                                         <dd>角色管理</dd>
@@ -91,7 +92,7 @@
                             
                     <asp:Panel ID="Panel3" runat="server">
                         <li>
-                                <a href="../Module/User/User.aspx">
+                                <a href="../Module/User/User.aspx" >
                                     <dl>
                                         <dt><img src="images/12.________.png"  alt=""></dt>
                                         <dd>用户管理</dd>
@@ -103,7 +104,7 @@
                         
                     <asp:Panel ID="Panel4" runat="server">
                         <li>
-                           <a href="../Module/Storeroom/Storeroom.aspx">
+                           <a href="../Module/Storeroom/Storeroom.aspx" >
                                     <dl>
                                         <dt><img src="images/7._______________(1).png"  alt=""></dt>
                                         <dd>库房管理</dd>
@@ -115,7 +116,7 @@
                      
                     <asp:Panel ID="Panel5" runat="server">
                          <li>
-                             <a href="../Module/Category/Category.aspx">
+                             <a href="../Module/Category/Category.aspx" >
                                 <dl>
                                     <dt><img src="images/____(1).png"  alt=""></dt>
                                     <dd>品类管理</dd>
@@ -127,7 +128,7 @@
                         
                    <asp:Panel ID="Panel6" runat="server">
                        <li>
-                          <a href="../Module/Inflow/Inflow.aspx">
+                          <a href="../Module/Inflow/Inflow.aspx" >
                              <dl>
                                 <dt><img src="images/3.__________________(1).png" alt=""></dt>
                                  <dd>入库管理</dd>
@@ -150,7 +151,7 @@
 
                     <asp:Panel ID="Panel8" runat="server">
                     <li>
-                        <a href="../Module/Destory/Destory.aspx">
+                        <a href="../Module/Destory/Destory.aspx" >
                             <dl>
                                 <dt><img src="images/icon28.png" alt=""></dt>
                                 <dd>销毁管理</dd>
@@ -161,7 +162,7 @@
 
                     <asp:Panel ID="Panel9" runat="server">
                     <li>
-                                <a href="../Module/StockSearch/StockSearch.aspx">
+                                <a href="../Module/StockSearch/StockSearch.aspx" >
                                     <dl>
                                         <dt><img src="images/5._______.png"  alt=""></dt>
                                         <dd>库存查询</dd>
@@ -172,7 +173,7 @@
 
                     <asp:Panel ID="Panel10" runat="server">
                     <li>
-                        <a href="../Module/Table/InflowTable.aspx">
+                        <a href="../Module/Table/InflowTable.aspx" >
                             <dl>
                                 <dt><img src="images/icon28.png" alt=""></dt>
                                 <dd>报表管理</dd>
@@ -188,7 +189,7 @@
 <!--footer-->
 <div class="alk-footer">
     <div class="copy-footer">
-        地址：吉林省长春市 &nbsp; &nbsp;&nbsp; 版权：疫苗管理中心 &nbsp; &nbsp;&nbsp; 信息管理：疫苗管理中心
+        吉林中新正大药品疫苗库存管理系统V1.0 &nbsp; &nbsp;&nbsp; copyright©&nbsp; &nbsp;吉林中新正大食品有限公司版权所有 &nbsp; &nbsp;&nbsp; 
     </div>
 </div>
 

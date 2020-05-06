@@ -33,7 +33,11 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <div><ul><li><a id="list">用户管理</a></li></ul></div>
+    <div><ul>
+        <li style="float:left;width:160px;"><a id="list0" href="/View/Home/Home.aspx">系统主页</a></li>
+        <li style="float:left;width:160px;"><a id="list1" href="#" style="background-color:#63b5de9c">用户管理</a></li>
+
+         </ul></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <input type="text" placeholder="请输入用户编号进行查找" id="searchText" class="sx_inp search-input">

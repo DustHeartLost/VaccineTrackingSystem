@@ -29,7 +29,7 @@ button {
 }
 
     .common-header .header-wrap {
-        width: 1200px;
+        width: 100%;
         line-height: 100%;
         margin: 10px auto;
     }

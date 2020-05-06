@@ -1,35 +1,4 @@
-﻿#list1 {
-    width: 136px;
-    height: 46px;
-    color: #fdcb6e;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size: large;
-    text-decoration: none;
-    text-align: center;
-    float: left;
-}
-
-#list1:hover {
-    text-decoration:underline;
-}
-
-#list2 {
-    width: 136px;
-    height: 46px;
-    color: #fdcb6e;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size: large;
-    text-decoration: none;
-    text-align: center;
-    float:left;
-}
-
-#list2:hover {
-    text-decoration: underline;
-}
-
+﻿
 #table {
     margin: 0;
     padding: 0;

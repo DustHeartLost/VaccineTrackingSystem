@@ -43,7 +43,7 @@
   </div>
   <div data-v-759ce404="" class="footer-wrap">
     <div data-v-759ce404="" class="layout-center clearfix">
-      <div data-v-759ce404="" class="title">Copyright © 疫苗管理中心</div>
+      <div data-v-759ce404="" class="title">Copyright © 吉林中新正大食品有限公司</div>
     </div>
   </div>
 </div>
