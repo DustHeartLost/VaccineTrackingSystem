@@ -19,6 +19,13 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
+     <ul>
+         <li style="float:left;width:160px;"><a id="list0" class="list" href="/View/Home/Home.aspx">系统主页</a></li>
+        <li style="float:left;width:160px;"><a id="list1" class="list" href="../Drug/Drug.aspx" >药品分类</a></li>
+         <li style="float:left;width:160px;"><a id="list2" class="list" href="Suppliers.aspx" style="background-color:#63b5de9c">供应商管理</a></li>
+         <li style="float:left;width:160px;"><a id="list3" class="list" href="../Storeroom/Storeroom.aspx">库房管理</a></li>
+          <li style="float:left;width:160px;"><a id="list4" class="list" href="../Category/Category.aspx">品类管理</a></li>
+    </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <input type="text" placeholder="请输入角色名称进行查找" id="searchText" class="sx_inp search-input">
