@@ -42,15 +42,6 @@ namespace VaccineTrackingSystem.VIew.Home
         protected global::System.Web.UI.WebControls.Panel Panel3;
 
         /// <summary>
-        /// Panel20 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel20;
-
-        /// <summary>
         /// Panel4 控件。
         /// </summary>
         /// <remarks>
@@ -85,32 +76,5 @@ namespace VaccineTrackingSystem.VIew.Home
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel7;
-
-        /// <summary>
-        /// Panel8 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel8;
-
-        /// <summary>
-        /// Panel9 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel9;
-
-        /// <summary>
-        /// Panel10 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel10;
     }
 }

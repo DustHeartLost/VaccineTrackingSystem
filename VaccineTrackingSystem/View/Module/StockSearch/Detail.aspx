@@ -14,9 +14,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
     <ul>
-        <li style="float:left;width:160px;"><a id="list0" href="/View/Home/Home.aspx">系统主页</a></li>
-         <li style="float:left;width:160px;"><a id="list2" href="StockSearch.aspx">库存查询</a></li>
-        <li style="float:left;width:160px;"><a id="list1" href="#" style="background-color:#63b5de9c">单品明细</a></li>
+        <li style="float:left;width:160px;"><a class="list" href="/View/Home/Home.aspx">系统主页</a></li>
+         <li style="float:left;width:160px;"><a class="list" href="StockSearch.aspx">库存查询</a></li>
+        <li style="float:left;width:160px;"><a class="list" href="#" style="background-color:#63b5de9c">单品明细</a></li>
        </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">

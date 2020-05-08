@@ -73,71 +73,24 @@
                          <a href="../Module/Apartment/Apartment.aspx" >
                                <dl>
                                    <dt><img src="images/7._______________.png"  alt=""></dt>
-                                   <dd>机构管理</dd>
+                                   <dd>系统设置</dd>
                                </dl>
                           </a>
                     </li>
                     </asp:Panel>
-
+                        
                     <asp:Panel ID="Panel2" runat="server">
                         <li>
-                                <a href="../Module/Role/Role.aspx" >
-                                    <dl>
-                                        <dt><img src="images/8._________________.png"  alt=""></dt>
-                                        <dd>角色管理</dd>
-                                    </dl>
-                                </a>
-                            </li>
-                    </asp:Panel>
-                            
-                    <asp:Panel ID="Panel3" runat="server">
-                        <li>
-                                <a href="../Module/User/User.aspx" >
-                                    <dl>
-                                        <dt><img src="images/12.________.png"  alt=""></dt>
-                                        <dd>用户管理</dd>
-                                    </dl>
-                                </a>
-                            </li>
-                    </asp:Panel>
-
-                    <asp:Panel ID="Panel20" runat="server">
-                        <li>
-                                <a href="../Module/Suppliers/Suppliers.aspx" >
-                                    <dl>
-                                        <dt><img src="images/12.________.png"  alt=""></dt>
-                                        <dd>供应商管理</dd>
-                                    </dl>
-                                </a>
-                            </li>
-                    </asp:Panel>
-                    
-                        
-                    <asp:Panel ID="Panel4" runat="server">
-                        <li>
-                           <a href="../Module/Storeroom/Storeroom.aspx" >
+                           <a href="../Module/Category/Category.aspx">
                                     <dl>
                                         <dt><img src="images/7._______________(1).png"  alt=""></dt>
-                                        <dd>库房管理</dd>
+                                        <dd>基础数据管理</dd>
                                     </dl>
                                 </a>
                             </li>
-                    </asp:Panel>     
-                            
-                     
-                    <asp:Panel ID="Panel5" runat="server">
-                         <li>
-                             <a href="../Module/Category/Category.aspx" >
-                                <dl>
-                                    <dt><img src="images/____(1).png"  alt=""></dt>
-                                    <dd>品类管理</dd>
-                                </dl>
-                             </a>
-                         </li>
-                   </asp:Panel>
-                    
+                    </asp:Panel>                         
                         
-                   <asp:Panel ID="Panel6" runat="server">
+                   <asp:Panel ID="Panel3" runat="server">
                        <li>
                           <a href="../Module/Inflow/Inflow.aspx" >
                              <dl>
@@ -149,7 +102,7 @@
                    </asp:Panel>
                     
                         
-                    <asp:Panel ID="Panel7" runat="server">
+                    <asp:Panel ID="Panel4" runat="server">
                      <li>
                          <a href="../Module/Outflow/Outflow.aspx">
                              <dl>
@@ -160,7 +113,7 @@
                       </li>
                     </asp:Panel>
 
-                    <asp:Panel ID="Panel8" runat="server">
+                    <asp:Panel ID="Panel5" runat="server">
                     <li>
                         <a href="../Module/Destory/Destory.aspx" >
                             <dl>
@@ -171,7 +124,7 @@
                     </li>
                     </asp:Panel>
 
-                    <asp:Panel ID="Panel9" runat="server">
+                    <asp:Panel ID="Panel6" runat="server">
                     <li>
                                 <a href="../Module/StockSearch/StockSearch.aspx" >
                                     <dl>
@@ -182,7 +135,7 @@
                             </li>
                     </asp:Panel>
 
-                    <asp:Panel ID="Panel10" runat="server">
+                    <asp:Panel ID="Panel7" runat="server">
                     <li>
                         <a href="../Module/Table/InflowTable.aspx" >
                             <dl>

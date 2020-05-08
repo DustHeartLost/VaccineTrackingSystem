@@ -19,10 +19,12 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
-    <ul>
-        <li style="float:left;width:160px;"><a id="list0" href="/View/Home/Home.aspx">系统主页</a></li>
-        <li style="float:left;width:160px;"><a id="list1" href="#" style="background-color:#63b5de9c">角色管理</a></li>
-    </ul>
+     <ul>
+         <li style="float:left;width:160px;"><a class="list" href="/View/Home/Home.aspx">系统主页</a></li>
+         <li style="float:left;width:160px;"><a class="list" href="../Apartment/Apartment.aspx" >机构管理</a></li>
+         <li style="float:left;width:160px;"><a class="list" style="background-color:#63b5de9c" href="#">角色管理</a></li>
+         <li style="float:left;width:160px;"><a class="list" href="../User/User.aspx">用户管理</a></li>
+     </ul>
 </asp:Content>
 
 
@@ -53,7 +55,7 @@
     <div id="table">
         <table id="tableContainer">
             <tr id="caption">
-                <th></th><th>ID</th><th>名称</th><th>机构管理</th><th>角色管理</th><th>用户管理</th><th>库房管理</th><th>品类管理</th><th>入库管理</th><th>出库管理</th><th>销毁管理</th><th>库存查询</th><th>报表管理</th><th>备注</th>
+                <th></th><th>ID</th><th>名称</th><th>系统设置</th><th>基础数据管理</th><th>入库管理</th><th>出库管理</th><th>销毁管理</th><th>库存查询</th><th>报表管理</th><th>备注</th>
             </tr>
         </table>
     </div>

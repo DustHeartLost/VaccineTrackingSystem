@@ -7,7 +7,7 @@
         else
             html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td>";
 
-        for (var j = 0; j < 10; j++) {
+        for (var j = 0; j < 7; j++) {
            if (data[i].authority[j] == 1) {
               html += "<td><select class=\"edit\" disabled=\"disabled\"><option>允许</option><option>拒绝</option></select ></td>";
            }
