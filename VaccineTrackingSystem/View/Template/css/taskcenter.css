@@ -8,7 +8,7 @@ body {
 	width: 100%;
 	/*width:96%*/
 	margin: 0 auto;
-	background-color: #ffffff;
+	background-color: #ededea;
 }
 #list0 {
 	width: 136px;
@@ -60,11 +60,12 @@ body {
 .alk-header-title {
 	margin-left:5%;
 	margin-top:5px;
+	margin-bottom:5px;
 }
-.sysu-contents{
-	height:70px;
-	margin:0 auto;
-	background:#ffffff;
+.sysu-contents {
+	height: 70px;
+	margin: 0 auto;
+	background: #ededea;
 }
 .sx_title {
 	border-bottom: 2px solid #deede8;

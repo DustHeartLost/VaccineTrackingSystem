@@ -100,6 +100,17 @@
                                 </a>
                             </li>
                     </asp:Panel>
+
+                    <asp:Panel ID="Panel20" runat="server">
+                        <li>
+                                <a href="../Module/Suppliers/Suppliers.aspx" >
+                                    <dl>
+                                        <dt><img src="images/12.________.png"  alt=""></dt>
+                                        <dd>供应商管理</dd>
+                                    </dl>
+                                </a>
+                            </li>
+                    </asp:Panel>
                     
                         
                     <asp:Panel ID="Panel4" runat="server">
