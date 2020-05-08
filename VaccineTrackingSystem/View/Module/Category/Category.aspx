@@ -20,8 +20,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
     <ul>
-          <li style="float:left;width:160px;"><a id="list0" href="/View/Home/Home.aspx">系统主页</a></li>
-        <li style="float:left;width:160px;"><a id="list1" href="#" style="background-color:#63b5de9c">品类管理</a></li>
+         <li style="float:left;width:160px;"><a id="list0" class="list" href="/View/Home/Home.aspx">系统主页</a></li>
+        <li style="float:left;width:160px;"><a id="list1"  class="list" href="#" style="background-color:#63b5de9c">品类管理</a></li>
 
     </ul>
 </asp:Content>

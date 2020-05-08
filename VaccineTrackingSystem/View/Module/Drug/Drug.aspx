@@ -20,9 +20,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="CurrentList" runat="server">
      <ul>
-          <li style="float:left;width:160px;"><a id="list0" href="/View/Home/Home.aspx">系统主页</a></li>
-        <li style="float:left;width:160px;"><a id="list1" href="#" style="background-color:#63b5de9c">药品类别管理</a></li>
-
+          <li style="float:left;width:160px;"><a id="list0" class="list" href="/View/Home/Home.aspx">系统主页</a></li>
+        <li style="float:left;width:160px;"><a id="list1" class="list" href="Drug.aspx" style="background-color:#63b5de9c">药品分类</a></li>
+         <li style="float:left;width:160px;"><a id="list2" class="list" href="../Suppliers/Suppliers.aspx" style="background-color:#63b5de9c">供应商管理</a></li>
+         <li style="float:left;width:160px;"><a id="list3" class="list" href="../Storeroom/Storeroom.aspx" style="background-color:#63b5de9c">库房管理</a></li>
+          <li style="float:left;width:160px;"><a id="list4" class="list" href="../Category/Category.aspx" style="background-color:#63b5de9c">品类管理</a></li>
     </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
@@ -30,10 +32,10 @@
     <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
-     <button id="add"  onclick="add()" style="padding:5px">增加品类</button>
+     <button id="add"  onclick="add()" style="padding:5px">增加分类</button>
     <button id="confirmAdd"  onclick="confirmAdd()" style="padding:5px">确认增加</button>
     <button id="concelAdd"  onclick="concelAdd()"  style="padding:5px">取消增加</button>
-    <button id="update" onclick="showCheckBox()" style="padding:5px">修改品类</button>
+    <button id="update" onclick="showCheckBox()" style="padding:5px">修改分类</button>
     <button id="cancelUpdate"  onclick="cancelUpdate()"  style="padding:5px">取消修改</button>
     <button id="confirmUpdate"  onclick="confirmUpdate()"  style="padding:5px">确认修改</button>
      <button id="showAll" onclick="showAll()"  style="padding:5px">返回</button>
@@ -50,7 +52,7 @@
             <tr id="caption">
                 <th></th>
                 <th>ID</th>
-                <th>药品类别</th>
+                <th>药品分类</th>
             </tr>
         </table>
     </div>
