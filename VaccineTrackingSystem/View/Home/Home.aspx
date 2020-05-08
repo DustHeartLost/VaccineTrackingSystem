@@ -81,7 +81,7 @@
                         
                     <asp:Panel ID="Panel2" runat="server">
                         <li>
-                           <a href="../Module/Category/Category.aspx">
+                           <a href="../Module/Drug/Drug.aspx">
                                     <dl>
                                         <dt><img src="images/7._______________(1).png"  alt=""></dt>
                                         <dd>基础数据管理</dd>
