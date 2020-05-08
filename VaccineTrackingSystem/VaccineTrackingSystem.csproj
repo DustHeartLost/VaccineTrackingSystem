@@ -113,6 +113,9 @@
     <Content Include="View\Module\Destory\css\destory.css" />
     <Content Include="View\Module\Destory\Destory.aspx" />
     <Content Include="View\Module\Destory\js\destory.js" />
+    <Content Include="View\Module\Drug\css\drug.css" />
+    <Content Include="View\Module\Drug\Drug.aspx" />
+    <Content Include="View\Module\Drug\js\drug.js" />
     <Content Include="View\Module\Inflow\css\inflow.css" />
     <Content Include="View\Module\Inflow\Inflow.aspx" />
     <Content Include="View\Module\Inflow\InflowAdd.aspx" />
@@ -160,6 +163,7 @@
     <Compile Include="Models\BLL\ApartManage.cs" />
     <Compile Include="Models\BLL\CategoryManage.cs" />
     <Compile Include="Models\BLL\DestoryManage.cs" />
+    <Compile Include="Models\BLL\DrugManage.cs" />
     <Compile Include="Models\BLL\InflowManage.cs" />
     <Compile Include="Models\BLL\LoginManage.cs" />
     <Compile Include="Models\BLL\OutflowManage.cs" />
@@ -170,6 +174,7 @@
     <Compile Include="Models\BLL\UserManage.cs" />
     <Compile Include="Models\DAL\ApartmentDAL.cs" />
     <Compile Include="Models\DAL\CategoryDAL.cs" />
+    <Compile Include="Models\DAL\DrugDAL.cs" />
     <Compile Include="Models\DAL\IndetailDAL.cs" />
     <Compile Include="Models\DAL\InflowDAL.cs" />
     <Compile Include="Models\DAL\OutflowDAL.cs" />
@@ -180,6 +185,7 @@
     <Compile Include="Models\DAL\UserDAL.cs" />
     <Compile Include="Models\Entity\Apartment.cs" />
     <Compile Include="Models\Entity\Category.cs" />
+    <Compile Include="Models\Entity\Drug.cs" />
     <Compile Include="Models\Entity\Indetail.cs" />
     <Compile Include="Models\Entity\Inflow.cs" />
     <Compile Include="Models\Entity\Outflow.cs" />
@@ -222,6 +228,13 @@
     </Compile>
     <Compile Include="View\Module\Destory\Destory.aspx.designer.cs">
       <DependentUpon>Destory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Drug\Drug.aspx.cs">
+      <DependentUpon>Drug.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Drug\Drug.aspx.designer.cs">
+      <DependentUpon>Drug.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\Inflow\Inflow.aspx.cs">
       <DependentUpon>Inflow.aspx</DependentUpon>
