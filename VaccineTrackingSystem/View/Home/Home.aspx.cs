@@ -11,7 +11,7 @@ namespace VaccineTrackingSystem.VIew.Home
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Panel[] panels = new Panel[10];
+            Panel[] panels = new Panel[7];
             panels[0] = Panel1;
             panels[1] = Panel2;
             panels[2] = Panel3;
@@ -19,9 +19,6 @@ namespace VaccineTrackingSystem.VIew.Home
             panels[4] = Panel5;
             panels[5] = Panel6;
             panels[6] = Panel7;
-            panels[7] = Panel8;
-            panels[8] = Panel9;
-            panels[9] = Panel10;
             Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
             if (user == null)
             {
@@ -30,7 +27,7 @@ namespace VaccineTrackingSystem.VIew.Home
             }
             userName = user["name"].ToString();
             char[] temp = user["authority"].ToCharArray();
-            for (int i = 0; i < temp.Length; i++)
+            for (int i = 0; i < panels.Length; i++)
             {
                 panels[i].Visible = temp[i].Equals('1');
             }
