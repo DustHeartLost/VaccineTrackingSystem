@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -77,19 +76,6 @@ namespace VaccineTrackingSystem.View.Module.Drug
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
-        [System.Web.Services.WebMethod]
-        public static string DestoryAllRecord()
-        {
-            string msg1;
-            string temp = Models.BLL.DrugManage.QueryDesAll(out msg1);
-            if (temp == null)
-            {
-                return JsonConvert.SerializeObject(new Packet(201, msg1));
-            }
-            string msg;
-            List<Models.Entity.Drug> list = JsonConvert.DeserializeObject<List<Models.Entity.Drug>>(temp);
-            return Models.BLL.DrugManage.Destory(list,out msg) ? JsonConvert.SerializeObject(new Packet(200, null)) : JsonConvert.SerializeObject(new Packet(202, msg));
-        }
         [System.Web.Services.WebMethod]
         public static string DestoryRecord(string temp)
         {

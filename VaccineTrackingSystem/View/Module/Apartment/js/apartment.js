@@ -90,7 +90,7 @@ function confirmAdd() {
     else {
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Alert.aspx/AddRecord",//方法所在页面和方法名
+        url: "Apartment.aspx/AddRecord",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json", 
         data: "{'apt':'"+tempCon+ "'}",
@@ -124,7 +124,7 @@ function concelAdd() {
     clear();
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Alert.aspx/GetALL",//方法所在页面和方法名
+        url: "Apartment.aspx/GetALL",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -182,7 +182,7 @@ function cancelUpdate() {
     clear();
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Alert.aspx/GetALL",//方法所在页面和方法名
+        url: "Apartment.aspx/GetALL",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -223,7 +223,7 @@ function confirmUpdate() {
             data1.note = temp1[3];
             $.ajax({
                 type: "post", //要用post方式                 
-                url: "Alert.aspx/Update",//方法所在页面和方法名
+                url: "Apartment.aspx/Update",//方法所在页面和方法名
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: "{'temp':'" + JSON.stringify(data1) + "'}",
@@ -266,7 +266,7 @@ function search() {
     if (tempCon != "") {
         $.ajax({
             type: "post",
-            url: "Alert.aspx/SearchCon",//方法所在页面和方法名
+            url: "Apartment.aspx/SearchCon",//方法所在页面和方法名
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: "{'temp':'" + tempCon + "'}",
@@ -304,7 +304,7 @@ function search() {
 function down() {
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Alert.aspx/GetDown",//方法所在页面和方法名
+        url: "Apartment.aspx/GetDown",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -322,7 +322,7 @@ function down() {
 function up() {
     $.ajax({
         type: "post", //要用post方式                 
-        url: "Alert.aspx/GetUp",//方法所在页面和方法名
+        url: "Apartment.aspx/GetUp",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
