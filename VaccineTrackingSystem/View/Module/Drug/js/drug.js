@@ -60,7 +60,6 @@ function showCheckBox() {
 
     $("#dfunct").hide();
     $("#destory").hide();
-    $("#destoryAll").hide();
 }
 
 function cancelUpdate() {
@@ -82,7 +81,6 @@ function cancelUpdate() {
 
     $("#dfunct").show();
     $("#destory").hide();
-    $("#destoryAll").hide();
 
     clear();
     $.ajax({
@@ -216,7 +214,6 @@ function add() {
 
     $("#dfunct").hide();
     $("#destory").hide();
-    $("#destoryAll").hide();
 
     clear();
     addRecord();
@@ -238,7 +235,6 @@ function concelAdd() {
 
     $("#dfunct").show();
     $("#destory").hide();
-    $("#destoryAll").hide();
 
     clear();
     $.ajax({
@@ -332,7 +328,6 @@ function search() {
                     $("#update").show();
 
                     $("#dfunct").hide();
-                    $("#destoryAll").hide();
                     $("#destory").show();
                     $(".checkBox").show();
                 }
@@ -354,23 +349,6 @@ function showAll() {
 }
 
 
-function destoryAll() {
-    $.ajax({
-        type: "post", //要用post方式                 
-        url: "Drug.aspx/DestoryAllRecord",//方法所在页面和方法名
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
-            if (temp.code == 200) { clear(); alert("销毁成功"); }
-            else alert(temp.data);
-        },
-        error: function (err) {
-            alert(err);
-        }
-    });
-}
-
 function dfunct() {
     global = 0;
     $("#dfunct").hide();
@@ -389,9 +367,6 @@ function dfunct() {
     $("#add").hide();
 
     $("#destory").show();
-
-    $("#destoryAll").show();
-
     $("#showAll").show();
 }
 
@@ -409,11 +384,6 @@ function destory() {
                 temp += $(this).text() + "@@";
             });
             temp1 = temp.split("@@");
-            if (temp1[1] == "") {
-                alert("请输入药品类别");
-                return;
-            };
-
             var obj = new Object();
             obj.id = temp1[0];
             obj.kind = temp1[1];
@@ -432,14 +402,13 @@ function destory() {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
-                alert("销毁成功");
+                alert("删除成功");
                 clear();
                 if (temp.data != "null" && temp.extra != "null")
                 {
                     createTable(temp.data, temp.extra);
                     $("#showAll").show();
                     $("#destory").show();
-                    $("#destoryAll").show();
                 }
                 else {
                     $("#total").text("共0页");
