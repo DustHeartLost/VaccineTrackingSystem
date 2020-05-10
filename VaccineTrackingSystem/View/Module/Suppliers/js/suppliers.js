@@ -16,6 +16,7 @@
     $("#showAll").hide();
 }
 
+var global;
 
 $(document).ready(function () {
     $("#tableContainer").delegate(".dataRow", "mouseenter", function () {
@@ -56,6 +57,9 @@ function showCheckBox() {
     $("#concelAdd").hide();
     $("#confirmAdd").hide();
     $("#add").hide();
+
+    $("#dfunct").hide();
+    $("#destory").hide();
 }
 
 function cancelUpdate() {
@@ -75,6 +79,8 @@ function cancelUpdate() {
     $("#confirmAdd").hide();
     $("#add").show();
 
+    $("#dfunct").show();
+    $("#destory").hide();
     clear();
     $.ajax({
         type: "post", //要用post方式                 
@@ -129,25 +135,31 @@ function confirmUpdate() {
 }
 
 function clickCheck(obj) {
-    $(":checkbox").each(function () {
-        $(this).prop("checked", false);   //选中，不选中 是false        
-    });
-    $(obj).prop("checked", true);
+    if (global == 1) {
+        $(":checkbox").each(function () {
+            $(this).prop("checked", false);   //选中，不选中 是false        
+        });
+        $(obj).prop("checked", true);
 
-    $(".edit").each(function () {
-        $(this).attr("disabled", true);
-    });
-    $(".editTd").closest("tr").find("td").each(function () {
-        $(this).attr("contenteditable", false);
-    });
+        $(".edit").each(function () {
+            $(this).attr("disabled", true);
+        });
+        $(".editTd").closest("tr").find("td").each(function () {
+            $(this).attr("contenteditable", false);
+        });
 
+        $(obj).closest("tr").find("select").each(function () {
+            $(this).attr("disabled", false);
+        });
+        $(obj).closest("tr").find("td.editTd").each(function () {
+            $(this).attr("contenteditable", true);
+        });
 
-    $(obj).closest("tr").find("select").each(function () {
-        $(this).attr("disabled", false);
-    });
-    $(obj).closest("tr").find("td.editTd").each(function () {
-        $(this).attr("contenteditable", true);
-    });
+        $(obj).closest("tr").find("#ban").each(function () {
+            $(this).attr("contenteditable", false);
+        });
+    }
+
 }
 
 function down() {
@@ -198,6 +210,8 @@ function add() {
     $("#confirmUpdate").hide();
     $("#update").hide();
 
+    $("#dfunct").hide();
+    $("#destory").hide();
     clear();
     addRecord();
 }
@@ -216,6 +230,8 @@ function concelAdd() {
     $("#confirmAdd").hide();
     $("#concelAdd").hide();
 
+    $("#dfunct").show();
+    $("#destory").hide();
     clear();
     $.ajax({
         type: "post", //要用post方式                 
@@ -299,6 +315,10 @@ function search() {
                     $("#cancelUpdate").hide();
                     $("#confirmUpdate").hide();
                     $("#update").show();
+
+                    $("#dfunct").hide();
+                    $("#destory").show();
+                    $(".checkBox").show();
                 }
                 else {
                     alert(tempT.data);
@@ -315,4 +335,67 @@ function search() {
 
 function showAll() {
     concelAdd();
+}
+
+
+function dfunct() {
+    global = 0;
+    $("#dfunct").hide();
+    $(".checkBox").show();
+    $("#cancelUpdate").hide();
+    $("#confirmUpdate").hide();
+    $("#update").hide();
+
+    $("#down").hide();
+    $("#up").hide();
+    $("#current").hide();
+    $("#total").hide();
+
+    $("#concelAdd").hide();
+    $("#confirmAdd").hide();
+    $("#add").hide();
+
+    $("#destory").show();
+    $("#showAll").show();
+}
+
+function destory() {
+    var list = [];
+    global = 0;
+    $(".checkBox").show();
+    $(":checkbox").each(function () {
+        if ($(this).prop("checked")) {
+            list.push($(this).closest("tr").find("td.ID").text());
+        }
+    });
+    if (list.length == 0) {
+        return;
+    }
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Suppliers.aspx/DestoryRecord",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: "{'temp':'" + JSON.stringify(list) + "'}",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                alert("删除成功");
+                clear();
+                if (temp.data != "null" && temp.extra != "null") {
+                    createTable(temp.data, temp.extra);
+                    $("#showAll").show();
+                    $("#destory").show();
+                }
+                else {
+                    $("#total").text("共0页");
+                    $("#current").text("第0页");
+                }
+            }
+            else alert(temp.data);
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
 }

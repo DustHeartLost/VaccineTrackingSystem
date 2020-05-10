@@ -13,6 +13,8 @@
             $("#confirmAdd").hide();
             $("#add").show();
             $("#update").show();
+            $("#destory").hide();
+            $("#dfunct").show();
             if (obj.code == 200) createTable(obj.data, obj.extra);
             else alert(obj.data);
         }
@@ -38,6 +40,8 @@
     <button id="update"class="upAnddown" onclick="showCheckBox()">修改供应商</button>
     <button id="cancelUpdate" class="upAnddown" onclick="cancelUpdate()">取消修改</button>
     <button id="confirmUpdate" class="upAnddown" onclick="confirmUpdate()">确认修改</button>
+    <button id="dfunct" class="upAnddown"  onclick="dfunct()">删除供应商</button>
+     <button id="destory" class="upAnddown" onclick="destory()">确认删除</button>
      <button id="showAll" class="upAnddown" onclick="showAll()">返回</button>
     <div id="upAndDownArea">
         <button id="up" class="upAnddown" onclick="up()"><</button>

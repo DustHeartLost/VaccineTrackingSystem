@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Web;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -71,6 +72,13 @@ namespace VaccineTrackingSystem.View.Module.Suppliers
             currentPage = 0;
             string jsonData = Models.BLL.SupplierManage.Query(temp, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+        [System.Web.Services.WebMethod]
+        public static string DestoryRecord(string temp)
+        {
+            List<int> list = JsonConvert.DeserializeObject<List<int>>(temp);
+            string msg;
+            return Models.BLL.SupplierManage.Destory(list, out msg) ? JsonConvert.SerializeObject(new Packet(200, Models.BLL.SupplierManage.QueryAll(out msg, ref totalPage, ref currentPage), $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
     }
 }

@@ -55,5 +55,23 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return SupplierDAL.GetSuppliers();
         }
+
+        static public bool Destory(List<int> list, out string msg)
+        {
+            if (list == null || list.Count == 0)
+            {
+                msg = "没有记录需要销毁";
+                return false;
+            }
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (!SupplierDAL.Delete(list[i], out msg))
+                {
+                    return false;
+                }
+            }
+            msg = "";
+            return true;
+        }
     }
 }

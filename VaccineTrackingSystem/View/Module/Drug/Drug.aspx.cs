@@ -79,7 +79,7 @@ namespace VaccineTrackingSystem.View.Module.Drug
         [System.Web.Services.WebMethod]
         public static string DestoryRecord(string temp)
         {
-            List<Models.Entity.Drug> list = JsonConvert.DeserializeObject<List<Models.Entity.Drug>>(temp);
+            List<int> list = JsonConvert.DeserializeObject<List<int>>(temp);
             string msg;
             return Models.BLL.DrugManage.Destory(list,out msg) ? JsonConvert.SerializeObject(new Packet(200, Models.BLL.DrugManage.QueryAll(out msg, ref totalPage, ref currentPage), $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
