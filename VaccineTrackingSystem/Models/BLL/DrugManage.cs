@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using VaccineTrackingSystem.Models.DAL;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -82,5 +80,11 @@ namespace VaccineTrackingSystem.Models.BLL
             msg = "";
             return true;
         }
+
+        static public Dictionary<string, int> GetDrug()
+        {
+            return DrugDAL.GetDrug();
+        }
+
     }
 }
