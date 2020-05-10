@@ -6,7 +6,6 @@ body, td, th ,input{
 }
 body {
 	width: 100%;
-	/*width:96%*/
 	margin: 0 auto;
 	background-color: #ededea;
 }
@@ -115,7 +114,6 @@ ul li a.list {
 
 .main {
 	width: 90%;
-	height:750px;
 	overflow: hidden;
 	position: relative;
 	margin-top: 10px;
