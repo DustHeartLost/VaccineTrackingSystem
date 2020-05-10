@@ -9,7 +9,7 @@ namespace VaccineTrackingSystem.Models.DAL
     {
         static public bool Add(Category category, out string msg)
         {
-            string command = $"insert into Category(num,name,kind,unit,spec,factory,note) values('{category.num}','{category.name}','{category.kind}','{category.unit}','{category.spec}','{category.factory}','{category.note}');";
+            string command = $"insert into Category(num,name,kind,unit,spec,note) values('{category.num}','{category.name}','{category.kind}','{category.unit}','{category.spec}','{category.note}');";
             try
             {
                 msg = null;
@@ -31,7 +31,7 @@ namespace VaccineTrackingSystem.Models.DAL
         
         static public bool Update(Category category, out string msg)
         {
-            string command = $"update Category set num = '{category.num}',name = '{category.name}',kind = '{category.kind}',unit = '{category.unit}',spec = '{category.spec}',factory = '{category.factory}',note = '{category.note}' where id = '{category.id}'";
+            string command = $"update Category set num = '{category.num}',name = '{category.name}',kind = '{category.kind}',unit = '{category.unit}',spec = '{category.spec}',note = '{category.note}' where id = '{category.id}'";
             try
             {
                 msg = null;
@@ -60,7 +60,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            Category category = new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], (string)read["factory"], read["note"].ToString());
+            Category category = new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], read["note"].ToString());
             SQL.Dispose();
             msg = null;
             return category;
@@ -78,7 +78,7 @@ namespace VaccineTrackingSystem.Models.DAL
             List<Category> list = new List<Category>();
             while (read.Read())
             {
-                list.Add(new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], (string)read["factory"], read["note"].ToString()));
+                list.Add(new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], read["note"].ToString()));
             }
             SQL.Dispose();
             msg = null;

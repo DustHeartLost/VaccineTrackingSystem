@@ -58,7 +58,6 @@
                 <th>药品类别</th>
                 <th>规格</th>
                 <th>单位</th>
-                <th>生产厂家</th>
                 <th>备注</th>
             </tr>
         </table>

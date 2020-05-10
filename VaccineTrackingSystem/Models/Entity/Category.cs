@@ -20,13 +20,11 @@
         /***规格***/
         public string spec;
 
-        /****生产厂家***/
-        public string factory;
 
         /****备注***/
         public string note;
 
-        public Category(int id, string num, string name, string kind, string unit, string spec, string factory, string note)
+        public Category(int id, string num, string name, string kind, string unit, string spec, string note)
         {
             this.id = id;
             this.num = num;
@@ -34,17 +32,15 @@
             this.kind = kind;
             this.unit = unit;
             this.spec = spec;
-            this.factory = factory;
             this.note = note;
         }
-        public Category(string num, string name, string kind, string unit, string spec, string factory, string note)
+        public Category(string num, string name, string kind, string unit, string spec, string note)
         {
             this.num = num;
             this.name = name;
             this.kind = kind;
             this.unit = unit;
             this.spec = spec;
-            this.factory = factory;
             this.note = note;
         }
     }
