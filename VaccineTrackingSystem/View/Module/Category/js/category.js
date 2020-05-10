@@ -127,7 +127,7 @@ function confirmUpdate() {
             data1.id = temp1[0];
             data1.num = temp1[1];
             data1.name = temp1[2];
-            data1.kind = temp1[7];
+            data1.kind = temp1[6];
             data1.unit = temp1[3];
             data1.spec = temp1[4];
             data1.note = temp1[5];
@@ -175,7 +175,27 @@ function clickCheck(obj) {
     $(".kind").each(function () {
         var temp = "<option>" + $(this).find("option:selected").text() + "</option>";
         $(this).find("option").remove();
-        $(this).html(temp + "<option>治疗类</option><option>疫苗类</option>");
+        $(this).html(temp);
+    });
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Category.aspx/GetData",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                $(obj).closest("tr").find(".kind").each(function () {
+                    var tp = "<option>" + $(this).find("option:selected").text() + "</option>";
+                    $(this).html(tp + createOption(temp.data, $(this).find("option:selected").text()));
+                });
+            } else {
+                alert(temp.data);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
     });
     
 }
@@ -268,9 +288,25 @@ function concelAdd() {
 }
 
 function addRecord() {
-    html = "<tr class=\"dataRow3\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td class=\"ID\"></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\"></td><td><select id=\"kind\"><option>疫苗类</option><option>治疗类</option></select></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\"></td></tr>";
+    html = "<tr class=\"dataRow3\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\" onclick=\"clickCheck(this)\"></td><td class=\"ID\"></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\"></td><td><select id=\"kind\"></select></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\" ></td><td contentEditable=\"true\" class=\"editTd\"></td></tr>";
     $("#caption").after(html);
-   // $("#kind").html("")
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Category.aspx/GetData",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                $("#kind").html(createOption(temp.data, ""));
+            } else {
+                alert(temp.data);
+            }
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
 }
 
 function confirmAdd() {
@@ -304,7 +340,7 @@ function confirmAdd() {
     data1.id = 0;;
     data1.num = temp1[0];
     data1.name = temp1[1];
-    data1.kind = temp1[6];
+    data1.kind = temp1[5];
     data1.unit = temp1[2];
     data1.spec = temp1[3];
     data1.note = temp1[4];
@@ -373,4 +409,14 @@ function search() {
 
 function showAll() {
     concelAdd();
+}
+
+function createOption(data, value) {
+    var temp = JSON.parse(data);
+    var result = "";
+    for (var i = 0; i < temp.length; i++) {
+        if (temp[i] != value)
+            result += "<option>" + temp[i] + "</option>"
+    }
+    return result;
 }

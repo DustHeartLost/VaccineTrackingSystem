@@ -398,6 +398,7 @@ function destory() {
                     createTable(temp.data, temp.extra);
                     $("#showAll").show();
                     $("#destory").show();
+                    $(".checkBox").show();
                 }
                 else {
                     $("#total").text("共0页");

@@ -105,5 +105,23 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
+
+        static public Dictionary<string, int> GetDrug()
+        {
+            string command = $"select id,kind from Drug;";
+            SqlDataReader read = SQL.getReader(command);
+            if (read == null)
+            {
+                SQL.Dispose();
+                return null;
+            }
+            Dictionary<string, int> drug = new Dictionary<string, int>();
+            while (read.Read())
+            {
+                drug.Add((string)read["kind"], (int)read["id"]);
+            }
+            SQL.Dispose();
+            return drug;
+        }
     }
 }

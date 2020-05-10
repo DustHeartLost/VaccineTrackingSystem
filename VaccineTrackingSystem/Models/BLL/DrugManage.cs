@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using VaccineTrackingSystem.Models.DAL;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -27,17 +25,6 @@ namespace VaccineTrackingSystem.Models.BLL
                 list.Add(DrugDAL.Query(num, out msg));
             else
                 return null;
-            return JsonConvert.SerializeObject(list);
-        }
-
-        static public string QueryDesAll(out string msg)
-        {
-            List<Drug> list = DrugDAL.QueryAll(out msg);
-            if (list == null || list.Count==0)
-            {
-                msg = "没有记录";
-                return null;
-            }
             return JsonConvert.SerializeObject(list);
         }
 
@@ -82,5 +69,11 @@ namespace VaccineTrackingSystem.Models.BLL
             msg = "";
             return true;
         }
+
+        static public Dictionary<string, int> GetDrug()
+        {
+            return DrugDAL.GetDrug();
+        }
+
     }
 }

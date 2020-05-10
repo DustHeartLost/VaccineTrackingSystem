@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Web;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -10,12 +11,14 @@ namespace VaccineTrackingSystem.View.Module.Category
     {
         protected static int totalPage;
         protected static int currentPage;
+        protected static Dictionary<string, int> drugs;
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
             currentPage = -1;
             if (HttpContext.Current.Session["user"] == null)
                 Response.Write("<script language='javascript'>alert('登录信息过期，请重新登录');location.href='../../Login/Login.aspx'</script>");
+            drugs = Models.BLL.DrugManage.GetDrug();
         }
         [System.Web.Services.WebMethod]
         public static string GetALL()
@@ -71,6 +74,13 @@ namespace VaccineTrackingSystem.View.Module.Category
             currentPage = 0;
             string jsonData = Models.BLL.CategoryManage.Query(temp, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string GetData()
+        {
+            if (drugs == null) return JsonConvert.SerializeObject(new Packet(201, "没有药品分类列表,请增加角色后刷新重试"));
+            return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(drugs.Keys)));
         }
 
     }

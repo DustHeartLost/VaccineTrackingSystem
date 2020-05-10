@@ -9,7 +9,10 @@
     }
     $("#caption").after(html);
     $(".checkBox").hide();
+    $("#showAll").hide();
 }
+
+var global;
 
 $(document).ready(function () {
     $("#tableContainer").delegate(".dataRow", "mouseenter", function () {
@@ -61,6 +64,10 @@ function add() {
     $("#cancelUpdate").hide();
     $("#confirmUpdate").hide();
     $("#update").hide();
+
+    $("#dfunct").hide();
+    $("#destory").hide();
+
     clear();
     addRecord();
 }
@@ -105,6 +112,9 @@ function concelAdd() {
     $("#confirmAdd").hide();
     $("#concelAdd").hide();
 
+    $("#dfunct").show();
+    $("#destory").hide();
+
     clear();
     $.ajax({
         type: "post", //要用post方式                 
@@ -126,6 +136,7 @@ function concelAdd() {
 }
 
 function showCheckBox() {
+    global = 1;
     $(".checkBox").show();
     $("#cancelUpdate").show();
     $("#confirmUpdate").show();
@@ -134,6 +145,10 @@ function showCheckBox() {
     $("#concelAdd").hide();
     $("#confirmAdd").hide();
     $("#add").hide();
+
+
+    $("#dfunct").hide();
+    $("#destory").hide();
 }
 
 function cancelUpdate() {
@@ -147,6 +162,9 @@ function cancelUpdate() {
     $("#concelAdd").hide();
     $("#confirmAdd").hide();
     $("#add").show();
+
+    $("#dfunct").show();
+    $("#destory").hide();
 
     clear();
     $.ajax({
@@ -205,30 +223,32 @@ function confirmUpdate() {
 
 function clickCheck(obj) {
     var myfunction;
-    $(":checkbox").each(function () {
-        $(this).prop("checked", false);   //选中，不选中 是false        
-    });
-    $(obj).prop("checked", true);
+    if (global == 1) {
+        $(":checkbox").each(function () {
+            $(this).prop("checked", false);   //选中，不选中 是false        
+        });
+    }
+        $(obj).prop("checked", true);
 
-    $(".editTd").closest("tr").find("td").each(function () {
-        $(this).attr("contenteditable", false);
-    });
+        $(".editTd").closest("tr").find("td").each(function () {
+            $(this).attr("contenteditable", false);
+        });
 
-    $(".editTd2").closest("tr").find("td").each(function () {
-        $(this).attr("contenteditable", false);
-    });
+        $(".editTd2").closest("tr").find("td").each(function () {
+            $(this).attr("contenteditable", false);
+        });
 
-    $(".editTd2").each(function () {
-        $(this).unbind('input propertychange', myfunction);
-    });
+        $(".editTd2").each(function () {
+            $(this).unbind('input propertychange', myfunction);
+        });
 
-    $(obj).closest("tr").find("td.editTd").each(function () {
-        $(this).attr("contenteditable", true);
-    });
+        $(obj).closest("tr").find("td.editTd").each(function () {
+            $(this).attr("contenteditable", true);
+        });
 
-    $(obj).closest("tr").find("td.editTd2").each(function () {
-        $(this).attr("contenteditable", true);
-    });
+        $(obj).closest("tr").find("td.editTd2").each(function () {
+            $(this).attr("contenteditable", true);
+        });
 
     $(obj).closest("tr").find("td.editTd2").bind('input propertychange', myfunction = function () {
         var temp = $(this).text();
@@ -241,4 +261,76 @@ function clickCheck(obj) {
         }
     });
 }
+
+function showAll() {
+    concelAdd();
+}
+
+
+function dfunct() {
+    global = 0;
+    $("#dfunct").hide();
+    $(".checkBox").show();
+    $("#cancelUpdate").hide();
+    $("#confirmUpdate").hide();
+    $("#update").hide();
+
+    $("#concelAdd").hide();
+    $("#confirmAdd").hide();
+    $("#add").hide();
+
+    $("#destory").show();
+    $("#showAll").show();
+}
+
+
+
+function destory() {
+    var list = [];
+    global = 0;
+    $(".checkBox").show();
+    $(":checkbox").each(function () {
+        if ($(this).prop("checked")) {
+
+            var temp = $(this).closest("tr").find("td.ID").text() + "@@";
+            $(this).closest("tr").find("td.editTd").each(function () {
+                temp += $(this).text() + "@@";
+            });
+            temp1 = temp.split("@@");
+            var obj = new Object();
+            obj.id = temp1[0];
+            obj.days = temp1[1];
+            obj.color = temp1[1];
+            list.push(obj);
+        }
+    });
+    if (list.length == 0) {
+        return;
+    }
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Alert.aspx/DestoryRecord",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: "{'temp':'" + JSON.stringify(list) + "'}",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                alert("删除成功");
+                clear();
+                if (temp.data != "null" && temp.extra != "null") {
+                    createTable(temp.data, temp.extra);
+                    $("#showAll").show();
+                    $("#destory").show();
+                    $(".checkBox").show();
+                }
+            }
+            else alert(temp.data);
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
+}
+
 

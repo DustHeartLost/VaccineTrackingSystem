@@ -1,4 +1,5 @@
 ﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using VaccineTrackingSystem.Models.Entity;
@@ -87,6 +88,21 @@ namespace VaccineTrackingSystem.Models.DAL
             SQL.Dispose();
             msg = null;
             return list;
+        }
+
+        static public bool Delete(int id, out string msg)
+        {
+            string command = $"delete from Alert where id ={id}";
+            try
+            {
+                msg = null;
+                return SQL.Excute(command);
+            }
+            catch (Exception e)
+            {
+                msg = e.Message;
+                return false;
+            }
         }
     }
 }
