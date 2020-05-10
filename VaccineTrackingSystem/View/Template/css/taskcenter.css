@@ -6,7 +6,6 @@ body, td, th ,input{
 }
 body {
 	width: 100%;
-	/*width:96%*/
 	margin: 0 auto;
 	background-color: #ededea;
 }

@@ -104,6 +104,9 @@
     <Content Include="View\Login\images\logo-white.6442b1c.png" />
     <Content Include="View\Login\images\user.png" />
     <Content Include="View\Login\Login.aspx" />
+    <Content Include="View\Module\Alert\Alert.aspx" />
+    <Content Include="View\Module\Alert\css\alert.css" />
+    <Content Include="View\Module\Alert\js\alert.js" />
     <Content Include="View\Module\Apartment\Apartment.aspx" />
     <Content Include="View\Module\Apartment\css\apartment.css" />
     <Content Include="View\Module\Apartment\js\apartment.js" />
@@ -165,6 +168,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BLL\AlertManage.cs" />
     <Compile Include="Models\BLL\ApartManage.cs" />
     <Compile Include="Models\BLL\CategoryManage.cs" />
     <Compile Include="Models\BLL\DestoryManage.cs" />
@@ -178,6 +182,7 @@
     <Compile Include="Models\BLL\SupplierManage.cs" />
     <Compile Include="Models\BLL\TableManage.cs" />
     <Compile Include="Models\BLL\UserManage.cs" />
+    <Compile Include="Models\DAL\AlertDAL.cs" />
     <Compile Include="Models\DAL\ApartmentDAL.cs" />
     <Compile Include="Models\DAL\CategoryDAL.cs" />
     <Compile Include="Models\DAL\DrugDAL.cs" />
@@ -190,6 +195,7 @@
     <Compile Include="Models\DAL\StoreroomDAL.cs" />
     <Compile Include="Models\DAL\SupplierDAL.cs" />
     <Compile Include="Models\DAL\UserDAL.cs" />
+    <Compile Include="Models\Entity\Alert.cs" />
     <Compile Include="Models\Entity\Apartment.cs" />
     <Compile Include="Models\Entity\Category.cs" />
     <Compile Include="Models\Entity\Drug.cs" />
@@ -215,6 +221,13 @@
     </Compile>
     <Compile Include="View\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Alert\Alert.aspx.cs">
+      <DependentUpon>Alert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Alert\Alert.aspx.designer.cs">
+      <DependentUpon>Alert.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\Apartment\Apartment.aspx.cs">
       <DependentUpon>Apartment.aspx</DependentUpon>

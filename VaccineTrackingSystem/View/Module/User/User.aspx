@@ -38,7 +38,8 @@
          <li style="float:left;width:160px;"><a class="list" href="../Apartment/Apartment.aspx" >机构管理</a></li>
          <li style="float:left;width:160px;"><a class="list"  href="../Role/Role.aspx">角色管理</a></li>
          <li style="float:left;width:160px;"><a class="list" href="#"style="background-color:#63b5de9c">用户管理</a></li>
-     </ul>
+         <li style="float:left;width:160px;"><a class="list" href="../Alert/Alert.aspx">提醒定义</a></li> 
+    </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <input type="text" placeholder="请输入用户编号进行查找" id="searchText" class="sx_inp search-input">
