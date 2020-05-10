@@ -28,5 +28,23 @@ namespace VaccineTrackingSystem.Models.BLL
             Dictionary<string, int> list = new Dictionary<string, int>();
             return list != null ? JsonConvert.SerializeObject(list) : null;
         }
+
+        static public bool Destory(List<Alert> alerts, out string msg)
+        {
+            if (alerts == null || alerts.Count == 0)
+            {
+                msg = "没有记录需要销毁";
+                return false;
+            }
+            for (int i = 0; i < alerts.Count; i++)
+            {
+                if (!AlertDAL.Delete(alerts[i].id, out msg))
+                {
+                    return false;
+                }
+            }
+            msg = "";
+            return true;
+        }
     }
 }

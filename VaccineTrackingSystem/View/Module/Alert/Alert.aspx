@@ -13,6 +13,9 @@
             $("#confirmAdd").hide();
             $("#add").show();
             $("#update").show();
+            $("#destory").hide();
+            $("#destoryAll").hide();
+            $("#dfunct").show();       
             if (obj.code == 200) createTable(obj.data, obj.extra);
             else alert(obj.data);
         }
@@ -37,6 +40,9 @@
         <button id="update" class="upAnddown" onclick="showCheckBox()">修改</button>
         <button id="cancelUpdate"  class="upAnddown" onclick="cancelUpdate()">取消修改</button>
         <button id="confirmUpdate" class="upAnddown" onclick="confirmUpdate()">确认修改</button>
+          <button id="dfunct" style="padding:5px" onclick="dfunct()">删除分类</button>
+         <button id="destory" style="padding:5px" onclick="destory()">确认删除</button>
+        <button id="showAll" onclick="showAll()"  style="padding:5px">返回</button>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">

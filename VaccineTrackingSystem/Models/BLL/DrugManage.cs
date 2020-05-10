@@ -28,17 +28,6 @@ namespace VaccineTrackingSystem.Models.BLL
             return JsonConvert.SerializeObject(list);
         }
 
-        static public string QueryDesAll(out string msg)
-        {
-            List<Drug> list = DrugDAL.QueryAll(out msg);
-            if (list == null || list.Count==0)
-            {
-                msg = "没有记录";
-                return null;
-            }
-            return JsonConvert.SerializeObject(list);
-        }
-
         static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
             List<Drug> list = DrugDAL.QueryAll(out msg);

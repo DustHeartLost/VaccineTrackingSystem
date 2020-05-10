@@ -73,5 +73,13 @@ namespace VaccineTrackingSystem.View.Module.Alert
             }
             return sign;
         }
+
+        [System.Web.Services.WebMethod]
+        public static string DestoryRecord(string temp)
+        {
+            List<Models.Entity.Alert> list = JsonConvert.DeserializeObject<List<Models.Entity.Alert>>(temp);
+            string msg;
+            return Models.BLL.AlertManage.Destory(list, out msg) ? JsonConvert.SerializeObject(new Packet(200, Models.BLL.AlertManage.QueryAll(out msg))) : JsonConvert.SerializeObject(new Packet(202, msg));
+        }
     }
 }
