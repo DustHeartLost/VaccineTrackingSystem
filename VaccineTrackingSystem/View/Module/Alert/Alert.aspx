@@ -40,9 +40,9 @@
         <button id="update" class="upAnddown" onclick="showCheckBox()">修改</button>
         <button id="cancelUpdate"  class="upAnddown" onclick="cancelUpdate()">取消修改</button>
         <button id="confirmUpdate" class="upAnddown" onclick="confirmUpdate()">确认修改</button>
-          <button id="dfunct" style="padding:5px" onclick="dfunct()">删除分类</button>
-         <button id="destory" style="padding:5px" onclick="destory()">确认删除</button>
-        <button id="showAll" onclick="showAll()"  style="padding:5px">返回</button>
+          <button id="dfunct" class="upAnddown" onclick="dfunct()">删除</button>
+         <button id="destory" class="upAnddown" onclick="destory()">确认删除</button>
+        <button id="showAll" onclick="showAll()"  class="upAnddown">返回</button>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">

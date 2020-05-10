@@ -11,8 +11,8 @@ namespace VaccineTrackingSystem.View.Module.Alert
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (HttpContext.Current.Session["user"] == null)
-            //    Response.Write("<script language='javascript'>alert('登录信息过期，请重新登录');location.href='../../Login/Login.aspx'</script>");
+            if (HttpContext.Current.Session["user"] == null)
+                Response.Write("<script language='javascript'>alert('登录信息过期，请重新登录');location.href='../../Login/Login.aspx'</script>");
         }
 
         [WebMethod]
@@ -77,7 +77,7 @@ namespace VaccineTrackingSystem.View.Module.Alert
         [System.Web.Services.WebMethod]
         public static string DestoryRecord(string temp)
         {
-            List<Models.Entity.Alert> list = JsonConvert.DeserializeObject<List<Models.Entity.Alert>>(temp);
+            List<int> list = JsonConvert.DeserializeObject<List<int>>(temp);
             string msg;
             return Models.BLL.AlertManage.Destory(list, out msg) ? JsonConvert.SerializeObject(new Packet(200, Models.BLL.AlertManage.QueryAll(out msg))) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
