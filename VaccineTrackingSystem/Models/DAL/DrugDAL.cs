@@ -90,5 +90,20 @@ namespace VaccineTrackingSystem.Models.DAL
             return list;
         }
 
+
+        static public bool Delete(int id, out string msg)
+        {
+            string command = $"delete from Drug where id ={id}";
+            try
+            {
+                msg = null;
+                return SQL.Excute(command);
+            }
+            catch (Exception e)
+            {
+                msg = e.Message;
+                return false;
+            }
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace VaccineTrackingSystem.View.Module.Category
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
-            Models.Category category = new Models.Category((int)jo["id"], jo["num"].ToString(), jo["name"].ToString(), jo["kind"].ToString(), jo["unit"].ToString(), jo["spec"].ToString(), jo["factory"].ToString(), jo["note"].ToString());
+            Models.Category category = new Models.Category((int)jo["id"], jo["num"].ToString(), jo["name"].ToString(), jo["kind"].ToString(), jo["unit"].ToString(), jo["spec"].ToString(), jo["note"].ToString());
             return Models.BLL.CategoryManage.Update(category, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
 
@@ -58,7 +58,7 @@ namespace VaccineTrackingSystem.View.Module.Category
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
-            Models.Category category = new Models.Category((int)jo["id"], jo["num"].ToString(), jo["name"].ToString(), jo["kind"].ToString(), jo["unit"].ToString(), jo["spec"].ToString(), jo["factory"].ToString(), jo["note"].ToString());
+            Models.Category category = new Models.Category((int)jo["id"], jo["num"].ToString(), jo["name"].ToString(), jo["kind"].ToString(), jo["unit"].ToString(), jo["spec"].ToString(), jo["note"].ToString());
             return Models.BLL.CategoryManage.Add(category, out msg) ? JsonConvert.SerializeObject(new Packet(200, "插入成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
         }
 

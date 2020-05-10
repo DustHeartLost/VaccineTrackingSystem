@@ -11,8 +11,11 @@
             $("#confirmUpdate").hide();
             $("#concelAdd").hide();
             $("#confirmAdd").hide();
+            $("#destory").hide();
+            $("#destoryAll").hide();
             $("#add").show();
             $("#update").show();
+            $("#dfunct").show();
             if (obj.code == 200) createTable(obj.data, obj.extra);
             else alert(obj.data);
         }
@@ -38,6 +41,9 @@
     <button id="update" onclick="showCheckBox()" style="padding:5px">修改分类</button>
     <button id="cancelUpdate"  onclick="cancelUpdate()"  style="padding:5px">取消修改</button>
     <button id="confirmUpdate"  onclick="confirmUpdate()"  style="padding:5px">确认修改</button>
+    <button id="dfunct" style="padding:5px" onclick="dfunct()">销毁</button>
+     <button id="destory" style="padding:5px" onclick="destory()">确认销毁</button>
+    <button id="destoryAll" style="padding:5px" onclick="destoryAll()">一键销毁</button>
      <button id="showAll" onclick="showAll()"  style="padding:5px">返回</button>
     <div id="upAndDownArea" style="float: right;">
         <button id="up" class="upAnddown" onclick="up()"><</button>

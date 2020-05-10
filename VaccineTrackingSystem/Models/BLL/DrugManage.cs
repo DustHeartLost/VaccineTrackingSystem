@@ -30,6 +30,17 @@ namespace VaccineTrackingSystem.Models.BLL
             return JsonConvert.SerializeObject(list);
         }
 
+        static public string QueryDesAll(out string msg)
+        {
+            List<Drug> list = DrugDAL.QueryAll(out msg);
+            if (list == null || list.Count==0)
+            {
+                msg = "没有记录";
+                return null;
+            }
+            return JsonConvert.SerializeObject(list);
+        }
+
         static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
             List<Drug> list = DrugDAL.QueryAll(out msg);
@@ -52,6 +63,24 @@ namespace VaccineTrackingSystem.Models.BLL
             {
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
             }
+        }
+
+        static public bool Destory(List<Drug> drugs,out string msg)
+        {
+            if (drugs == null || drugs.Count == 0)
+            {
+                msg = "没有记录需要销毁";
+                return false;
+            }
+            for(int i = 0; i < drugs.Count; i++)
+            {
+                if(!DrugDAL.Delete(drugs[i].id,out msg))
+                {
+                    return false;
+                }
+            }
+            msg = "";
+            return true;
         }
     }
 }
