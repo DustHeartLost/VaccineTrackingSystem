@@ -31,7 +31,7 @@
                 <th>药品编码</th>
                 <th>数量</th>
                 <th>单价</th>
-                <th>批号</th>
+                <th>到期时间</th>
             </tr>
         </table>
          </div>

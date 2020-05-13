@@ -8,7 +8,7 @@
         /* 库存id */
         public int stockID;
 
-        /***批号***/
+        /***到期时间***/
         public string batchNum;
 
         /****入库时间***/

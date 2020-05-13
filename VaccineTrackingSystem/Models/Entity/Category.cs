@@ -8,7 +8,7 @@
         /* 品类编码 */
         public string num;
 
-        /***权限***/
+        /***名称***/
         public string name;
 
         /****类别***/

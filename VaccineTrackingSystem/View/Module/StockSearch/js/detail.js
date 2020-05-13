@@ -1,11 +1,8 @@
 ﻿function createTable(temp, extra) {
     var data = JSON.parse(temp);
     var html = "";
-    alert("detail");
     for (var i = 0; i < data.length; i++) {
-        alert("xsxds");
         if (data[i].color != null && data[i].color != "") {
-            alert(data[i].color);
             html += "<tr class=\"dataRow\" style=\"height:50px;background-color:#" + data[i].color +"\"><td>" + data[i].id + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td></tr>";
         }
         else {

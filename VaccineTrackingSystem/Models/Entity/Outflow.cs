@@ -23,7 +23,7 @@
         /****单价***/
         public decimal price;
 
-        /****批号***/
+        /****到期时间***/
         public string batchNum;
 
         /*状态*/
