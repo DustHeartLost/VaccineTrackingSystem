@@ -1,6 +1,6 @@
 ﻿function createInflowTable(temp,extra){
     var data = JSON.parse(temp);
-    var html = "<tr id=\"caption\"><th>药品编码</th><th>药品名称</th><th>药品种类</th><th>药品规格</th><th>关联库房</th><th>入库时间</th><th>操作人</th><th>数量</th><th>单价</th><th>批号</th></tr>";
+    var html = "<tr id=\"caption\"><th>药品编码</th><th>药品名称</th><th>药品种类</th><th>药品规格</th><th>关联库房</th><th>入库时间</th><th>操作人</th><th>数量</th><th>单价</th><th>到期时间</th></tr>";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0)
             html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td>" + data[i].storeID + "</td><td>" + data[i].date + "</td><td>" + data[i].userNum + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].batchNum + "</td></tr>";
@@ -115,7 +115,7 @@ function tableExport() {
                 option.fileName = "export";
                 var shhead ="";
                 switch (temp.extra) {
-                    case "0": option.fileName = "入库流水表"; shhead =['入库流水编号','药品编码', '药品名称', '药品种类', '药品规格', '关联库房', '入库时间', '操作人', '数量', '单价', '批号']; break;
+                    case "0": option.fileName = "入库流水表"; shhead =['入库流水编号','药品编码', '药品名称', '药品种类', '药品规格', '关联库房', '入库时间', '操作人', '数量', '单价', '到期时间']; break;
                 } 
                 option.datas = [
                     {

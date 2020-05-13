@@ -58,7 +58,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             }
             catch
             {
-                return JsonConvert.SerializeObject(new Packet(203, "批号格式错误，例：20200101"));
+                return JsonConvert.SerializeObject(new Packet(203, "到期时间格式错误，例：20200101"));
             }
 
         }

@@ -8,7 +8,7 @@
         /* 库存id */
         public int stockID;
 
-        /***批号***/
+        /***到期时间***/
         public string batchNum;
 
         /****入库时间***/
@@ -24,7 +24,10 @@
         /****备注***/
         public string note;
 
-        public Indetail(int id, int stockID, string batchNum, string date, int quantity, decimal price, string note)
+        /****批号***/
+        public string batchNum2;
+
+        public Indetail(int id, int stockID, string batchNum, string date, int quantity, decimal price, string note, string batchNum2)
         {
             this.id = id;
             this.stockID = stockID;
@@ -33,9 +36,10 @@
             this.quantity = quantity;
             this.price = price;
             this.note = note;
+            this.batchNum2 = batchNum2;
         }
 
-        public Indetail(int stockID, string batchNum, string date, int quantity, decimal price, string note)
+        public Indetail(int stockID, string batchNum, string date, int quantity, decimal price, string note, string batchNum2)
         {
             this.stockID = stockID;
             this.batchNum = batchNum;
@@ -43,6 +47,7 @@
             this.quantity = quantity;
             this.price = price;
             this.note = note;
+            this.batchNum2 = batchNum2;
         }
         public Indetail() { }
     }

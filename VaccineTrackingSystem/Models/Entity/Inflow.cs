@@ -23,10 +23,13 @@
         /****单价***/
         public decimal price;
 
-        /****批号***/
+        /****到期时间***/
         public string batchNum;
 
-        public Inflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum)
+        /****批号***/
+        public string batchNum2;
+
+        public Inflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum,string batchNum2)
         {
             this.id = id;
             this.cagNum = cagNum;
@@ -36,8 +39,9 @@
             this.quantity = quantity;
             this.price = price;
             this.batchNum = batchNum;
+            this.batchNum2 = batchNum2;
         }
-        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum)
+        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2)
         {
             this.cagNum = cagNum;
             this.storeID = storeID;
@@ -46,6 +50,7 @@
             this.quantity = quantity;
             this.price = price;
             this.batchNum = batchNum;
+            this.batchNum2 = batchNum2;
         }
     }
 }

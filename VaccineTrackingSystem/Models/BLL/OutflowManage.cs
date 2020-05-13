@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 using Newtonsoft.Json;
 using System.Globalization;
+using VaccineTrackingSystem.Models.Entity;
+using System.Linq;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
@@ -46,6 +48,7 @@ namespace VaccineTrackingSystem.Models.BLL
         static public string QueryIndetail(int stockID, out string msg, ref int totalPage, ref int currentPage)
         {
             List<Dictionary<string,string>> list= IndetailDAL.QueryByStockID(stockID, out msg);
+            List<Alert> alerts = AlertDAL.QueryAll(out msg);
             if (list == null)
             {
                 msg = "暂无该库存的单品明细";
@@ -62,6 +65,21 @@ namespace VaccineTrackingSystem.Models.BLL
                 currentPage = -1;
                 return null;
             }
+            if (alerts != null && alerts.Count != 0)
+            {
+                alerts = alerts.OrderBy(o => o.days).ToList();//升序
+                for (int i = 0; i < sortList.Count; i++)
+                {
+                    int nowColor = AlertManage.GetInterval(sortList[i]["batchNum"], alerts);
+                    if(nowColor!=-1)
+                    {
+                        sortList[i].Add("color", alerts[nowColor].color.ToString());
+                    }
+                    else
+                        sortList[i].Add("color","");
+                }
+            }
+           
             totalPage = (int)System.Math.Floor((decimal)(sortList.Count / 10));
             if (list.Count != 0 && list.Count % 10 == 0)
                 --totalPage;
@@ -76,6 +94,9 @@ namespace VaccineTrackingSystem.Models.BLL
                 return JsonConvert.SerializeObject(sortList.GetRange(currentPage * 10, sortList.Count - currentPage * 10));
             }
         }
+
+      
+
 
         static private List<Dictionary<string, string>> SortDate(List<Dictionary<string, string>> indetailList)
         {

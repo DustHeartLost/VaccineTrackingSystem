@@ -1,6 +1,7 @@
 ﻿function createTable(temp, extra) {
     var data = JSON.parse(temp);
     var html = "";
+    alert("xsxds");
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
             html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\"  style=\"padding:5px\">查看明细</button></td></tr>";
@@ -154,7 +155,7 @@ function tableExport() {
                 var option = {};
                 var shhead = "";
                 option.fileName = "库存表";
-                shhead = ['药品编码', '药品名称', '规格', '单位', '生产厂家', '库存数量', '库存金额', '所在库房', '库存号'];
+                shhead = ['药品编码', '药品名称', '规格', '单位', '库存数量', '库存金额', '所在库房', '库存号'];
                 option.datas = [
                     {
                         sheetData: JSON.parse(temp.data),

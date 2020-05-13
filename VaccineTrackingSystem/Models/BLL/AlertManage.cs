@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using VaccineTrackingSystem.Models.DAL;
@@ -45,6 +46,22 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             msg = "";
             return true;
+        }
+        //颜色区间
+        static public int GetInterval(string batchTime, List<Alert> alerts)
+        {
+            string date = DateTime.Now.ToString("yyyyMMdd");
+            DateTime nowdate = DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.CurrentCulture);
+            DateTime batchdate = DateTime.ParseExact(batchTime, "yyyyMMdd", CultureInfo.CurrentCulture);
+            TimeSpan ts = batchdate - nowdate;
+            for (int i = 0; i < alerts.Count - 1; i++)
+            {
+                if (ts.Days <= alerts[0].days)
+                    return 0;
+                else if (ts.Days > alerts[i].days && ts.Days <= alerts[i + 1].days)
+                    return (i + 1);
+            }
+            return -1;
         }
     }
 }

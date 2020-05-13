@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using VaccineTrackingSystem.Models.DAL;
+using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
@@ -15,6 +17,21 @@ namespace VaccineTrackingSystem.Models.BLL
                 totalPage = 0;
                 currentPage = -1;
                 return null;
+            }
+            List<Alert> alerts = AlertDAL.QueryAll(out msg);
+            if (alerts != null && alerts.Count != 0)
+            {
+                alerts = alerts.OrderBy(o => o.days).ToList();//升序
+                for (int i = 0; i < list.Count; i++)
+                {
+                    int nowColor = AlertManage.GetInterval(list[i]["batchNum"], alerts);
+                    if (nowColor != -1)
+                    {
+                        list[i].Add("color", alerts[nowColor].color.ToString());
+                    }
+                    else
+                        list[i].Add("color", "");
+                }
             }
             totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             if (list.Count != 0 && list.Count % 10 == 0)
