@@ -50,7 +50,7 @@ function confirmAdd() {
     if (temp1[0] == "") { alert("请输入药品编码"); return; }
     if (temp1[1] == "") { alert("请输入数量"); return; }
     if (temp1[2] == "") { alert("请输入单价"); return; }
-    if (temp1[3] == "") { alert("请输入批号"); return; }
+    if (temp1[3] == "") { alert("请输入到期时间"); return; }
     if (temp1[4] == "") { alert("请输入生产厂家"); return; }
     var data1 = new Object();
     data1.id = 0;
