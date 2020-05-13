@@ -2,10 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using VaccineTrackingSystem.Models.BLL;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -16,6 +13,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
         private static int storeId;
         private static string userNum;
         protected static Dictionary<string, string> category;
+        protected static List<string> suppliers;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (HttpContext.Current.Session["user"] == null)
@@ -33,6 +31,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
                 };
                 userNum = user["num"];
                 category = CategoryManage.GetCate();
+                suppliers = SupplierManage.GetSuppliers();
             }
         }
 
@@ -45,8 +44,12 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             string nowTime = DateTime.Now.ToString("yyyy-MM-dd");
             int quantity = int.Parse(jo["quantity"].ToString());
             decimal price = decimal.Parse(jo["price"].ToString());
-            string cagNum = category[jo["cagNum"].ToString()];
-            string batchNum = jo["batchNum"].ToString().Substring(0, 8);
+            string cagNum = jo["cagNum"].ToString();
+            string batchNum = jo["batchNum"].ToString();
+            string suppliers=jo["suppliers"].ToString();
+            if (!category.ContainsKey(cagNum)) return JsonConvert.SerializeObject(new Packet(203, "输入的药品品类不存在"));
+            cagNum = category[jo["cagNum"].ToString()];
+            if (!suppliers.Contains(suppliers)) return JsonConvert.SerializeObject(new Packet(203, "输入的供应商不存在"));
             try
             {
                 DateTime dt = DateTime.ParseExact(batchNum, "yyyyMMdd", System.Globalization.CultureInfo.CurrentCulture);
@@ -62,8 +65,11 @@ namespace VaccineTrackingSystem.View.Module.Inflow
         [System.Web.Services.WebMethod]
         public static string GetData()
         {
-            if (category == null || category.Count == 0) return JsonConvert.SerializeObject(new Packet(201, "暂无药品相关的品类,请增加后品类后刷新重试"));
-            return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(category.Keys)));
+            int code=200;
+            if( (category == null || category.Count == 0) &&(suppliers==null || suppliers.Count==0))return JsonConvert.SerializeObject(new Packet(201, "暂无药品品类和供应商,请增加后相关数据后刷新重试"));
+            if ((category == null || category.Count == 0) && (suppliers != null || suppliers.Count != 0)) code = 205;
+            if ((category != null || category.Count != 0) && (suppliers == null || suppliers.Count == 0)) code = 206;
+            return JsonConvert.SerializeObject(new Packet(code, JsonConvert.SerializeObject(category.Keys), JsonConvert.SerializeObject(suppliers)));
         }
     }
 }

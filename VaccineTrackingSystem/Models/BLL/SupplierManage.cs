@@ -51,7 +51,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
             }
         }
-        static public Dictionary<string, string> GetSuppliers()
+        static public List<string> GetSuppliers()
         {
             return SupplierDAL.GetSuppliers();
         }

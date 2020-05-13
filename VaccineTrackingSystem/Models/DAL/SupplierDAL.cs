@@ -86,7 +86,7 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return list;
         }
-        static public Dictionary<string, string> GetSuppliers()
+        static public List<string> GetSuppliers()
         {
             string command = $"select name,code from Suppliers order by name;";
             SqlDataReader read = SQL.getReader(command);
@@ -95,10 +95,10 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            Dictionary<string, string> suppliers = new Dictionary<string, string>();
+            List<string> suppliers = new List<string>();
             while (read.Read())
             {
-                suppliers.Add((string)read["name"], (string)read["code"]);
+                suppliers.Add((string)read["name"]+"("+(string)read["code"]+")");
             }
             SQL.Dispose();
             return suppliers;
