@@ -29,7 +29,10 @@
         /*状态*/
         public string state;
 
-        public Outflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string state)
+        /****批号***/
+        public string batchNum2;
+
+        public Outflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string state,string batchNum2)
         {
             this.id = id;
             this.cagNum = cagNum;
@@ -40,8 +43,9 @@
             this.price = price;
             this.batchNum = batchNum;
             this.state = state;
+            this.batchNum2 = batchNum2;
         }
-        public Outflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string state)
+        public Outflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string state, string batchNum2)
         {
             this.cagNum = cagNum;
             this.storeID = storeID;
@@ -51,6 +55,7 @@
             this.price = price;
             this.batchNum = batchNum;
             this.state = state;
+            this.batchNum2 = batchNum2;
         }
     }
 }
