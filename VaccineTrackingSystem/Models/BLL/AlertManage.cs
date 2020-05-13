@@ -30,7 +30,7 @@ namespace VaccineTrackingSystem.Models.BLL
             return list != null ? JsonConvert.SerializeObject(list) : null;
         }
 
-        static public bool Destory(List<Alert> alerts, out string msg)
+        static public bool Destory(List<int> alerts, out string msg)
         {
             if (alerts == null || alerts.Count == 0)
             {
@@ -39,7 +39,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             for (int i = 0; i < alerts.Count; i++)
             {
-                if (!AlertDAL.Delete(alerts[i].id, out msg))
+                if (!AlertDAL.Delete(alerts[i], out msg))
                 {
                     return false;
                 }

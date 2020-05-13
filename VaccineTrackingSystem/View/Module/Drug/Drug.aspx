@@ -12,7 +12,6 @@
             $("#concelAdd").hide();
             $("#confirmAdd").hide();
             $("#destory").hide();
-            $("#destoryAll").hide();
             $("#add").show();
             $("#update").show();
             $("#dfunct").show();

@@ -52,7 +52,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
 
-        static public bool Destory(List<Drug> drugs,out string msg)
+        static public bool Destory(List<int> drugs,out string msg)
         {
             if (drugs == null || drugs.Count == 0)
             {
@@ -61,7 +61,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             for(int i = 0; i < drugs.Count; i++)
             {
-                if(!DrugDAL.Delete(drugs[i].id,out msg))
+                if(!DrugDAL.Delete(drugs[i],out msg))
                 {
                     return false;
                 }

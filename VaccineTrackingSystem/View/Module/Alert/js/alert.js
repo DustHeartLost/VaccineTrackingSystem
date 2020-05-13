@@ -291,17 +291,7 @@ function destory() {
     $(".checkBox").show();
     $(":checkbox").each(function () {
         if ($(this).prop("checked")) {
-
-            var temp = $(this).closest("tr").find("td.ID").text() + "@@";
-            $(this).closest("tr").find("td.editTd").each(function () {
-                temp += $(this).text() + "@@";
-            });
-            temp1 = temp.split("@@");
-            var obj = new Object();
-            obj.id = temp1[0];
-            obj.days = temp1[1];
-            obj.color = temp1[1];
-            list.push(obj);
+            list.push($(this).closest("tr").find("td.ID").text());
         }
     });
     if (list.length == 0) {
