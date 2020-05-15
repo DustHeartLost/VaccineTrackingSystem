@@ -46,15 +46,17 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             decimal price = decimal.Parse(jo["price"].ToString());
             string cagNum = jo["cagNum"].ToString();
             string batchNum = jo["batchNum"].ToString();
+            string batchNum2 = jo["batchNum2"].ToString();
             string suppliers=jo["suppliers"].ToString();
+            string notes= jo["notes"].ToString();
             if (!category.ContainsKey(cagNum)) return JsonConvert.SerializeObject(new Packet(203, "输入的药品品类不存在"));
             cagNum = category[jo["cagNum"].ToString()];
             if (!suppliers.Contains(suppliers)) return JsonConvert.SerializeObject(new Packet(203, "输入的供应商不存在"));
             try
             {
                 DateTime dt = DateTime.ParseExact(batchNum, "yyyyMMdd", System.Globalization.CultureInfo.CurrentCulture);
-                Models.Inflow inflow = new Models.Inflow(cagNum, storeId, nowTime, userNum, quantity, price, batchNum);
-                return Models.BLL.InflowManage.InWarehouse(inflow, out msg) ? JsonConvert.SerializeObject(new Packet(200, "入库成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
+                Models.Inflow inflow = new Models.Inflow(cagNum, storeId, nowTime, userNum, quantity, price, dt.ToString("yyyy-MM-dd"), batchNum2, suppliers,notes);
+                return InflowManage.InWarehouse(inflow, out msg) ? JsonConvert.SerializeObject(new Packet(200, "入库成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
             }
             catch
             {

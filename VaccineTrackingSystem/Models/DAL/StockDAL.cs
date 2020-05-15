@@ -90,7 +90,6 @@ namespace VaccineTrackingSystem.Models.DAL
             catch (Exception e)
             {
                 msg = e.Message;
-                System.Diagnostics.Debug.Write(msg);
                 return false;
             }
         }

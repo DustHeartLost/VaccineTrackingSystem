@@ -9,9 +9,9 @@
 function addRecord() {
     $("#confirmAdd").show();
     $("#concelAdd").show();
-    html = "<tr id=\"newOne\" class=\"dataRow\"  style=\"height:50px;width:130px\"><td></td><td><input list=\"cagNum\" id=\"cag\"><datalist id = \"cagNum\"></datalist></td>";
+    html = "<tr id=\"newOne\" class=\"dataRow\"  style=\"height:50px;width:130px\"><td><input list=\"cagNum\" id=\"cag\"><datalist id = \"cagNum\"></datalist></td>";
     html += "<td contentEditable=\"true\" class=\"editTd\"></td><td contentEditable=\"true\" class=\"editTd\"></td><td contentEditable=\"true\" class=\"editTd\"></td>"
-    html += "<td><input id=\"sup\" list=\"suppliers\"><datalist id = \"suppliers\"></datalist></td></tr>";
+    html += "<td contentEditable=\"true\" class=\"editTd\"></td><td><input id=\"sup\" list=\"suppliers\"><datalist id = \"suppliers\"></datalist></td><td contentEditable=\"true\" id=\"note\"></td></tr>";
     $("#caption").after(html);
     $.ajax({
         type: "post", //要用post方式                 
@@ -34,7 +34,7 @@ function addRecord() {
             }
         },
         error: function (err) {
-            alert(err);
+            alert(err.responseText);
         }
     });
 }
@@ -46,19 +46,23 @@ function confirmAdd() {
         temp += $(this).text() + "@@";
     });
     temp += $("#sup").val() + "@@";
+    temp += $("#note").text() + "@@";
     temp1 = temp.split("@@");
     if (temp1[0] == "") { alert("请输入药品编码"); return; }
     if (temp1[1] == "") { alert("请输入数量"); return; }
     if (temp1[2] == "") { alert("请输入单价"); return; }
     if (temp1[3] == "") { alert("请输入到期时间"); return; }
-    if (temp1[4] == "") { alert("请输入生产厂家"); return; }
+    if (temp1[4] == "") { alert("请输入批号"); return; }
+    if (temp1[5] == "") { alert("请输入生产厂家"); return; }
     var data1 = new Object();
     data1.id = 0;
     data1.cagNum = temp1[0];
     data1.quantity = temp1[1];
     data1.price = temp1[2];
     data1.batchNum = temp1[3];
-    data1.suppliers = temp1[4];
+    data1.batchNum2 = temp1[4];
+    data1.suppliers = temp1[5];
+    data1.notes = temp1[6];
     $.ajax({
         type: "post", //要用post方式                 
         url: "InflowAdd.aspx/Insert",//方法所在页面和方法名

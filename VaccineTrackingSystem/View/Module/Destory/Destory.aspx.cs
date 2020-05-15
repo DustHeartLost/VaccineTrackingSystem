@@ -79,7 +79,7 @@ namespace VaccineTrackingSystem.View.Module.Destory
             }
             List<Indetail> list = new List<Indetail>();
             foreach (Dictionary<string, string> read in temp) {
-                Indetail d = new Indetail(int.Parse(read["id"]), int.Parse(read["stockID"]),read["batchNum"],read["date"],int.Parse(read["quantity"]),decimal.Parse(read["price"]), read["note"]);
+                Indetail d = new Indetail(int.Parse(read["id"]), int.Parse(read["stockID"]),read["batchNum"],read["date"],int.Parse(read["quantity"]),decimal.Parse(read["price"]), read["batchNum2"], read["suppliers"], read["note"]);
                 list.Add(d);
             }
             string msg;

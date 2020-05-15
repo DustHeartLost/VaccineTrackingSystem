@@ -171,7 +171,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 return false;
             }
             string date = DateTime.Now.ToString("yyyy-MM-dd");
-            Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetail.price, indetail.batchNum, "正常出库");
+            Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetail.price, indetail.batchNum, indetail.batchNum2, "正常出库");
             if (indetail.quantity == 0)
             {
                 if (!(IndetailDAL.Delete(indetailId, out msg)))

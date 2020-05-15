@@ -9,14 +9,19 @@ namespace VaccineTrackingSystem.Models.DAL
     {
         static public bool Add(Inflow inflow, out string msg)
         {
-            string command = $"insert into Inflow (cagNum,storeID,date,userNum,quantity,price,batchNum) values ('{inflow.cagNum}','{inflow.storeID}','{inflow.date}','{inflow.userNum}','{inflow.quantity}','{inflow.price}','{inflow.batchNum}')";
+            string command = $"insert into Inflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers) values ('{inflow.cagNum}','{inflow.storeID}','{inflow.date}','{inflow.userNum}','{inflow.quantity}','{inflow.price}','{inflow.batchNum}','{inflow.batchNum2}','{inflow.suppliers}')";
             try
             {
                 msg = null;
                 return SQL.Excute(command);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
+                if (ex.Number == 2627)
+                {
+                    msg = "添加失败，批号重复";
+                    return false;
+                }
                 msg = ex.Message;
                 return false;
             }

@@ -32,7 +32,7 @@
         /****批号***/
         public string batchNum2;
 
-        public Outflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string state,string batchNum2)
+        public Outflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum,string batchNum2 ,string state)
         {
             this.id = id;
             this.cagNum = cagNum;
@@ -45,7 +45,7 @@
             this.state = state;
             this.batchNum2 = batchNum2;
         }
-        public Outflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string state, string batchNum2)
+        public Outflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2, string state)
         {
             this.cagNum = cagNum;
             this.storeID = storeID;
