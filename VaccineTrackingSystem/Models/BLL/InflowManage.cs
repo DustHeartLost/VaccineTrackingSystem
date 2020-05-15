@@ -36,7 +36,6 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             if (!InflowDAL.Add(inflow, out msg))
             {
-
                 return false;
             }
             if (StockDAL.QueryByCagNum(inflow.cagNum, inflow.storeID, out msg) == null)
@@ -63,27 +62,28 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             //单品明细表更新
 
-            if (IndetailDAL.Query(s.id, inflow.batchNum, inflow.date, inflow.price, out msg) == null)
-            {
-                Indetail indetail = new Indetail(s.id, inflow.batchNum, inflow.date, 0, inflow.price, "  ");
+            //if (IndetailDAL.Query(s.id, inflow.batchNum, inflow.date, inflow.price,inflow.batchNum2,inflow.suppliers, out msg) == null)
+            //{
+                Indetail indetail = new Indetail(s.id, inflow.batchNum, inflow.date, inflow.quantity, inflow.price,inflow.batchNum2,inflow.suppliers,inflow.notes);
                 if (!IndetailDAL.Add(indetail, out msg))
                 {
                     msg = "单品明细表增加记录失败";
                     return false;
                 }
-            }
-            Indetail i = IndetailDAL.Query(s.id, inflow.batchNum, inflow.date, inflow.price, out msg);
-            if (i == null)
-            {
-                msg = "单品明细表查询记录失败";
-                return false;
-            }
-            i.quantity += inflow.quantity;
-            if (!IndetailDAL.Update(i, out msg))
-            {
-                msg = "单品明细表增添记录失败";
-                return false;
-            }
+            //}
+            //Indetail i = IndetailDAL.Query(s.id, inflow.batchNum, inflow.date, inflow.price, inflow.batchNum2, inflow.suppliers, out msg);
+            //if (i == null)
+            //{
+            //    //msg = "单品明细表查询记录失败";
+            //    return false;
+            //}
+            //i.quantity += inflow.quantity;
+            //i.note += inflow.notes;
+            //if (!IndetailDAL.Update(i, out msg))
+            //{
+            //    //msg = "单品明细表增添记录失败";
+            //    return false;
+            //}
             return true;
         }
     }

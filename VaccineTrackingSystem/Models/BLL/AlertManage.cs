@@ -50,9 +50,9 @@ namespace VaccineTrackingSystem.Models.BLL
         //颜色区间
         static public int GetInterval(string batchTime, List<Alert> alerts)
         {
-            string date = DateTime.Now.ToString("yyyyMMdd");
-            DateTime nowdate = DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.CurrentCulture);
-            DateTime batchdate = DateTime.ParseExact(batchTime, "yyyyMMdd", CultureInfo.CurrentCulture);
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            DateTime nowdate = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.CurrentCulture);
+            DateTime batchdate = DateTime.ParseExact(batchTime, "yyyy-MM-dd", CultureInfo.CurrentCulture);
             TimeSpan ts = batchdate - nowdate;
             for (int i = 0; i < alerts.Count - 1; i++)
             {

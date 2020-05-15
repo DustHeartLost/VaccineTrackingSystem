@@ -3,14 +3,14 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (data[i].color != null && data[i].color != "") {
-            html += "<tr class=\"dataRow\" style=\"height:50px;background-color:#" + data[i].color +"\"><td>" + data[i].id + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px;background-color:#" + data[i].color + "\"><td>" + data[i].date + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].batchNum2 + "</td><td>" + data[i].suppliers + "</td><td>" + data[i].note + "</td></tr>";
         }
         else {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].date + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].batchNum2 + "</td><td>" + data[i].suppliers + "</td><td>" + data[i].note + "</td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td>" + data[i].id + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td></tr>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td>" + data[i].date + "</td><td>" + data[i].batchNum + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].batchNum2 + "</td><td>" + data[i].suppliers + "</td><td>" + data[i].note + "</td></tr>";
             }
         }
     }

@@ -29,7 +29,13 @@
         /****批号***/
         public string batchNum2;
 
-        public Inflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum)
+        /****供应商***/
+        public string suppliers;
+
+        /***备注***/
+        public string notes;
+
+        public Inflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum,string batchNum2,string suppliers)
         {
             this.id = id;
             this.cagNum = cagNum;
@@ -39,9 +45,10 @@
             this.quantity = quantity;
             this.price = price;
             this.batchNum = batchNum;
-          //  this.batchNum2 = batchNum2;
+            this.batchNum2 = batchNum2;
+            this.suppliers = suppliers;
         }
-        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum)
+        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2, string suppliers)
         {
             this.cagNum = cagNum;
             this.storeID = storeID;
@@ -50,7 +57,21 @@
             this.quantity = quantity;
             this.price = price;
             this.batchNum = batchNum;
-         //   this.batchNum2 = batchNum2;
+            this.batchNum2 = batchNum2;
+            this.suppliers = suppliers;
+        }
+        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2, string suppliers,string notes)
+        {
+            this.cagNum = cagNum;
+            this.storeID = storeID;
+            this.date = date;
+            this.userNum = userNum;
+            this.quantity = quantity;
+            this.price = price;
+            this.batchNum = batchNum;
+            this.batchNum2 = batchNum2;
+            this.suppliers = suppliers;
+            this.notes = notes;
         }
     }
 }
