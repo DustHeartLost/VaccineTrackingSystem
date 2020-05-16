@@ -9,7 +9,7 @@ namespace VaccineTrackingSystem.Models.DAL
     {
         static public bool Add(Outflow outflow, out string msg)
         {
-            string command = $"insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,state) values ('{outflow.cagNum}','{outflow.storeID}','{outflow.date}','{outflow.userNum}','{outflow.quantity}','{outflow.price}','{outflow.batchNum}','{outflow.state}')";
+            string command = $"insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers,state) values ('{outflow.cagNum}','{outflow.storeID}','{outflow.date}','{outflow.userNum}','{outflow.quantity}','{outflow.price}','{outflow.batchNum}','{outflow.batchNum2}','{outflow.suppliers}','{outflow.state}')";
             try
             {
                 msg = null;
@@ -27,9 +27,9 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command;
             if (storeID != -1)
-                command = $"select Outflow.id,Outflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Outflow.date,[User].name as userName,[User].num,Outflow.quantity,Outflow.price,Outflow.batchNum,Outflow.state from Outflow,[User], Storeroom,Category where Outflow.storeID = Storeroom.id and Outflow.userNum =[User].num and  Outflow.cagNum=Category.num and Storeroom.id = '{storeID}'";
+                command = $"select Outflow.id,Outflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Outflow.date,[User].name as userName,[User].num,Outflow.quantity,Outflow.price,Outflow.batchNum,Outflow.batchNum2,Outflow.suppliers,Outflow.state from Outflow,[User], Storeroom,Category where Outflow.storeID = Storeroom.id and Outflow.userNum =[User].num and  Outflow.cagNum=Category.num and Storeroom.id = '{storeID}'";
             else
-                command = $"select Outflow.id,Outflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Outflow.date,[User].name as userName,[User].num,Outflow.quantity,Outflow.price,Outflow.batchNum,Outflow.state from Outflow,[User], Storeroom,Category where Outflow.storeID = Storeroom.id and Outflow.userNum =[User].num and  Outflow.cagNum=Category.num;";
+                command = $"select Outflow.id,Outflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Outflow.date,[User].name as userName,[User].num,Outflow.quantity,Outflow.price,Outflow.batchNum,Outflow.batchNum2,Outflow.suppliers,Outflow.state from Outflow,[User], Storeroom,Category where Outflow.storeID = Storeroom.id and Outflow.userNum =[User].num and  Outflow.cagNum=Category.num;";
 
             SqlDataReader read;
             read = SQL.getReader(command);
@@ -54,6 +54,8 @@ namespace VaccineTrackingSystem.Models.DAL
                 d.Add("quantity", read["quantity"].ToString());
                 d.Add("price", read["price"].ToString());
                 d.Add("batchNum", (string)read["batchNum"]);
+                d.Add("batchNum2", read["batchNum2"].ToString());
+                d.Add("suppliers", (string)read["suppliers"]);
                 d.Add("state", read["state"].ToString());
                 list.Add(d);
             }

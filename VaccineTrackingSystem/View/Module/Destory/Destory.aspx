@@ -47,6 +47,8 @@
                 <th>入库时间</th>
                 <th>数量</th>
                 <th>单价</th>
+                <th>批号</th>
+                <th>供应商</th>
                 <th>备注</th>
             </tr>
         </table>

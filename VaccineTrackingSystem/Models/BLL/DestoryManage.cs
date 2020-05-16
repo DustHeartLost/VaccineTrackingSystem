@@ -71,11 +71,11 @@ namespace VaccineTrackingSystem.Models.BLL
             for (int i = 0; i < indetailList.Count - 1; i++)
             {
                 m = i;
-                string time1 = indetailList[i]["batchNum"].Substring(0, 4) + "-" + indetailList[i]["batchNum"].Substring(4, 2) + "-" + indetailList[i]["batchNum"].Substring(6, 2);
+                string time1 = indetailList[i]["batchNum"];
                 tempdate = Convert.ToDateTime(time1);
                 for (int j = i + 1; j < indetailList.Count; j++)
                 {
-                    string time2 = indetailList[j]["batchNum"].Substring(0, 4) + "-" + indetailList[j]["batchNum"].Substring(4, 2) + "-" + indetailList[j]["batchNum"].Substring(6, 2);
+                    string time2 = indetailList[j]["batchNum"] ;
                     DateTime indetaildt = Convert.ToDateTime(time2);
                     if (indetaildt > tempdate)
                     {
@@ -123,7 +123,7 @@ namespace VaccineTrackingSystem.Models.BLL
                     return false;
                 }
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
-                Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetails[i].price, indetails[i].batchNum, indetails[i].batchNum2, "过期作废");
+                Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetails[i].price, indetails[i].batchNum, indetails[i].batchNum2,indetails[i].suppliers, "过期作废");
                 if (indetails[i].quantity == 0)
                 {
                     if (!IndetailDAL.Delete(indetails[i].id, out msg))
