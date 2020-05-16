@@ -46,10 +46,6 @@ function down() {
             if (temp.code == 200) {
                 clear();
                 createInflowTable(temp.data, temp.extra);
-                //switch (temp.extra.split("+")[3]) {
-                //    case "0": createInflowTable(temp.data, temp.extra); break;
-                //    case "1": createInflowTable(temp.data, temp.extra); break;
-               // }
             }
         },
         error: function (err) {
@@ -68,10 +64,6 @@ function up() {
             if (temp.code == 200) {
                 clear();
                 createInflowTable(temp.data, temp.extra);
-                //switch (temp.extra.split("+")[3]) {
-                //    case "0": createInflowTable(temp.data, temp.extra); break;
-                //    case "1": createInflowTable(temp.data, temp.extra); break;
-               // }
             }
         },
         error: function (err) {
@@ -102,12 +94,9 @@ function tableExport() {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
                 var option = {};
-                option.fileName = "export";
                 var shhead = "";
-                option.fileName = "入库流水表"; shhead = ['入库流水编号', '药品编码', '药品名称', '药品种类', '药品规格', '关联库房', '入库时间', '操作人', '数量', '单价', '到期时间', '批号', '供应商']; 
-               // switch (temp.extra) {
-                //    case "0": option.fileName = "入库流水表"; shhead =['入库流水编号','药品编码', '药品名称', '药品种类', '药品规格', '关联库房', '入库时间', '操作人', '数量', '单价', '到期时间','批号','供应商']; break;
-                //} 
+                option.fileName = "入库流水表";
+                shhead = ['入库流水编号', '药品编码', '药品名称', '药品种类', '药品规格', '关联库房', '入库时间', '操作人', '数量', '单价', '到期时间', '批号', '供应商']; 
                 option.datas = [
                     {
                         sheetData: JSON.parse(temp.data),

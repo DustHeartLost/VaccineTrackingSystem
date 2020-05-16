@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -12,6 +13,7 @@ namespace VaccineTrackingSystem.View.Module.Table
         protected static int currentPage;
         protected static int states;
         protected static int storeID;
+        protected static JObject searchContext = new JObject();
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
@@ -34,21 +36,6 @@ namespace VaccineTrackingSystem.View.Module.Table
         }
 
         [System.Web.Services.WebMethod]
-        public static string Controller(int state,string data) {
-            if (state != states)
-            {
-                totalPage = 0;
-                currentPage = -1;
-            }  
-            states = state;
-            string temp="";
-            switch (state) {
-                case 0: temp=GetALLOutflow(); break;
-            }
-            return temp;
-        }
-
-        [System.Web.Services.WebMethod]
         public static string GetALLOutflow()
         {
             if (currentPage != -1)
@@ -57,6 +44,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             }
             decimal money = 0;
             string msg;
+            states = 0;
             //TODO:此处的ID将来换成从session中取
             string jsonData = Models.BLL.TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
@@ -71,6 +59,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             switch (states)
             {
                 case 0: temp = Models.BLL.TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
+                case 1: temp = Models.BLL.TableManage.OutflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return temp!= null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
@@ -85,6 +74,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             switch (states)
             {
                 case 0: temp = Models.BLL.TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
+                case 1: temp = Models.BLL.TableManage.OutflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
 
@@ -99,8 +89,74 @@ namespace VaccineTrackingSystem.View.Module.Table
             switch (states)
             {
                 case 0: temp = Models.BLL.TableManage.ExportOutflow(storeID, out msg, out money); break;
+                case 1: temp = Models.BLL.TableManage.ExportConbinationOutflow(storeID, JsonConvert.SerializeObject(searchContext), out msg, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string SearchCon(string temp)
+        {
+            string msg;
+            totalPage = 0;
+            currentPage = -1;
+            if (currentPage != -1)
+            {
+                currentPage--;
+            }
+            states = 1;
+            decimal money = 0;
+            JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
+            string dateTemp = jo["date"].ToString();
+            if (dateTemp != null && dateTemp != "")
+            {
+                string t = "%";
+                for (int i = 0; i < dateTemp.Length; i++)
+                    t += dateTemp[i] + "%";
+
+                jo["date"] = t;
+            }
+            else
+                jo["date"] = "%";
+            string cagNameTemp = jo["cagName"].ToString();
+            if (cagNameTemp != null && cagNameTemp != "")
+            {
+                string t = "%";
+                for (int i = 0; i < cagNameTemp.Length; i++)
+                    t += cagNameTemp[i] + "%";
+                jo["cagName"] = t;
+
+            }
+            else
+                jo["cagName"] = "%";
+            string storeNameTemp = jo["storeName"].ToString();
+            if (storeNameTemp != null && storeNameTemp != "")
+            {
+                string t = "%";
+                for (int i = 0; i < storeNameTemp.Length; i++)
+                    t += storeNameTemp[i] + "%";
+                jo["storeName"] = t;
+
+            }
+            else
+                jo["storeName"] = "%";
+            string cagNumTemp = jo["cagNum"].ToString();
+            if (cagNumTemp != null && cagNumTemp != "")
+            {
+                string t = "%";
+                for (int i = 0; i < cagNumTemp.Length; i++)
+                    t += cagNumTemp[i] + "%";
+                jo["cagNum"] = t;
+            }
+            else
+                jo["cagNum"] = "%";
+            searchContext["date"] = jo["date"];
+            searchContext["cagName"] = jo["cagName"];
+            searchContext["storeName"] = jo["storeName"];
+            searchContext["cagNum"] = jo["cagNum"];
+            System.Diagnostics.Debug.Write(jo["date"].ToString() + jo["cagName"].ToString() + jo["storeName"].ToString() + jo["cagNum"].ToString());
+            string jsonData = Models.BLL.TableManage.OutflowCombinationQuery(storeID, JsonConvert.SerializeObject(jo), out msg, ref totalPage, ref currentPage, out money);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }
 }
