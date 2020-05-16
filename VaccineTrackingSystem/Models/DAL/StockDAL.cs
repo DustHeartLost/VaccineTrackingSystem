@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -190,6 +191,40 @@ namespace VaccineTrackingSystem.Models.DAL
                 d.Add("quantity", read["quantity"].ToString());
                 d.Add("money", read["money"].ToString());
                 list.Add(d);
+            }
+            SQL.Dispose();
+            msg = null;
+            return list;
+        }
+
+        static public List<Dictionary<string, string>> CombinationQuery(JObject keyWords, int storeID, out string msg)
+        {
+            string command = "";
+            if (storeID == -1 )
+                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Category.num like '{keyWords["cagNum"].ToString()}' and Category.name like '{keyWords["cagName"].ToString()}' and Storeroom.name like '{keyWords["storeName"].ToString()}';";
+            else
+                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Stock.storeID={storeID} and Category.num like '{keyWords["cagNum"].ToString()}' and Category.name like '{keyWords["cagName"].ToString()}'";
+            SqlDataReader read;
+            read = SQL.getReader(command);
+            if (!read.HasRows)
+            {
+                msg = "查询结果为空";
+                SQL.Dispose();
+                return null;
+            }
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
+            while (read.Read())
+            {
+                Dictionary<string, string> dictionary = new Dictionary<string, string>();
+                dictionary.Add("num", (string)read["num"]);
+                dictionary.Add("name", (string)read["name"]);
+                dictionary.Add("unit", (string)read["unit"]);
+                dictionary.Add("spec", (string)read["spec"]);
+                dictionary.Add("quantity", read["quantity"].ToString());
+                dictionary.Add("money", read["money"].ToString());
+                dictionary.Add("storeID", read["storeID"].ToString());
+                dictionary.Add("stockID", read["stockID"].ToString());
+                list.Add(dictionary);
             }
             SQL.Dispose();
             msg = null;

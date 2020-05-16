@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -15,6 +16,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         protected static int currentPage;
         protected static int states;
         protected static string num=null;
+        protected static JObject searchContext = new JObject();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,23 +38,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
                 };
             }
         }
-        [WebMethod]
-        public static string Controller(int state, string data)
-        {
-            if (state != states)
-            {
-                totalPage = 0;
-                currentPage = -1;
-            }
-            string temp = "";
-            switch (state)
-            {
-                case 0: temp = GetAll();break;
-                case 1: temp = precise(data); break;
-           
-            }
-            return temp;
-        }
+
         [WebMethod]
         public static string GetAll() {
             string msg;
@@ -61,6 +47,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             string data = StockManage.QueryAll(storeID,null, out msg,ref money,ref totalPage, ref currentPage,false);
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
+
         public static string precise(string temp) {
             if (temp == null) return JsonConvert.SerializeObject(new Packet(201, "请输入药品编号"));
             string msg;
@@ -83,10 +70,12 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             switch (states)
             {
                 case 0:data=GetAll();return data;
-                case 1: data = StockManage.Query(storeID, num.ToString(), out msg, ref money, ref totalPage, ref currentPage); break;
+                case 1: data = Models.BLL.StockManage.CombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
+
+
         [WebMethod]
         public static string GetUp()
         {
@@ -98,18 +87,77 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             switch (states)
             {
                 case 0: data = GetAll(); return data;
-                case 1: data = StockManage.Query(storeID, num, out msg, ref money, ref totalPage, ref currentPage); break;
+                case 1: data = Models.BLL.StockManage.CombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
+
+
         [WebMethod]
         public static string ExportALL()
         {
-            string data;
+            string data="";
             string msg;
             decimal money = 0;
-            data = StockManage.QueryAll(storeID, num, out msg, ref money, ref totalPage, ref currentPage,true);
+            switch (states)
+            {
+                case 0: data = StockManage.QueryAll(storeID, num, out msg, ref money, ref totalPage, ref currentPage, true); break;
+                case 1: data = Models.BLL.StockManage.ExportConbinationInflow(storeID, JsonConvert.SerializeObject(searchContext), out msg, out money); ; break;
+            }
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data)) : JsonConvert.SerializeObject(new Packet(201, "没有需要导出的数据"));
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string SearchCon(string temp)
+        {
+            string msg;
+            totalPage = 0;
+            currentPage = -1;
+            if (currentPage != -1)
+            {
+                currentPage--;
+            }
+            states = 1;
+            decimal money = 0;
+            JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
+            string cagNameTemp = jo["cagName"].ToString();
+            if (cagNameTemp != null && cagNameTemp != "")
+            {
+                string t = "%";
+                for (int i = 0; i < cagNameTemp.Length; i++)
+                    t += cagNameTemp[i] + "%";
+                jo["cagName"] = t;
+
+            }
+            else
+                jo["cagName"] = "%";
+            string storeNameTemp = jo["storeName"].ToString();
+            if (storeNameTemp != null && storeNameTemp != "")
+            {
+                string t = "%";
+                for (int i = 0; i < storeNameTemp.Length; i++)
+                    t += storeNameTemp[i] + "%";
+                jo["storeName"] = t;
+
+            }
+            else
+                jo["storeName"] = "%";
+            string cagNumTemp = jo["cagNum"].ToString();
+            if (cagNumTemp != null && cagNumTemp != "")
+            {
+                string t = "%";
+                for (int i = 0; i < cagNumTemp.Length; i++)
+                    t += cagNumTemp[i] + "%";
+                jo["cagNum"] = t;
+            }
+            else
+                jo["cagNum"] = "%";
+            searchContext["cagName"] = jo["cagName"];
+            searchContext["storeName"] = jo["storeName"];
+            searchContext["cagNum"] = jo["cagNum"];
+            System.Diagnostics.Debug.Write(jo["cagName"].ToString() + jo["storeName"].ToString() + jo["cagNum"].ToString());
+            string jsonData = Models.BLL.StockManage.CombinationQuery(storeID, JsonConvert.SerializeObject(jo), out msg, ref totalPage, ref currentPage, out money);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }
 }

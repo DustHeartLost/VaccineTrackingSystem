@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using VaccineTrackingSystem.Models.DAL;
@@ -104,5 +105,55 @@ namespace VaccineTrackingSystem.Models.BLL
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
             }
         }
+
+        static public string CombinationQuery(int storeID, string keyWords, out string msg, ref int totalPage, ref int currentPage, out decimal money)
+        {
+            money = 0m;
+            JObject keys = (JObject)JsonConvert.DeserializeObject(keyWords);
+            List<Dictionary<string, string>> list = StockDAL.CombinationQuery(keys, storeID, out msg);
+            if (list == null)
+            {
+                msg = "搜索结果为空";
+                totalPage = 0;
+                currentPage = -1;
+                return null;
+            }
+            foreach (Dictionary<string, string> dictionary in list)
+            {
+                money += decimal.Parse(dictionary["money"]);
+            }
+            totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (list.Count != 0 && list.Count % 10 == 0)
+                --totalPage;
+            if (currentPage < totalPage)
+                ++currentPage;
+            try
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
+            }
+        }
+
+        static public string ExportConbinationInflow(int storeID, string keyWords, out string msg, out decimal money)
+        {
+            money = 0m;
+            JObject keys = (JObject)JsonConvert.DeserializeObject(keyWords);
+            List<Dictionary<string, string>> list = StockDAL.CombinationQuery(keys, storeID, out msg);
+            if (list == null)
+            {
+                msg = "没有需要导出的记录";
+                return null;
+            }
+            msg = null;
+            foreach (Dictionary<string, string> dictionary in list)
+            {
+                money += decimal.Parse(dictionary["money"]);
+            }
+            return JsonConvert.SerializeObject(list);
+        }
+
     }
 }

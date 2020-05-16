@@ -23,6 +23,19 @@
     $("#showAll").hide();
 }
 
+
+function clear() {
+    $("tr").remove(".dataRow");
+    $("tr").remove(".dataRow2");
+    $("tr").remove(".dataRow3");
+}
+
+function reCreateTable(temp, extra) {
+    clear();
+    createTable(temp, extra);
+}
+
+
 $(document).ready(function () {
     $("#tableContainer").delegate(".dataRow", "mouseenter", function () {
         $(this).addClass("tr-mouseover");
@@ -43,27 +56,28 @@ function clear() {
 }
 
 function search() {
-    var tempCon = $("#searchText").val();
-    if (tempCon != "") {
+    var obj = new Object();
+    obj.cagName = $("#cagNameSearch").val();
+    obj.storeName = $("#storeNameSearch").val();
+    obj.cagNum = $("#cagNumSearch").val();
+    if (obj.cagName != "" || obj.cagNum != "" || obj.storeName != "") {
         $.ajax({
             type: "post",
-            url: "StockSearch.aspx/Controller",//方法所在页面和方法名
+            url: "StockSearch.aspx/SearchCon",//方法所在页面和方法名
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: "{'state':'1','data':'" + tempCon + "'}",
+            data: "{'temp':'" + JSON.stringify(obj) + "'}",
             success: function (data) {
                 var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
                 if (tempT.code == 200) {
-                    clear();
-                    createTable(tempT.data, tempT.extra);
+                    reCreateTable(tempT.data, tempT.extra);
                     $("#showAll").show();
-                    $("#up").hide();
-                    $("#down").hide();
-                    $("#current").hide();
-                    $("#total").hide();
+                    $("#up").show();
+                    $("#down").show();
+                    $("#current").show();
+                    $("#total").show();
 
-                    $("#export").hide();
-                    $("#money").hide();
+                    $("#add").show();
                 }
                 else {
                     alert(tempT.data);
@@ -75,14 +89,14 @@ function search() {
         });
     }
     else
-        alert("请输入药品编号");
+        alert("请输入搜索内容");
 }
 
 function showAll() {
     clear();
     $.ajax({
         type: "post", //要用post方式                 
-        url: "StockSearch.aspx/Controller",//方法所在页面和方法名
+        url: "StockSearch.aspx/GetAll",//方法所在页面和方法名
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: "{'state':'0','data':'null'}",
