@@ -25,10 +25,10 @@ function addRecord() {
                 $("#suppliers").html(createOption(temp.extra));
             } else if (temp.code == 205) {
                 $("#suppliers").html(createOption(temp.extra));
-                alert("暂无药品品类,请增加供应商后刷新重试");
+                alert("暂无药品品类,请增加药品品类后刷新重试");
             } else if (temp.code == 206) {
                 $("#cagNum").html(createOption(temp.data));
-                alert("暂无供应商,请增加供药品品类后刷新重试");
+                alert("暂无供应商,请增加供应商后刷新重试");
             } else {
                 alert(temp.data);
             }
