@@ -23,13 +23,6 @@
     </ul>
 </asp:Content>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-     <div style="float: left;">
-        <input type="text" placeholder="入库日期" id="dataSearch" class="sx_inp search-input" style="float: left;width:100px;margin-left:10px">
-        <input type="text" placeholder="药品名称" id="cagNameSearch" class="sx_inp search-input" style="float: left;width:100px;margin-left:10px">
-        <input type="text" placeholder="药品编码" id="cagNumSearch" class="sx_inp search-input" style="float: left;width:100px;margin-left:10px">&nbsp;
-        <input id="searchButton"  type="button" value="搜索" class="auto-style2" onclick="search()"/></div>
-</asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
      <div style="float: right;" id="upAndDownArea">
@@ -41,7 +34,6 @@
     </div>
      <div style="float: left;" id="addArea">
         <button id="add"  onclick="add()" style="padding:5px">操作入库</button>
-          <button id="showAll" onclick="showAll()"  style="padding:5px">返回</button>
      </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">

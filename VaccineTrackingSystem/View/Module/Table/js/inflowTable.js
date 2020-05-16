@@ -35,32 +35,6 @@ $(document).ready(function () {
     });
 });
 
-function confirm() {
-    //此处需要有多种情况，不同的情况不同的state；
-    state = 0;
-    $.ajax({
-        type: "post", //要用post方式                 
-        url: "InflowTable.aspx/Controller",//方法所在页面和方法名
-        contentType: "application/json; charset=utf-8",
-        data: "{'state':'" + state + "','data':''}",
-        dataType: "json",
-        success: function (data) {
-            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
-            if (temp.code == 200) {
-                clear();
-                switch (temp.extra.split("+")[3]) {
-                    case "0": createInflowTable(temp.data, temp.extra); break;
-                }
-            } else {
-                alert(temp.data);
-            }
-        },
-        error: function (err) {
-            alert(err);
-        }
-    });
-    }
-
 function down() {
     $.ajax({
         type: "post", //要用post方式                 
@@ -71,9 +45,11 @@ function down() {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
                 clear();
-                switch (temp.extra.split("+")[3]) {
-                    case "0": createInflowTable(temp.data, temp.extra); break;
-                }
+                createInflowTable(temp.data, temp.extra);
+                //switch (temp.extra.split("+")[3]) {
+                //    case "0": createInflowTable(temp.data, temp.extra); break;
+                //    case "1": createInflowTable(temp.data, temp.extra); break;
+               // }
             }
         },
         error: function (err) {
@@ -91,9 +67,11 @@ function up() {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
                 clear();
-                switch (temp.extra.split("+")[3]) {
-                    case "0":createInflowTable(temp.data, temp.extra); break;
-                }
+                createInflowTable(temp.data, temp.extra);
+                //switch (temp.extra.split("+")[3]) {
+                //    case "0": createInflowTable(temp.data, temp.extra); break;
+                //    case "1": createInflowTable(temp.data, temp.extra); break;
+               // }
             }
         },
         error: function (err) {
@@ -101,6 +79,18 @@ function up() {
         }
     });
 }
+
+function clear() {
+    $("tr").remove(".dataRow");
+    $("tr").remove(".dataRow2");
+    $("tr").remove(".dataRow3");
+}
+
+function reCreateTable(temp, extra) {
+    clear();
+    createInflowTable(temp, extra);
+}
+
 
 function tableExport() {
     $.ajax({
@@ -113,10 +103,11 @@ function tableExport() {
             if (temp.code == 200) {
                 var option = {};
                 option.fileName = "export";
-                var shhead ="";
-                switch (temp.extra) {
-                    case "0": option.fileName = "入库流水表"; shhead =['入库流水编号','药品编码', '药品名称', '药品种类', '药品规格', '关联库房', '入库时间', '操作人', '数量', '单价', '到期时间','批号','供应商']; break;
-                } 
+                var shhead = "";
+                option.fileName = "入库流水表"; shhead = ['入库流水编号', '药品编码', '药品名称', '药品种类', '药品规格', '关联库房', '入库时间', '操作人', '数量', '单价', '到期时间', '批号', '供应商']; 
+               // switch (temp.extra) {
+                //    case "0": option.fileName = "入库流水表"; shhead =['入库流水编号','药品编码', '药品名称', '药品种类', '药品规格', '关联库房', '入库时间', '操作人', '数量', '单价', '到期时间','批号','供应商']; break;
+                //} 
                 option.datas = [
                     {
                         sheetData: JSON.parse(temp.data),
@@ -129,6 +120,72 @@ function tableExport() {
             } 
             else
                alert(temp.extra);
+        },
+        error: function (err) {
+            alert(err);
+        }
+    });
+}
+
+function search() {
+    var obj = new Object();
+    obj.date = $("#dataSearch").val();
+    obj.cagName = $("#cagNameSearch").val();
+    obj.storeName = $("#storeNameSearch").val();
+    obj.cagNum = $("#cagNumSearch").val();
+    if (obj.date != "" || obj.cagName != "" || obj.cagNum != "" || obj.storeName != "") {
+        $.ajax({
+            type: "post",
+            url: "InflowTable.aspx/SearchCon",//方法所在页面和方法名
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: "{'temp':'" + JSON.stringify(obj) + "'}",
+            success: function (data) {
+                var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
+                if (tempT.code == 200) {
+                    reCreateTable(tempT.data, tempT.extra);
+                    $("#showAll").show();
+                    $("#up").show();
+                    $("#down").show();
+                    $("#current").show();
+                    $("#total").show();
+
+                    $("#add").show();
+                }
+                else {
+                    alert(tempT.data);
+                }
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    }
+    else
+        alert("请输入搜索内容");
+}
+
+
+function showAll() {
+    $("#down").show();
+    $("#up").show();
+    $("#current").show();
+    $("#total").show();
+
+    $("#add").show();
+    clear();
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "InflowTable.aspx/GetALLInflow",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                reCreateTable(temp.data, temp.extra);
+            } else {
+                alert(temp.data);
+            }
         },
         error: function (err) {
             alert(err);

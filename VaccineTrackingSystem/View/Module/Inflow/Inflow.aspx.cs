@@ -65,48 +65,5 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
-        [System.Web.Services.WebMethod]
-        public static string SearchCon(string temp)
-        {
-            string msg;
-            totalPage = 0;
-            currentPage = 0;
-            JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
-            string dateTemp = jo["date"].ToString();
-            if (dateTemp != null && dateTemp != "")
-            {
-                string t = "%";
-                for(int i=0;i< dateTemp.Length;i++)
-                    t += dateTemp[i] + "%";
-
-                jo["date"] = t;
-            }
-            else
-                jo["date"] = "%";
-            string cagNameTemp = jo["cagName"].ToString();
-            if (cagNameTemp != null && cagNameTemp != "")
-            {
-                string t = "%";
-                for (int i = 0; i < cagNameTemp.Length; i++)
-                    t += cagNameTemp[i] + "%";
-                jo["cagName"] = t;
-
-            }
-            else
-                jo["cagName"] = "%";
-            string cagNumTemp = jo["cagNum"].ToString();
-            if (cagNumTemp != null && cagNumTemp != "")
-            {
-                string t = "%";
-                for (int i = 0; i < cagNumTemp.Length; i++)
-                    t += cagNumTemp[i] + "%";
-                jo["cagNum"] = t;
-            }
-            else
-                jo["cagNum"] = "%";
-            string jsonData = Models.BLL.InflowManage.CombinationQuery(storeId,JsonConvert.SerializeObject(jo), out msg, ref totalPage, ref currentPage);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
-        }
-
     }
 }
