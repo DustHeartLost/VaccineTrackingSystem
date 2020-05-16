@@ -42,7 +42,7 @@
     <button id="confirmUpdate" class="upAnddown" onclick="confirmUpdate()">确认修改</button>
     <button id="dfunct" class="upAnddown"  onclick="dfunct()">删除供应商</button>
      <button id="destory" class="upAnddown" onclick="destory()">确认删除</button>
-     <button id="showAll" class="upAnddown" onclick="showAll()">返回</button>
+     <button id="showAll" class="upAnddown" onclick="showAll()">显示全部</button>
     <div id="upAndDownArea">
         <button id="up" class="upAnddown" onclick="up()"><</button>
         <button id="down" class="upAnddown" onclick="down()">></button>

@@ -42,7 +42,7 @@
         <button id="confirmUpdate" class="upAnddown" onclick="confirmUpdate()">确认修改</button>
           <button id="dfunct" class="upAnddown" onclick="dfunct()">删除</button>
          <button id="destory" class="upAnddown" onclick="destory()">确认删除</button>
-        <button id="showAll" onclick="showAll()"  class="upAnddown">返回</button>
+        <button id="showAll" onclick="showAll()"  class="upAnddown">显示全部</button>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">

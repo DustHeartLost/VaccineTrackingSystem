@@ -132,7 +132,7 @@ namespace VaccineTrackingSystem.Models.DAL
             return list;
         }
 
-        //根据药品名称查询库存
+        //根据药品编号查询库存
         static public List<Dictionary<string, string>> QueryCagNum(string cagNum, int storeID, out string msg)
         {
             string command;
@@ -196,5 +196,36 @@ namespace VaccineTrackingSystem.Models.DAL
             return list;
         }
 
+        //根据药品名称查询库存
+        static public List<Dictionary<string, string>> QueryCagName(string cagName, int storeID, out string msg)
+        {
+            string command;
+            command = $"select Stock.id,Stock.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Stock.quantity,Stock.money from Stock,Storeroom,Category where Stock.storeID = Storeroom.id and Stock.cagNum = Category.num and Storeroom.id = {storeID} and Category.name like '{cagName}'";
+            SqlDataReader read;
+            read = SQL.getReader(command);
+            if (!read.HasRows)
+            {
+                msg = "未查询到库存记录";
+                SQL.Dispose();
+                return null;
+            }
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
+            while (read.Read())
+            {
+                Dictionary<string, string> d = new Dictionary<string, string>();
+                d.Add("id", read["id"].ToString());
+                d.Add("cagNum", (string)read["cagNum"]);
+                d.Add("name", (string)read["name"]);
+                d.Add("kind", (string)read["kind"]);
+                d.Add("spec", (string)read["spec"]);
+                d.Add("storeID", (string)read["storeID"]);
+                d.Add("quantity", read["quantity"].ToString());
+                d.Add("money", read["money"].ToString());
+                list.Add(d);
+            }
+            SQL.Dispose();
+            msg = null;
+            return list;
+        }
     }
 }

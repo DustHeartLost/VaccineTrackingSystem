@@ -42,7 +42,13 @@ namespace VaccineTrackingSystem.Models.BLL
             List<Dictionary<string, string>> list = StockDAL.QueryCagNum(cagNum, storeID, out msg);
             return list != null ? JsonConvert.SerializeObject(list) : null;
         }
-        
+
+        //根据药品名称模糊查找
+        static public string QueryByCagName(string cagName, int storeID, out string msg)
+        {
+            List<Dictionary<string, string>> list = StockDAL.QueryCagName(cagName, storeID, out msg);
+            return list != null ? JsonConvert.SerializeObject(list) : null;
+        }
 
         //单品明细数据进行批号排序，返回list  4/7
         static public string QueryIndetail(int stockID, out string msg, ref int totalPage, ref int currentPage)
@@ -95,9 +101,6 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
 
-      
-
-
         static private List<Dictionary<string, string>> SortDate(List<Dictionary<string, string>> indetailList)
         {
 
@@ -133,6 +136,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             return indetailList;
         }
+        
         static private List<Dictionary<string, string>> Swap(List<Dictionary<string, string>> indetailList, int m, int i)
         {
             Dictionary<string, string> t;

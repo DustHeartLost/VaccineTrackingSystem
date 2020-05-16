@@ -42,7 +42,7 @@
     <button id="update"class="upAnddown" onclick="showCheckBox()">修改角色</button>
     <button id="cancelUpdate" class="upAnddown" onclick="cancelUpdate()">取消修改</button>
     <button id="confirmUpdate" class="upAnddown" onclick="confirmUpdate()">确认修改</button>
-     <button id="showAll" class="upAnddown" onclick="showAll()">返回</button>
+     <button id="showAll" class="upAnddown" onclick="showAll()">显示全部</button>
     <div id="upAndDownArea">
         <button id="up" class="upAnddown" onclick="up()"><</button>
         <button id="down" class="upAnddown" onclick="down()">></button>
