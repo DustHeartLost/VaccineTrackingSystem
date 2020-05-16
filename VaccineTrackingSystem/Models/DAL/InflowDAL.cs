@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -69,6 +70,39 @@ namespace VaccineTrackingSystem.Models.DAL
         static public List<Dictionary<string, string>> QueryTodayRecoder(int storeID, string nowTime,out string msg)
         {
             string command = $"select Inflow.id,Inflow.cagNum,Category.name as cagName,Category.kind,Category.spec,Inflow.date,Inflow.quantity,Inflow.price,Inflow.batchNum from Inflow , Category where Inflow.cagNum = Category.num and Inflow.storeID =  '{storeID}' and Inflow.date='{nowTime}'";
+            SqlDataReader read;
+            read = SQL.getReader(command);
+            if (!read.HasRows)
+            {
+                msg = "暂无入库记录";
+                SQL.Dispose();
+                return null;
+            }
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
+            while (read.Read())
+            {
+                Dictionary<string, string> d = new Dictionary<string, string>();
+                d.Add("id", read["id"].ToString());
+                d.Add("cagNum", (string)read["cagNum"]);
+                d.Add("cagName", (string)read["cagName"]);
+                d.Add("kind", (string)read["kind"]);
+                d.Add("spec", (string)read["spec"]);
+                d.Add("date", (string)read["date"]);
+                d.Add("quantity", read["quantity"].ToString());
+                d.Add("price", read["price"].ToString());
+                d.Add("batchNum", (string)read["batchNum"]);
+                list.Add(d);
+            }
+            SQL.Dispose();
+            msg = null;
+            return list;
+        }
+
+
+        //组合查找
+        static public List<Dictionary<string, string>>  CombinationQuery(JObject  keyWords,int storeID, out string msg)
+        {
+            string command = $"select Inflow.id,Inflow.cagNum,Category.name as cagName,Category.kind,Category.spec,Inflow.date,Inflow.quantity,Inflow.price,Inflow.batchNum from Inflow , Category where Inflow.cagNum = Category.num and Inflow.storeID =  '{storeID}' and Inflow.date like '{keyWords["date"].ToString()}' and Category.num like '{keyWords["cagNum"].ToString()}' and Category.name like '{keyWords["cagName"].ToString()}'";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)

@@ -97,7 +97,7 @@ namespace VaccineTrackingSystem.Models.DAL
             Dictionary<string, string>  category = new Dictionary<string, string>();
             while (read.Read())
             {
-                category.Add((string)read["name"] + "(" + (string)read["num"] + ")", read["num"].ToString());
+                category.Add((string)read["name"] +"("+(string)read["num"]+")", read["num"].ToString());
 
             }
             SQL.Dispose();
