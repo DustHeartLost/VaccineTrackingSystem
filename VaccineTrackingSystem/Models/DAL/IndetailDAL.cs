@@ -92,7 +92,7 @@ namespace VaccineTrackingSystem.Models.DAL
 
         static public bool Update(Indetail indetail, out string msg)
         {
-            string command = $"update Indetail set stockID = '{indetail.stockID}',batchNum = '{indetail.batchNum}',date = '{indetail.date}',quantity = '{indetail.quantity}',price = '{indetail.price}',note = '{indetail.note}'  where id = '{indetail.id}'";
+            string command = $"update Indetail set stockID = '{indetail.stockID}',batchNum = '{indetail.batchNum}',date = '{indetail.date}',quantity = '{indetail.quantity}',price = '{indetail.price}',batchNum2 = '{indetail.batchNum2}',suppliers = '{indetail.suppliers}',note = '{indetail.note}'  where id = '{indetail.id}'";
             try
             {
                 msg = null;

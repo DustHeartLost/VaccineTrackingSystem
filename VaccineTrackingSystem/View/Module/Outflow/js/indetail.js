@@ -3,17 +3,17 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (data[i].color != null && data[i].color != "") {
-            html += "<tr class=\"dataRow\" style=\"height:50px;background-color:#" + data[i].color+"\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td>" + data[i].batchNum + "</td><td>";
-                html += data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td class=\"editTd\"></td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px;background-color:#" + data[i].color + "\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td>" + data[i].batchNum + "</td><td>";
+            html += data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].batchNum2 + "</td><td>" + data[i].suppliers + "</td><td class=\"editTd\"></td></tr>";
         }
         else {
             if (i % 2 == 0) {
                 html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td>" + data[i].batchNum + "</td><td>";
-                html += data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td class=\"editTd\"></td></tr>";
+                html += data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].batchNum2 + "</td><td>" + data[i].suppliers + "</td><td class=\"editTd\"></td></tr>";
             }
             else {
                 html += "<tr class=\"dataRow2\" style=\"height:50px\" ><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td>" + data[i].stockID + "</td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td>" + data[i].batchNum + "</td><td>";
-                html += data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td class=\"editTd\"></td></tr>";
+                html += data[i].date + "</td><td>" + data[i].quantity + "</td><td>" + data[i].price + "</td><td>" + data[i].batchNum2 + "</td><td>" + data[i].suppliers + "</td><td class=\"editTd\"></td></tr>";
             }
         }
     }
@@ -149,8 +149,10 @@ function confirmUpdate() {
             data1.stockID = temp1[2];
             data1.batchNum = temp1[7];
             data1.date = temp1[8];
-            data1.quantity = parseInt(temp1[11])+"";
+            data1.quantity = parseInt(temp1[13])+"";
             data1.price = temp1[10];
+            data1.batchNum2 = temp1[11];
+            data1.suppliers = temp1[12];
             $.ajax({
                 type: "post", //要用post方式                 
                 url: "Indetail.aspx/Update",//方法所在页面和方法名

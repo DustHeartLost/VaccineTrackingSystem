@@ -101,13 +101,13 @@ namespace VaccineTrackingSystem.Models.BLL
         static private List<Dictionary<string, string>> SortDate(List<Dictionary<string, string>> indetailList)
         {
 
-            string date = DateTime.Now.ToString("yyyyMMdd");
-            DateTime nowdate = DateTime.ParseExact(date, "yyyyMMdd",CultureInfo.CurrentCulture);
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            DateTime nowdate = DateTime.ParseExact(date, "yyyy-MM-dd",CultureInfo.CurrentCulture);
             int m = 0;
             DateTime tempdate; 
             for (int i = 0; i < indetailList.Count; i++)
             {
-                if (DateTime.ParseExact(indetailList[i]["batchNum"], "yyyyMMdd", CultureInfo.CurrentCulture) <= nowdate)
+                if (DateTime.ParseExact(indetailList[i]["batchNum"], "yyyy-MM-dd", CultureInfo.CurrentCulture) <= nowdate)
                 {
                     indetailList.Remove(indetailList[i]);
                     i--;
@@ -118,10 +118,10 @@ namespace VaccineTrackingSystem.Models.BLL
             for (int i = 0; i < indetailList.Count - 1; i++)
             {
                 m = i;
-                tempdate = DateTime.ParseExact(indetailList[i]["batchNum"], "yyyyMMdd", CultureInfo.CurrentCulture);
+                tempdate = DateTime.ParseExact(indetailList[i]["batchNum"], "yyyy-MM-dd", CultureInfo.CurrentCulture);
                 for (int j = i + 1; j < indetailList.Count; j++)
                 {
-                    DateTime indetaildt = DateTime.ParseExact(indetailList[i]["batchNum"], "yyyyMMdd", CultureInfo.CurrentCulture);
+                    DateTime indetaildt = DateTime.ParseExact(indetailList[j]["batchNum"], "yyyy-MM-dd", CultureInfo.CurrentCulture);
                     if (indetaildt < tempdate)
                     {
                         tempdate = indetaildt;
@@ -171,7 +171,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 return false;
             }
             string date = DateTime.Now.ToString("yyyy-MM-dd");
-            Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetail.price, indetail.batchNum, indetail.batchNum2, "正常出库");
+            Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetail.price, indetail.batchNum, indetail.batchNum2, indetail.suppliers, "正常出库");
             if (indetail.quantity == 0)
             {
                 if (!(IndetailDAL.Delete(indetailId, out msg)))

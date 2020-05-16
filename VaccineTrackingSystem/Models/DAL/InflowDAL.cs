@@ -33,9 +33,9 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command;
             if(storeID!=-1)
-                command = $"select Inflow.id,Inflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Inflow.date,[User].name as userName,[User].num,Inflow.quantity,inflow.price,Inflow.batchNum from Inflow,[User], Storeroom,Category where inflow.storeID = Storeroom.id and Inflow.userNum =[User].num and  Inflow.cagNum=Category.num and Storeroom.id = '{storeID}'";
+                command = $"select Inflow.id,Inflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Inflow.date,[User].name as userName,[User].num,Inflow.quantity,inflow.price,Inflow.batchNum,inflow.batchNum2,Inflow.suppliers from Inflow,[User], Storeroom,Category where inflow.storeID = Storeroom.id and Inflow.userNum =[User].num and  Inflow.cagNum=Category.num and Storeroom.id = '{storeID}'";
             else
-                command = $" select Inflow.id,Inflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Inflow.date,[User].name as userName,[User].num,Inflow.quantity,inflow.price,Inflow.batchNum from Inflow,[User], Storeroom,Category where inflow.storeID = Storeroom.id and Inflow.userNum =[User].num and  Inflow.cagNum=Category.num ;";
+                command = $" select Inflow.id,Inflow.cagNum,Category.name,Category.kind,Category.spec,Storeroom.name as storeID,Inflow.date,[User].name as userName,[User].num,Inflow.quantity,inflow.price,Inflow.batchNum,inflow.batchNum2,Inflow.suppliers from Inflow,[User], Storeroom,Category where inflow.storeID = Storeroom.id and Inflow.userNum =[User].num and  Inflow.cagNum=Category.num ;";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)
@@ -59,6 +59,8 @@ namespace VaccineTrackingSystem.Models.DAL
                 d.Add("quantity", read["quantity"].ToString());
                 d.Add("price", read["price"].ToString());
                 d.Add("batchNum", (string)read["batchNum"]);
+                d.Add("batchNum2", read["batchNum2"].ToString());
+                d.Add("suppliers", (string)read["suppliers"]);
                 list.Add(d);
             }
             SQL.Dispose();

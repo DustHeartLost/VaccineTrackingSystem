@@ -28,7 +28,7 @@ td {
     text-align: center;
     vertical-align:middle;
     color: #3d3d3d;
-    width:9%;
+    width:5%;
 }
 
 .dataRow {
@@ -50,7 +50,7 @@ th {
     font-size: medium;
     font-weight: bold;
     text-align: center;
-    width: 1%;
+    width: 0.3%;
     height: 40px;
 }
  

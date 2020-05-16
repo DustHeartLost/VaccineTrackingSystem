@@ -3,10 +3,10 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\"></td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td class=\"data\">" + data[i].id + "</td><td class=\"data\">" + data[i].stockID + "</td><td class=\"data\">" + data[i].batchNum + "</td><td class=\"data\">" + data[i].date + "</td><td class=\"data\">" + data[i].quantity + "</td><td class=\"data\">" + data[i].price + "</td><td class=\"data\">" + data[i].note + "</td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\"></td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td class=\"data\">" + data[i].id + "</td><td class=\"data\">" + data[i].stockID + "</td><td class=\"data\">" + data[i].batchNum + "</td><td class=\"data\">" + data[i].date + "</td><td class=\"data\">" + data[i].quantity + "</td><td class=\"data\">" + data[i].price + "</td><td class=\"data\">" + data[i].batchNum2 + "</td><td class=\"data\">" + data[i].suppliers + "</td><td class=\"data\">" + data[i].note + "</td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\"></td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td class=\"data\">" + data[i].id + "</td><td class=\"data\">" + data[i].stockID + "</td><td class=\"data\">" + data[i].batchNum + "</td><td class=\"data\">" + data[i].date + "</td><td class=\"data\">" + data[i].quantity + "</td><td class=\"data\">" + data[i].price + "</td><td class=\"data\">" + data[i].note + "</td></tr>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\" type=\"checkbox\"></td><td>" + data[i].cagNum + "</td><td>" + data[i].name + "</td><td>" + data[i].kind + "</td><td>" + data[i].spec + "</td><td class=\"data\">" + data[i].id + "</td><td class=\"data\">" + data[i].stockID + "</td><td class=\"data\">" + data[i].batchNum + "</td><td class=\"data\">" + data[i].date + "</td><td class=\"data\">" + data[i].quantity + "</td><td class=\"data\">" + data[i].price + "</td><td class=\"data\">" + data[i].batchNum2 + "</td><td class=\"data\">" + data[i].suppliers + "</td><td class=\"data\">" + data[i].note + "</td></tr>";
         }
     }
     $("#caption").after(html);
@@ -110,7 +110,9 @@ function destory() {
             obj.date = temp1[3];
             obj.quantity = temp1[4];
             obj.price = temp1[5];
-            obj.note = temp1[6];
+            obj.batchNum2 = temp1[6];
+            obj.suppliers = temp1[7];
+            obj.note = temp1[8];
             list.push(obj);
         }
     });
