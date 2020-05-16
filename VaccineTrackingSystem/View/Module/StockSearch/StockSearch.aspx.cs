@@ -155,7 +155,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             searchContext["cagName"] = jo["cagName"];
             searchContext["storeName"] = jo["storeName"];
             searchContext["cagNum"] = jo["cagNum"];
-            System.Diagnostics.Debug.Write(jo["cagName"].ToString() + jo["storeName"].ToString() + jo["cagNum"].ToString());
+            System.Diagnostics.Debug.Write(searchContext["cagName"].ToString() + searchContext["storeName"].ToString() + searchContext["cagNum"].ToString());
             string jsonData = Models.BLL.StockManage.CombinationQuery(storeID, JsonConvert.SerializeObject(jo), out msg, ref totalPage, ref currentPage, out money);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }

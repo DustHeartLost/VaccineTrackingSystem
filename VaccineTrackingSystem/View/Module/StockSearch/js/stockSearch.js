@@ -70,6 +70,7 @@ function search() {
             success: function (data) {
                 var tempT = JSON.parse(data.d);//返回的数据用data.d获取内容
                 if (tempT.code == 200) {
+                    alert(tempT.data);
                     reCreateTable(tempT.data, tempT.extra);
                     $("#showAll").show();
                     $("#up").show();
@@ -180,7 +181,7 @@ function tableExport() {
                 toExcel.saveExcel();
             }
             else
-                alert(temp.extra);
+                alert(temp.data);
         },
         error: function (err) {
             alert(err);

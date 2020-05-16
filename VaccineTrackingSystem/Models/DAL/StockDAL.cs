@@ -203,7 +203,7 @@ namespace VaccineTrackingSystem.Models.DAL
             if (storeID == -1 )
                 command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Category.num like '{keyWords["cagNum"].ToString()}' and Category.name like '{keyWords["cagName"].ToString()}' and Storeroom.name like '{keyWords["storeName"].ToString()}';";
             else
-                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Stock.storeID={storeID} and Category.num like '{keyWords["cagNum"].ToString()}' and Category.name like '{keyWords["cagName"].ToString()}'";
+                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Stock.storeID={storeID} and Category.num like '{keyWords["cagNum"].ToString()}' and Category.name like '{keyWords["cagName"].ToString()}'  and Storeroom.name like '{keyWords["storeName"].ToString()}'";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)
