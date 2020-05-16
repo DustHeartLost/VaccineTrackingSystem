@@ -21,10 +21,10 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
      <div style="float: left;">
-        <input type="text" placeholder="入库日期" id="dataSearch" class="sx_inp search-input" style="float: left;width:80px;margin-left:10px">
-        <input type="text" placeholder="药品名称" id="cagNameSearch" class="sx_inp search-input" style="float: left;width:80px;margin-left:10px">
-         <input type="text" placeholder="库房名称" id="storeNameSearch" class="sx_inp search-input" style="float: left;width:80px;margin-left:10px">
-        <input type="text" placeholder="药品编码" id="cagNumSearch" class="sx_inp search-input" style="float: left;width:80px;margin-left:10px">
+        <input type="text" placeholder="入库日期" id="dataSearch" class="mysearch-input" >
+        <input type="text" placeholder="药品名称" id="cagNameSearch" class="mysearch-input" >
+         <input type="text" placeholder="库房名称" id="storeNameSearch" class="mysearch-input">
+        <input type="text" placeholder="药品编码" id="cagNumSearch" class="mysearch-input">
         <input id="searchButton"  type="button" value="搜索" class="auto-style2" onclick="search()"/></div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">

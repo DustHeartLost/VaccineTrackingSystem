@@ -58,7 +58,8 @@ ul li a.list {
 	background: #f6f7f7;
 }
 .sx_ss .qu-form {
-	width: 540px;
+	width:90%;
+	/*width: 540px;*/
 	height: 40px;
 	padding-top: 31px;
 	padding-bottom: 23px;
@@ -81,7 +82,7 @@ ul li a.list {
 }
 
 .sx_inp {
-	width: 60%;
+	width: 15%;
 	height: 38px;
 	line-height: 38px;
 	border: none;
@@ -138,4 +139,17 @@ ul li a.list {
 	background: #2b2d3b;
 	color: #888889;
 	text-align: center;
+}
+.mysearch-input {
+	width: 20%;
+	height: 38px;
+	line-height: 38px;
+	background: #fff;
+	border: 1px solid #84ADEB;
+	font-size: 13px;
+	color: #939393;
+	padding-left: 8px;
+	font-family: "微软雅黑";
+	float: left;
+	margin-right:5px;
 }
