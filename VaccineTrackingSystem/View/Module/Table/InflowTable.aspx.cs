@@ -60,7 +60,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             switch (states)
             {
                 case 0: temp = Models.BLL.TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
-                case 1: temp = Models.BLL.TableManage.CombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
+                case 1: temp = Models.BLL.TableManage.InflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
@@ -75,7 +75,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             switch (states)
             {
                 case 0: temp = Models.BLL.TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
-                case 1: temp = Models.BLL.TableManage.CombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
+                case 1: temp = Models.BLL.TableManage.InflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
 
@@ -156,8 +156,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             searchContext["cagName"] = jo["cagName"];
             searchContext["storeName"] = jo["storeName"];
             searchContext["cagNum"] = jo["cagNum"];
-            System.Diagnostics.Debug.Write(jo["date"].ToString() + jo["cagName"].ToString() + jo["storeName"].ToString() + jo["cagNum"].ToString());
-            string jsonData = Models.BLL.TableManage.CombinationQuery(storeID, JsonConvert.SerializeObject(jo), out msg, ref totalPage, ref currentPage, out money);
+            string jsonData = Models.BLL.TableManage.InflowCombinationQuery(storeID, JsonConvert.SerializeObject(jo), out msg, ref totalPage, ref currentPage, out money);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 

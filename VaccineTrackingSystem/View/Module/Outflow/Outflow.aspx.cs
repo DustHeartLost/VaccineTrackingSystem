@@ -68,7 +68,10 @@ namespace VaccineTrackingSystem.View.Module.Outflow
         public static string SearchCon(string temp)
         {
             string msg;
-            string jsonData = Models.BLL.OutflowManage.QueryByCagNum(temp,storeId, out msg);
+            string t = "%";
+            for (int i = 0; i < temp.Length; i++)
+                t += temp[i] + "%";
+            string jsonData = Models.BLL.OutflowManage.QueryByCagName(t,storeId, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }

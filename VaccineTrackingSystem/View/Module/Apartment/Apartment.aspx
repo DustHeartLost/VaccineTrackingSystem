@@ -49,7 +49,7 @@
         <button id="update" class="upAnddown" onclick="showCheckBox()">修改部门</button>
         <button id="cancelUpdate"  class="upAnddown" onclick="cancelUpdate()">取消修改</button>
         <button id="confirmUpdate" class="upAnddown" onclick="confirmUpdate()">确认修改</button>
-         <button id="showAll" class="upAnddown" onclick="showAll()">返回</button>
+         <button id="showAll" class="upAnddown" onclick="showAll()">显示全部</button>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Table" runat="server">

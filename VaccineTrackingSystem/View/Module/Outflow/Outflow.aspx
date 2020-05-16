@@ -23,13 +23,13 @@
      </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-    <input type="text" placeholder="请输入药品编号进行精确查找" id="searchText" class="sx_inp search-input">
+    <input type="text" placeholder="请输入药品名称" id="searchText" class="sx_inp search-input">
     <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <button id="update" onclick="showCheckBox()" style="padding:5px">确认出库</button>
     <button id="addOutflow"  onclick="addOutflow()" style="padding:5px">出库</button>
-    <button id="returnAll"  onclick="returnAll()"  style="padding:5px">返回</button>
+    <button id="returnAll"  onclick="returnAll()"  style="padding:5px">显示全部</button>
     <div id="upAndDownArea" style="float: right;">
         <button id="up" class="upAnddown" onclick="up()"><</button>
         <button id="down" class="upAnddown" onclick="down()">></button>

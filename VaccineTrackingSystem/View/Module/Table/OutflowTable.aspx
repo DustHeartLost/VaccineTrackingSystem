@@ -22,12 +22,17 @@
     </ul>  
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-    <input type="text" placeholder="暂未添加功能" id="searchText" class="sx_inp search-input">
-    <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="confirm()"/>
+     <div style="float: left;">
+        <input type="text" placeholder="出库日期" id="dataSearch" class="mysearch-input" >
+        <input type="text" placeholder="药品名称" id="cagNameSearch" class="mysearch-input" >
+         <input type="text" placeholder="库房名称" id="storeNameSearch" class="mysearch-input">
+        <input type="text" placeholder="药品编码" id="cagNumSearch" class="mysearch-input">
+        <input id="searchButton"  type="button" value="搜索" class="auto-style2" onclick="search()"/></div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <label id="money" style="text-align:center;font-size:medium">共0元</label>
     <button id="export" type="button" onclick="tableExport()">导出</button>
+    <button id="showAll" onclick="showAll()" type="button">显示全部</button>
     <div id="upAndDownArea" style="float: right;">
         <button id="up" class="upAnddown" onclick="up()"><</button>
         <button id="down" class="upAnddown" onclick="down()">></button>

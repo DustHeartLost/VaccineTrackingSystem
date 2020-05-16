@@ -30,7 +30,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <label id="money" style="text-align:center;font-size:medium">共0元</label>
     <button id="export" type="button" onclick="tableExport()">导出</button>
-     <button id="showAll" onclick="showAll()" type="button">返回</button>
+     <button id="showAll" onclick="showAll()" type="button">显示全部</button>
     <div id="upAndDownArea" style="float: right;">
         <button id="up" class="upAnddown" onclick="up()"><</button>
         <button id="down" class="upAnddown" onclick="down()">></button>
