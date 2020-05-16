@@ -254,7 +254,7 @@ function concelAdd() {
 
 function addRecord() {
     html = "<tr id=\"newOne\" class=\"dataRow3\"  style=\"height:50px;width:130px\"><td></td><td></td><td contentEditable=\"true\" class=\"editTd\" style=\"background-color:white\"></td>";
-    for (var j = 0; j < 10; j++) html += "<td><select><option>拒绝</option ><option>允许</option></select></td>";
+    for (var j = 0; j < 7; j++) html += "<td><select><option>拒绝</option ><option>允许</option></select></td>";
     html += "<td contentEditable=\"true\" class=\"editTd\" style=\"background-color:white\"></td></tr>";
     $("#caption").after(html);
 }

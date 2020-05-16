@@ -104,7 +104,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
                 case 0: data = StockManage.QueryAll(storeID, num, out msg, ref money, ref totalPage, ref currentPage, true); break;
                 case 1: data = Models.BLL.StockManage.ExportConbinationInflow(storeID, JsonConvert.SerializeObject(searchContext), out msg, out money); ; break;
             }
-            return data != null ? JsonConvert.SerializeObject(new Packet(200, data)) : JsonConvert.SerializeObject(new Packet(201, "没有需要导出的数据"));
+            return data != null ? JsonConvert.SerializeObject(new Packet(200, data)) : JsonConvert.SerializeObject(new Packet(201, "该搜索条件下没有需要导出的记录"));
         }
 
         [System.Web.Services.WebMethod]

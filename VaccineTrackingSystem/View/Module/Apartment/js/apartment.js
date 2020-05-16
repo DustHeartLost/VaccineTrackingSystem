@@ -77,9 +77,9 @@ function confirmAdd() {
     $("#newOne").find("td").each(function () {
         //循环获取每行td的内容
             var sValue2 = $(this).text();//获取td里面的input内容 
-        tempCon = tempCon + sValue2 + "@@";
+        tempCon = tempCon + sValue2 + ";";
     });
-    var arr = tempCon.split("@@");
+    var arr = tempCon.split(";");
     if (arr[2] == "") {
         alert("请输入编号");
         return;

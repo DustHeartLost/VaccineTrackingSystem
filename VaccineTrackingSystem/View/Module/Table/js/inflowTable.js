@@ -108,7 +108,7 @@ function tableExport() {
                 toExcel.saveExcel();
             } 
             else
-               alert(temp.extra);
+               alert(temp.data);
         },
         error: function (err) {
             alert(err);

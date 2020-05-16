@@ -91,7 +91,7 @@ namespace VaccineTrackingSystem.View.Module.Table
                 case 0: temp = Models.BLL.TableManage.ExportOutflow(storeID, out msg, out money); break;
                 case 1: temp = Models.BLL.TableManage.ExportConbinationOutflow(storeID, JsonConvert.SerializeObject(searchContext), out msg, out money); break;
             }
-            return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{states}")) : JsonConvert.SerializeObject(new Packet(201, "该搜索条件下没有需要导出的记录"));
         }
 
         [System.Web.Services.WebMethod]
