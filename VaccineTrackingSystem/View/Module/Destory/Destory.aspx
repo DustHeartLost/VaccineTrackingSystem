@@ -36,7 +36,7 @@
     <div id="table">
         <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
-                <th></th>
+                <th class="checkbox"></th>
                 <th>药品编号</th>
                 <th>药品名称</th>
                 <th>药品类别</th>

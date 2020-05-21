@@ -15,17 +15,36 @@ tbody {
     width: 100%;
     display: block;
 }
+
 tr {
     width: 100%;
 }
-
 
 td {
     font-family: sans-serif;
     text-align: center;
     font-size: medium;
-    padding: 5px;
+    /*padding: 5px;*/
     color: #3d3d3d;
+}
+
+td.editTd {
+    background: #FDA7DF;
+}
+
+th:not(.checkbox) {
+    color: #4b4b4b;
+    /*color: #636e72;*/
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    width: 2%;
+    height: 60px;
+}
+
+th.checkbox {
+    width: 0.2%;
 }
 
 
@@ -45,17 +64,6 @@ td {
     background-color: #f7f1e3;
     margin: 0;
     padding: 0;
-}
-
-th {
-    color: #4b4b4b;
-    /*color: #636e72;*/
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: medium;
-    font-weight: bold;
-    text-align: center;
-    width: 1%;
-    height: 60px;
 }
 
 #searchButton {

@@ -56,7 +56,7 @@
     <div id="table">
         <table id="tableContainer">
             <tr id="caption">
-                <th></th><th>ID</th><th>名称</th><th>系统设置</th><th>基础数据管理</th><th>入库管理</th><th>出库管理</th><th>销毁管理</th><th>库存查询</th><th>报表管理</th><th>备注</th>
+                <th class="checkbox"></th><th>ID</th><th>名称</th><th>系统设置</th><th>基础数据管理</th><th>入库管理</th><th>出库管理</th><th>销毁管理</th><th>库存查询</th><th>报表管理</th><th>备注</th>
             </tr>
         </table>
     </div>

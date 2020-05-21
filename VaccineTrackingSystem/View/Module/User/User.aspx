@@ -64,7 +64,7 @@
     <div id="table">
         <table id="tableContainer">
             <tr id="caption">
-                <th></th><th>ID</th><th>用户名</th><th>密码</th><th>所在部门</th><th>职务</th><th>角色</th><th>员工编号</th><th>真实姓名</th>
+                <th class="checkbox"></th><th>ID</th><th>用户名</th><th>密码</th><th>所在部门</th><th>职务</th><th>角色</th><th>员工编号</th><th>真实姓名</th>
             </tr>
         </table>
     </div>

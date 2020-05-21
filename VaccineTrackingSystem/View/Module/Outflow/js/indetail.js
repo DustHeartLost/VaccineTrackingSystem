@@ -72,6 +72,7 @@ function clickCheck(obj) {
     });
     $(obj).closest("tr").find("td.editTd").each(function () {
         $(this).attr("contenteditable", true);
+        $(this).focus();
     });
 }
 
@@ -142,14 +143,14 @@ function confirmUpdate() {
                 temp += $(this).text() + "@@";
             });
             temp1 = temp.split("@@");
-            if (temp1[11] == "") { alert("请输入出库数量"); return; };
-            if (parseInt(temp1[7]) > parseInt(temp1[5])) { alert("出库数量超过明细记录数量"); return; };
+            if (temp1[13] == "") { alert("请输入出库数量"); return; };
+            if (parseInt(temp1[13]) > parseInt(temp1[9])) { alert("出库数量超过明细记录数量"); return; };
             var data1 = new Object();  
             data1.id = temp1[1];
             data1.stockID = temp1[2];
             data1.batchNum = temp1[7];
             data1.date = temp1[8];
-            data1.quantity = parseInt(temp1[13])+"";
+            data1.quantity = temp1[13];
             data1.price = temp1[10];
             data1.batchNum2 = temp1[11];
             data1.suppliers = temp1[12];

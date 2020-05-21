@@ -19,7 +19,6 @@
 <div class="login-wrap">
   <div data-v-b827f0d6="" class="topbar-wrap">
     <div data-v-b827f0d6="" class="layout-center clearfix">
-     <%-- <div data-v-b827f0d6="" class="logo"></div>--%>
       <div data-v-b827f0d6="" class="title">统一身份认证</div>
     </div>
   </div>
