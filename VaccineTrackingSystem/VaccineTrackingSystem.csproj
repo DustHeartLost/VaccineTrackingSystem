@@ -99,10 +99,11 @@
     <Content Include="View\Home\images\____.png" />
     <Content Include="View\Home\js\home.js" />
     <Content Include="View\Login\css\login.css" />
-    <Content Include="View\Login\images\bg.9500de7.jpg" />
-    <Content Include="View\Login\images\lock.png" />
+    <Content Include="View\Login\images\1590058321%281%29.png" />
+    <Content Include="View\Login\images\loginButtom.png" />
+    <Content Include="View\Login\images\textBg.png" />
     <Content Include="View\Login\images\user.png" />
-    <Content Include="View\Login\images\bg.9500de7%281%29.jpg" />
+    <Content Include="View\Login\images\lock.png" />
     <Content Include="View\Login\Login.aspx" />
     <Content Include="View\Module\Alert\Alert.aspx" />
     <Content Include="View\Module\Alert\css\alert.css" />
