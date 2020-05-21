@@ -20,17 +20,39 @@ tbody {
     padding: 0;
 }
 
+
 tr {
     width: 100%;
 }
 
-
 td {
     font-family: sans-serif;
-    text-align: left;
+    text-align: center;
     font-size: medium;
-    padding: 5px;
+    /*padding: 5px;*/
     color: #3d3d3d;
+}
+
+th:not(.checkbox) {
+    color: #4b4b4b;
+    /*color: #636e72;*/
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    width: 2%;
+    height: 60px;
+}
+
+th.checkbox {
+    width: 0.3%;
+    color: #4b4b4b;
+    /*color: #636e72;*/
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    height: 60px;
 }
 
 
@@ -52,18 +74,6 @@ td {
     padding: 0;
 }
 
-th {
-    color: #4b4b4b;
-    /*color: #636e72;*/
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: medium;
-    font-weight: bold;
-    padding-bottom: 10px;
-    text-align: left;
-    width: 4.9%;
-    height: 60px;
-    margin: 0;
-}
 
 .tr-mouseover {
     background-color: antiquewhite;

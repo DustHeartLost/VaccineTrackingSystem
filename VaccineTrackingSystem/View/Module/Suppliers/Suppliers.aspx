@@ -54,7 +54,7 @@
     <div id="table">
         <table id="tableContainer">
             <tr id="caption">
-                <th></th><th>ID</th><th>供应商名称</th><th>供应商代码</th>
+                <th class="checkbox"></th><th>ID</th><th>供应商名称</th><th>供应商代码</th>
             </tr>
         </table>
     </div>

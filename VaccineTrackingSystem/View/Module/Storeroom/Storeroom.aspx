@@ -53,7 +53,7 @@
     <div id="table">
         <table id="tableContainer">
             <tr id="caption">
-                <th></th>
+                <th class="checkbox"></th>
                 <th>ID</th>
                 <th>库房名称</th>
                 <th>所在位置</th>

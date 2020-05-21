@@ -54,7 +54,7 @@
      <div id="table">
         <table id="tableContainer">
             <tr id="caption">
-                <th></th>
+                <th class="checkbox"></th>
                 <th>ID</th>
                 <th>药品分类</th>
             </tr>

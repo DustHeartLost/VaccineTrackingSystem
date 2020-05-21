@@ -49,11 +49,11 @@
     <div id="table">
         <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
-                <th></th>
+                <th class="checkbox"></th>
                 <th>ID</th>
                 <th>剩余天数</th>
                 <th>警示颜色数值</th>
-                <th>示例颜色</th>
+                <th class="checkbox">示例颜色</th>
             </tr>
         </table>
     </div>

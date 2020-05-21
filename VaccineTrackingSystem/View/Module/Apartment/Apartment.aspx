@@ -56,7 +56,7 @@
     <div id="table">
         <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
-                <th></th>
+                <th class="checkbox"></th>
                 <th>部门ID</th>
                 <th>部门编号</th>
                 <th>部门名称</th>

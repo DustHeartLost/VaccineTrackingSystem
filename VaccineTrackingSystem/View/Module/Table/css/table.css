@@ -18,17 +18,30 @@ tbody {
 
 
 tr {
-    width:100%;
-    display:table
+    width: 100%;
 }
 
 td {
     font-family: sans-serif;
-    font-size: medium;
     text-align: center;
-    vertical-align:middle;
+    font-size: medium;
+    /*padding: 5px;*/
     color: #3d3d3d;
-    width:5%;
+}
+
+th:not(.checkbox) {
+    color: #4b4b4b;
+    /*color: #636e72;*/
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: medium;
+    font-weight: bold;
+    text-align: center;
+    width: 2%;
+    height: 60px;
+}
+
+th.checkbox {
+    width: 0.2%;
 }
 
 .dataRow {
@@ -41,17 +54,6 @@ td {
 
 .dataRow3 {
     background-color: #f7f1e3;
-}
-
-th {
-    color: #4b4b4b;
-    /*color: #636e72;*/
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: medium;
-    font-weight: bold;
-    text-align: center;
-    width: 0.3%;
-    height: 40px;
 }
  
 #upAndDownArea {

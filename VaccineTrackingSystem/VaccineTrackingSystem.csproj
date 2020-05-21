@@ -101,8 +101,8 @@
     <Content Include="View\Login\css\login.css" />
     <Content Include="View\Login\images\bg.9500de7.jpg" />
     <Content Include="View\Login\images\lock.png" />
-    <Content Include="View\Login\images\logo-white.6442b1c.png" />
     <Content Include="View\Login\images\user.png" />
+    <Content Include="View\Login\images\bg.9500de7%281%29.jpg" />
     <Content Include="View\Login\Login.aspx" />
     <Content Include="View\Module\Alert\Alert.aspx" />
     <Content Include="View\Module\Alert\css\alert.css" />
