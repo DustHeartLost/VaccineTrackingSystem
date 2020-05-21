@@ -40,11 +40,11 @@
         <asp:ImageButton ID="Submit" runat="server"  Width="250px" OnClick="submit" OnClientClick="return CheckForm()" ImageUrl="~/View/Login/images/loginButtom.png"/>
     </form>
   </div>
-<%--  <div data-v-759ce404="" class="footer-wrap">
+  <div data-v-759ce404="" class="footer-wrap">
     <div data-v-759ce404="" class="layout-center clearfix">
       <div data-v-759ce404="" class="title">Copyright © 吉林中新正大食品有限公司</div>
     </div>
-  </div>--%>
+  </div>
 </div>
 </body>
 </html>

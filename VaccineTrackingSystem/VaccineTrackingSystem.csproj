@@ -86,8 +86,7 @@
     <Content Include="View\Home\images\7._______________%281%29.png" />
     <Content Include="View\Home\images\7._______________.png" />
     <Content Include="View\Home\images\8._________________.png" />
-    <Content Include="View\Home\images\banner1.jpg" />
-    <Content Include="View\Home\images\footer-logo.png" />
+    <Content Include="View\Home\images\banner.jpg" />
     <Content Include="View\Home\images\icon28.png" />
     <Content Include="View\Home\images\logo.png" />
     <Content Include="View\Home\images\more.png" />
@@ -97,6 +96,7 @@
     <Content Include="View\Home\images\u=1612077127,393485524&amp;fm=26&amp;gp=0.jpg" />
     <Content Include="View\Home\images\____%281%29.png" />
     <Content Include="View\Home\images\____.png" />
+    <Content Include="View\Home\images\banner1.png" />
     <Content Include="View\Home\js\home.js" />
     <Content Include="View\Login\css\login.css" />
     <Content Include="View\Login\images\1590058321%281%29.png" />
@@ -161,8 +161,6 @@
     <Content Include="View\Module\User\js\user.js" />
     <Content Include="View\Module\User\User.aspx" />
     <Content Include="View\Template\css\taskcenter.css" />
-    <Content Include="View\Template\images\logo.png" />
-    <Content Include="View\Template\images\logo1.png" />
     <Content Include="View\Template\images\logo2.png" />
     <Content Include="View\Template\jquery\jquery-3.4.1.min.js" />
     <Content Include="Global.asax" />
