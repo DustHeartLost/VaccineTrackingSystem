@@ -20,7 +20,7 @@
         <li style="float:left;width:160px;"><a class="list" href="OutflowTable.aspx">出库流水</a></li></ul>  
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-     <div style="float: left;">
+     <div>
         <input type="text" placeholder="入库日期" id="dataSearch" class="mysearch-input" >
         <input type="text" placeholder="药品名称" id="cagNameSearch" class="mysearch-input" >
          <input type="text" placeholder="库房名称" id="storeNameSearch" class="mysearch-input">

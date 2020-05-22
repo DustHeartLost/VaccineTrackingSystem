@@ -115,7 +115,8 @@ function search() {
     obj.cagName = $("#cagNameSearch").val();
     obj.storeName = $("#storeNameSearch").val();
     obj.cagNum = $("#cagNumSearch").val();
-    if (obj.date != "" || obj.cagName != "" || obj.cagNum != "" || obj.storeName != "") {
+    obj.state = $("#select").find("option:selected").text();
+    if (obj.date != "" || obj.cagName != "" || obj.cagNum != "" || obj.storeName != "" || obj.state!="无") {
         $.ajax({
             type: "post",
             url: "OutflowTable.aspx/SearchCon",//方法所在页面和方法名

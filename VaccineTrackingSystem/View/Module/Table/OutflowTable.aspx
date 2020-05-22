@@ -22,11 +22,12 @@
     </ul>  
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-     <div style="float: left;">
+     <div>
         <input type="text" placeholder="出库日期" id="dataSearch" class="mysearch-input" >
         <input type="text" placeholder="药品名称" id="cagNameSearch" class="mysearch-input" >
          <input type="text" placeholder="库房名称" id="storeNameSearch" class="mysearch-input">
         <input type="text" placeholder="药品编码" id="cagNumSearch" class="mysearch-input">
+         <select id="select" class="mysearch-input" style="height:42px"><option>无</option><option>正常出库</option><option>过期作废</option></select>
         <input id="searchButton"  type="button" value="搜索" class="auto-style2" onclick="search()"/></div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
