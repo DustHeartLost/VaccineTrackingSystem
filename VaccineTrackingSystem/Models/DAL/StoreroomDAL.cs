@@ -9,7 +9,7 @@ namespace VaccineTrackingSystem.Models.DAL
     {
         static public bool Add(Storeroom storeroom, out string msg)
         {
-            string command = $"insert into Storeroom(name,site,userNum) values('{storeroom.name}','{storeroom.site}','{storeroom.userNum}');";
+            string command = $"insert into Storeroom(name,site) values('{storeroom.name}','{storeroom.site}');";
             try
             {
                 msg = null;
@@ -32,7 +32,7 @@ namespace VaccineTrackingSystem.Models.DAL
         static public bool Update(Storeroom storeroom, out string msg)
         {
             
-            string command = $"update Storeroom set name = '{storeroom.name}',site = '{storeroom.site}',userNum = '{storeroom.userNum}' where id = '{storeroom.id}'";
+            string command = $"update Storeroom set name = '{storeroom.name}',site = '{storeroom.site}' where id = '{storeroom.id}'";
             try
             {
                 msg = null;
@@ -53,7 +53,7 @@ namespace VaccineTrackingSystem.Models.DAL
         }
         static public List<Dictionary<string, string>> Query(string name, out string msg)
         {
-            string command = $"select Storeroom.id,Storeroom.name,Storeroom.site,Storeroom.userNum,[User].name as username  from Storeroom,[User] where Storeroom.userNum=[User].num and Storeroom.name = '{name}'";
+            string command = $"select Storeroom.id,Storeroom.name,Storeroom.site  from Storeroom where Storeroom.name = '{name}'";
             SqlDataReader read = SQL.getReader(command);
             if (!read.HasRows)
             {
@@ -68,7 +68,6 @@ namespace VaccineTrackingSystem.Models.DAL
                 dictionary.Add("id", read["id"].ToString());
                 dictionary.Add("name", read["name"].ToString());
                 dictionary.Add("site", read["site"].ToString());
-                dictionary.Add("userNum", read["username"].ToString()+"("+ read["userNum"].ToString()+")");
                 list.Add(dictionary);
             }
             SQL.Dispose();
@@ -77,7 +76,7 @@ namespace VaccineTrackingSystem.Models.DAL
         }
         static public List<Dictionary<string, string>> QueryAll(out string msg)
         {
-            string command = $"select Storeroom.id,Storeroom.name,Storeroom.site,Storeroom.userNum,[User].name as username  from Storeroom,[User] where Storeroom.userNum=[User].num";
+            string command = $"select Storeroom.id,Storeroom.name,Storeroom.site  from Storeroom";
             SqlDataReader read = SQL.getReader(command);
             if (!read.HasRows)
             {
@@ -92,7 +91,6 @@ namespace VaccineTrackingSystem.Models.DAL
                 dictionary.Add("id", read["id"].ToString());
                 dictionary.Add("name", read["name"].ToString());
                 dictionary.Add("site", read["site"].ToString());
-                dictionary.Add("userNum", read["username"].ToString()+"("+ read["userNum"].ToString()+")");
                 list.Add(dictionary);
             }
             SQL.Dispose();
@@ -100,17 +98,43 @@ namespace VaccineTrackingSystem.Models.DAL
             return list;
         }
 
+
         //新加的按照用户编号查询的接口2020-04-07
         static public Storeroom QueryByUserNum(string userNum)
         {
-            string command = $"select id from Storeroom where userNum = '{userNum}'";
+            string command = $"select storeID from [User] where num = '{userNum}'";
             SqlDataReader read = SQL.getData(command);
-            if (read==null)
+            if (read == null)
             {
                 SQL.Dispose();
                 return null;
             }
-            Storeroom storeroom = new Storeroom((int)read["id"], null, null, null);
+            if((int)read["storeID"]==-1)
+            {
+                SQL.Dispose();
+                return null;
+            }
+            Storeroom storeroom = new Storeroom((int)read["storeID"], null, null, null);
+            SQL.Dispose();
+            return storeroom;
+        }
+
+        //新增查找id-name(site) 5-21
+        public static Dictionary<string, int> GetStoreroom()
+        {
+            string command = $"select id,name,site from Storeroom";
+            SqlDataReader read = SQL.getReader(command);
+            if (read == null)
+            {
+                SQL.Dispose();
+                return null;
+            }
+            Dictionary<string, int> storeroom = new Dictionary<string, int>();
+            storeroom.Add("无",-1);
+            while (read.Read())
+            {
+                storeroom.Add((string)read["name"] + "(" + (string)read["site"] + ")", (int)read["id"]);
+            }
             SQL.Dispose();
             return storeroom;
         }

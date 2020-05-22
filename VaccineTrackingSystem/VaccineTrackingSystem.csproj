@@ -116,6 +116,9 @@
     <Content Include="View\Module\Destory\css\destory.css" />
     <Content Include="View\Module\Destory\Destory.aspx" />
     <Content Include="View\Module\Destory\js\destory.js" />
+    <Content Include="View\Module\Distribution\css\distribution.css" />
+    <Content Include="View\Module\Distribution\Distribution.aspx" />
+    <Content Include="View\Module\Distribution\js\distribution.js" />
     <Content Include="View\Module\Drug\css\drug.css" />
     <Content Include="View\Module\Drug\Drug.aspx" />
     <Content Include="View\Module\Drug\js\drug.js" />
@@ -249,6 +252,13 @@
     </Compile>
     <Compile Include="View\Module\Destory\Destory.aspx.designer.cs">
       <DependentUpon>Destory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Module\Distribution\Distribution.aspx.cs">
+      <DependentUpon>Distribution.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Module\Distribution\Distribution.aspx.designer.cs">
+      <DependentUpon>Distribution.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Module\Drug\Drug.aspx.cs">
       <DependentUpon>Drug.aspx</DependentUpon>

@@ -53,5 +53,35 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return UserDAL.GetUser();
         }
+
+
+        static public string QueryUserStoreroom(int num,ref int totalPage, ref int currentPage ,out string msg)
+        {
+            List<Dictionary<string, string>> list = UserDAL.QueryUserStoreroom(num, out msg);
+            if (list == null)
+            {
+                totalPage = 0;
+                currentPage = -1;
+                return null;
+            }
+            totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
+            if (list.Count != 0 && list.Count % 10 == 0)
+                --totalPage;
+            if (currentPage < totalPage)
+                ++currentPage;
+            try
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
+            }
+        }
+
+        static public bool UpdateUserStoreroom(int userId, int storeId, out string msg)
+        {
+            return UserDAL.UpdateUserStoreroom(userId,storeId, out msg);
+        }
     }
 }

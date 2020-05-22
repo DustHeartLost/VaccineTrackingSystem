@@ -38,7 +38,8 @@
          <li style="float:left;width:160px;"><a class="list" href="../Apartment/Apartment.aspx" >机构管理</a></li>
          <li style="float:left;width:160px;"><a class="list"  href="../Role/Role.aspx">角色管理</a></li>
          <li style="float:left;width:160px;"><a class="list" href="#"style="background-color:#63b5de9c">用户管理</a></li>
-         <li style="float:left;width:160px;"><a class="list" href="../Alert/Alert.aspx">提醒定义</a></li> 
+         <li style="float:left;width:160px;"><a class="list" href="../Distribution/Distribution.aspx">库房绑定</a></li> 
+        <li style="float:left;width:160px;"><a class="list" href="../Alert/Alert.aspx">提醒定义</a></li> 
     </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
@@ -64,7 +65,15 @@
     <div id="table">
         <table id="tableContainer">
             <tr id="caption">
-                <th class="checkbox"></th><th>ID</th><th>用户名</th><th>密码</th><th>所在部门</th><th>职务</th><th>角色</th><th>员工编号</th><th>真实姓名</th>
+                <th class="checkbox"></th>
+                <th>编号</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>所在部门</th>
+                <th>职务</th>
+                <th>角色</th>
+                <th>员工编号</th>
+                <th>真实姓名</th>
             </tr>
         </table>
     </div>
