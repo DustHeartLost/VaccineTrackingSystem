@@ -150,11 +150,12 @@ namespace VaccineTrackingSystem.View.Module.Table
             }
             else
                 jo["cagNum"] = "%";
+            if (jo["state"].ToString() == "无") jo["state"] = "%";
             searchContext["date"] = jo["date"];
             searchContext["cagName"] = jo["cagName"];
             searchContext["storeName"] = jo["storeName"];
             searchContext["cagNum"] = jo["cagNum"];
-            System.Diagnostics.Debug.Write(jo["date"].ToString() + jo["cagName"].ToString() + jo["storeName"].ToString() + jo["cagNum"].ToString());
+            searchContext["state"] = jo["state"];
             string jsonData = Models.BLL.TableManage.OutflowCombinationQuery(storeID, JsonConvert.SerializeObject(jo), out msg, ref totalPage, ref currentPage, out money);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }

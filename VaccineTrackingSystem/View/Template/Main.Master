@@ -20,15 +20,10 @@
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
-	 <div class="alk-header" >
-		<div class="header-box">
-	          药品疫苗库存管理系统V1.0
-        </div>
-    </div>
 	<div>
 		<div class="sysu-contents">
 				<div class="header-box">
-					<div class="alk-header-title"><img src="/View/Template/images/logo2.png" alt=""></div>
+					<div class="alk-header-title"><img src="/View/Template/images/logo2.png" style="width:100%" alt=""></div>
 					
         		</div>
 		</div>

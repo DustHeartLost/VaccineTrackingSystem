@@ -41,7 +41,7 @@
 <!--banner-->
 <div class="htmleaf-container">
     <div>
-        <img src="images/banner1.jpg" alt="Bootstrap Touch Slider" class="slide-image" style="height: 400px;width: 100%">
+        <img src="images/banner1.png" alt="Bootstrap Touch Slider" class="slide-image" style="height: 400px;width: 100%">
         <div class="container">
             <div class="slide-text slide_style_center">
                 

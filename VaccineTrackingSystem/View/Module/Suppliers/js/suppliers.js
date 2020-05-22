@@ -44,6 +44,7 @@ function reCreateTable(temp, extra) {
 }
 
 function showCheckBox() {
+    global = 1;
     $(".checkBox").show();
     $("#cancelUpdate").show();
     $("#confirmUpdate").show();

@@ -174,10 +174,10 @@ input{
     border-radius:4px 4px 0 0;
     margin-right:5px;
 }
-.student_menu .student-tab ul li.on {
-    background:#007ccc;
-    color: #fff;
-}
+    .student_menu .student-tab ul li.on {
+        background: #a82428;
+        color: #ddd831;
+    }
 /*tabList*/
 .student_menu .student-tabList {
     height: auto;
@@ -352,13 +352,13 @@ input{
 	padding-right:20px;
 }
 
-.copy-footer{
-	width:100%;
-	height:50px;
-	line-height:50px;
-	background:#2b2d3b;
-	color:#888889;
-	text-align:center;
+.copy-footer {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: #a82428;
+    color: #ddd831;
+    text-align: center;
 }
 
 /*---------------------------------------------------------------------------服务中心--------------------------------------------------------------*/

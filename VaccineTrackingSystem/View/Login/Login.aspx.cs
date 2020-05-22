@@ -50,7 +50,7 @@ namespace VaccineTrackingSystem.VIew.Login
 
         }
 
-        protected void submit(object sender, EventArgs e)
+        protected void submit(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             string msg;
             if (LoginManage.Login(Username.Text, Password.Text, out msg))

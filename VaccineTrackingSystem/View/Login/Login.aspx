@@ -17,27 +17,27 @@
 </head>
 <body>
 <div class="login-wrap">
-  <div data-v-b827f0d6="" class="topbar-wrap">
+<%--  <div data-v-b827f0d6="" class="topbar-wrap">
     <div data-v-b827f0d6="" class="layout-center clearfix">
       <div data-v-b827f0d6="" class="title">统一身份认证</div>
     </div>
-  </div>
+  </div>--%>
+    <div><img src="images/1590058321(1).png" style="width:100%;float:left;margin-top:100px"/></div>
   <div class="main-center">
     <form id="login" runat="server">
-      <div class="formtitle"><span class="student">疫苗追踪系统</span> </div>
-      <div class="input-item"><i class="fa fa-user-o fa-lg login-icon loginname-icon"><img src="images/user.png" /></i>
-          <asp:TextBox ID="Username" runat="server" placeholder="请输入账号" CssClass="formtitle"></asp:TextBox>
+      <div class="input-item"><i class="fa fa-user-o fa-lg login-icon loginname-icon"><img src="images/user.png" style="width:100%;height:100%"/></i>
+          <asp:TextBox ID="Username" runat="server"  CssClass="formtitle"></asp:TextBox>
       </div>
-      <div class="input-item"><i class="fa fa-lock fa-lg login-icon loginpass-icon"><img src="images/lock.png" /></i>
-          <asp:TextBox ID="Password"  runat="server" TextMode="Password" placeholder="请输入密码" CssClass="hasvertificode"></asp:TextBox>
+        <div class="input-item"><i class="fa fa-user-o fa-lg login-icon loginname-icon"><img src="images/lock.png" style="width:100%;height:100%"/></i>
+          <asp:TextBox ID="Password" runat="server" TextMode="Password"  CssClass="formtitle"></asp:TextBox>
       </div>
       <!---->
      
-    <div class="showMessage"></div>
-      <%--<input type="button" name="login_submit" id="login-submit" value="登录">--%>
+    <div class="showMessage">
+        
+        </div>
       <input type="hidden" name="_eventId" value="submit">
-       <asp:Button ID="Submit" runat="server" Text="登录" BackColor="#007CCC" Font-Bold="True" Font-Size="Medium" ForeColor="White" Height="46px" Width="250px" OnClick="submit" OnClientClick="return CheckForm()"/>
-    
+        <asp:ImageButton ID="Submit" runat="server"  Width="250px" OnClick="submit" OnClientClick="return CheckForm()" ImageUrl="~/View/Login/images/loginButtom.png"/>
     </form>
   </div>
   <div data-v-759ce404="" class="footer-wrap">
