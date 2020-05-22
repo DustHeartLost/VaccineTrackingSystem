@@ -52,14 +52,14 @@ namespace VaccineTrackingSystem.Models.DAL
         //    msg = null;
         //    return indetail;
         //}
-        static public List<Dictionary<string,string>> QueryByStockID(int stockID, out string msg)
+        static public List<Dictionary<string, string>> QueryByStockID(int stockID, out string msg)
         {
-            string command = $"with temp as(select Stock.cagNum,Indetail.id,stockID,batchNum,date,Indetail.quantity,price,Indetail.batchNum2,Indetail.suppliers,Indetail.note from Indetail,Stock where stockID = '{stockID}' and Indetail.stockID=Stock.id) "+
+            string command = $"with temp as(select Stock.cagNum,Indetail.id,stockID,batchNum,date,Indetail.quantity,price,Indetail.batchNum2,Indetail.suppliers,Indetail.note from Indetail,Stock where stockID = '{stockID}' and Indetail.stockID=Stock.id) " +
                              "select temp.cagNum,Category.name,Category.kind,Category.spec,temp.id,temp.stockID,temp.batchNum,temp.date,temp.quantity,temp.price,temp.batchNum2,temp.suppliers,temp.note " +
-                             "from temp,Category "+
+                             "from temp,Category " +
                              "where Category.num = cagNum;";
             SqlDataReader read;
-            read = SQL.getReader(command); 
+            read = SQL.getReader(command);
             if (!read.HasRows)
             {
                 msg = "查询结果为空";
@@ -82,7 +82,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 d.Add("price", read["price"].ToString());
                 d.Add("batchNum2", read["batchNum2"].ToString());
                 d.Add("suppliers", read["suppliers"].ToString());
-                d.Add("note",read["note"].ToString());
+                d.Add("note", read["note"].ToString());
                 list.Add(d);
             }
             SQL.Dispose();

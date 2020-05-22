@@ -12,11 +12,11 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
 {
     public partial class StockSearch : System.Web.UI.Page
     {
-        protected static int storeID ;
+        protected static int storeID;
         protected static int totalPage;
         protected static int currentPage;
         protected static int states;
-        protected static string num=null;
+        protected static string num = null;
         protected static JObject searchContext = new JObject();
         protected static List<string> drugs;
         protected static List<string> store;
@@ -24,7 +24,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         {
             totalPage = 0;
             currentPage = -1;
-            states =0;
+            states = 0;
             if (HttpContext.Current.Session["user"] == null)
                 Response.Write("<script language='javascript'>alert('登录信息过期，请重新登录');location.href='../../Login/Login.aspx'</script>");
             else
@@ -39,41 +39,44 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
                     storeID = -1;
                 };
             }
-            drugs=DrugManage.GetDrug().Keys.ToList();
+            drugs = DrugManage.GetDrug().Keys.ToList();
             store = StoreManage.GetStoreroom().Keys.ToList();
         }
 
         [WebMethod]
-        public static string GetAll() {
+        public static string GetAll()
+        {
             string msg;
             decimal money = 0;
             states = 0;
-            string data = StockManage.QueryAll(storeID,null, out msg,ref money,ref totalPage, ref currentPage,false);
+            string data = StockManage.QueryAll(storeID, null, out msg, ref money, ref totalPage, ref currentPage, false);
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}+{storeID}", JsonConvert.SerializeObject(drugs), JsonConvert.SerializeObject(store))) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
-        public static string precise(string temp) {
+        public static string precise(string temp)
+        {
             if (temp == null) return JsonConvert.SerializeObject(new Packet(201, "请输入药品编号"));
             string msg;
             decimal money = 0;
-            string data=StockManage.Query(storeID, temp,out msg,ref money, ref totalPage, ref currentPage);
-            if (data != null) { 
-                states = 1; 
+            string data = StockManage.Query(storeID, temp, out msg, ref money, ref totalPage, ref currentPage);
+            if (data != null)
+            {
+                states = 1;
                 num = temp;
                 return JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}"));
             }
-            return  JsonConvert.SerializeObject(new Packet(201, msg));
+            return JsonConvert.SerializeObject(new Packet(201, msg));
         }
-        
+
         [WebMethod]
         public static string GetDown()
         {
             string data = "";
-            string msg="";
+            string msg = "";
             decimal money = 0;
             switch (states)
             {
-                case 0:data=GetAll();return data;
+                case 0: data = GetAll(); return data;
                 case 1: data = Models.BLL.StockManage.CombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
@@ -100,7 +103,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         [WebMethod]
         public static string ExportALL()
         {
-            string data="";
+            string data = "";
             string msg;
             decimal money = 0;
             switch (states)
@@ -157,7 +160,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             else
                 jo["cagNum"] = "%";
 
-            string drugTemp= jo["drug"].ToString();
+            string drugTemp = jo["drug"].ToString();
             if (drugTemp == "无(请选择品类名称)")
                 jo["drug"] = "%";
             searchContext["cagName"] = jo["cagName"];

@@ -13,7 +13,7 @@ namespace VaccineTrackingSystem.View.Module.User
     {
         protected static int totalPage;
         protected static int currentPage;
-        protected static Dictionary<string ,int> roles;
+        protected static Dictionary<string, int> roles;
         protected static Dictionary<string, int> apartment;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,7 +40,7 @@ namespace VaccineTrackingSystem.View.Module.User
         public static string GetDown()
         {
             string msg;
-            string jsonData =UserManage.QueryAll(out msg, ref totalPage, ref currentPage);
+            string jsonData = UserManage.QueryAll(out msg, ref totalPage, ref currentPage);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
@@ -60,7 +60,7 @@ namespace VaccineTrackingSystem.View.Module.User
             string msg;
             string password;
             if (jo["password"].ToString().Equals("******")) password = null;
-            else password= LoginManage.GenerateMD5(jo["password"].ToString());
+            else password = LoginManage.GenerateMD5(jo["password"].ToString());
             int apartID = apartment[jo["apartID"].ToString()];
             int roleID = roles[jo["roleID"].ToString()];
             Models.User user = new Models.User((int)jo["id"], jo["userName"].ToString(), password, apartID, jo["job"].ToString(), roleID, jo["num"].ToString(), jo["name"].ToString());
@@ -81,8 +81,8 @@ namespace VaccineTrackingSystem.View.Module.User
         [WebMethod]
         public static string SearchCon(string temp)
         {
-           string t="%";
-           for (int i = 0; i < temp.Length; i++)
+            string t = "%";
+            for (int i = 0; i < temp.Length; i++)
                 t += temp[i] + "%";
             string msg;
             totalPage = 0;
@@ -91,11 +91,12 @@ namespace VaccineTrackingSystem.View.Module.User
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
-        public static string GetData() {
+        public static string GetData()
+        {
             if (roles == null) return JsonConvert.SerializeObject(new Packet(201, "没有角色列表,请增加角色后刷新重试"));
             if (apartment == null) return JsonConvert.SerializeObject(new Packet(201, "没有机构列表,请增加机构后刷新重试"));
-            return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(roles.Keys),JsonConvert.SerializeObject(apartment.Keys)));
+            return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(roles.Keys), JsonConvert.SerializeObject(apartment.Keys)));
         }
-        
+
     }
 }

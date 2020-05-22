@@ -1,6 +1,5 @@
 ﻿using DAL;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 
@@ -10,7 +9,7 @@ namespace VaccineTrackingSystem.Models.BLL
     {
         static public string QueryTodayRecoder(int storeID, string nowTime, out string msg, ref int totalPage, ref int currentPage)
         {
-             List<Dictionary<string,string>> list=InflowDAL.QueryTodayRecoder(storeID, nowTime, out msg);
+            List<Dictionary<string, string>> list = InflowDAL.QueryTodayRecoder(storeID, nowTime, out msg);
             if (list == null)
             {
                 msg = "今日无入库记录";
@@ -36,7 +35,7 @@ namespace VaccineTrackingSystem.Models.BLL
         static public bool InWarehouse(Inflow inflow, out string msg)
         {
             List<string> list = new List<string>();
-            list.Add(string.Format(" insert into Inflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers) values ('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}')", inflow.cagNum,inflow.storeID, inflow.date, inflow.userNum, inflow.quantity, inflow.price, inflow.batchNum, inflow.batchNum2, inflow.suppliers));
+            list.Add(string.Format(" insert into Inflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers) values ('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}')", inflow.cagNum, inflow.storeID, inflow.date, inflow.userNum, inflow.quantity, inflow.price, inflow.batchNum, inflow.batchNum2, inflow.suppliers));
             if (StockDAL.QueryByCagNum(inflow.cagNum, inflow.storeID, out msg) == null)
             {
                 Stock stock = new Stock(inflow.cagNum, inflow.storeID, 0, 0);
@@ -46,7 +45,7 @@ namespace VaccineTrackingSystem.Models.BLL
             list.Add(string.Format("update Stock set cagNum = '{0}', storeID = {1}, quantity = quantity+{2}, money = money+{2}*{3} where id in (select id as stockId from Stock where cagNum = '{0}' and storeID = {1}) ", inflow.cagNum, inflow.storeID, inflow.quantity, inflow.price));
 
             list.Add(string.Format("insert into Indetail (stockID,batchNum,date,quantity,price,batchNum2,suppliers,note) values ((select id as stockId from Stock where cagNum = '{0}' and storeID = {1}),'{2}','{3}',{4},{5},'{6}','{7}','{8}') ", inflow.cagNum, inflow.storeID, inflow.batchNum, inflow.date, inflow.quantity, inflow.price, inflow.batchNum2, inflow.suppliers, inflow.notes));
-            bool bol = SQL.ExecuteTransaction(list,out msg);
+            bool bol = SQL.ExecuteTransaction(list, out msg);
             if (bol)
             {
                 msg = "入库成功";

@@ -29,12 +29,12 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
         static public bool Update(User user, out string msg)
-        { 
+        {
             string command;
             if (user.password != null)
                 command = $"update [User] set userName = '{user.userName}',password = '{user.password}',apartID =  '{user.apartID}',job = '{user.job}',roleID = '{user.roleID}',num = '{user.num}',name = '{user.name}' where id = '{user.id}'";
             else
-                command= $"update [User] set userName = '{user.userName}',apartID =  '{user.apartID}',job = '{user.job}',roleID = '{user.roleID}',num = '{user.num}',name = '{user.name}' where id = '{user.id}'";
+                command = $"update [User] set userName = '{user.userName}',apartID =  '{user.apartID}',job = '{user.job}',roleID = '{user.roleID}',num = '{user.num}',name = '{user.name}' where id = '{user.id}'";
             try
             {
                 msg = null;
@@ -55,21 +55,21 @@ namespace VaccineTrackingSystem.Models.DAL
         }
         static public bool UpdateByName(string userName, string password, out string msg)
         {
-                string command = $"update [User] set password = '{password}' where userName = '{userName}'";
-                try
-                {
-                    msg = null;
-                    return SQL.Excute(command);
-                }
-                catch (Exception e)
-                {
-                    msg = e.Message;
-                    System.Diagnostics.Debug.Write(msg);
-                    return false;
-                }
+            string command = $"update [User] set password = '{password}' where userName = '{userName}'";
+            try
+            {
+                msg = null;
+                return SQL.Excute(command);
+            }
+            catch (Exception e)
+            {
+                msg = e.Message;
+                System.Diagnostics.Debug.Write(msg);
+                return false;
+            }
         }
-      
-        static public List<Dictionary<string,string>> Query(string name, out string msg)
+
+        static public List<Dictionary<string, string>> Query(string name, out string msg)
         {
             string command;
             if (name == null)
@@ -86,10 +86,10 @@ namespace VaccineTrackingSystem.Models.DAL
             List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
             while (read.Read())
             {
-                Dictionary<string,string> d = new Dictionary<string,string>();
+                Dictionary<string, string> d = new Dictionary<string, string>();
                 d.Add("id", read["id"].ToString());
                 d.Add("userName", read["userName"].ToString());
-                d.Add("apartID",(string)read["apartID"]+"("+(string)read["apartNum"] +")");
+                d.Add("apartID", (string)read["apartID"] + "(" + (string)read["apartNum"] + ")");
                 d.Add("job", read["job"].ToString());
                 d.Add("roleID", read["roleID"].ToString());
                 d.Add("num", read["num"].ToString());
@@ -133,15 +133,15 @@ namespace VaccineTrackingSystem.Models.DAL
             Dictionary<string, string> list = new Dictionary<string, string>();
             while (read.Read())
             {
-                list.Add((string)read["name"]+"("+(string)read["num"]+")", read["num"].ToString());
-               
+                list.Add((string)read["name"] + "(" + (string)read["num"] + ")", read["num"].ToString());
+
             }
             SQL.Dispose();
             return list;
         }
 
 
-        
+
         static public List<Dictionary<string, string>> QueryUserStoreroom(string name, out string msg)
         {
             string command;
@@ -170,10 +170,10 @@ namespace VaccineTrackingSystem.Models.DAL
                 d.Add("roleID", read["roleID"].ToString());
                 d.Add("num", read["num"].ToString());
                 d.Add("name", read["name"].ToString());
-                if(read["site"].ToString().Equals("无"))
+                if (read["site"].ToString().Equals("无"))
                     d.Add("storeName", "无");
-                else 
-                   d.Add("storeName", (string)read["storeName"] + "(" + (string)read["site"] + ")");
+                else
+                    d.Add("storeName", (string)read["storeName"] + "(" + (string)read["site"] + ")");
                 list.Add(d);
             }
             SQL.Dispose();

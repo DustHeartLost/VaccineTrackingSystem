@@ -50,7 +50,7 @@ namespace VaccineTrackingSystem.View.Module.Suppliers
         [System.Web.Services.WebMethod]
         public static string Update(string temp)
         {
-            Models.Entity.Suppliers suppliers= JsonConvert.DeserializeObject<Models.Entity.Suppliers>(temp);
+            Models.Entity.Suppliers suppliers = JsonConvert.DeserializeObject<Models.Entity.Suppliers>(temp);
             string msg;
             return Models.BLL.SupplierManage.Update(suppliers, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }

@@ -64,7 +64,7 @@ namespace VaccineTrackingSystem.Models.DAL
             Dictionary<string, int> alert = new Dictionary<string, int>();
             while (read.Read())
             {
-                alert.Add((string)read["color"] , (int)read["days"]);
+                alert.Add((string)read["color"], (int)read["days"]);
             }
             SQL.Dispose();
             return alert;

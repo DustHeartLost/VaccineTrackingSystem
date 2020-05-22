@@ -35,7 +35,7 @@
         /*供应商*/
         public string suppliers;
 
-        public Outflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum,string batchNum2 ,string suppliers,string state)
+        public Outflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2, string suppliers, string state)
         {
             this.id = id;
             this.cagNum = cagNum;
@@ -49,7 +49,7 @@
             this.batchNum2 = batchNum2;
             this.suppliers = suppliers;
         }
-        public Outflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2, string suppliers,string state)
+        public Outflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2, string suppliers, string state)
         {
             this.cagNum = cagNum;
             this.storeID = storeID;

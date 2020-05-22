@@ -25,7 +25,7 @@
             this.extra = extra;
             this.extra2 = extra2;
         }
-        public Packet(int code, string data, string extra, string extra2,string extra3)
+        public Packet(int code, string data, string extra, string extra2, string extra3)
         {
             this.code = code;
             this.data = data;

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -23,10 +22,12 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             else
             {
                 Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
-                try {
+                try
+                {
                     storeId = int.Parse(user["storeID"]);
                 }
-                catch { 
+                catch
+                {
                     Response.Write("<script language='javascript'>alert('您没有绑定的仓库');location.href='../../Home/Home.aspx'</script>");
                 };
                 userNum = user["num"];
@@ -42,7 +43,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
                 currentPage--;
             }
             string msg;
-            string nowTime= DateTime.Now.ToString("yyyy-MM-dd");
+            string nowTime = DateTime.Now.ToString("yyyy-MM-dd");
             string jsonData = Models.BLL.InflowManage.QueryTodayRecoder(storeId, nowTime, out msg, ref totalPage, ref currentPage);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }

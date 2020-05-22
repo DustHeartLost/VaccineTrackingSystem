@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using VaccineTrackingSystem.Models.DAL;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -25,7 +23,8 @@ namespace VaccineTrackingSystem.Models.BLL
             List<Alert> list = AlertDAL.QueryAll(out msg);
             return list != null ? JsonConvert.SerializeObject(list) : null;
         }
-        static public string GetAlert() {
+        static public string GetAlert()
+        {
             Dictionary<string, int> list = new Dictionary<string, int>();
             return list != null ? JsonConvert.SerializeObject(list) : null;
         }

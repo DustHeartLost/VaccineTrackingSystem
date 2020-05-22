@@ -1,9 +1,6 @@
 ﻿using DAL;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.EnterpriseServices;
-using System.Globalization;
 using VaccineTrackingSystem.Models.DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
@@ -30,7 +27,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 }
             }
             string nowTime = DateTime.Now.ToString("yyyy-MM-dd");
-       
+
             for (int i = 0; i < indetails.Count; i++)
             {
                 if (Convert.ToDateTime(indetails[i]["batchNum"]) >= Convert.ToDateTime(nowTime))
@@ -61,7 +58,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 return list.GetRange(currentPage * 10, list.Count - currentPage * 10);
             }
         }
-    
+
         static private List<Dictionary<string, string>> SortDate(List<Dictionary<string, string>> indetailList)
         {
             string date = DateTime.Now.ToString("yyyy-MM-dd");
@@ -77,7 +74,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 tempdate = Convert.ToDateTime(time1);
                 for (int j = i + 1; j < indetailList.Count; j++)
                 {
-                    string time2 = indetailList[j]["batchNum"] ;
+                    string time2 = indetailList[j]["batchNum"];
                     DateTime indetaildt = Convert.ToDateTime(time2);
                     if (indetaildt > tempdate)
                     {
@@ -126,13 +123,13 @@ namespace VaccineTrackingSystem.Models.BLL
                     return false;
                 }
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
-                Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetails[i].price, indetails[i].batchNum, indetails[i].batchNum2,indetails[i].suppliers, "过期作废");
+                Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetails[i].price, indetails[i].batchNum, indetails[i].batchNum2, indetails[i].suppliers, "过期作废");
                 if (indetails[i].quantity == 0)
                 {
 
                     list.Add(string.Format(" delete from Indetail where id ={0}", indetails[i].id));
                     list.Add(string.Format("update Stock set cagNum = '{0}', storeID = {1}, quantity = {2}, money = {3} where id = {4} ", stock.cagNum, stock.storeID, stock.quantity, stock.money, stock.id));
-                    list.Add(string.Format("insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers,state) values('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}','{9}')", outflow.cagNum, outflow.storeID, outflow.date, outflow.userNum, outflow.quantity, outflow.price, outflow.batchNum, outflow.batchNum2, outflow.suppliers, outflow.state)); 
+                    list.Add(string.Format("insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers,state) values('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}','{9}')", outflow.cagNum, outflow.storeID, outflow.date, outflow.userNum, outflow.quantity, outflow.price, outflow.batchNum, outflow.batchNum2, outflow.suppliers, outflow.state));
 
                 }
                 else
@@ -145,7 +142,7 @@ namespace VaccineTrackingSystem.Models.BLL
 
             }
 
-            bool bol = SQL.ExecuteTransaction(list,out msg);
+            bool bol = SQL.ExecuteTransaction(list, out msg);
             if (bol)
             {
                 msg = "销毁成功";

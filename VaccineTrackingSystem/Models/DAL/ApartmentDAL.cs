@@ -1,5 +1,4 @@
 ﻿using DAL;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -22,13 +21,14 @@ namespace VaccineTrackingSystem.Models.DAL
                 {
                     msg = "部门编号重复";
                 }
-                else { 
+                else
+                {
                     msg = e.Message;
-                }   
+                }
                 return false;
             }
         }
-        
+
         static public bool Update(Apartment apartment, out string msg)
         {
             string command = $"update Apartment set num = '{apartment.num}',name = '{apartment.name}',note =  '{apartment.note}' where id = '{apartment.id}'";
@@ -71,14 +71,14 @@ namespace VaccineTrackingSystem.Models.DAL
             string command = $"select id,num,name from Apartment";
             SqlDataReader read = SQL.getReader(command);
             if (read == null)
-            {   
+            {
                 SQL.Dispose();
                 return null;
             }
-            Dictionary<string,int> apartment = new Dictionary<string,int>();
+            Dictionary<string, int> apartment = new Dictionary<string, int>();
             while (read.Read())
             {
-                apartment.Add((string)read["name"]+"("+(string)read["num"]+")", (int)read["id"]);
+                apartment.Add((string)read["name"] + "(" + (string)read["num"] + ")", (int)read["id"]);
             }
             SQL.Dispose();
             return apartment;

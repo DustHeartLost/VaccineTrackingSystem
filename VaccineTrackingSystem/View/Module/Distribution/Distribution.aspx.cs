@@ -2,11 +2,8 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using VaccineTrackingSystem.Models.BLL;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -34,7 +31,7 @@ namespace VaccineTrackingSystem.View.Module.Distribution
                 currentPage--;
             }
             string msg;
-            string jsonData = UserManage.QueryUserStoreroom(null,ref totalPage, ref currentPage, out msg);
+            string jsonData = UserManage.QueryUserStoreroom(null, ref totalPage, ref currentPage, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
@@ -58,7 +55,7 @@ namespace VaccineTrackingSystem.View.Module.Distribution
         public static string Update(string temp)
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
-            string msg; 
+            string msg;
             int storeId = storerooms[jo["storeName"].ToString()];
             return UserManage.UpdateUserStoreroom((int)jo["id"], storeId, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }

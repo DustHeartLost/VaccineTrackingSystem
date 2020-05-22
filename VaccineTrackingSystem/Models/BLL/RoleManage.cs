@@ -21,27 +21,31 @@ namespace VaccineTrackingSystem.Models.BLL
             if (RoleDAL.Query(name, out msg) != null)
                 roles.Add(RoleDAL.Query(name, out msg));
             else
-               return null;
+                return null;
             return JsonConvert.SerializeObject(roles);
         }
-        static public string QueryAll(out string msg,ref int totalPage,ref int currentPage)
+        static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
-            List<Role>list=RoleDAL.QueryAll(out msg);
-            if (list == null) {
+            List<Role> list = RoleDAL.QueryAll(out msg);
+            if (list == null)
+            {
                 totalPage = 0;
                 currentPage = -1;
                 return null;
-            } 
-            totalPage = (int)System.Math.Floor((decimal)(list.Count/10));
+            }
+            totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             if (list.Count != 0 && list.Count % 10 == 0)
                 --totalPage;
-            if (currentPage < totalPage) 
+            if (currentPage < totalPage)
                 ++currentPage;
-            try {
+            try
+            {
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
-            } catch {
+            }
+            catch
+            {
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
-            }            
+            }
         }
         static public Dictionary<string, int> GetRole()
         {

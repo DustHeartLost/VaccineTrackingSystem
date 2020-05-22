@@ -22,13 +22,13 @@
 
         /****供应商***/
         public string suppliers;
-        
+
         /****批号***/
         public string batchNum2;
 
         /****备注***/
         public string note;
-        public Indetail(int id, int stockID, string batchNum, string date, int quantity, decimal price,  string batchNum2,string suppliers,string note)
+        public Indetail(int id, int stockID, string batchNum, string date, int quantity, decimal price, string batchNum2, string suppliers, string note)
         {
             this.id = id;
             this.stockID = stockID;

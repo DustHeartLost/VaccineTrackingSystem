@@ -1,11 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.Module.StockSearch
@@ -14,7 +9,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
     {
         protected static int totalPage;
         protected static int currentPage;
-        protected static int stockID=-1;
+        protected static int stockID = -1;
         protected static string information;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -33,7 +28,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
                 currentPage--;
             }
             string msg;
-            string jsonData = Models.BLL.StockManage.QueryInDetail(stockID, ref totalPage, ref currentPage,out msg);
+            string jsonData = Models.BLL.StockManage.QueryInDetail(stockID, ref totalPage, ref currentPage, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{information}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]

@@ -24,7 +24,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 return null;
             return JsonConvert.SerializeObject(apartments);
         }
-        static public string QueryAll(out string msg,ref int totalPage, ref int currentPage)
+        static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
             List<Apartment> list = ApartmentDAL.QueryAll(out msg);
             if (list == null)

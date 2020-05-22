@@ -1,12 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using VaccineTrackingSystem.Models;
 using VaccineTrackingSystem.Models.Entity;
 
@@ -29,7 +25,7 @@ namespace VaccineTrackingSystem.View.Module.Destory
             else
             {
                 Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
-                num=user["num"].ToString();
+                num = user["num"].ToString();
                 try
                 {
                     storeID = int.Parse(user["storeID"]);
@@ -73,24 +69,26 @@ namespace VaccineTrackingSystem.View.Module.Destory
         public static string DestoryAllRecord()
         {
             string msg1;
-            List<Dictionary<string,string>> temp = Models.BLL.DestoryManage.Query(storeID, ref totalPage, ref currentPage, out msg1);
-            if (temp == null) {
+            List<Dictionary<string, string>> temp = Models.BLL.DestoryManage.Query(storeID, ref totalPage, ref currentPage, out msg1);
+            if (temp == null)
+            {
                 return JsonConvert.SerializeObject(new Packet(201, msg1));
             }
             List<Indetail> list = new List<Indetail>();
-            foreach (Dictionary<string, string> read in temp) {
-                Indetail d = new Indetail(int.Parse(read["id"]), int.Parse(read["stockID"]),read["batchNum"],read["date"],int.Parse(read["quantity"]),decimal.Parse(read["price"]), read["batchNum2"], read["suppliers"], read["note"]);
+            foreach (Dictionary<string, string> read in temp)
+            {
+                Indetail d = new Indetail(int.Parse(read["id"]), int.Parse(read["stockID"]), read["batchNum"], read["date"], int.Parse(read["quantity"]), decimal.Parse(read["price"]), read["batchNum2"], read["suppliers"], read["note"]);
                 list.Add(d);
             }
             string msg;
-            return Models.BLL.DestoryManage.Destory(list, num, out msg)? JsonConvert.SerializeObject(new Packet(200,null)): JsonConvert.SerializeObject(new Packet(202, msg));
+            return Models.BLL.DestoryManage.Destory(list, num, out msg) ? JsonConvert.SerializeObject(new Packet(200, null)) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
         [WebMethod]
         public static string DestoryRecord(string temp)
         {
             List<Indetail> list = JsonConvert.DeserializeObject<List<Indetail>>(temp);
             string msg;
-            return Models.BLL.DestoryManage.Destory(list, num, out msg) ? JsonConvert.SerializeObject(new Packet(200,JsonConvert.SerializeObject(Models.BLL.DestoryManage.Query(storeID, ref totalPage, ref currentPage, out msg)), $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(202, msg));
+            return Models.BLL.DestoryManage.Destory(list, num, out msg) ? JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(Models.BLL.DestoryManage.Query(storeID, ref totalPage, ref currentPage, out msg)), $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
     }
 }

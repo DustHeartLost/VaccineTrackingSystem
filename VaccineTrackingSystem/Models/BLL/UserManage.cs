@@ -17,12 +17,12 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public string Query(string name, out string msg)
         {
-            List<Dictionary<string, string>> list = UserDAL.Query(name,out msg);
-            return list != null?JsonConvert.SerializeObject(list): null;
+            List<Dictionary<string, string>> list = UserDAL.Query(name, out msg);
+            return list != null ? JsonConvert.SerializeObject(list) : null;
         }
         static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {
-            List<Dictionary<string,string>> list = UserDAL.Query(null,out msg);
+            List<Dictionary<string, string>> list = UserDAL.Query(null, out msg);
             if (list == null)
             {
                 totalPage = 0;
@@ -55,7 +55,7 @@ namespace VaccineTrackingSystem.Models.BLL
         }
 
 
-        static public string QueryUserStoreroom(string name,ref int totalPage, ref int currentPage ,out string msg)
+        static public string QueryUserStoreroom(string name, ref int totalPage, ref int currentPage, out string msg)
         {
             List<Dictionary<string, string>> list = UserDAL.QueryUserStoreroom(name, out msg);
             if (list == null)
@@ -81,7 +81,7 @@ namespace VaccineTrackingSystem.Models.BLL
 
         static public bool UpdateUserStoreroom(int userId, int storeId, out string msg)
         {
-            return UserDAL.UpdateUserStoreroom(userId,storeId, out msg);
+            return UserDAL.UpdateUserStoreroom(userId, storeId, out msg);
         }
     }
 }

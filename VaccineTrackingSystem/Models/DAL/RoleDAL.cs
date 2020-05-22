@@ -1,5 +1,4 @@
 ﻿using DAL;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -85,7 +84,7 @@ namespace VaccineTrackingSystem.Models.DAL
             msg = null;
             return list;
         }
-        static public Dictionary<string,int> GetRole()
+        static public Dictionary<string, int> GetRole()
         {
             string command = $"select id,name from role;";
             SqlDataReader read = SQL.getReader(command);
@@ -97,7 +96,7 @@ namespace VaccineTrackingSystem.Models.DAL
             Dictionary<string, int> role = new Dictionary<string, int>();
             while (read.Read())
             {
-                role.Add((string)read["name"] ,(int)read["id"]);
+                role.Add((string)read["name"], (int)read["id"]);
             }
             SQL.Dispose();
             return role;

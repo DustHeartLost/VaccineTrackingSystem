@@ -54,7 +54,7 @@ namespace VaccineTrackingSystem.View.Module.Apartment
         {
             string[] strArray = apt.Split(';');
             string msg;
-            Models.Apartment apartment1=new Models.Apartment(strArray[2], strArray[3],strArray[4]);
+            Models.Apartment apartment1 = new Models.Apartment(strArray[2], strArray[3], strArray[4]);
             return Models.BLL.ApartManage.Add(apartment1, out msg) ? JsonConvert.SerializeObject(new Packet(200, "插入成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
         }
 
@@ -63,7 +63,7 @@ namespace VaccineTrackingSystem.View.Module.Apartment
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
-            Models.Apartment apartment= new Models.Apartment((int)jo["id"], jo["num"].ToString(), jo["name"].ToString(), jo["note"].ToString());
+            Models.Apartment apartment = new Models.Apartment((int)jo["id"], jo["num"].ToString(), jo["name"].ToString(), jo["note"].ToString());
             return Models.BLL.ApartManage.Update(apartment, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
 

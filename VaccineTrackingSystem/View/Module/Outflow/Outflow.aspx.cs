@@ -1,12 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Web.Services;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.Module.Outflow
@@ -71,7 +67,7 @@ namespace VaccineTrackingSystem.View.Module.Outflow
             string t = "%";
             for (int i = 0; i < temp.Length; i++)
                 t += temp[i] + "%";
-            string jsonData = Models.BLL.OutflowManage.QueryByCagName(t,storeId, out msg);
+            string jsonData = Models.BLL.OutflowManage.QueryByCagName(t, storeId, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }

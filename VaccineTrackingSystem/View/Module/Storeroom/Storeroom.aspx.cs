@@ -37,7 +37,7 @@ namespace VaccineTrackingSystem.View.Module.Storeroom
         public static string GetDown()
         {
             string msg;
-            string jsonData =StoreManage.QueryAll(out msg, ref totalPage, ref currentPage);
+            string jsonData = StoreManage.QueryAll(out msg, ref totalPage, ref currentPage);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
@@ -55,7 +55,7 @@ namespace VaccineTrackingSystem.View.Module.Storeroom
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
-            Models.Storeroom storeroom = new Models.Storeroom((int)jo["id"],jo["name"].ToString(), jo["site"].ToString(), "");
+            Models.Storeroom storeroom = new Models.Storeroom((int)jo["id"], jo["name"].ToString(), jo["site"].ToString(), "");
             return StoreManage.Update(storeroom, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
 
@@ -81,10 +81,10 @@ namespace VaccineTrackingSystem.View.Module.Storeroom
         [WebMethod]
         public static string GetData()
         {
-            if (users == null || users.Count==0) return JsonConvert.SerializeObject(new Packet(201, "暂无库管员,请增加后刷新重试"));
+            if (users == null || users.Count == 0) return JsonConvert.SerializeObject(new Packet(201, "暂无库管员,请增加后刷新重试"));
             return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(users.Keys)));
         }
-        
+
 
     }
 }

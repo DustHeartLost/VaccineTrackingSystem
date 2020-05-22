@@ -22,7 +22,8 @@ namespace VaccineTrackingSystem.VIew.Module.Role
         [System.Web.Services.WebMethod]
         public static string GetALL()
         {
-            if (currentPage !=-1) {
+            if (currentPage != -1)
+            {
                 currentPage--;
             }
             string msg;
@@ -34,7 +35,7 @@ namespace VaccineTrackingSystem.VIew.Module.Role
         {
             string msg;
             string jsonData = Models.BLL.RoleManage.QueryAll(out msg, ref totalPage, ref currentPage);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage+1}+{currentPage+1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [System.Web.Services.WebMethod]
         public static string GetUp()
@@ -47,11 +48,12 @@ namespace VaccineTrackingSystem.VIew.Module.Role
         }
 
         [System.Web.Services.WebMethod]
-        public static string Update(string temp) {
-            JObject jo =(JObject)JsonConvert.DeserializeObject(temp);
+        public static string Update(string temp)
+        {
+            JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
-            Models.Role role = new Models.Role((int)jo["id"],jo["name"].ToString(),jo["authority"].ToString(), jo["note"].ToString());
-            return Models.BLL.RoleManage.Update(role, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")):JsonConvert.SerializeObject(new Packet(202, msg));
+            Models.Role role = new Models.Role((int)jo["id"], jo["name"].ToString(), jo["authority"].ToString(), jo["note"].ToString());
+            return Models.BLL.RoleManage.Update(role, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
 
         [System.Web.Services.WebMethod]
@@ -62,7 +64,7 @@ namespace VaccineTrackingSystem.VIew.Module.Role
             Models.Role role = new Models.Role(jo["name"].ToString(), jo["authority"].ToString(), jo["note"].ToString());
             return Models.BLL.RoleManage.Add(role, out msg) ? JsonConvert.SerializeObject(new Packet(200, "插入成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
         }
-    
+
 
         [WebMethod]
         public static string SearchCon(string temp)
@@ -70,7 +72,7 @@ namespace VaccineTrackingSystem.VIew.Module.Role
             string msg;
             totalPage = 0;
             currentPage = 0;
-            string jsonData = Models.BLL.RoleManage.Query(temp,out msg);
+            string jsonData = Models.BLL.RoleManage.Query(temp, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }

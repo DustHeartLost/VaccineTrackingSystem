@@ -7,10 +7,10 @@ namespace VaccineTrackingSystem.Models.BLL
 {
     public class TableManage
     {
-        static public string queryAllInflow(int storeID, ref int inflowTotalPage, ref int inflowCurrentPage,  out string msg, out decimal money)
+        static public string queryAllInflow(int storeID, ref int inflowTotalPage, ref int inflowCurrentPage, out string msg, out decimal money)
         {
             money = 0m;
-            List<Dictionary<string,string>> list = InflowDAL.QueryAllByStoreID(storeID, out msg);
+            List<Dictionary<string, string>> list = InflowDAL.QueryAllByStoreID(storeID, out msg);
             if (list == null)
             {
                 inflowTotalPage = 0;
@@ -18,8 +18,9 @@ namespace VaccineTrackingSystem.Models.BLL
                 return null;
             }
             msg = null;
-            foreach (Dictionary<string, string> d in list) {
-                money += decimal.Parse(d["price"] )* decimal.Parse(d["quantity"]);
+            foreach (Dictionary<string, string> d in list)
+            {
+                money += decimal.Parse(d["price"]) * decimal.Parse(d["quantity"]);
             }
             inflowTotalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             if (list.Count != 0 && list.Count % 10 == 0)
@@ -41,11 +42,11 @@ namespace VaccineTrackingSystem.Models.BLL
             money = 0m;
             List<Dictionary<string, string>> list = OutflowDAL.QueryAllByStoreID(storeID, out msg);
             if (list == null)
-                {
-                    outflowTotalPage = 0;
-                    outflowCurrentPage = -1;
-                    return null;
-                }
+            {
+                outflowTotalPage = 0;
+                outflowCurrentPage = -1;
+                return null;
+            }
             msg = null;
             foreach (Dictionary<string, string> d in list)
             {
@@ -66,7 +67,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
 
-        static public string ExportInflow(int storeID,out string msg, out decimal money)
+        static public string ExportInflow(int storeID, out string msg, out decimal money)
         {
             money = 0m;
             List<Dictionary<string, string>> list = InflowDAL.QueryAllByStoreID(storeID, out msg);
@@ -79,7 +80,7 @@ namespace VaccineTrackingSystem.Models.BLL
             foreach (Dictionary<string, string> d in list)
             {
                 money += decimal.Parse(d["price"]) * decimal.Parse(d["quantity"]);
-            } 
+            }
             return JsonConvert.SerializeObject(list);
         }
 
@@ -123,7 +124,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 ++currentPage;
             try
             {
-                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10)); 
+                return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, 10));
             }
             catch
             {
@@ -179,7 +180,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 return JsonConvert.SerializeObject(list.GetRange(currentPage * 10, list.Count - currentPage * 10));
             }
         }
-        
+
         static public string ExportConbinationOutflow(int storeID, string keyWords, out string msg, out decimal money)
         {
             money = 0m;

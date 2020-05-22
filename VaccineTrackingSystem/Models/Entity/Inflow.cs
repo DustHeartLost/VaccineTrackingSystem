@@ -35,7 +35,7 @@
         /***备注***/
         public string notes;
 
-        public Inflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum,string batchNum2,string suppliers)
+        public Inflow(int id, string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2, string suppliers)
         {
             this.id = id;
             this.cagNum = cagNum;
@@ -60,7 +60,7 @@
             this.batchNum2 = batchNum2;
             this.suppliers = suppliers;
         }
-        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2, string suppliers,string notes)
+        public Inflow(string cagNum, int storeID, string date, string userNum, int quantity, decimal price, string batchNum, string batchNum2, string suppliers, string notes)
         {
             this.cagNum = cagNum;
             this.storeID = storeID;

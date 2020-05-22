@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
 using VaccineTrackingSystem.Models.Entity;
@@ -52,16 +51,16 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
 
-        static public bool Destory(List<int> drugs,out string msg)
+        static public bool Destory(List<int> drugs, out string msg)
         {
             if (drugs == null || drugs.Count == 0)
             {
                 msg = "没有记录需要销毁";
                 return false;
             }
-            for(int i = 0; i < drugs.Count; i++)
+            for (int i = 0; i < drugs.Count; i++)
             {
-                if(!DrugDAL.Delete(drugs[i],out msg))
+                if (!DrugDAL.Delete(drugs[i], out msg))
                 {
                     return false;
                 }

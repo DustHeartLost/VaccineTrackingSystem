@@ -1,5 +1,4 @@
 ﻿using DAL;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -31,7 +30,7 @@ namespace VaccineTrackingSystem.Models.DAL
 
         static public bool Update(Storeroom storeroom, out string msg)
         {
-            
+
             string command = $"update Storeroom set name = '{storeroom.name}',site = '{storeroom.site}' where id = '{storeroom.id}'";
             try
             {
@@ -109,7 +108,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            if((int)read["storeID"]==-1)
+            if ((int)read["storeID"] == -1)
             {
                 SQL.Dispose();
                 return null;
@@ -130,7 +129,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 return null;
             }
             Dictionary<string, int> storeroom = new Dictionary<string, int>();
-            storeroom.Add("无",-1);
+            storeroom.Add("无", -1);
             while (read.Read())
             {
                 storeroom.Add((string)read["name"] + "(" + (string)read["site"] + ")", (int)read["id"]);

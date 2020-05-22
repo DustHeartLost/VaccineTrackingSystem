@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Web;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.Module.Outflow
 {
-    
+
     public partial class Indetail : System.Web.UI.Page
     {
         protected static int totalPage;
@@ -23,12 +20,12 @@ namespace VaccineTrackingSystem.View.Module.Outflow
             currentPage = -1;
             Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
             userNum = user["num"].ToString();
-            if(userNum==null || userNum=="")
+            if (userNum == null || userNum == "")
             {
                 Response.Write("<script language='javascript'>alert('登录过期')</script>");
                 Response.Redirect("../../Login/Login.aspx");
             }
-            
+
         }
 
         [System.Web.Services.WebMethod]
@@ -39,7 +36,7 @@ namespace VaccineTrackingSystem.View.Module.Outflow
                 currentPage--;
             }
             string msg;
-            string jsonData = Models.BLL.OutflowManage.QueryIndetail(stockId,out msg, ref totalPage, ref currentPage);
+            string jsonData = Models.BLL.OutflowManage.QueryIndetail(stockId, out msg, ref totalPage, ref currentPage);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [System.Web.Services.WebMethod]
@@ -55,7 +52,7 @@ namespace VaccineTrackingSystem.View.Module.Outflow
             if (currentPage == -1 || currentPage == 0) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
             currentPage -= 2;
             string msg;
-            string jsonData = Models.BLL.OutflowManage.QueryIndetail(stockId,out msg, ref totalPage, ref currentPage);
+            string jsonData = Models.BLL.OutflowManage.QueryIndetail(stockId, out msg, ref totalPage, ref currentPage);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
@@ -65,7 +62,7 @@ namespace VaccineTrackingSystem.View.Module.Outflow
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
             int a;
-            if (!int.TryParse(jo["quantity"].ToString(),out a)){ return JsonConvert.SerializeObject(new Packet(202, "出库数量格式错误，请输入数字")); }
+            if (!int.TryParse(jo["quantity"].ToString(), out a)) { return JsonConvert.SerializeObject(new Packet(202, "出库数量格式错误，请输入数字")); }
             return Models.BLL.OutflowManage.OutWarehouse((int)jo["id"], a, userNum, out msg) ? JsonConvert.SerializeObject(new Packet(200, "出库成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
 

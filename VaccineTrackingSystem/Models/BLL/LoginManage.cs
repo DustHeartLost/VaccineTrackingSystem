@@ -44,7 +44,7 @@ namespace VaccineTrackingSystem.Models.BLL
             {
                 nsb.Append(nb.ToString("x2"));
             }
-        return nsb.ToString();
+            return nsb.ToString();
         }
     }
 }

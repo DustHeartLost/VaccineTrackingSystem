@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.Models.DAL
 {
     public class DrugDAL
     {
-        static public bool Add(Drug drug,out string msg)
+        static public bool Add(Drug drug, out string msg)
         {
             string command = $"insert into Drug(kind) values('{drug.kind}');";
             try

@@ -77,7 +77,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
 
-        static public string QueryAll(int storeID, string num, out string msg, ref decimal money, ref int totalPage, ref int currentPage,bool flag)
+        static public string QueryAll(int storeID, string num, out string msg, ref decimal money, ref int totalPage, ref int currentPage, bool flag)
         {
             List<Dictionary<string, string>> list = StockDAL.QueryStockDetail(storeID, num, out msg);
             if (list == null)
@@ -111,7 +111,7 @@ namespace VaccineTrackingSystem.Models.BLL
             money = 0m;
             JObject keys = (JObject)JsonConvert.DeserializeObject(keyWords);
             List<Dictionary<string, string>> list = StockDAL.CombinationQuery(keys, storeID, out msg);
-            if (list == null|| list.Count==0)
+            if (list == null || list.Count == 0)
             {
                 msg = "搜索结果为空";
                 totalPage = 0;
@@ -142,7 +142,7 @@ namespace VaccineTrackingSystem.Models.BLL
             money = 0m;
             JObject keys = (JObject)JsonConvert.DeserializeObject(keyWords);
             List<Dictionary<string, string>> list = StockDAL.CombinationQuery(keys, storeID, out msg);
-            if (list == null|| list.Count==0)
+            if (list == null || list.Count == 0)
             {
                 msg = "没有需要导出的记录";
                 return null;

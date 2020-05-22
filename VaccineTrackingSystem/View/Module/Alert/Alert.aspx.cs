@@ -22,7 +22,7 @@ namespace VaccineTrackingSystem.View.Module.Alert
             string jsonData = Models.BLL.AlertManage.QueryAll(out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData)) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
-       
+
 
         [WebMethod]
         public static string AddRecord(string data)
@@ -45,15 +45,16 @@ namespace VaccineTrackingSystem.View.Module.Alert
         public static string Update(string data)
         {
             string msg;
-            Models.Entity.Alert alert=null;
+            Models.Entity.Alert alert = null;
             try
             {
                 alert = JsonConvert.DeserializeObject<Models.Entity.Alert>(data);
             }
-            catch {
+            catch
+            {
                 return JsonConvert.SerializeObject(new Packet(202, "剩余天数格式为数字,例：30"));
             }
-            if(!IsHexadecimal(alert.color)) return JsonConvert.SerializeObject(new Packet(202, "颜色数值为16进制数"));
+            if (!IsHexadecimal(alert.color)) return JsonConvert.SerializeObject(new Packet(202, "颜色数值为16进制数"));
             return Models.BLL.AlertManage.Update(alert, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
 

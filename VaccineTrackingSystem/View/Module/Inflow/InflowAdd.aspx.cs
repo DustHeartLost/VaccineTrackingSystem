@@ -44,9 +44,12 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             string nowTime = DateTime.Now.ToString("yyyy-MM-dd");
             int quantity;
             decimal price;
-            try { 
+            try
+            {
                 quantity = int.Parse(jo["quantity"].ToString());
-            } catch {
+            }
+            catch
+            {
                 return JsonConvert.SerializeObject(new Packet(203, "数量格式错误，请输入数字"));
             }
 
@@ -61,15 +64,15 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             string cagNum = jo["cagNum"].ToString();
             string batchNum = jo["batchNum"].ToString();
             string batchNum2 = jo["batchNum2"].ToString();
-            string suppliers=jo["suppliers"].ToString();
-            string notes= jo["notes"].ToString();
+            string suppliers = jo["suppliers"].ToString();
+            string notes = jo["notes"].ToString();
             if (!category.ContainsKey(cagNum)) return JsonConvert.SerializeObject(new Packet(203, "输入的药品品类不存在"));
             cagNum = category[jo["cagNum"].ToString()];
             if (!suppliers.Contains(suppliers)) return JsonConvert.SerializeObject(new Packet(203, "输入的供应商不存在"));
             try
             {
                 DateTime dt = DateTime.ParseExact(batchNum, "yyyyMMdd", System.Globalization.CultureInfo.CurrentCulture);
-                Models.Inflow inflow = new Models.Inflow(cagNum, storeId, nowTime, userNum, quantity, price, dt.ToString("yyyy-MM-dd"), batchNum2, suppliers,notes);
+                Models.Inflow inflow = new Models.Inflow(cagNum, storeId, nowTime, userNum, quantity, price, dt.ToString("yyyy-MM-dd"), batchNum2, suppliers, notes);
                 return InflowManage.InWarehouse(inflow, out msg) ? JsonConvert.SerializeObject(new Packet(200, "入库成功")) : JsonConvert.SerializeObject(new Packet(203, msg));
             }
             catch
@@ -81,8 +84,8 @@ namespace VaccineTrackingSystem.View.Module.Inflow
         [System.Web.Services.WebMethod]
         public static string GetData()
         {
-            int code=200;
-            if( (category == null || category.Count == 0) &&(suppliers==null || suppliers.Count==0))return JsonConvert.SerializeObject(new Packet(201, "暂无药品品类和供应商,请增加后相关数据后刷新重试"));
+            int code = 200;
+            if ((category == null || category.Count == 0) && (suppliers == null || suppliers.Count == 0)) return JsonConvert.SerializeObject(new Packet(201, "暂无药品品类和供应商,请增加后相关数据后刷新重试"));
             if ((category == null || category.Count == 0) && (suppliers != null || suppliers.Count != 0)) code = 205;
             if ((category != null || category.Count != 0) && (suppliers == null || suppliers.Count == 0)) code = 206;
             return JsonConvert.SerializeObject(new Packet(code, JsonConvert.SerializeObject(category.Keys), JsonConvert.SerializeObject(suppliers)));

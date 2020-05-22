@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using VaccineTrackingSystem.Models.DAL;
+﻿using DAL;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
-using VaccineTrackingSystem.Models.Entity;
 using System.Linq;
-using DAL;
+using VaccineTrackingSystem.Models.DAL;
+using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
@@ -38,7 +38,7 @@ namespace VaccineTrackingSystem.Models.BLL
         }
 
         //根据药品编码查找库存记录
-        static public string QueryByCagNum( string cagNum,int storeID, out string msg)
+        static public string QueryByCagNum(string cagNum, int storeID, out string msg)
         {
             List<Dictionary<string, string>> list = StockDAL.QueryCagNum(cagNum, storeID, out msg);
             return list != null ? JsonConvert.SerializeObject(list) : null;
@@ -54,7 +54,7 @@ namespace VaccineTrackingSystem.Models.BLL
         //单品明细数据进行批号排序，返回list  4/7
         static public string QueryIndetail(int stockID, out string msg, ref int totalPage, ref int currentPage)
         {
-            List<Dictionary<string,string>> list= IndetailDAL.QueryByStockID(stockID, out msg);
+            List<Dictionary<string, string>> list = IndetailDAL.QueryByStockID(stockID, out msg);
             List<Alert> alerts = AlertDAL.QueryAll(out msg);
             if (list == null)
             {
@@ -78,15 +78,15 @@ namespace VaccineTrackingSystem.Models.BLL
                 for (int i = 0; i < sortList.Count; i++)
                 {
                     int nowColor = AlertManage.GetInterval(sortList[i]["batchNum"], alerts);
-                    if(nowColor!=-1)
+                    if (nowColor != -1)
                     {
                         sortList[i].Add("color", alerts[nowColor].color.ToString());
                     }
                     else
-                        sortList[i].Add("color","");
+                        sortList[i].Add("color", "");
                 }
             }
-           
+
             totalPage = (int)System.Math.Floor((decimal)(sortList.Count / 10));
             if (list.Count != 0 && list.Count % 10 == 0)
                 --totalPage;
@@ -106,9 +106,9 @@ namespace VaccineTrackingSystem.Models.BLL
         {
 
             string date = DateTime.Now.ToString("yyyy-MM-dd");
-            DateTime nowdate = DateTime.ParseExact(date, "yyyy-MM-dd",CultureInfo.CurrentCulture);
+            DateTime nowdate = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.CurrentCulture);
             int m = 0;
-            DateTime tempdate; 
+            DateTime tempdate;
             for (int i = 0; i < indetailList.Count; i++)
             {
                 if (DateTime.ParseExact(indetailList[i]["batchNum"], "yyyy-MM-dd", CultureInfo.CurrentCulture) <= nowdate)
@@ -137,7 +137,7 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             return indetailList;
         }
-        
+
         static private List<Dictionary<string, string>> Swap(List<Dictionary<string, string>> indetailList, int m, int i)
         {
             Dictionary<string, string> t;
@@ -190,7 +190,7 @@ namespace VaccineTrackingSystem.Models.BLL
                 list.Add(string.Format("update Stock set cagNum = '{0}', storeID = {1}, quantity = {2}, money = {3} where id = {4} ", stock.cagNum, stock.storeID, stock.quantity, stock.money, stock.id));
                 list.Add(string.Format("insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers,state) values('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}','{9}')", outflow.cagNum, outflow.storeID, outflow.date, outflow.userNum, outflow.quantity, outflow.price, outflow.batchNum, outflow.batchNum2, outflow.suppliers, outflow.state));
             }
-            bool bol = SQL.ExecuteTransaction(list,out msg);
+            bool bol = SQL.ExecuteTransaction(list, out msg);
             if (bol)
             {
                 msg = "出库成功";

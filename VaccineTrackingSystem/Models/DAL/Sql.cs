@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -88,7 +86,7 @@ namespace DAL
         /// <summary>
         /// 执行语句
         /// </summary>
-        static public bool ExecuteTransaction(List<string> list,out string msg)
+        static public bool ExecuteTransaction(List<string> list, out string msg)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionStringSQL))
             {
@@ -104,21 +102,21 @@ namespace DAL
                     for (int i = 0; i < list.Count; i++)
                     {
                         command.CommandText = list[i];
-                          command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
                     }
                     transaction.Commit();
                     connection.Close();
                     msg = "";
                     return true;
                 }
-                catch(SqlException e)
+                catch (SqlException e)
                 {
                     msg = "";
                     if (e.Number == 2627)
                         msg = "批号重复，插入失败";
                     else
                         msg = e.Message;
-                   transaction.Rollback();
+                    transaction.Rollback();
                     connection.Close();
                     return false;
                 }

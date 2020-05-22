@@ -1,5 +1,4 @@
 ﻿using DAL;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -28,7 +27,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        
+
         static public bool Update(Category category, out string msg)
         {
             string command = $"update Category set num = '{category.num}',name = '{category.name}',kind = '{category.kind}',unit = '{category.unit}',spec = '{category.spec}',note = '{category.note}' where id = '{category.id}'";
@@ -94,10 +93,10 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            Dictionary<string, string>  category = new Dictionary<string, string>();
+            Dictionary<string, string> category = new Dictionary<string, string>();
             while (read.Read())
             {
-                category.Add((string)read["name"] +"("+(string)read["num"]+")", read["num"].ToString());
+                category.Add((string)read["name"] + "(" + (string)read["num"] + ")", read["num"].ToString());
 
             }
             SQL.Dispose();

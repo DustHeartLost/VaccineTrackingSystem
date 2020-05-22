@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.SetPassword
@@ -25,7 +22,7 @@ namespace VaccineTrackingSystem.View.SetPassword
             Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
             string userName = user["userName"].ToString();
             string passwordMD = Models.BLL.LoginManage.GenerateMD5(temp);
-            return Models.BLL.UserManage.UpdateByOther(userName, passwordMD, out msg)? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return Models.BLL.UserManage.UpdateByOther(userName, passwordMD, out msg) ? JsonConvert.SerializeObject(new Packet(200, "修改成功")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }
-}  
+}

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web;
 using VaccineTrackingSystem.Models.BLL;
 
 namespace VaccineTrackingSystem.VIew.Login
@@ -55,9 +54,9 @@ namespace VaccineTrackingSystem.VIew.Login
             string msg;
             if (LoginManage.Login(Username.Text, Password.Text, out msg))
             {
-                if (Password.Text=="123456")
+                if (Password.Text == "123456")
                     Response.Redirect("../SetPassword/set.aspx");
-                    //Response.Redirect("../Module/Inflow/Inflow.aspx");
+                //Response.Redirect("../Module/Inflow/Inflow.aspx");
                 else
                     Response.Redirect("../Home/Home.aspx");
             }

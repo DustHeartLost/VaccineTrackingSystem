@@ -95,7 +95,7 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
 
-        static public List<Dictionary<string, string>> QueryStockDetail(int storeID,string num, out string msg)
+        static public List<Dictionary<string, string>> QueryStockDetail(int storeID, string num, out string msg)
         {
             string command = "";
             if (storeID == -1 && num != null)
@@ -201,7 +201,7 @@ namespace VaccineTrackingSystem.Models.DAL
         static public List<Dictionary<string, string>> CombinationQuery(JObject keyWords, int storeID, out string msg)
         {
             string command = "";
-            if (storeID == -1 )
+            if (storeID == -1)
                 command = $"select Category.num,Category.name,Category.kind,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Category.num like '{keyWords["cagNum"]}' and Category.name like '{keyWords["cagName"]}' and Storeroom.name like '{keyWords["storeName"]}' and Category.kind like '{keyWords["drug"]}';";
             else
                 command = $"select Category.num,Category.name,Category.kind,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Stock.storeID={storeID} and Category.num like '{keyWords["cagNum"]}' and Category.name like '{keyWords["cagName"]}'  and Storeroom.name like '{keyWords["storeName"]}' and Category.kind like '{keyWords["drug"]}'";

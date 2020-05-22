@@ -15,7 +15,7 @@ namespace VaccineTrackingSystem.View.Module.Table
         protected static int currentPage;
         protected static int states;
         protected static int storeID;
-        protected static JObject searchContext=new JObject();
+        protected static JObject searchContext = new JObject();
         protected static List<string> store;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,7 +53,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             string jsonData = TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}+{storeID}", JsonConvert.SerializeObject(store))) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
-      
+
         [System.Web.Services.WebMethod]
         public static string GetDown()
         {

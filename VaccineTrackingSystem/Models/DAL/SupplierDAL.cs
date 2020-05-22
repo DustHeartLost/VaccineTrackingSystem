@@ -61,7 +61,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 SQL.Dispose();
                 return null;
             }
-            Suppliers suppliers= new Suppliers((int)read["id"], (string)read["name"], (string)read["code"]);
+            Suppliers suppliers = new Suppliers((int)read["id"], (string)read["name"], (string)read["code"]);
             SQL.Dispose();
             msg = null;
             return suppliers;
@@ -98,7 +98,7 @@ namespace VaccineTrackingSystem.Models.DAL
             List<string> suppliers = new List<string>();
             while (read.Read())
             {
-                suppliers.Add((string)read["name"]+"("+(string)read["code"]+")");
+                suppliers.Add((string)read["name"] + "(" + (string)read["code"] + ")");
             }
             SQL.Dispose();
             return suppliers;
