@@ -169,6 +169,36 @@ function clickCheck(obj) {
     });
 }
 
+function inputSelect() {
+    $.ajax({
+        type: "post", //要用post方式                 
+        url: "Distribution.aspx/GetData",//方法所在页面和方法名
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
+            if (temp.code == 200) {
+                $("#storerooms").html(createOption(temp.data));
+            }else {
+                alert(temp.data);
+            }
+        },
+        error: function (err) {
+            alert(err.responseText);
+        }
+    });
+}
+
+function createOption(data) {
+    var temp = JSON.parse(data);
+    var result = "";
+    for (var i = 0; i < temp.length; i++) {
+        result += "<option value=\"" + temp[i] + "\">";
+    }
+    return result;
+}
+
+
 function search() {
     var tempCon = $("#searchText").val();
     if (tempCon != "") {

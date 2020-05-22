@@ -26,7 +26,7 @@
      </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-     <input type="text" placeholder="请输入..进行查找" id="searchText" class="sx_inp search-input">
+    <input id="store" type="text" list="storerooms" class="sx_inp search-input" oninput="inputSelect()" placeholder="请输入库房" ><datalist id ="storerooms"></datalist>
     <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
@@ -49,7 +49,7 @@
         <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
                 <th class="checkbox"></th>
-                <th>ID</th>
+                <th>编号</th>
                 <th>用户名</th>
                 <th>所在部门</th>
                 <th>职务</th>
@@ -57,7 +57,6 @@
                 <th>员工编号</th>
                 <th>真实姓名</th>
                 <th>绑定库房</th>
-
             </tr>
         </table>
     </div>
