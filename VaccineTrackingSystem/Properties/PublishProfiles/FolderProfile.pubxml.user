@@ -94,10 +94,10 @@
       <publishTime>04/06/2020 11:17:04</publishTime>
     </File>
     <File Include="bin/VaccineTrackingSystem.dll">
-      <publishTime>05/22/2020 08:54:22</publishTime>
+      <publishTime>05/22/2020 17:39:44</publishTime>
     </File>
     <File Include="bin/VaccineTrackingSystem.pdb">
-      <publishTime>05/22/2020 08:54:22</publishTime>
+      <publishTime>05/22/2020 17:39:44</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>04/06/2020 11:17:04</publishTime>
@@ -199,7 +199,7 @@
       <publishTime>04/18/2020 19:14:46</publishTime>
     </File>
     <File Include="View/Login/css/login.css">
-      <publishTime>05/21/2020 21:16:26</publishTime>
+      <publishTime>05/22/2020 18:44:27</publishTime>
     </File>
     <File Include="View/Login/images/1590058321%281%29.png">
       <publishTime>05/21/2020 18:52:07</publishTime>
@@ -229,10 +229,10 @@
       <publishTime>05/21/2020 18:14:32</publishTime>
     </File>
     <File Include="View/Login/Login.aspx">
-      <publishTime>05/21/2020 21:13:45</publishTime>
+      <publishTime>05/22/2020 18:50:36</publishTime>
     </File>
     <File Include="View/Module/Alert/Alert.aspx">
-      <publishTime>05/21/2020 10:03:25</publishTime>
+      <publishTime>05/22/2020 10:29:36</publishTime>
     </File>
     <File Include="View/Module/Alert/css/alert.css">
       <publishTime>05/21/2020 12:51:44</publishTime>
@@ -241,7 +241,7 @@
       <publishTime>05/10/2020 21:59:03</publishTime>
     </File>
     <File Include="View/Module/Apartment/Apartment.aspx">
-      <publishTime>05/21/2020 09:43:58</publishTime>
+      <publishTime>05/22/2020 10:29:36</publishTime>
     </File>
     <File Include="View/Module/Apartment/css/apartment.css">
       <publishTime>05/21/2020 10:03:25</publishTime>
@@ -266,6 +266,15 @@
     </File>
     <File Include="View/Module/Destory/js/destory.js">
       <publishTime>05/16/2020 09:25:56</publishTime>
+    </File>
+    <File Include="View/Module/Distribution/css/distribution.css">
+      <publishTime>05/22/2020 10:29:36</publishTime>
+    </File>
+    <File Include="View/Module/Distribution/Distribution.aspx">
+      <publishTime>05/22/2020 12:06:52</publishTime>
+    </File>
+    <File Include="View/Module/Distribution/js/distribution.js">
+      <publishTime>05/22/2020 12:28:23</publishTime>
     </File>
     <File Include="View/Module/Drug/css/drug.css">
       <publishTime>05/20/2020 23:06:40</publishTime>
@@ -316,34 +325,34 @@
       <publishTime>05/16/2020 21:42:57</publishTime>
     </File>
     <File Include="View/Module/Role/Role.aspx">
-      <publishTime>05/21/2020 09:43:58</publishTime>
+      <publishTime>05/22/2020 10:29:36</publishTime>
     </File>
     <File Include="View/Module/StockSearch/css/detail.css">
-      <publishTime>05/20/2020 23:06:40</publishTime>
+      <publishTime>05/22/2020 10:28:02</publishTime>
     </File>
     <File Include="View/Module/StockSearch/css/stockSearch.css">
       <publishTime>05/20/2020 23:06:40</publishTime>
     </File>
     <File Include="View/Module/StockSearch/Detail.aspx">
-      <publishTime>05/15/2020 19:19:31</publishTime>
+      <publishTime>05/22/2020 10:28:02</publishTime>
     </File>
     <File Include="View/Module/StockSearch/js/detail.js">
-      <publishTime>05/15/2020 19:15:17</publishTime>
+      <publishTime>05/22/2020 10:13:16</publishTime>
     </File>
     <File Include="View/Module/StockSearch/js/stockSearch.js">
-      <publishTime>05/16/2020 21:42:57</publishTime>
+      <publishTime>05/22/2020 16:55:24</publishTime>
     </File>
     <File Include="View/Module/StockSearch/StockSearch.aspx">
-      <publishTime>05/16/2020 18:09:15</publishTime>
+      <publishTime>05/22/2020 16:55:24</publishTime>
     </File>
     <File Include="View/Module/Storeroom/css/storeroom.css">
       <publishTime>05/21/2020 10:03:25</publishTime>
     </File>
     <File Include="View/Module/Storeroom/js/storeroom.js">
-      <publishTime>04/25/2020 22:15:24</publishTime>
+      <publishTime>05/22/2020 10:29:36</publishTime>
     </File>
     <File Include="View/Module/Storeroom/Storeroom.aspx">
-      <publishTime>05/21/2020 09:43:57</publishTime>
+      <publishTime>05/22/2020 10:29:36</publishTime>
     </File>
     <File Include="View/Module/Suppliers/css/suppliers.css">
       <publishTime>05/20/2020 23:06:40</publishTime>
@@ -358,22 +367,22 @@
       <publishTime>05/20/2020 23:06:40</publishTime>
     </File>
     <File Include="View/Module/Table/InflowTable.aspx">
-      <publishTime>05/16/2020 16:42:27</publishTime>
+      <publishTime>05/22/2020 17:10:19</publishTime>
     </File>
     <File Include="View/Module/Table/js/inflowTable.js">
-      <publishTime>05/22/2020 08:52:12</publishTime>
+      <publishTime>05/22/2020 17:13:18</publishTime>
     </File>
     <File Include="View/Module/Table/js/JsonExportExcel.min.js">
       <publishTime>04/25/2020 14:40:14</publishTime>
     </File>
     <File Include="View/Module/Table/js/outflowTable.js">
-      <publishTime>05/16/2020 21:42:57</publishTime>
+      <publishTime>05/22/2020 17:26:17</publishTime>
     </File>
     <File Include="View/Module/Table/js/table.js">
       <publishTime>04/20/2020 12:15:25</publishTime>
     </File>
     <File Include="View/Module/Table/OutflowTable.aspx">
-      <publishTime>05/16/2020 16:42:27</publishTime>
+      <publishTime>05/22/2020 17:26:17</publishTime>
     </File>
     <File Include="View/Module/Table/Table.aspx">
       <publishTime>04/20/2020 12:15:25</publishTime>
@@ -385,7 +394,7 @@
       <publishTime>04/25/2020 22:28:54</publishTime>
     </File>
     <File Include="View/Module/User/User.aspx">
-      <publishTime>05/21/2020 09:43:57</publishTime>
+      <publishTime>05/22/2020 12:01:06</publishTime>
     </File>
     <File Include="View/SetPassword/css/login.css">
       <publishTime>04/27/2020 15:23:36</publishTime>
@@ -403,7 +412,7 @@
       <publishTime>04/27/2020 15:30:43</publishTime>
     </File>
     <File Include="View/Template/css/taskcenter.css">
-      <publishTime>05/21/2020 21:12:36</publishTime>
+      <publishTime>05/22/2020 09:35:03</publishTime>
     </File>
     <File Include="View/Template/images/logo.png">
       <publishTime>05/21/2020 20:49:38</publishTime>
