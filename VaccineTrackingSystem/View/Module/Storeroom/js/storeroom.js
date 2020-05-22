@@ -3,12 +3,10 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td><td>";
-            html += "<select class=\"userNum\"><option>" + data[i].userNum + "</option></select></td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td><td>";
-            html += "<select class=\"userNum\"><option>" + data[i].userNum + "</option></select></td></tr>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td><input class=\"checkBox\"  type=\"checkbox\"  style=\"padding: 5px;\" onclick=\"clickCheck(this)\"></td><td class=\"ID\">" + data[i].id + "</td><td class=\"editTd\">" + data[i].name + "</td><td class=\"editTd\">" + data[i].site + "</td></tr>";
         }
             
 }
@@ -110,12 +108,10 @@ function confirmUpdate() {
             temp1 = temp.split("@@");
             if (temp1[1] == "") { alert("请输入库房名称"); return; };
             if (temp1[2] == "") { alert("请输入所在位置"); return; };
-            if (temp1[3] == "") { alert("请选择库管员"); return; };
             var data1 = new Object();
             data1.id = temp1[0];
             data1.name = temp1[1];
             data1.site = temp1[2];
-            data1.userNum = temp1[3];
             $.ajax({
                 type: "post", //要用post方式                 
                 url: "Storeroom.aspx/Update",//方法所在页面和方法名
@@ -261,7 +257,7 @@ function concelAdd() {
 
 function addRecord() {
     html = "<tr id=\"newOne\" class=\"dataRow3\"  style=\"height:50px;width:130px\"><td></td><td></td><td contentEditable=\"true\" class=\"editTd\"></td>";
-    html += "<td contentEditable=\"true\" class=\"editTd\"></td><td><select id=\"userNum\"></select></td></tr>";
+    html += "<td contentEditable=\"true\" class=\"editTd\"></td></tr>";
     $("#caption").after(html);
     $.ajax({
         type: "post", //要用post方式                 
@@ -294,12 +290,10 @@ function confirmAdd() {
     temp1 = temp.split("@@");
     if (temp1[0] == "") { alert("请输入库房名称"); return; };
     if (temp1[1] == "") { alert("请输入所在位置"); return; };
-    if (temp1[2] == "(无)") { alert("请选择库管员"); return; };
     var data1 = new Object();
     data1.id = 0;
     data1.name = temp1[0];
     data1.site = temp1[1];
-    data1.userNum = temp1[2];
     $.ajax({
         type: "post", //要用post方式                 
         url: "Storeroom.aspx/Insert",//方法所在页面和方法名

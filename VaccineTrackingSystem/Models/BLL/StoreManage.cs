@@ -45,5 +45,9 @@ namespace VaccineTrackingSystem.Models.BLL
             }
         }
 
+        static public Dictionary<string, int> GetStoreroom()
+        {
+            return StoreroomDAL.GetStoreroom();
+        }
     }
 }

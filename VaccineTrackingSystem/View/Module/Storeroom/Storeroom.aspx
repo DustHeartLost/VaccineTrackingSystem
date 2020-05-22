@@ -57,7 +57,6 @@
                 <th>ID</th>
                 <th>库房名称</th>
                 <th>所在位置</th>
-                <th>库管员</th>
             </tr>
         </table>
     </div>

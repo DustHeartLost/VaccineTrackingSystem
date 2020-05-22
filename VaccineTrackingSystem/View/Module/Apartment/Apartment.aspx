@@ -26,6 +26,7 @@
          <li style="float:left;width:160px;"><a class="list" href="#" style="background-color:#63b5de9c">机构管理</a></li>
          <li style="float:left;width:160px;"><a class="list" href="../Role/Role.aspx">角色管理</a></li>
          <li style="float:left;width:160px;"><a class="list" href="../User/User.aspx">用户管理</a></li>
+         <li style="float:left;width:160px;"><a class="list" href="../Distribution/Distribution.aspx">库房绑定</a></li>
          <li style="float:left;width:160px;"><a class="list" href="../Alert/Alert.aspx">提醒定义</a></li> 
      </ul>
 </asp:Content>
