@@ -11,7 +11,7 @@
             if (obj.code == 200) {
                 createInflowTable(obj.data, obj.extra);
                 createStoreOption(obj.extra2);
-                if (obj.extra.split('+')[4] == "-1") $("#storeSelect").hide();
+                if (obj.extra.split('+')[4] != "-1") $("#storeSelect").hide();
             }
             else alert(obj.data);
         }

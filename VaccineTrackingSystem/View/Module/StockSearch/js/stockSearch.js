@@ -172,7 +172,7 @@ function tableExport() {
                 var option = {};
                 var shhead = "";
                 option.fileName = "库存表";
-                shhead = ['药品编码', '药品名称', '规格', '单位', '库存数量', '库存金额', '所在库房', '库存号'];
+                shhead = ['药品编码', '药品名称','类别', '规格', '单位', '库存数量', '库存金额', '所在库房', '库存号'];
                 option.datas = [
                     {
                         sheetData: JSON.parse(temp.data),

@@ -86,7 +86,6 @@ function tableExport() {
         success: function (data) {
             var temp = JSON.parse(data.d);//返回的数据用data.d获取内容
             if (temp.code == 200) {
-                alert(temp.data);
                 var option = {};
                 var shhead = "";
                 option.fileName = "出库流水表"; shhead = ['出库流水编号', '药品编码', '药品名称', '药品种类', '药品规格', '关联库房', '出库时间', '操作人', '数量', '单价', '到期时间', '批号', '供应商', '状态'];

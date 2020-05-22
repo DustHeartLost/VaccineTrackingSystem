@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Globalization;
 using VaccineTrackingSystem.Models.DAL;
 
@@ -132,55 +133,25 @@ namespace VaccineTrackingSystem.Models.BLL
                     list.Add(string.Format(" delete from Indetail where id ={0}", indetails[i].id));
                     list.Add(string.Format("update Stock set cagNum = '{0}', storeID = {1}, quantity = {2}, money = {3} where id = {4} ", stock.cagNum, stock.storeID, stock.quantity, stock.money, stock.id));
                     list.Add(string.Format("insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers,state) values('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}','{9}')", outflow.cagNum, outflow.storeID, outflow.date, outflow.userNum, outflow.quantity, outflow.price, outflow.batchNum, outflow.batchNum2, outflow.suppliers, outflow.state)); 
-                    
-/*
-                    if (!IndetailDAL.Delete(indetails[i].id, out msg))
-                    {
-                        msg = "单品明细删除失败";
-                        return false;
-                    }
-                    if (!(StockDAL.Update(stock, out msg) && OutflowDAL.Add(outflow, out msg)))
-                    {
-                        msg = "销毁失败";
-                        return false;
-                    }*/
+
                 }
                 else
                 {
                     list.Add(string.Format("update Indetail set stockID = {0},batchNum = '{1}',date = '{2}',quantity = {3},price = {4},batchNum2 = '{5}',suppliers = '{6}',note = '{7}'  where id = {8}", indetails[i].stockID, indetails[i].batchNum, indetails[i].date, indetails[i].quantity, indetails[i].price, indetails[i].batchNum2, indetails[i].suppliers, indetails[i].note, indetails[i].id));
                     list.Add(string.Format("update Stock set cagNum = '{0}', storeID = {1}, quantity = {2}, money = {3} where id = {4} ", stock.cagNum, stock.storeID, stock.quantity, stock.money, stock.id));
                     list.Add(string.Format("insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers,state) values('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}','{9}')", outflow.cagNum, outflow.storeID, outflow.date, outflow.userNum, outflow.quantity, outflow.price, outflow.batchNum, outflow.batchNum2, outflow.suppliers, outflow.state));
-      
-                    /*  bool bol = SQL.ExecuteTransaction(list);
-                if (bol)
-                {
-                    msg = "销毁成功";
+
                 }
-                else
-                {
-                    msg = "销毁失败";
-                    return false;
-                }*/
-                }
-                /*      if (!(IndetailDAL.Update(indetails[i], out msg) && StockDAL.Update(stock, out msg) && OutflowDAL.Add(outflow, out msg)))
-                   {
-                       msg = "销毁失败";
-                       return false;
-                   }*/
+
             }
-/*            for(int i=0;i<list.Count;i++)
-            {
-                System.Diagnostics.Debug.Write("###############################MAnage");
-                System.Diagnostics.Debug.Write(list[i]+"\n");
-            }*/
-            bool bol = SQL.ExecuteTransaction(list);
+
+            bool bol = SQL.ExecuteTransaction(list,out msg);
             if (bol)
             {
                 msg = "销毁成功";
             }
             else
             {
-                msg = "销毁失败";
                 return false;
             }
             msg = null;

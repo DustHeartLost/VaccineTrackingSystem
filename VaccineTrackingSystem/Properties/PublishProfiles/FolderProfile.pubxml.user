@@ -6,7 +6,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>F:\MyWeb</_PublishTargetUrl>
+    <_PublishTargetUrl>F:\VTSWeb</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
@@ -94,10 +94,10 @@
       <publishTime>05/08/2020 11:33:56</publishTime>
     </File>
     <File Include="bin/VaccineTrackingSystem.dll">
-      <publishTime>05/22/2020 17:14:11</publishTime>
+      <publishTime>05/22/2020 21:37:42</publishTime>
     </File>
     <File Include="bin/VaccineTrackingSystem.pdb">
-      <publishTime>05/22/2020 17:14:11</publishTime>
+      <publishTime>05/22/2020 21:37:42</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>05/08/2020 11:33:55</publishTime>
@@ -199,7 +199,7 @@
       <publishTime>05/08/2020 11:33:55</publishTime>
     </File>
     <File Include="View/Login/css/login.css">
-      <publishTime>05/22/2020 10:12:15</publishTime>
+      <publishTime>05/22/2020 21:35:24</publishTime>
     </File>
     <File Include="View/Login/images/1590058321%281%29.png">
       <publishTime>05/22/2020 10:12:15</publishTime>
@@ -229,7 +229,7 @@
       <publishTime>05/22/2020 10:12:15</publishTime>
     </File>
     <File Include="View/Login/Login.aspx">
-      <publishTime>05/22/2020 10:12:15</publishTime>
+      <publishTime>05/22/2020 21:35:24</publishTime>
     </File>
     <File Include="View/Module/Alert/Alert.aspx">
       <publishTime>05/21/2020 17:03:43</publishTime>
@@ -340,10 +340,10 @@
       <publishTime>05/22/2020 11:41:59</publishTime>
     </File>
     <File Include="View/Module/StockSearch/js/stockSearch.js">
-      <publishTime>05/22/2020 11:41:59</publishTime>
+      <publishTime>05/22/2020 21:35:24</publishTime>
     </File>
     <File Include="View/Module/StockSearch/StockSearch.aspx">
-      <publishTime>05/22/2020 11:41:59</publishTime>
+      <publishTime>05/22/2020 21:35:24</publishTime>
     </File>
     <File Include="View/Module/Storeroom/css/storeroom.css">
       <publishTime>05/21/2020 16:32:08</publishTime>
@@ -367,22 +367,22 @@
       <publishTime>05/21/2020 16:32:08</publishTime>
     </File>
     <File Include="View/Module/Table/InflowTable.aspx">
-      <publishTime>05/22/2020 10:12:15</publishTime>
+      <publishTime>05/22/2020 21:35:24</publishTime>
     </File>
     <File Include="View/Module/Table/js/inflowTable.js">
-      <publishTime>05/16/2020 21:17:53</publishTime>
+      <publishTime>05/22/2020 21:35:24</publishTime>
     </File>
     <File Include="View/Module/Table/js/JsonExportExcel.min.js">
       <publishTime>05/08/2020 11:33:55</publishTime>
     </File>
     <File Include="View/Module/Table/js/outflowTable.js">
-      <publishTime>05/22/2020 10:12:15</publishTime>
+      <publishTime>05/22/2020 21:35:24</publishTime>
     </File>
     <File Include="View/Module/Table/js/table.js">
       <publishTime>04/20/2020 12:15:25</publishTime>
     </File>
     <File Include="View/Module/Table/OutflowTable.aspx">
-      <publishTime>05/22/2020 10:12:15</publishTime>
+      <publishTime>05/22/2020 21:35:24</publishTime>
     </File>
     <File Include="View/Module/Table/Table.aspx">
       <publishTime>04/20/2020 12:15:25</publishTime>

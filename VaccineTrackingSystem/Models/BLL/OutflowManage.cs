@@ -190,14 +190,13 @@ namespace VaccineTrackingSystem.Models.BLL
                 list.Add(string.Format("update Stock set cagNum = '{0}', storeID = {1}, quantity = {2}, money = {3} where id = {4} ", stock.cagNum, stock.storeID, stock.quantity, stock.money, stock.id));
                 list.Add(string.Format("insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers,state) values('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}','{9}')", outflow.cagNum, outflow.storeID, outflow.date, outflow.userNum, outflow.quantity, outflow.price, outflow.batchNum, outflow.batchNum2, outflow.suppliers, outflow.state));
             }
-            bool bol = SQL.ExecuteTransaction(list);
+            bool bol = SQL.ExecuteTransaction(list,out msg);
             if (bol)
             {
                 msg = "出库成功";
             }
             else
             {
-                msg = "出库失败";
                 return false;
             }
             return true;

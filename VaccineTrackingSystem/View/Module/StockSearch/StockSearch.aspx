@@ -13,7 +13,7 @@
                 createTable(obj.data, obj.extra);
                 createDrugOption(obj.extra2);
                 createStoreOption(obj.extra3);
-                if (obj.extra.split('+')[3] == "-1") $("#storeSelect").hide();
+                if (obj.extra.split('+')[3] != "-1") $("#storeSelect").hide();
             }
             else alert(obj.data);
         }
