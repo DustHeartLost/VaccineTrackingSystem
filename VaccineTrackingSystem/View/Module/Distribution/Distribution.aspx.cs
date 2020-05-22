@@ -70,5 +70,17 @@ namespace VaccineTrackingSystem.View.Module.Distribution
             return JsonConvert.SerializeObject(new Packet(200, JsonConvert.SerializeObject(storerooms.Keys)));
         }
 
+        [WebMethod]
+        public static string SearchCon(string temp)
+        {
+            string msg;
+            totalPage = 0;
+            currentPage = 0;
+            int storeId = storerooms[temp];
+            string jsonData = UserManage.QueryUserStoreroom(storeId, ref totalPage, ref currentPage, out msg);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, "未查询到"));
+        }
+
+
     }
 }
