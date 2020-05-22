@@ -69,13 +69,13 @@ namespace VaccineTrackingSystem.Models.DAL
                 }
         }
       
-        static public List<Dictionary<string,string>> Query(string num, out string msg)
+        static public List<Dictionary<string,string>> Query(string name, out string msg)
         {
             string command;
-            if (num == null)
+            if (name == null)
                 command = "select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id;";
             else
-                command = $"select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id and [User].num='{num}';";
+                command = $"select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id and [User].name like '{name}';";
             SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
