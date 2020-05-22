@@ -200,7 +200,7 @@ function createOption(data) {
 
 
 function search() {
-    var tempCon = $("#store").val();
+    var tempCon = $("#searchText").val();
     if (tempCon != "") {
         $.ajax({
             type: "post",

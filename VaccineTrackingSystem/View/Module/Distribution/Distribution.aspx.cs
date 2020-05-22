@@ -34,14 +34,14 @@ namespace VaccineTrackingSystem.View.Module.Distribution
                 currentPage--;
             }
             string msg;
-            string jsonData = UserManage.QueryUserStoreroom(-1,ref totalPage, ref currentPage, out msg);
+            string jsonData = UserManage.QueryUserStoreroom(null,ref totalPage, ref currentPage, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
         public static string GetDown()
         {
             string msg;
-            string jsonData = UserManage.QueryUserStoreroom(-1, ref totalPage, ref currentPage, out msg);
+            string jsonData = UserManage.QueryUserStoreroom(null, ref totalPage, ref currentPage, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
@@ -50,7 +50,7 @@ namespace VaccineTrackingSystem.View.Module.Distribution
             if (currentPage == -1 || currentPage == 0) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
             currentPage -= 2;
             string msg;
-            string jsonData = UserManage.QueryUserStoreroom(-1, ref totalPage, ref currentPage, out msg);
+            string jsonData = UserManage.QueryUserStoreroom(null, ref totalPage, ref currentPage, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
@@ -73,14 +73,14 @@ namespace VaccineTrackingSystem.View.Module.Distribution
         [WebMethod]
         public static string SearchCon(string temp)
         {
+            string t = "%";
+            for (int i = 0; i < temp.Length; i++)
+                t += temp[i] + "%";
             string msg;
             totalPage = 0;
             currentPage = 0;
-            int storeId = storerooms[temp];
-            string jsonData = UserManage.QueryUserStoreroom(storeId, ref totalPage, ref currentPage, out msg);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, "未查询到"));
+            string jsonData = UserManage.QueryUserStoreroom(t, ref totalPage, ref currentPage, out msg);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
-
-
     }
 }
