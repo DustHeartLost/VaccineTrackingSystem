@@ -99,13 +99,13 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command = "";
             if (storeID == -1 && num != null)
-                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}';";
+                command = $"select Category.num,Category.name,Category.kind,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}';";
             else if (storeID != -1 && num != null)
-                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}' and Stock.storeID={storeID};";
+                command = $"select Category.num,Category.name,Category.kind,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Category.num='{num}' and Stock.storeID={storeID};";
             else if (storeID == -1 && num == null)
-                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID;";
+                command = $"select Category.num,Category.name,Category.kind,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID;";
             else if (storeID != -1 && num == null)
-                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Stock.storeID={storeID};";
+                command = $"select Category.num,Category.name,Category.kind,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID and Stock.storeID={storeID};";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)
@@ -120,6 +120,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 Dictionary<string, string> dictionary = new Dictionary<string, string>();
                 dictionary.Add("num", (string)read["num"]);
                 dictionary.Add("name", (string)read["name"]);
+                dictionary.Add("kind", (string)read["kind"]);
                 dictionary.Add("unit", (string)read["unit"]);
                 dictionary.Add("spec", (string)read["spec"]);
                 dictionary.Add("quantity", read["quantity"].ToString());
@@ -201,9 +202,9 @@ namespace VaccineTrackingSystem.Models.DAL
         {
             string command = "";
             if (storeID == -1 )
-                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Category.num like '{keyWords["cagNum"].ToString()}' and Category.name like '{keyWords["cagName"].ToString()}' and Storeroom.name like '{keyWords["storeName"].ToString()}';";
+                command = $"select Category.num,Category.name,Category.kind,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Category.num like '{keyWords["cagNum"]}' and Category.name like '{keyWords["cagName"]}' and Storeroom.name like '{keyWords["storeName"]}' and Category.kind like '{keyWords["drug"]}';";
             else
-                command = $"select Category.num,Category.name,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Stock.storeID={storeID} and Category.num like '{keyWords["cagNum"].ToString()}' and Category.name like '{keyWords["cagName"].ToString()}'  and Storeroom.name like '{keyWords["storeName"].ToString()}'";
+                command = $"select Category.num,Category.name,Category.kind,Category.unit,Category.spec,Stock.quantity,Stock.money,Storeroom.name as storeID,Stock.ID as stockID from Category, Stock,Storeroom where Category.num = Stock.cagNum and Storeroom.id=Stock.storeID  and Stock.storeID={storeID} and Category.num like '{keyWords["cagNum"]}' and Category.name like '{keyWords["cagName"]}'  and Storeroom.name like '{keyWords["storeName"]}' and Category.kind like '{keyWords["drug"]}'";
             SqlDataReader read;
             read = SQL.getReader(command);
             if (!read.HasRows)
@@ -218,6 +219,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 Dictionary<string, string> dictionary = new Dictionary<string, string>();
                 dictionary.Add("num", (string)read["num"]);
                 dictionary.Add("name", (string)read["name"]);
+                dictionary.Add("kind", (string)read["kind"]);
                 dictionary.Add("unit", (string)read["unit"]);
                 dictionary.Add("spec", (string)read["spec"]);
                 dictionary.Add("quantity", read["quantity"].ToString());

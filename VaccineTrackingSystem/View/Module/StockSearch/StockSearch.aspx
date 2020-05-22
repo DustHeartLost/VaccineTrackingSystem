@@ -9,7 +9,7 @@
         function create() {
             clear();
             var obj =<%=GetAll() %>;
-            if (obj.code == 200) createTable(obj.data, obj.extra);
+            if (obj.code == 200) {createTable(obj.data, obj.extra);createDrugOption(obj.extra2)}
             else alert(obj.data);
         }
     </script>
@@ -26,6 +26,7 @@
         <input type="text" placeholder="药品名称" id="cagNameSearch" class="mysearch-input" >
          <input type="text" placeholder="库房名称" id="storeNameSearch" class="mysearch-input">
         <input type="text" placeholder="药品编码" id="cagNumSearch" class="mysearch-input">
+        <select id="drugSelect" class="mysearch-input" style="height:42px"></select>
         <input id="searchButton"  type="button" value="搜索" class="auto-style2" onclick="search()"/></div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
@@ -45,6 +46,7 @@
             <tr id="caption">
                 <th>药品编码</th>
                 <th>药品名称</th>
+                <th>类别</th>
                 <th>规格</th>
                 <th>单位</th>
                 <th>库存数量</th>

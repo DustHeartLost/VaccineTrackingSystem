@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Services;
 using VaccineTrackingSystem.Models.BLL;
@@ -17,7 +18,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         protected static int states;
         protected static string num=null;
         protected static JObject searchContext = new JObject();
-
+        protected static List<string> drugs;
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
@@ -37,6 +38,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
                     storeID = -1;
                 };
             }
+            drugs=DrugManage.GetDrug().Keys.ToList();
         }
 
         [WebMethod]
@@ -45,7 +47,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             decimal money = 0;
             states = 0;
             string data = StockManage.QueryAll(storeID,null, out msg,ref money,ref totalPage, ref currentPage,false);
-            return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}", JsonConvert.SerializeObject(drugs))) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
         public static string precise(string temp) {
@@ -152,6 +154,10 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             }
             else
                 jo["cagNum"] = "%";
+
+            string drugTemp= jo["drug"].ToString();
+            if (drugTemp == "无")
+                jo["drug"] = "%";
             searchContext["cagName"] = jo["cagName"];
             searchContext["storeName"] = jo["storeName"];
             searchContext["cagNum"] = jo["cagNum"];
