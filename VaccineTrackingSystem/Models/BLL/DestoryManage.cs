@@ -168,11 +168,11 @@ namespace VaccineTrackingSystem.Models.BLL
                        return false;
                    }*/
             }
-            for(int i=0;i<list.Count;i++)
+/*            for(int i=0;i<list.Count;i++)
             {
                 System.Diagnostics.Debug.Write("###############################MAnage");
                 System.Diagnostics.Debug.Write(list[i]+"\n");
-            }
+            }*/
             bool bol = SQL.ExecuteTransaction(list);
             if (bol)
             {

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Globalization;
 using VaccineTrackingSystem.Models.Entity;
 using System.Linq;
+using DAL;
 
 namespace VaccineTrackingSystem.Models.BLL
 {
@@ -148,6 +149,7 @@ namespace VaccineTrackingSystem.Models.BLL
         //出库
         static public bool OutWarehouse(int indetailId, int outNum, string userNum, out string msg)
         {
+            List<string> list = new List<string>();
             Indetail indetail = IndetailDAL.QueryById(indetailId, out msg);
             if (indetail == null)
             {
@@ -178,19 +180,22 @@ namespace VaccineTrackingSystem.Models.BLL
             Outflow outflow = new Outflow(stock.cagNum, stock.storeID, date, userNum, outNum, indetail.price, indetail.batchNum, indetail.batchNum2, indetail.suppliers, "正常出库");
             if (indetail.quantity == 0)
             {
-                if (!(IndetailDAL.Delete(indetailId, out msg)))
-                {
-                    msg = "单品明细删除失败";
-                    return false;
-                }
-                if (!(StockDAL.Update(stock, out msg) && OutflowDAL.Add(outflow, out msg)))
-                {
-                    msg = "出库失败";
-                    return false;
-                }
+                list.Add(string.Format(" delete from Indetail where id ={0}", indetailId));
+                list.Add(string.Format("update Stock set cagNum = '{0}', storeID = {1}, quantity = {2}, money = {3} where id = {4} ", stock.cagNum, stock.storeID, stock.quantity, stock.money, stock.id));
+                list.Add(string.Format("insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers,state) values('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}','{9}')", outflow.cagNum, outflow.storeID, outflow.date, outflow.userNum, outflow.quantity, outflow.price, outflow.batchNum, outflow.batchNum2, outflow.suppliers, outflow.state));
             }
             else
-               if (!(IndetailDAL.Update(indetail, out msg) && StockDAL.Update(stock, out msg) && OutflowDAL.Add(outflow, out msg)))
+            {
+                list.Add(string.Format("update Indetail set stockID = {0},batchNum = '{1}',date = '{2}',quantity = {3},price = {4},batchNum2 = '{5}',suppliers = '{6}',note = '{7}'  where id = {8}", indetail.stockID, indetail.batchNum, indetail.date, indetail.quantity, indetail.price, indetail.batchNum2, indetail.suppliers, indetail.note, indetail.id));
+                list.Add(string.Format("update Stock set cagNum = '{0}', storeID = {1}, quantity = {2}, money = {3} where id = {4} ", stock.cagNum, stock.storeID, stock.quantity, stock.money, stock.id));
+                list.Add(string.Format("insert into Outflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers,state) values('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}','{9}')", outflow.cagNum, outflow.storeID, outflow.date, outflow.userNum, outflow.quantity, outflow.price, outflow.batchNum, outflow.batchNum2, outflow.suppliers, outflow.state));
+            }
+            bool bol = SQL.ExecuteTransaction(list);
+            if (bol)
+            {
+                msg = "出库成功";
+            }
+            else
             {
                 msg = "出库失败";
                 return false;
