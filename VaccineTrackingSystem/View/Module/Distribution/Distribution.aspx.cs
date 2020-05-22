@@ -34,14 +34,14 @@ namespace VaccineTrackingSystem.View.Module.Distribution
                 currentPage--;
             }
             string msg;
-            string jsonData = UserManage.QueryUserStoreroom(-1,ref totalPage, ref currentPage, out msg);
+            string jsonData = UserManage.QueryUserStoreroom(null,ref totalPage, ref currentPage, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
         public static string GetDown()
         {
             string msg;
-            string jsonData = UserManage.QueryUserStoreroom(-1, ref totalPage, ref currentPage, out msg);
+            string jsonData = UserManage.QueryUserStoreroom(null, ref totalPage, ref currentPage, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
@@ -50,7 +50,7 @@ namespace VaccineTrackingSystem.View.Module.Distribution
             if (currentPage == -1 || currentPage == 0) return JsonConvert.SerializeObject(new Packet(201, "没有记录"));
             currentPage -= 2;
             string msg;
-            string jsonData = UserManage.QueryUserStoreroom(-1, ref totalPage, ref currentPage, out msg);
+            string jsonData = UserManage.QueryUserStoreroom(null, ref totalPage, ref currentPage, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
@@ -79,7 +79,7 @@ namespace VaccineTrackingSystem.View.Module.Distribution
             string msg;
             totalPage = 0;
             currentPage = 0;
-            string jsonData = UserManage.Query(t, out msg);
+            string jsonData = UserManage.QueryUserStoreroom(t, ref totalPage, ref currentPage, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }

@@ -142,16 +142,15 @@ namespace VaccineTrackingSystem.Models.DAL
 
 
         
-        static public List<Dictionary<string, string>> QueryUserStoreroom(int num, out string msg)
+        static public List<Dictionary<string, string>> QueryUserStoreroom(string name, out string msg)
         {
             string command;
-            if (num == -1)   //查询所有
+            if (name == null)   //查询所有
                 command = "select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,'' as storeName,'无' as site from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=-1 and  Role.name='库管员' union all select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,Storeroom.name as storeName,Storeroom.site from[User],Apartment,Role,Storeroom where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=Storeroom.id and Role.name='库管员';";
-            else if(num == 0)   //查询无库房
-                command = "select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,'' as storeName,'无' as site from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=-1 and Role.name='库管员';";
+            //else if(name == 0)   //查询无库房
+            //    command = "select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,'' as storeName,'无' as site from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=-1 and Role.name='库管员';";
             else
-                command = $"select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,Storeroom.name as storeName,Storeroom.site from[User],Apartment,Role,Storeroom where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=Storeroom.id and Storeroom.id='{num}' and Role.name='库管员';";
-
+                command = $"select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,'' as storeName,'无' as site from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=-1 and  Role.name='库管员' and [User].name like '{name}' union all select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,Storeroom.name as storeName,Storeroom.site from[User],Apartment,Role,Storeroom where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=Storeroom.id and Role.name='库管员' and [User].name like '{name}';";
             SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
@@ -160,10 +159,7 @@ namespace VaccineTrackingSystem.Models.DAL
                 return null;
             }
             List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
-            if(num==-1)
-            {
 
-            }
             while (read.Read())
             {
                 Dictionary<string, string> d = new Dictionary<string, string>();

@@ -55,9 +55,9 @@ namespace VaccineTrackingSystem.Models.BLL
         }
 
 
-        static public string QueryUserStoreroom(int num,ref int totalPage, ref int currentPage ,out string msg)
+        static public string QueryUserStoreroom(string name,ref int totalPage, ref int currentPage ,out string msg)
         {
-            List<Dictionary<string, string>> list = UserDAL.QueryUserStoreroom(num, out msg);
+            List<Dictionary<string, string>> list = UserDAL.QueryUserStoreroom(name, out msg);
             if (list == null)
             {
                 totalPage = 0;
