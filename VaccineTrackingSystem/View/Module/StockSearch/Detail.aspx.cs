@@ -15,12 +15,14 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         protected static int totalPage;
         protected static int currentPage;
         protected static int stockID=-1;
+        protected static string information;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
             currentPage = -1;
             stockID = int.Parse(Request.QueryString["stockID"]);
+            information = Request.QueryString["temp"];
         }
 
         [WebMethod]
@@ -32,14 +34,14 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             }
             string msg;
             string jsonData = Models.BLL.StockManage.QueryInDetail(stockID, ref totalPage, ref currentPage,out msg);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{information}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
         public static string GetDown()
         {
             string msg;
             string jsonData = Models.BLL.StockManage.QueryInDetail(stockID, ref totalPage, ref currentPage, out msg);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{information}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [WebMethod]
         public static string GetUp()
@@ -48,7 +50,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             currentPage -= 2;
             string msg;
             string jsonData = Models.BLL.StockManage.QueryInDetail(stockID, ref totalPage, ref currentPage, out msg);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{information}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
     }
 }
