@@ -49,7 +49,7 @@
         <table id="tableContainer" style="table-layout:fixed">
             <tr id="caption">
                 <th class="checkbox"></th>
-                <th>ID</th>
+                <th>编号</th>
                 <th>用户名</th>
                 <th>所在部门</th>
                 <th>职务</th>
@@ -57,7 +57,6 @@
                 <th>员工编号</th>
                 <th>真实姓名</th>
                 <th>绑定库房</th>
-
             </tr>
         </table>
     </div>
