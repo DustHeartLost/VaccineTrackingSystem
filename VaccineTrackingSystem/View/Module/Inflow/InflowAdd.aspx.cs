@@ -42,8 +42,22 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             string msg;
             Dictionary<string, string> user = HttpContext.Current.Session["user"] as Dictionary<string, string>;
             string nowTime = DateTime.Now.ToString("yyyy-MM-dd");
-            int quantity = int.Parse(jo["quantity"].ToString());
-            decimal price = decimal.Parse(jo["price"].ToString());
+            int quantity;
+            decimal price;
+            try { 
+                quantity = int.Parse(jo["quantity"].ToString());
+            } catch {
+                return JsonConvert.SerializeObject(new Packet(203, "数量格式错误，请输入数字"));
+            }
+
+            try
+            {
+                price = decimal.Parse(jo["price"].ToString());
+            }
+            catch
+            {
+                return JsonConvert.SerializeObject(new Packet(203, "单价格式错误，请输入小数"));
+            }
             string cagNum = jo["cagNum"].ToString();
             string batchNum = jo["batchNum"].ToString();
             string batchNum2 = jo["batchNum2"].ToString();
