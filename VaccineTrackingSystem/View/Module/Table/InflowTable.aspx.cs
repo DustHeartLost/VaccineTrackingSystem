@@ -2,7 +2,9 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
+using VaccineTrackingSystem.Models.BLL;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.Module.Table
@@ -14,6 +16,7 @@ namespace VaccineTrackingSystem.View.Module.Table
         protected static int states;
         protected static int storeID;
         protected static JObject searchContext=new JObject();
+        protected static List<string> store;
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
@@ -33,6 +36,7 @@ namespace VaccineTrackingSystem.View.Module.Table
                     storeID = -1;
                 };
             }
+            store = StoreManage.GetStoreroom().Keys.ToList();
         }
 
         [System.Web.Services.WebMethod]
@@ -46,8 +50,8 @@ namespace VaccineTrackingSystem.View.Module.Table
             states = 0;
             string msg;
             //TODO:此处的ID将来换成从session中取
-            string jsonData = Models.BLL.TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            string jsonData = TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}+{storeID}", JsonConvert.SerializeObject(store))) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
       
         [System.Web.Services.WebMethod]
@@ -56,11 +60,10 @@ namespace VaccineTrackingSystem.View.Module.Table
             string temp = "";
             string msg = "";
             decimal money = 0;
-            //System.Diagnostics.Debug.Write("#####"+searchContext["date"].ToString() + searchContext["cagName"].ToString() + searchContext["storeName"].ToString() + searchContext["cagNum"].ToString());
             switch (states)
             {
-                case 0: temp = Models.BLL.TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
-                case 1: temp = Models.BLL.TableManage.InflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
+                case 0: temp = TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
+                case 1: temp = TableManage.InflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
@@ -74,8 +77,8 @@ namespace VaccineTrackingSystem.View.Module.Table
             decimal money = 0;
             switch (states)
             {
-                case 0: temp = Models.BLL.TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
-                case 1: temp = Models.BLL.TableManage.InflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
+                case 0: temp = TableManage.queryAllInflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
+                case 1: temp = TableManage.InflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
 
@@ -132,7 +135,7 @@ namespace VaccineTrackingSystem.View.Module.Table
             else
                 jo["cagName"] = "%";
             string storeNameTemp = jo["storeName"].ToString();
-            if (storeNameTemp != null && storeNameTemp != "")
+            if (storeNameTemp != null && storeNameTemp != "无")
             {
                 string t = "%";
                 for (int i = 0; i < storeNameTemp.Length; i++)

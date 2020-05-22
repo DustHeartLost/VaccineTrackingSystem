@@ -19,6 +19,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
         protected static string num=null;
         protected static JObject searchContext = new JObject();
         protected static List<string> drugs;
+        protected static List<string> store;
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
@@ -39,6 +40,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
                 };
             }
             drugs=DrugManage.GetDrug().Keys.ToList();
+            store = StoreManage.GetStoreroom().Keys.ToList();
         }
 
         [WebMethod]
@@ -47,7 +49,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             decimal money = 0;
             states = 0;
             string data = StockManage.QueryAll(storeID,null, out msg,ref money,ref totalPage, ref currentPage,false);
-            return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}", JsonConvert.SerializeObject(drugs))) : JsonConvert.SerializeObject(new Packet(201, msg));
+            return data != null ? JsonConvert.SerializeObject(new Packet(200, data, $"{totalPage + 1}+{currentPage + 1}+{money}+{storeID}", JsonConvert.SerializeObject(drugs), JsonConvert.SerializeObject(store))) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
         public static string precise(string temp) {
@@ -134,7 +136,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
             else
                 jo["cagName"] = "%";
             string storeNameTemp = jo["storeName"].ToString();
-            if (storeNameTemp != null && storeNameTemp != "")
+            if (storeNameTemp != null && storeNameTemp != "无")
             {
                 string t = "%";
                 for (int i = 0; i < storeNameTemp.Length; i++)
@@ -156,7 +158,7 @@ namespace VaccineTrackingSystem.View.Module.StockSearch
                 jo["cagNum"] = "%";
 
             string drugTemp= jo["drug"].ToString();
-            if (drugTemp == "无")
+            if (drugTemp == "无(请选择品类名称)")
                 jo["drug"] = "%";
             searchContext["cagName"] = jo["cagName"];
             searchContext["storeName"] = jo["storeName"];

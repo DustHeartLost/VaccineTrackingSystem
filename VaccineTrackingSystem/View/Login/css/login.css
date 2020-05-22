@@ -64,23 +64,17 @@ a{
     margin-bottom:10px
 }
 
-.login-wrap .main-center #login {
-        width: 300px;
-        float: right;
-        margin-right: 15%;
-        margin-top: 8%;
-        background: #fff;
-        background: hsla(0,0%,100%,.12);
-        padding: 20px;
-        text-align: center;
-        border-radius:10px;
-        @media screen and (max-width:768px) {
-           .login-wrap .main-center #login {
-              margin: 50px auto;
-             float: inherit;
-       }
-     }
-}
+        .login-wrap .main-center #login {
+            width: 300px;
+            /*margin-right: 13%;*/
+            margin-left:65%;
+            margin-top: 8%;
+            background: #fff;
+            background: hsla(0,0%,100%,.12);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
 
 .login-wrap .main-center #login .formtitle{
     text-align:left;
@@ -147,12 +141,13 @@ a{
       width:27px;
       height:27px
 
-  }.showMessage{
-       font-size:12px;
-       margin:10px 0;
-       height:16px;
-       color:red
-
+  }
+.showMessage {
+    font-size: 12px;
+    margin: 10px 0;
+    height: 16px;
+    color: red
+}
    /*
    .more-link,.showMessage{
        text-align:left
@@ -197,3 +192,9 @@ a{
     border-left: 2px solid #fff;
 }*/
 
+#contain
+{
+    width: 100%;
+    height: 100%;
+    float: left;
+}

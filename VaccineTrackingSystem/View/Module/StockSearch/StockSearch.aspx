@@ -9,7 +9,12 @@
         function create() {
             clear();
             var obj =<%=GetAll() %>;
-            if (obj.code == 200) {createTable(obj.data, obj.extra);createDrugOption(obj.extra2)}
+            if (obj.code == 200) {
+                createTable(obj.data, obj.extra);
+                createDrugOption(obj.extra2);
+                createStoreOption(obj.extra3);
+                if (obj.extra.split('+')[3] == "-1") $("#storeSelect").hide();
+            }
             else alert(obj.data);
         }
     </script>
@@ -24,7 +29,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
     <div>
         <input type="text" placeholder="药品名称" id="cagNameSearch" class="mysearch-input" >
-         <input type="text" placeholder="库房名称" id="storeNameSearch" class="mysearch-input">
+        <select id="storeSelect" class="mysearch-input" style="height:42px"></select>
         <input type="text" placeholder="药品编码" id="cagNumSearch" class="mysearch-input">
         <select id="drugSelect" class="mysearch-input" style="height:42px"></select>
         <input id="searchButton"  type="button" value="搜索" class="auto-style2" onclick="search()"/></div>

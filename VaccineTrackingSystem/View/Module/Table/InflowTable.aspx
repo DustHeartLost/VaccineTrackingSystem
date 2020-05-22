@@ -8,7 +8,11 @@
         window.onload = create;
         function create() {
             var obj =<%=GetALLInflow()%>;
-            if (obj.code == 200) createInflowTable(obj.data, obj.extra);
+            if (obj.code == 200) {
+                createInflowTable(obj.data, obj.extra);
+                createStoreOption(obj.extra2);
+                if (obj.extra.split('+')[4] == "-1") $("#storeSelect").hide();
+            }
             else alert(obj.data);
         }
     </script>
@@ -23,7 +27,7 @@
      <div>
         <input type="text" placeholder="入库日期" id="dataSearch" class="mysearch-input" >
         <input type="text" placeholder="药品名称" id="cagNameSearch" class="mysearch-input" >
-         <input type="text" placeholder="库房名称" id="storeNameSearch" class="mysearch-input">
+         <select id="storeSelect" class="mysearch-input" style="height:42px"></select>
         <input type="text" placeholder="药品编码" id="cagNumSearch" class="mysearch-input">
         <input id="searchButton"  type="button" value="搜索" class="auto-style2" onclick="search()"/></div>
 </asp:Content>

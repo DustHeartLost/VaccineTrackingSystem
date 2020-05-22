@@ -2,7 +2,9 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
+using VaccineTrackingSystem.Models.BLL;
 using VaccineTrackingSystem.Models.Entity;
 
 namespace VaccineTrackingSystem.View.Module.Table
@@ -14,6 +16,7 @@ namespace VaccineTrackingSystem.View.Module.Table
         protected static int states;
         protected static int storeID;
         protected static JObject searchContext = new JObject();
+        protected static List<string> store;
         protected void Page_Load(object sender, EventArgs e)
         {
             totalPage = 0;
@@ -33,6 +36,7 @@ namespace VaccineTrackingSystem.View.Module.Table
                     storeID = -1;
                 };
             }
+            store = StoreManage.GetStoreroom().Keys.ToList();
         }
 
         [System.Web.Services.WebMethod]
@@ -46,8 +50,8 @@ namespace VaccineTrackingSystem.View.Module.Table
             string msg;
             states = 0;
             //TODO:此处的ID将来换成从session中取
-            string jsonData = Models.BLL.TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money);
-            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
+            string jsonData = TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money);
+            return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}+{storeID}", JsonConvert.SerializeObject(store))) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
 
         [System.Web.Services.WebMethod]
@@ -58,8 +62,8 @@ namespace VaccineTrackingSystem.View.Module.Table
             decimal money = 0;
             switch (states)
             {
-                case 0: temp = Models.BLL.TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
-                case 1: temp = Models.BLL.TableManage.OutflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
+                case 0: temp = TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
+                case 1: temp = TableManage.OutflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return temp!= null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
@@ -73,8 +77,8 @@ namespace VaccineTrackingSystem.View.Module.Table
             decimal money=0;
             switch (states)
             {
-                case 0: temp = Models.BLL.TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
-                case 1: temp = Models.BLL.TableManage.OutflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
+                case 0: temp =TableManage.queryAllOutflow(storeID, ref totalPage, ref currentPage, out msg, out money); break;
+                case 1: temp =TableManage.OutflowCombinationQuery(storeID, JsonConvert.SerializeObject(searchContext), out msg, ref totalPage, ref currentPage, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{totalPage + 1}+{currentPage + 1}+{money}+{states}")) : JsonConvert.SerializeObject(new Packet(201, msg));
 
@@ -88,8 +92,8 @@ namespace VaccineTrackingSystem.View.Module.Table
             string temp = "";
             switch (states)
             {
-                case 0: temp = Models.BLL.TableManage.ExportOutflow(storeID, out msg, out money); break;
-                case 1: temp = Models.BLL.TableManage.ExportConbinationOutflow(storeID, JsonConvert.SerializeObject(searchContext), out msg, out money); break;
+                case 0: temp =TableManage.ExportOutflow(storeID, out msg, out money); break;
+                case 1: temp =TableManage.ExportConbinationOutflow(storeID, JsonConvert.SerializeObject(searchContext), out msg, out money); break;
             }
             return temp != null ? JsonConvert.SerializeObject(new Packet(200, temp, $"{states}")) : JsonConvert.SerializeObject(new Packet(201, "该搜索条件下没有需要导出的记录"));
         }
@@ -130,13 +134,12 @@ namespace VaccineTrackingSystem.View.Module.Table
             else
                 jo["cagName"] = "%";
             string storeNameTemp = jo["storeName"].ToString();
-            if (storeNameTemp != null && storeNameTemp != "")
+            if (storeNameTemp != null && storeNameTemp != "无")
             {
                 string t = "%";
                 for (int i = 0; i < storeNameTemp.Length; i++)
                     t += storeNameTemp[i] + "%";
                 jo["storeName"] = t;
-
             }
             else
                 jo["storeName"] = "%";

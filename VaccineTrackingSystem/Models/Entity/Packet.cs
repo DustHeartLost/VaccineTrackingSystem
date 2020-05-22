@@ -6,6 +6,7 @@
         public string data;
         public string extra;
         public string extra2;
+        public string extra3;
         public Packet(int code, string data, string extra)
         {
             this.code = code;
@@ -23,6 +24,14 @@
             this.data = data;
             this.extra = extra;
             this.extra2 = extra2;
+        }
+        public Packet(int code, string data, string extra, string extra2,string extra3)
+        {
+            this.code = code;
+            this.data = data;
+            this.extra = extra;
+            this.extra2 = extra2;
+            this.extra3 = extra3;
         }
     }
 
