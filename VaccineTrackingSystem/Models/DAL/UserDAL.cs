@@ -145,7 +145,7 @@ namespace VaccineTrackingSystem.Models.DAL
         static public List<Dictionary<string, string>> QueryUserStoreroom(int num, out string msg)
         {
             string command;
-            if (num == -1)   //查询所有
+            if (num == -1)   //查询所有 
                 command = "select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,'' as storeName,'无' as site from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=-1 and  Role.name='库管员' union all select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,Storeroom.name as storeName,Storeroom.site from[User],Apartment,Role,Storeroom where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=Storeroom.id and Role.name='库管员';";
             else if(num == 0)   //查询无库房
                 command = "select [User].id,[User].userName,Apartment.name as apartID,Apartment.num as apartNum,[User].job,Role.name as roleID,[User].num,[User].name,'' as storeName,'无' as site from[User],Apartment,Role where[User].apartID=Apartment.id and [User].roleID=Role.id  and [User].storeID=-1 and Role.name='库管员';";
