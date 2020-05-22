@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -82,6 +83,42 @@ namespace DAL
                 Com = new SqlCommand(Command, Con);
             }
             return SQL.Com.ExecuteReader();
+        }
+
+        /// <summary>
+        /// 执行语句
+        /// </summary>
+        static public bool ExecuteTransaction(List<string> list)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionStringSQL))
+            {
+                SqlCommand command = new SqlCommand();
+                SqlTransaction transaction = null;
+                try
+                {
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+                    command.Connection = connection;
+                    command.Transaction = transaction;
+
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        command.CommandText = list[i];
+                        System.Diagnostics.Debug.Write("###############################SQl");
+                        System.Diagnostics.Debug.Write(list[i] + "\n"); 
+                          command.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                    connection.Close();
+                    return true;
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    connection.Close();
+                    return false;
+                }
+            }
         }
     }
 }

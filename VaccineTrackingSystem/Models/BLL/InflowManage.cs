@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DAL;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using VaccineTrackingSystem.Models.DAL;
@@ -34,18 +35,12 @@ namespace VaccineTrackingSystem.Models.BLL
 
         static public bool InWarehouse(Inflow inflow, out string msg)
         {
-            if (!InflowDAL.Add(inflow, out msg))
-            {
-                return false;
-            }
+            List<string> list = new List<string>();
+            list.Add(string.Format(" insert into Inflow (cagNum,storeID,date,userNum,quantity,price,batchNum,batchNum2,suppliers) values ('{0}',{1},'{2}','{3}',{4},{5},'{6}','{7}','{8}')", inflow.cagNum,inflow.storeID, inflow.date, inflow.userNum, inflow.quantity, inflow.price, inflow.batchNum, inflow.batchNum2, inflow.suppliers));
             if (StockDAL.QueryByCagNum(inflow.cagNum, inflow.storeID, out msg) == null)
             {
                 Stock stock = new Stock(inflow.cagNum, inflow.storeID, 0, 0);
-                if (!StockDAL.Add(stock, out msg))
-                {
-                    msg = "库存记录增加失败";
-                    return false;
-                }
+                list.Add(string.Format("insert into Stock (cagNum,storeID,quantity,money) values ('{0}',{1},{2},{3})", stock.cagNum, stock.storeID, stock.quantity, stock.money));
             }
             Stock s = StockDAL.QueryByCagNum(inflow.cagNum, inflow.storeID, out msg);
             if (s == null)
@@ -55,22 +50,13 @@ namespace VaccineTrackingSystem.Models.BLL
             }
             s.quantity += inflow.quantity;
             s.money = s.money + inflow.quantity * inflow.price;
-            if (!StockDAL.Update(s, out msg))
-            {
-                msg = "库存记录更新失败";
-                return false;
-            }
-            //单品明细表更新
+            list.Add(string.Format("update Stock set cagNum = '{0}', storeID = {1}, quantity = {2}, money = {3} where id = {4} ", s.cagNum, s.storeID, s.quantity, s.money, s.id));
 
             //if (IndetailDAL.Query(s.id, inflow.batchNum, inflow.date, inflow.price,inflow.batchNum2,inflow.suppliers, out msg) == null)
             //{
-                Indetail indetail = new Indetail(s.id, inflow.batchNum, inflow.date, inflow.quantity, inflow.price,inflow.batchNum2,inflow.suppliers,inflow.notes);
-                if (!IndetailDAL.Add(indetail, out msg))
-                {
-                    msg = "单品明细表增加记录失败";
-                    return false;
-                }
-            //}
+           
+            Indetail indetail = new Indetail(s.id, inflow.batchNum, inflow.date, inflow.quantity, inflow.price,inflow.batchNum2,inflow.suppliers,inflow.notes);
+            list.Add(string.Format("insert into Indetail (stockID,batchNum,date,quantity,price,batchNum2,suppliers,note) values ({0},'{1}','{2}',{3},{4},'{5}','{6}','{7}')", indetail.stockID, indetail.batchNum, indetail.date, indetail.quantity, indetail.price, indetail.batchNum2, indetail.suppliers, indetail.note));
             //Indetail i = IndetailDAL.Query(s.id, inflow.batchNum, inflow.date, inflow.price, inflow.batchNum2, inflow.suppliers, out msg);
             //if (i == null)
             //{
@@ -84,6 +70,21 @@ namespace VaccineTrackingSystem.Models.BLL
             //    //msg = "单品明细表增添记录失败";
             //    return false;
             //}
+            /*for (int i = 0; i < list.Count; i++)
+            {
+                System.Diagnostics.Debug.Write("###############################MAnage");
+                System.Diagnostics.Debug.Write(list[i] + "\n");
+            }*/
+            bool bol = SQL.ExecuteTransaction(list);
+            if (bol)
+            {
+                msg = "入库成功";
+            }
+            else
+            {
+                msg = "入库失败";
+                return false;
+            }
             return true;
         }
     }
