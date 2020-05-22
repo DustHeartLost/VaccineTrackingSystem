@@ -120,9 +120,9 @@ function search() {
     var obj = new Object();
     obj.date = $("#dataSearch").val();
     obj.cagName = $("#cagNameSearch").val();
-    obj.storeName = $("#storeNameSearch").val();
+    obj.storeName = $("#storeSelect").find("option:selected").text().split('(')[0];
     obj.cagNum = $("#cagNumSearch").val();
-    if (obj.date != "" || obj.cagName != "" || obj.cagNum != "" || obj.storeName != "") {
+    if (obj.date != "" || obj.cagName != "" || obj.cagNum != "" || obj.storeName != "无") {
         $.ajax({
             type: "post",
             url: "InflowTable.aspx/SearchCon",//方法所在页面和方法名
@@ -180,4 +180,19 @@ function showAll() {
             alert(err);
         }
     });
+}
+
+function createStoreOption(data) {
+    var result = "<option>无(请选择仓库名称)</option>";
+    result += createOption(data, 1)
+    $("#storeSelect").html(result);
+}
+
+function createOption(data, start) {
+    var result = "";
+    var temp = JSON.parse(data);
+    for (var i = start; i < temp.length; i++) {
+        result += "<option>" + temp[i] + "</option>";
+    }
+    return result;
 }
