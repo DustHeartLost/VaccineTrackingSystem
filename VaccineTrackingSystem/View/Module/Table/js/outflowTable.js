@@ -99,6 +99,7 @@ function tableExport() {
                 ];
                 var toExcel = new ExportJsonExcel(option);
                 toExcel.saveExcel();
+
             } 
             else
                alert(temp.data);
