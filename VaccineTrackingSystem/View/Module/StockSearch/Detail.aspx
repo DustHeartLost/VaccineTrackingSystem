@@ -20,6 +20,7 @@
        </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
+    <label id="currentDrug" style="font-family: Arial, Helvetica, sans-serif;font-size: large;font-weight: bold;"></label>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">
     <div style="float: right;" id="upAndDownArea">

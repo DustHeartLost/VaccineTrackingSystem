@@ -3,10 +3,10 @@
     var html = "";
     for (var i = 0; i < data.length; i++) {
         if (i % 2 == 0) {
-            html += "<tr class=\"dataRow\" style=\"height:50px\"><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\"  style=\"padding:5px\">查看明细</button></td></tr>";
+            html += "<tr class=\"dataRow\" style=\"height:50px\"><td class=\"num\">" + data[i].num + "</td><td class=\"name\">" + data[i].name + "</td><td class=\"unit\">" + data[i].unit + "</td><td class=\"spec\">" + data[i].spec + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\"  style=\"padding:5px\">查看明细</button></td></tr>";
         }
         else {
-            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td>" + data[i].num + "</td><td>" + data[i].name + "</td><td>" + data[i].unit + "</td><td>" + data[i].spec + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\" style=\"padding:5px\">查看明细</button></td></tr>";
+            html += "<tr class=\"dataRow2\" style=\"height:50px\"><td class=\"num\">" + data[i].num + "</td><td class=\"name\">" + data[i].name + "</td><td class=\"unit\">" + data[i].unit + "</td><td class=\"spec\">" + data[i].spec + "</td><td>" + data[i].quantity + "</td><td>" + data[i].money + "</td><td>" + data[i].storeID + "</td><td class=\"need\">" + data[i].stockID + "</td><td><button onclick=\"detail(this)\" style=\"padding:5px\">查看明细</button></td></tr>";
         }
     }
     $("#caption").after(html);
@@ -23,7 +23,6 @@
     $("#showAll").hide();
 }
 
-
 function clear() {
     $("tr").remove(".dataRow");
     $("tr").remove(".dataRow2");
@@ -34,7 +33,6 @@ function reCreateTable(temp, extra) {
     clear();
     createTable(temp, extra);
 }
-
 
 $(document).ready(function () {
     $("#tableContainer").delegate(".dataRow", "mouseenter", function () {
@@ -153,7 +151,11 @@ function up() {
 
 function detail(obj) {
     var stockID = $(obj).closest("tr").find("td.need").text();
-    window.open("Detail.aspx?stockID=" + stockID);
+    var temp = $(obj).closest("tr").find("td.num").text();
+    temp += "    " + $(obj).closest("tr").find("td.name").text();
+    temp += "    " + $(obj).closest("tr").find("td.unit").text();
+    temp +="    "+$(obj).closest("tr").find("td.spec").text();
+    window.open("Detail.aspx?stockID=" + stockID+"&temp="+temp);
 }
 
 function tableExport() {

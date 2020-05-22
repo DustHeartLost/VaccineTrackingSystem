@@ -22,7 +22,7 @@
         </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-    <div style="float: left;">
+    <div>
         <input type="text" placeholder="药品名称" id="cagNameSearch" class="mysearch-input" >
          <input type="text" placeholder="库房名称" id="storeNameSearch" class="mysearch-input">
         <input type="text" placeholder="药品编码" id="cagNumSearch" class="mysearch-input">
