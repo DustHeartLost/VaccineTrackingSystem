@@ -91,21 +91,6 @@ function clickCheck(obj) {
         $(this).prop("checked", false);   //选中，不选中 是false        
     });
     $(obj).prop("checked", true);
-
-    $(".edit").each(function () {
-        $(this).attr("disabled", true);
-    });
-    $(".editTd").closest("tr").find("td").each(function () {
-        $(this).attr("contenteditable", false);
-    });
-
-
-    $(obj).closest("tr").find("select").each(function () {
-        $(this).attr("disabled", false);
-    });
-    $(obj).closest("tr").find("td.editTd").each(function () {
-        $(this).attr("contenteditable", true);
-    });
 }
 
 

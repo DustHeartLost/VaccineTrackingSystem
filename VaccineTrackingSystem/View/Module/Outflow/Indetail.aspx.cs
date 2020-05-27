@@ -61,9 +61,10 @@ namespace VaccineTrackingSystem.View.Module.Outflow
         {
             JObject jo = (JObject)JsonConvert.DeserializeObject(temp);
             string msg;
-            int a;
-            if (!int.TryParse(jo["quantity"].ToString(), out a)) { return JsonConvert.SerializeObject(new Packet(202, "出库数量格式错误，请输入数字")); }
-            return Models.BLL.OutflowManage.OutWarehouse((int)jo["id"], a, userNum, out msg) ? JsonConvert.SerializeObject(new Packet(200, "出库成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
+            int quantity;
+            if (!int.TryParse(jo["quantity"].ToString(), out quantity)) { return JsonConvert.SerializeObject(new Packet(202, "出库数量格式错误，请输入数字")); }
+            if (quantity <= 0) { return JsonConvert.SerializeObject(new Packet(203, "数量必须大于0")); }
+            return Models.BLL.OutflowManage.OutWarehouse((int)jo["id"], quantity, userNum, out msg) ? JsonConvert.SerializeObject(new Packet(200, "出库成功")) : JsonConvert.SerializeObject(new Packet(202, msg));
         }
 
         [System.Web.Services.WebMethod]

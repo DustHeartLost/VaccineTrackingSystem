@@ -58,7 +58,7 @@ namespace VaccineTrackingSystem.Models.BLL
             List<Alert> alerts = AlertDAL.QueryAll(out msg);
             if (list == null)
             {
-                msg = "暂无该库存的单品明细";
+                msg = "不能出库过期产品";
                 totalPage = 0;
                 currentPage = -1;
                 return null;
