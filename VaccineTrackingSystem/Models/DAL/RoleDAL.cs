@@ -49,20 +49,25 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public Role Query(string name, out string msg)
+        static public List<Role> Query(string name, out string msg)
         {
-            string command = $"select * from Role where name = '{name}'";
-            SqlDataReader read = SQL.getData(command);
+            string command = $"select * from Role where name like '{name}'";
+            SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
-                msg = "查询结果为空";
+                msg = "当前暂无记录";
                 SQL.Dispose();
                 return null;
             }
-            Role role = new Role((int)read["id"], (string)read["name"], (string)read["authority"], read["note"].ToString());
+            List<Role> list = new List<Role>();
+            while (read.Read())
+            {
+                //此处为处理note为空的异常，不可以强制转换，只可以使用ToString方法
+                list.Add(new Role((int)read["id"], (string)read["name"], (string)read["authority"], read["note"].ToString()));
+            }
             SQL.Dispose();
             msg = null;
-            return role;
+            return list;
         }
         static public List<Role> QueryAll(out string msg)
         {

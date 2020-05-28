@@ -41,13 +41,10 @@ function clear() {
     $("tr").remove(".dataRow3");
 }
 
-
-
 function reCreateTable(temp, extra) {
     clear();
     createTable(temp, extra);
 }
-
 
 function showCheckBox() {
     $(".checkBox").show();

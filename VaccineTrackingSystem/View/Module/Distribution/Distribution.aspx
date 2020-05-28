@@ -26,7 +26,7 @@
      </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-     <input type="text" placeholder="请输入库管员真实姓名" id="searchText" class="sx_inp search-input">
+     <input type="text" placeholder="请输入库管员真实姓名关键字" id="searchText" class="sx_inp search-input">
     <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">

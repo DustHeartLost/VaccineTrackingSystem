@@ -14,14 +14,11 @@ namespace VaccineTrackingSystem.Models.BLL
         {
             return ApartmentDAL.Update(apartment, out msg);
         }
-        static public string Query(string num, out string msg)
+        static public string Query(string name, out string msg)
         {
             List<Apartment> apartments = new List<Apartment>();
-            Apartment apartment = ApartmentDAL.Query(num, out msg);
-            if (apartment != null)
-                apartments.Add(apartment);
-            else
-                return null;
+            apartments = ApartmentDAL.Query(name, out msg);
+            if (apartments == null) return null;
             return JsonConvert.SerializeObject(apartments);
         }
         static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
