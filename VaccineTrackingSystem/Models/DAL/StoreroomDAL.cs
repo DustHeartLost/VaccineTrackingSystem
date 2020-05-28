@@ -52,7 +52,7 @@ namespace VaccineTrackingSystem.Models.DAL
         }
         static public List<Dictionary<string, string>> Query(string name, out string msg)
         {
-            string command = $"select Storeroom.id,Storeroom.name,Storeroom.site  from Storeroom where Storeroom.name = '{name}'";
+            string command = $"select Storeroom.id,Storeroom.name,Storeroom.site  from Storeroom where Storeroom.name like '{name}'";
             SqlDataReader read = SQL.getReader(command);
             if (!read.HasRows)
             {

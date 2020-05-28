@@ -49,20 +49,24 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public Category Query(string num, out string msg)
+        static public List<Category> Query(string num, out string msg)
         {
-            string command = $"select * from Category where num = '{num}'";
-            SqlDataReader read = SQL.getData(command);
+            string command = $"select * from Category where num like '{num}'";
+            SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
-                msg = "查询结果为空";
+                msg = "当前暂无记录";
                 SQL.Dispose();
                 return null;
             }
-            Category category = new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], read["note"].ToString());
+            List<Category> list = new List<Category>();
+            while (read.Read())
+            {
+                list.Add(new Category((int)read["id"], (string)read["num"], (string)read["name"], (string)read["kind"], (string)read["unit"], (string)read["spec"], read["note"].ToString()));
+            }
             SQL.Dispose();
             msg = null;
-            return category;
+            return list;
         }
         static public List<Category> QueryAll(out string msg)
         {

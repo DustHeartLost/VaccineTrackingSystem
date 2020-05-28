@@ -21,10 +21,9 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public string Query(string num, out string msg)
         {
-            List<Category> list = new List<Category>();
-            if (CategoryDAL.Query(num, out msg) != null)
-                list.Add(CategoryDAL.Query(num, out msg));
-            else
+
+            List<Category> list = CategoryDAL.Query(num, out msg);
+            if (list == null)
                 return null;
             return JsonConvert.SerializeObject(list);
         }
