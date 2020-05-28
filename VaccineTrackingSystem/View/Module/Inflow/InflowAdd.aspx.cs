@@ -52,6 +52,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             {
                 return JsonConvert.SerializeObject(new Packet(203, "数量格式错误，请输入数字"));
             }
+            if (quantity <= 0) {return JsonConvert.SerializeObject(new Packet(203, "数量必须大于0")); }
 
             try
             {
@@ -61,6 +62,7 @@ namespace VaccineTrackingSystem.View.Module.Inflow
             {
                 return JsonConvert.SerializeObject(new Packet(203, "单价格式错误，请输入小数"));
             }
+            if (price <= 0) { return JsonConvert.SerializeObject(new Packet(203, "单价必须大于0")); }
             string cagNum = jo["cagNum"].ToString();
             string batchNum = jo["batchNum"].ToString();
             string batchNum2 = jo["batchNum2"].ToString();

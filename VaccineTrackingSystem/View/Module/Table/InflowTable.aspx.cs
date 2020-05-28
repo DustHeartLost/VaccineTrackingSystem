@@ -135,25 +135,10 @@ namespace VaccineTrackingSystem.View.Module.Table
             else
                 jo["cagName"] = "%";
             string storeNameTemp = jo["storeName"].ToString();
-            if (storeNameTemp != null && storeNameTemp != "无")
-            {
-                string t = "%";
-                for (int i = 0; i < storeNameTemp.Length; i++)
-                    t += storeNameTemp[i] + "%";
-                jo["storeName"] = t;
-
-            }
-            else
+            if (storeNameTemp == null || storeNameTemp == "无")
                 jo["storeName"] = "%";
             string cagNumTemp = jo["cagNum"].ToString();
-            if (cagNumTemp != null && cagNumTemp != "")
-            {
-                string t = "%";
-                for (int i = 0; i < cagNumTemp.Length; i++)
-                    t += cagNumTemp[i] + "%";
-                jo["cagNum"] = t;
-            }
-            else
+            if (cagNumTemp == null || cagNumTemp == "")
                 jo["cagNum"] = "%";
             searchContext["date"] = jo["date"];
             searchContext["cagName"] = jo["cagName"];

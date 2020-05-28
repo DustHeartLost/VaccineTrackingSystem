@@ -8,12 +8,10 @@
 <title>统一身份认证</title>
 <link href="css/login.css" rel="stylesheet">
 <script>
-    
     var CheckForm = function () {
         var username = document.getElementById("Username").value;
         var password = document.getElementById("Password").value;
         if (username == "" | password == "") { alert("请输入账号或密码"); return false; }
-        
     }
 </script>
 </head>
@@ -40,7 +38,7 @@
         
         </div>
       <input type="hidden" name="_eventId" value="submit">
-        <asp:ImageButton ID="Submit" runat="server"  Width="250px" OnClick="submit" OnClientClick="return CheckForm()" ImageUrl="~/View/Login/images/loginButtom.png"/>
+        <asp:ImageButton ID="Submit" runat="server"  Width="100%"  OnClick="submit" OnClientClick="return CheckForm()" ImageUrl="~/View/Login/images/loginButtom.png"/>
         </form>
      </div>
   </div>
@@ -51,6 +49,7 @@
   </div>
 </div>
     <script>
+
         function IsPC() {
             var userAgentInfo = navigator.userAgent;
             var Agents = ["Android", "iPhone",
@@ -65,8 +64,13 @@
             }
             return flag;
         }
-        if (!IsPC()) //true为PC端，false为手机端
+        if (!IsPC()) { //true为PC端，false为手机端
             document.getElementById("login").style.margin = "8% auto";
+            //document.getElementsByClassName("login-wrap")[0].style.min - width = "100%";
+            //document.getElementsByClassName("main-center")[0].style.min - width = "100%";
+            //document.getElementsByTagName("body")[0].style.min - width = "100%";
+            //document.getElementsByTagName("html")[0].style.min - width = "100%";
+        }
     </script>
 </body>
 </html>

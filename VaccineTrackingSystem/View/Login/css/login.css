@@ -1,11 +1,11 @@
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */@font-face{font-family:FontAwesome;src:url(../../../static/fonts/fontawesome-webfont.674f50d.eot);src:url(../images/logo-white.6442b1c.png) 50%/200px no-repeat}.topbar-wrap{height: 100px;
+ *//*@font-face{font-family:FontAwesome;src:url(../../../static/fonts/fontawesome-webfont.674f50d.eot);src:url(../images/logo-white.6442b1c.png) 50%/200px no-repeat}.topbar-wrap{height: 100px;
     background: #007ccc;
     position: absolute;
     width: 100%;
-    top: 0;}
+    top: 0;}*/
                                                                                                                                                                    
 .topbar-wrap .title[data-v-b827f0d6]{
     line-height:30px;
@@ -17,12 +17,11 @@
 
 }
 .footer-wrap[data-v-759ce404] {
-    height: 70px;
     line-height: 70px;
     background-color: #a82428;
     text-align: center;
     color: #ddd831;
-    position: absolute;
+    position: relative;
     width: 100%;
     bottom: 0
 }
@@ -46,15 +45,17 @@ a{
 .clearfix:after{
     clear:both;
     content:"";display:block}
-.login-wrap,.main-center,body,html{
-    height:100%
-
+body, html {
+     min-height: 100%;
+     min-width:100%;
 }
-    .login-wrap .main-center {
-        background: #a82428;
-        /*background:url(../images/bg.9500de7.jpg) 50%/cover no-repeat;*/
-        padding:100px 0 70px;
-    }
+
+.login-wrap .main-center {
+     min-height: 680px;
+     background: #a82428;
+     /*background:url(../images/bg.9500de7.jpg) 50%/cover no-repeat;*/
+     padding: 100px 0 70px;
+ }
 
 .login-wrap .main-center.hasvertificode #login{
     margin-top:5%
