@@ -52,7 +52,7 @@ function search() {
         });
     }
     else
-        alert("请输入用户编号");
+        alert("请输入用户真实姓名");
 };
 function clear() {
     $("tr").remove(".dataRow");
