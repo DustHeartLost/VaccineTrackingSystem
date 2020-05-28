@@ -17,12 +17,9 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public string Query(string name, out string msg)
         {
-            List<Role> roles = new List<Role>();
-            if (RoleDAL.Query(name, out msg) != null)
-                roles.Add(RoleDAL.Query(name, out msg));
-            else
-                return null;
-            return JsonConvert.SerializeObject(roles);
+            List<Role> list = RoleDAL.Query(name, out msg);
+            if (list == null) return null;
+            return JsonConvert.SerializeObject(list);
         }
         static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)
         {

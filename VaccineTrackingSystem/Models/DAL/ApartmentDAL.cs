@@ -50,20 +50,25 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public Apartment Query(string num, out string msg)
+        
+        static public List<Apartment> Query(string name, out string msg)
         {
-            string command = $"select * from Apartment where num = '{num}'";
-            SqlDataReader read = SQL.getData(command);
+            string command = $"select * from Apartment where name like '{name}'";
+            SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
-                msg = "查询结果为空";
+                msg = "当前暂无记录";
                 SQL.Dispose();
                 return null;
             }
-            Apartment apartment = new Apartment((int)read["id"], (string)read["num"], (string)read["name"], (string)read["note"]);
+            List<Apartment> list = new List<Apartment>();
+            while (read.Read())
+            {
+                list.Add(new Apartment((int)read["id"], (string)read["num"], (string)read["name"], read["note"].ToString()));
+            }
             SQL.Dispose();
             msg = null;
-            return apartment;
+            return list;
         }
 
         public static Dictionary<string, int> GetApartment()
