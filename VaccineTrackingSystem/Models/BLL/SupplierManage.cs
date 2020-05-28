@@ -18,11 +18,8 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public string Query(string name, out string msg)
         {
-            List<Suppliers> suppliers = new List<Suppliers>();
-            if (SupplierDAL.Query(name, out msg) != null)
-                suppliers.Add(SupplierDAL.Query(name, out msg));
-            else
-                return null;
+            List<Suppliers> suppliers = SupplierDAL.Query(name, out msg);
+            if (suppliers == null) return null;
             return JsonConvert.SerializeObject(suppliers);
         }
         static public string QueryAll(out string msg, ref int totalPage, ref int currentPage)

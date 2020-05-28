@@ -19,11 +19,8 @@ namespace VaccineTrackingSystem.Models.BLL
         }
         static public string Query(string num, out string msg)
         {
-            List<Drug> list = new List<Drug>();
-            if (DrugDAL.Query(num, out msg) != null)
-                list.Add(DrugDAL.Query(num, out msg));
-            else
-                return null;
+            List<Drug> list = DrugDAL.Query(num, out msg);
+            if(list==null) return null;
             return JsonConvert.SerializeObject(list);
         }
 

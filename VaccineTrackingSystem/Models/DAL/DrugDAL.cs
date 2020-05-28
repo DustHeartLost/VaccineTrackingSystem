@@ -52,20 +52,24 @@ namespace VaccineTrackingSystem.Models.DAL
             }
         }
 
-        static public Drug Query(string kind, out string msg)
+        static public List<Drug> Query(string kind, out string msg)
         {
-            string command = $"select * from Drug where kind = '{kind}'";
-            SqlDataReader read = SQL.getData(command);
+            string command = $"select * from Drug where kind like '{kind}'";
+            SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
                 msg = "查询结果为空";
                 SQL.Dispose();
                 return null;
             }
-            Drug drug = new Drug((int)read["id"], (string)read["kind"]);
+            List<Drug> list = new List<Drug>();
+            while (read.Read())
+            {
+                list.Add(new Drug((int)read["id"], (string)read["kind"]));
+            }
             SQL.Dispose();
             msg = null;
-            return drug;
+            return list;
         }
 
         static public List<Drug> QueryAll(out string msg)

@@ -29,7 +29,7 @@
     </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Search" runat="server">
-    <input type="text" placeholder="请输入品类编号进行查找" id="searchText" class="sx_inp search-input">
+    <input type="text" placeholder="请输入品类编号关键值" id="searchText" class="sx_inp search-input">
     <input id="searchButton" type="button" value="搜索" class="auto-style2" onclick="search()"/>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Other" runat="server">

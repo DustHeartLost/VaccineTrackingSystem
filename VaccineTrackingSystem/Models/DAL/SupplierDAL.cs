@@ -51,20 +51,25 @@ namespace VaccineTrackingSystem.Models.DAL
                 return false;
             }
         }
-        static public Suppliers Query(string name, out string msg)
+        static public List<Suppliers> Query(string name, out string msg)
         {
-            string command = $"select * from Suppliers where name = '{name}'";
-            SqlDataReader read = SQL.getData(command);
+            string command = $"select * from Suppliers where name like '{name}'";
+            SqlDataReader read = SQL.getReader(command);
             if (read == null)
             {
-                msg = "查询结果为空";
+                msg = "当前暂无记录";
                 SQL.Dispose();
                 return null;
             }
-            Suppliers suppliers = new Suppliers((int)read["id"], (string)read["name"], (string)read["code"]);
+            List<Suppliers> list = new List<Suppliers>();
+            while (read.Read())
+            {
+                //此处为处理note为空的异常，不可以强制转换，只可以使用ToString方法
+                list.Add(new Suppliers((int)read["id"], (string)read["name"], (string)read["code"]));
+            }
             SQL.Dispose();
             msg = null;
-            return suppliers;
+            return list;
         }
         static public List<Suppliers> QueryAll(out string msg)
         {

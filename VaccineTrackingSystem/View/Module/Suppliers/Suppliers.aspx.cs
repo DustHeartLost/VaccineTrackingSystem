@@ -70,7 +70,10 @@ namespace VaccineTrackingSystem.View.Module.Suppliers
             string msg;
             totalPage = 0;
             currentPage = 0;
-            string jsonData = Models.BLL.SupplierManage.Query(temp, out msg);
+            string t = "%";
+            for (int i = 0; i < temp.Length; i++)
+                t += temp[i] + "%";
+            string jsonData = Models.BLL.SupplierManage.Query(t, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
         [System.Web.Services.WebMethod]
