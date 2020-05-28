@@ -75,6 +75,13 @@ namespace VaccineTrackingSystem.View.Module.Storeroom
             string msg;
             totalPage = 0;
             currentPage = 0;
+            if (temp != null && temp != "")
+            {
+                string t = "%";
+                for (int i = 0; i < temp.Length; i++)
+                    t += temp[i] + "%";
+                temp = t;
+            }
             string jsonData = StoreManage.Query(temp, out msg);
             return jsonData != null ? JsonConvert.SerializeObject(new Packet(200, jsonData, $"{totalPage + 1}+{currentPage + 1}")) : JsonConvert.SerializeObject(new Packet(201, msg));
         }
