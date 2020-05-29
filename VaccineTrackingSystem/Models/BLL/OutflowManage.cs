@@ -22,6 +22,21 @@ namespace VaccineTrackingSystem.Models.BLL
                 currentPage = -1;
                 return null;
             }
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i]["quantity"].Equals("0"))
+                {
+                    list.Remove(list[i]);
+                    i = 0;
+                }
+            }
+            if (list.Count == 0)
+            {
+                totalPage = 0;
+                currentPage = -1;
+                msg = "库存列表暂无记录";
+                return null;
+            }
             totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             if (list.Count != 0 && list.Count % 10 == 0)
                 --totalPage;
@@ -41,6 +56,19 @@ namespace VaccineTrackingSystem.Models.BLL
         static public string QueryByCagNum(string cagNum, int storeID, out string msg)
         {
             List<Dictionary<string, string>> list = StockDAL.QueryCagNum(cagNum, storeID, out msg);
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i]["quantity"].Equals("0"))
+                {
+                    list.Remove(list[i]);
+                    i = 0;
+                }
+            }
+            if (list.Count == 0)
+            {
+                msg = "查询结果为空";
+                return null;
+            }
             return list != null ? JsonConvert.SerializeObject(list) : null;
         }
 

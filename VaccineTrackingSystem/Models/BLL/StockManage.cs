@@ -86,6 +86,21 @@ namespace VaccineTrackingSystem.Models.BLL
                 currentPage = -1;
                 return null;
             }
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i]["quantity"].Equals("0"))
+                {
+                    list.Remove(list[i]);
+                    i = 0;
+                }
+            }
+            if (list.Count == 0)
+            {
+                totalPage = 0;
+                currentPage = -1;
+                msg = "未查询到库存记录";
+                return null;
+            }
             if (flag) return JsonConvert.SerializeObject(list);
             totalPage = (int)System.Math.Floor((decimal)(list.Count / 10));
             foreach (Dictionary<string, string> dictionary in list)
@@ -118,6 +133,21 @@ namespace VaccineTrackingSystem.Models.BLL
                 currentPage = -1;
                 return null;
             }
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i]["quantity"].Equals("0"))
+                {
+                    list.Remove(list[i]);
+                    i = 0;
+                }
+            }
+            if (list.Count == 0)
+            {
+                totalPage = 0;
+                currentPage = -1;
+                msg = "未查询到库存记录";
+                return null;
+            }
             foreach (Dictionary<string, string> dictionary in list)
             {
                 money += decimal.Parse(dictionary["money"]);
@@ -143,6 +173,19 @@ namespace VaccineTrackingSystem.Models.BLL
             JObject keys = (JObject)JsonConvert.DeserializeObject(keyWords);
             List<Dictionary<string, string>> list = StockDAL.CombinationQuery(keys, storeID, out msg);
             if (list == null || list.Count == 0)
+            {
+                msg = "没有需要导出的记录";
+                return null;
+            }
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i]["quantity"].Equals("0"))
+                {
+                    list.Remove(list[i]);
+                    i = 0;
+                }
+            }
+            if (list.Count == 0)
             {
                 msg = "没有需要导出的记录";
                 return null;
