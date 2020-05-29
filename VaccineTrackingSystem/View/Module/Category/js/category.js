@@ -404,7 +404,7 @@ function search() {
         });
     }
     else
-        alert("请输入品类编号名称");
+        alert("请输入品类编号");
 }
 
 function showAll() {
