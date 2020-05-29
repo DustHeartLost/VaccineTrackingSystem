@@ -229,7 +229,7 @@ function search() {
         });
     }
     else
-        alert("请输入部门名称");
+        alert("请输入库管员真实姓名");
 }
 
 function down() {
